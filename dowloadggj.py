@@ -22,21 +22,20 @@ s = answer.read()
 html = etree.HTML(s)
 print html
 
-'''def retrieve_sol(problem,io_set_id,username):
-    requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+
-                  problem+'&io_set_id='+ io_set_id+'&username='username
+def retrieve_sol(problem,io_set_id,username):
+    requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
     return urllib2.urlopen(reuqesturl)
 
 def create_folder (folder):
     try:
-        os.makedirs(path)
+        os.makedirs(folder)
     except OSError as exs :
-         if exc.errno = errno.EEXIST and os.path.isdir(path)
+         if exc.errno == errno.EEXIST and os.path.isdir(folder):
              pass
          else: raise
 
 def safe_open_folder(path):
     create_folder(os.join) 
-'''
+
 
 
