@@ -48,10 +48,7 @@ answer = urllib2.urlopen(baseurl)
 list_of_ids = retrive_problem_ids(answer.read())
 print list_of_ids
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b5fbed5910c48e23260022821fc245091f3f6866
 def retrieve_sol(problem,io_set_id,username):
     requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
     return urllib2.urlopen(reuqesturl)
