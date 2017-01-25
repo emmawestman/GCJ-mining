@@ -8,8 +8,7 @@ from lxml import etree
 
 problem_id_url = "https://code.google.com/codejam/contest/6254486/scoreboard#vf=1" #extract problem id
 exampleurl = "https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem=5652388522229760&io_set_id=0&username=Lewin"
-user_id_url = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos=1" 
-#extract user id
+user_id_url = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos=1" #extract user id
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
@@ -42,8 +41,6 @@ def filter_information (regex,page):
 	ids.append(item)
 	
 	remining_page = remaining_page[end_index+3:]
-	#print remaining_page[start_index-10:end_index+10]
-	print item
 	
     return ids
 
@@ -51,11 +48,14 @@ def filter_information (regex,page):
 def retrieve_sol(problem,io_set_id,username):
     requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
     answer = urllib2.urlopen(requesturl).read()
-    path = os.path.join('..','solutions_qualification_2016')
-    create_folder(path)
-    os.chdir(path)
-    with open(username+'_'+problem+'_'+io_set_id,'w') as f:
-        f.write(answer)
+    if answer.startswith('Server Error'):
+        return
+    else :
+        path = os.path.join('..','solutions_qualification_2016')
+        create_folder(path)
+        os.chdir(path)
+        with open(username+'_'+problem+'_'+io_set_id,'w') as f:
+            f.write(answer)
 
 def create_folder (folder):
     try:
@@ -73,7 +73,7 @@ def download_one_page_solutions(list_of_problems,user_id_url):
         for user in all_users_id :
 			for item in list_of_items :
 				retrieve_sol(problem,item,user)
-				print 'problem ' + problem + 'item ' + item + 'user ' + user
+				print 'problem ' + problem + ' item ' + item + ' user ' + user
 
 
 def dowload_all_pages(problem_id_url):
@@ -86,8 +86,4 @@ def dowload_all_pages(problem_id_url):
 		download_one_page_solutions(list_of_problem_ids,user_id_url)
 		i = i+30
 
-
-#user_id_url = build_user_id_url('31')
-#list_of_problems = retrive_problem_ids(problem_id_url)
-#download_one_page_solutions(list_of_problems,user_id_url)
 dowload_all_pages(problem_id_url)    
