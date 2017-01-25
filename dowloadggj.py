@@ -6,23 +6,23 @@ from lxml import etree
 #import shutil
 
 
-baseurl = "https://code.google.com/codejam/contest/6254486/scoreboard#vf=1"
+problem_id_url = "https://code.google.com/codejam/contest/6254486/scoreboard#vf=1" #extract problem id
 exampleurl = "https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem=5652388522229760&io_set_id=0&username=Lewin"
-userurl = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos=1"
+user_id_url = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos=1" 
+#extract user id
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
 
-PROBLEM_A = '5652388522229760'
-PROBLEM_B = '5634697451274240'
-PROBLEM_C = '5738606668808192'
-PROBLEM_D = '5636311922769920'
 
 
-def retrive_problem_ids(page):
+def retrive_problem_ids(url):
+    page = urllib2.urlopen(url).read()
     return filter_information("\"id\":",page)
 
-def retrive_users(page):
+def retrive_users(url):
+    answer = urllib2.urlopen(url)
+    page = answer.read()
     return filter_information("\"n\":",page)
 
 def filter_information (regex,page):
@@ -49,22 +49,36 @@ def filter_information (regex,page):
 
 def retrieve_sol(problem,io_set_id,username):
     requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
-    return urllib2.urlopen(reuqesturl)
+    answer = urllib2.urlopen(requesturl).read()
+    path = os.path.join('..','solutions_qualification_2016')
+    create_folder(path)
+    os.chdir(path)
+    with open(username+'_'+problem+'_'+io_set_id,'wb') as f:
+        f.write(answer)
 
 def create_folder (folder):
     try:
         os.makedirs(folder)
-    except OSError as exs :
-         if exc.errno == errno.EEXIST and os.path.isdir(folder):
+    except OSError:
+         if os.path.exists(folder):
              pass
-         else: raise
-
+         else: 
+             raise
+#TODO
 def safe_open_folder(path):
     create_folder(os.join) 
 
-answer = urllib2.urlopen(baseurl)
-print retrive_problem_ids(answer.read())
+def download_all_solutions(problem_id_url,user_id_url):
+    all_problems_id = retrive_problem_ids(problem_id_url)
+    all_users_id = retrive_users(user_id_url)
+    list_of_all= ['0','1']
+    for problem in all_problems_id :
+        print 'dowloading problem' + problem
+        for user in all_users_id:
+             for item in list_of_all:
+                 retrieve_sol(problem,item,user)
+    print 'finished dowloading WOOP WOOP'    
 
-users = urllib2.urlopen(userurl)
-print retrive_users(users.read())
+download_all_solutions(problem_id_url,user_id_url)
+            
 
