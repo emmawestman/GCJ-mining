@@ -14,7 +14,8 @@ user_id_url = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd
 io_set_id_0 = "0";
 io_set_id_1 = "1"
 
-
+def build_user_id_url(pos):
+   return 'http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos='+pos
 
 def retrive_problem_ids(url):
     page = urllib2.urlopen(url).read()
@@ -53,7 +54,7 @@ def retrieve_sol(problem,io_set_id,username):
     path = os.path.join('..','solutions_qualification_2016')
     create_folder(path)
     os.chdir(path)
-    with open(username+'_'+problem+'_'+io_set_id,'wb') as f:
+    with open(username+'_'+problem+'_'+io_set_id,'w') as f:
         f.write(answer)
 
 def create_folder (folder):
@@ -64,21 +65,29 @@ def create_folder (folder):
              pass
          else: 
              raise
-#TODO
-def safe_open_folder(path):
-    create_folder(os.join) 
 
-def download_all_solutions(problem_id_url,user_id_url):
-    all_problems_id = retrive_problem_ids(problem_id_url)
+def download_one_page_solutions(list_of_problems,user_id_url):
     all_users_id = retrive_users(user_id_url)
-    list_of_all= ['0','1']
-    for problem in all_problems_id :
-        print 'dowloading problem' + problem
-        for user in all_users_id:
-             for item in list_of_all:
-                 retrieve_sol(problem,item,user)
-    print 'finished dowloading WOOP WOOP'    
+    list_of_items = ['0','1']
+    for problem in list_of_problems :
+        for user in all_users_id :
+			for item in list_of_items :
+				retrieve_sol(problem,item,user)
+				print 'problem ' + problem + 'item ' + item + 'user ' + user
 
-download_all_solutions(problem_id_url,user_id_url)
-            
 
+def dowload_all_pages(problem_id_url):
+	list_of_problem_ids = retrive_problem_ids(problem_id_url)
+	i = 1
+	while (i<27152):
+		print 'dowloading solutions from ' + str(i)
+		user_id_url = build_user_id_url(str(i))
+		print user_id_url
+		download_one_page_solutions(list_of_problem_ids,user_id_url)
+		i = i+30
+
+
+#user_id_url = build_user_id_url('31')
+#list_of_problems = retrive_problem_ids(problem_id_url)
+#download_one_page_solutions(list_of_problems,user_id_url)
+dowload_all_pages(problem_id_url)    
