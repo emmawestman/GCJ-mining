@@ -87,7 +87,7 @@ def download_all_pages(contest_id):
 	base_url =  build_base_url(contest_id)
 	list_of_problem_ids = retrive_problem_ids(base_url)
 	i = 1
-	while (i<27152): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
+	while (i<10): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
 		user_id_url = build_user_id_url(base_url,contest_id,str(i))
 		print user_id_url
