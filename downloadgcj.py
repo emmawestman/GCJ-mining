@@ -13,8 +13,15 @@ user_id_url = "http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd
 io_set_id_0 = "0";
 io_set_id_1 = "1"
 
-def build_user_id_url(pos):
-   return 'http://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetScoreboard&contest_id=6254486&show_type=all&start_pos='+pos
+def build_base_url(contest_id):
+   return 'https://code.google.com/codejam/contest/'+contest_id+'/scoreboard'
+
+
+def build_user_id_url(base_url,contest_id,pos):
+   return base_url+'/do/?cmd=GetScoreboard&contest_id='+contest_id+'&show_type=all&start_pos='+pos
+
+def build_downloadproblem_url(base_url,problem,io_set_id,username) :
+   return base_url+'/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
 
 def retrive_problem_ids(url):
     page = urllib2.urlopen(url).read()
@@ -45,8 +52,8 @@ def filter_information (regex,page):
     return ids
 
 
-def retrieve_sol(problem,io_set_id,username):
-    requesturl = 'https://code.google.com/codejam/contest/6254486/scoreboard/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
+def retrieve_sol(base_url,problem,io_set_id,username):
+    requesturl = build_downloadproblem_url(base_url,problem,io_set_id,username)
     answer = urllib2.urlopen(requesturl).read()
     if answer.startswith('Server Error'):
         return
@@ -66,24 +73,30 @@ def create_folder (folder):
          else: 
              raise
 
-def download_one_page_solutions(list_of_problems,user_id_url):
+def download_one_page_solutions(base_url,list_of_problems,user_id_url):
     all_users_id = retrive_users(user_id_url)
     list_of_items = ['0','1']
     for problem in list_of_problems :
         for user in all_users_id :
 			for item in list_of_items :
-				retrieve_sol(problem,item,user)
+				retrieve_sol(base_url,problem,item,user)
 				print 'problem ' + problem + ' item ' + item + ' user ' + user
 
 
-def dowload_all_pages(problem_id_url):
-	list_of_problem_ids = retrive_problem_ids(problem_id_url)
+def download_all_pages(contest_id):
+	base_url =  build_base_url(contest_id)
+	list_of_problem_ids = retrive_problem_ids(base_url)
 	i = 1
-	while (i<27152):
+	while (i<27152): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
-		user_id_url = build_user_id_url(str(i))
+		user_id_url = build_user_id_url(base_url,contest_id,str(i))
 		print user_id_url
-		download_one_page_solutions(list_of_problem_ids,user_id_url)
+		download_one_page_solutions(base_url,list_of_problem_ids,user_id_url)
 		i = i+30
 
-dowload_all_pages(problem_id_url)    
+#READ FROM INPUT FILE 
+number_of_contests=int(raw_input())
+for cas in xrange(0,number_of_contests):
+    contest_id=(raw_input())
+    download_all_pages(contest_id)
+
