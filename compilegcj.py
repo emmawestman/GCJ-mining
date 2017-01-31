@@ -11,7 +11,6 @@ def run_java_file(filename):
 	output, errors = p.communicate()
 
 
-
 def compile_java(path):
 	for root, dirs, files in os.walk(path):
 		for f in files:
