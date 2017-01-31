@@ -2,7 +2,9 @@ import os
 import subprocess
 
 
-PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016','java'))
+PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
+
+PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 
 def run_java_file(filename):
@@ -35,7 +37,16 @@ def run_java_files() :
 def compile_python(path):
 	for root, dirs, files in os.walk(path):
 		for f in files:
-			subprocess.check_call(['python', os.path.join(root,f) ])
+			regexp = "/Python/"
+			index = root.find(regexp)
+			filename = root[index+len(regexp):]
+			index = filename.find('/')
+			filename = filename[:index] + '.in'
+			#print  os.path.join(PATH_INPUT,filename)
+		
+			cmd = ['python ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
+			output, errors = p.communicate()
 
 
 
@@ -47,12 +58,11 @@ def remove_class_files():
 
 #remove_class_files()		
 #compile_java()
-run_java_files()
+#run_java_files()
 
 
 def compile_language(language):
 	path = os.path.join(PATH, language)
-	print path 
 	if language == 'java':
 		remove_class_files(path)
 		compile_java(path) 
@@ -75,4 +85,3 @@ compile_language("Python")
 
 
 
->>>>>>> f0e7c5550cf1a5c2cb21c96b9a9c459cc73cf1d9

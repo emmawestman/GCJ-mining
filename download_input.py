@@ -73,7 +73,7 @@ def retrive_input(c_id, prob, size, prob_id):
 		s = '0'
 	else:
 		s = '1'
-	with open(prob_id + "_" + s, 'w') as f:
+	with open(prob_id + "_" + s + '.in', 'w') as f:
 		f.write(answer)
      
 def download_all_input(c_id, prob, size, prob_ids):
