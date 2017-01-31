@@ -11,6 +11,9 @@ def run_java_file(filename):
 	output, errors = p.communicate()
 
 
+def apa_bepa():
+	return 4*5
+
 def compile_java(path):
 	for root, dirs, files in os.walk(path):
 		for f in files:
@@ -74,5 +77,3 @@ compile_language("Python")
 
 
 
-
->>>>>>> f0e7c5550cf1a5c2cb21c96b9a9c459cc73cf1d9
