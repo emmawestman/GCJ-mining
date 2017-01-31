@@ -11,8 +11,6 @@ def run_java_file(filename):
 	output, errors = p.communicate()
 
 
-def apa_bepa():
-	return 4*5
 
 def compile_java(path):
 	for root, dirs, files in os.walk(path):
