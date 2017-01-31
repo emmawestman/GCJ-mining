@@ -15,11 +15,6 @@ PROBLEM =['A', 'B', 'C', 'D']
 
 TOKEN = "NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D"
 
-url_small = 'https://code.google.com/codejam/contest/6254486/dashboard/do/A-small-practice.in?cmd=GetInputFile&problem=5652388522229760&input_id=0&filename=A-small-practice.in&redownload_last=1&agent=website&csrfmiddlewaretoken=NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D'
-
-
-url_large = 'https://code.google.com/codejam/contest/6254486/dashboard/do/A-large-practice.in?cmd=GetInputFile&problem=5652388522229760&input_id=1&filename=A-large-practice.in&redownload_last=1&agent=website&csrfmiddlewaretoken=NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D'
-
 def filter_information (regex,page):
     remaining_page = page
     ids = []
