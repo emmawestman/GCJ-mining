@@ -14,16 +14,21 @@ PROBLEM =['A', 'B', 'C', 'D']
 
 #PROBLEM_ID = "5652388522229760"
 
-TOKEN = "NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D"
+#TOKEN = "NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D"
 
 base_url =  build_base_url(CONTEST_ID)
 
 PROBLEM_IDS = retrive_problem_ids(base_url)
 print PROBLEM_IDS
 
+def retrive_token(base_url):
+	page = urllib2.urlopen(base_url+'#vf=1').read()
+	return filter_information('GCJ.csrfMiddlewareToken',page)[0]
+
+
 #retrives the input file in constest c_id, for prob A/B/C/D, of size small/large
-def retrive_input(c_id, prob, size, prob_id): 
-	url = BASE + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=1&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + TOKEN
+def retrive_input(c_id, prob, size, prob_id,token): 
+	url = BASE + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=1&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
 	answer = urllib2.urlopen(url).read()
 	'''if answer.startswith('Server Error'):
        	return
@@ -38,17 +43,16 @@ def retrive_input(c_id, prob, size, prob_id):
 	with open(prob_id + "_" + s + '.in', 'w') as f:
 		f.write(answer)
      
-def download_all_input(c_id, prob, size, prob_ids):
+def download_all_input(c_id, prob, size, prob_ids,token):
 	i = 0
 	for p in prob:
 		for s in size:
 			prob_id = prob_ids[i]
-			retrive_input(c_id, p, s, prob_id)
+			retrive_input(c_id, p, s, prob_id,token)
 		i += 1
 
 
 #retrieve_solution_input(url_small)
-#build_urls()
-
-download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS)
+TOKEN = retrive_token(base_url)
+download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 

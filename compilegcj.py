@@ -6,8 +6,8 @@ PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 def build_language_path(language):
-	return os.path.join(PATH,language)
-
+	new_path = os.path.join(PATH,language)
+	return new_path
 
 def compile_java(path):
 	for root, dirs, files in os.walk(path):
@@ -16,24 +16,29 @@ def compile_java(path):
 				subprocess.check_call(['javac', os.path.join(root,f) ])
 
 def run_java_files(path) :
-	problemfolders = [f for f in os.listdir(PATH) if os.path.isdir(os.path.join(PATH, f))]
+	problemfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
 	for problem_folder in problemfolders:
-		problemPATH = os.path.join(PATH, problem_folder)
+		problemPATH = os.path.join(path, problem_folder)
 		userfolders = [f for f in os.listdir(problemPATH) if os.path.isdir(os.path.join(problemPATH, f))]
 		for user_folder in userfolders:
 			userPATH = os.path.join(problemPATH,user_folder)
 			os.chdir(userPATH)
-			java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
-			class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
-			if len(class_file)>0:
-				class_name = class_file[0].split('.')[0]
-				run_java_file(problem_folder,user_folder,class_name)
+			try:
+				java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
+				class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
+				if len(class_file)>0:
+					class_name = class_file[0].split('.')[0]
+					run_java_file(problem_folder,user_folder,class_name)
+			except IndexError,e :
+				print 'This folder doesnt have a java file ' + problem_folder + ' ' + user_folder
 
 
 def run_java_file(problem_folder,user_folder,class_name):
-	cmd = ['java ' +filename]
+	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
+	cmd = ['java ' +class_name]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
+	print output
 
 		
 								
@@ -63,11 +68,12 @@ def compile_python(path):
 
 
 
-def remove_class_files():
-	for root, dirs, files in os.walk(PATH):
+def remove_class_files(language_path):
+	for root, dirs, files in os.walk(language_path):
 		filelist = [ f for f in files if not(f.endswith(".java")) ]
 		for f in filelist:			
 			os.remove(os.path.join(root,f))
+
 
 #remove_class_files()		
 #compile_java()
@@ -78,11 +84,12 @@ def remove_class_files():
 def compile_language(language):
 	path = os.path.join(PATH, language)
 	if language == 'java':
-		remove_class_files(path)
 		java_path = build_language_path('java')
+		remove_class_files(path)
 		compile_java(java_path) 
 	elif language == 'C':
 		print "C has no compile script yet"
+		print 'inne i c'
 	elif language == "C++":
 		print "C++ has no compile script yet"
 	elif language == 'C#':
@@ -93,7 +100,18 @@ def compile_language(language):
 	else: 	
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
+
 compile_language("Python")
+
+#remove_class_files()
+#compile_language('java')
+folder_name = build_language_path('java')
+run_java_files(folder_name)
+
+
+#remove_class_files()
+#compile_language("Python")
+#compile_python()
 
 
 
