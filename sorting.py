@@ -10,8 +10,8 @@ def select_folder(filename):
 		language = 'java' 
 	elif filename == '.c':
 		language = 'C'
-	elif filename == ".cpp":
-		language = 'C++'
+	elif filename == ".cpp" or filename == ".C" or filename == ".cc" or filename == ".CPP" or filname == ".c++" or filename = ".cp" or filename = ".cxx":
+		language = 'C++' 
 	elif filename == '.cs':
 		language = 'C#'
 	elif filename == '.py':
