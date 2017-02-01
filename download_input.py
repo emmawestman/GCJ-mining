@@ -21,15 +21,17 @@ base_url =  build_base_url(CONTEST_ID)
 PROBLEM_IDS = retrive_problem_ids(base_url)
 print PROBLEM_IDS
 
-def retrive_token(base_url):
-	page = urllib2.urlopen(base_url+'#vf=1').read()
-	return filter_information('GCJ.csrfMiddlewareToken',page)[0]
-
+def retrive_token():
+	page = urllib2.urlopen('https://code.google.com/codejam/contest/6254486/dashboard/do?cmd=GetInitialValues&zx=1485947670303&csrfmiddlewaretoken=undefined').read()
+	token = filter_information('token\":',page)[0]
+	print token
+	return token
 
 #retrives the input file in constest c_id, for prob A/B/C/D, of size small/large
 def retrive_input(c_id, prob, size, prob_id,token): 
 	url = BASE + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=1&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
 	answer = urllib2.urlopen(url).read()
+	print answer
 	'''if answer.startswith('Server Error'):
        	return
     else :'''
@@ -53,6 +55,6 @@ def download_all_input(c_id, prob, size, prob_ids,token):
 
 
 #retrieve_solution_input(url_small)
-TOKEN = retrive_token(base_url)
+TOKEN = retrive_token()
 download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 
