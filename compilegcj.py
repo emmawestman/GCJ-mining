@@ -5,14 +5,6 @@ import subprocess
 PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
-
-
-def run_java_file(filename):
-	cmd = ['java ' +filename]
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-	output, errors = p.communicate()
-
-
 def build_language_path(language):
 	return os.path.join(PATH,language)
 
@@ -25,17 +17,25 @@ def compile_java(path):
 
 def run_java_files(path) :
 	problemfolders = [f for f in os.listdir(PATH) if os.path.isdir(os.path.join(PATH, f))]
-	for problemfolder in problemfolders:
-		problemPATH = os.path.join(PATH, problemfolder)
+	for problem_folder in problemfolders:
+		problemPATH = os.path.join(PATH, problem_folder)
 		userfolders = [f for f in os.listdir(problemPATH) if os.path.isdir(os.path.join(problemPATH, f))]
-		for userfolder in userfolders:
-			userPATH = os.path.join(problemPATH,userfolder)
+		for user_folder in userfolders:
+			userPATH = os.path.join(problemPATH,user_folder)
 			os.chdir(userPATH)
 			java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
 			class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
 			if len(class_file)>0:
 				class_name = class_file[0].split('.')[0]
-				run_java_file(class_name)
+				run_java_file(problem_folder,user_folder,class_name)
+
+
+def run_java_file(problem_folder,user_folder,class_name):
+	cmd = ['java ' +filename]
+	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+	output, errors = p.communicate()
+
+		
 								
 
 def compile_python(path):
@@ -62,7 +62,7 @@ def remove_class_files():
 
 #remove_class_files()		
 #compile_java()
-#run_java_files(build_language_path('java'))
+run_java_files(build_language_path('java'))
 
 
 
@@ -85,7 +85,7 @@ def compile_language(language):
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 #remove_class_files()
-compile_language("Python")
+#compile_language("Python")
 #compile_python()
 
 
