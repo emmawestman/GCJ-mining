@@ -3,8 +3,8 @@ import subprocess
 
 
 PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
-
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
+
 
 
 def run_java_file(filename):
@@ -13,13 +13,17 @@ def run_java_file(filename):
 	output, errors = p.communicate()
 
 
+def build_language_path(language):
+	return os.path.join(PATH,language)
+
+
 def compile_java(path):
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			if (f.endswith(".java")):
 				subprocess.check_call(['javac', os.path.join(root,f) ])
 
-def run_java_files() :
+def run_java_files(path) :
 	problemfolders = [f for f in os.listdir(PATH) if os.path.isdir(os.path.join(PATH, f))]
 	for problemfolder in problemfolders:
 		problemPATH = os.path.join(PATH, problemfolder)
@@ -58,14 +62,16 @@ def remove_class_files():
 
 #remove_class_files()		
 #compile_java()
-#run_java_files()
+#run_java_files(build_language_path('java'))
+
 
 
 def compile_language(language):
 	path = os.path.join(PATH, language)
 	if language == 'java':
 		remove_class_files(path)
-		compile_java(path) 
+		java_path = build_language_path('java')
+		compile_java(java_path) 
 	elif language == 'C':
 		print "C has no compile script yet"
 	elif language == "C++":
@@ -73,7 +79,8 @@ def compile_language(language):
 	elif language == 'C#':
 		print "C# has no compile script yet"
 	elif language == "Python":
-		compile_python(path)
+		python_path = build_language_path('Python')
+		compile_python(python_path)
 	else: 	
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
@@ -82,9 +89,3 @@ compile_language("Python")
 #compile_python()
 
 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d5820fe3903cf0a975ccc0fdc0298333daa1e8c9

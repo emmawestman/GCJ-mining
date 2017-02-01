@@ -1,4 +1,4 @@
-''' sScript for downloadin the input files to run the solutions'''
+'''Script for downloadin the input files to run the solutions'''
 
 import urllib2
 import os
