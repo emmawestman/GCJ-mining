@@ -60,6 +60,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name):
 	new_file_name = errors[indexes[0]+2:indexes[1]]
 	print 'FILE NAME' + new_file_name
 	rename_file(user_path,PATH_INPUT,old_problem_name,new_file_name)
+	os.chdir(user_path)
 	print run_java_command(class_name,new_file_name)
 
 def run_java_file(user_path,problem_folder,user_folder,class_name):
@@ -77,6 +78,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name):
 		
 
 def rename_file(user_path,path_to_file,old_file_name,new_file_name):
+	dest_path= user_path
 	if new_file_name.find('/') !=-1:
 		path_to_create_folder = new_file_name.split('/')
 		curr_path = user_path
@@ -87,10 +89,11 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 			create_folder(name)
 			curr_path = os.path.join(curr_path,name) 
 			os.chdir(curr_path)
-	os.chdir(user_path) 
-	shutil.copy(os.path.join(path_to_file,old_file_name),user_path)
-	print "CURR DIRECTION " + os.getcwd()
-	os.rename(old_file_name,new_file_name)
+		shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
+		os.rename(old_file_name,new_file_name)
+	else:
+		shutil.copy(os.path.join(path_to_file,old_file_name),dest_path)
+		os.rename(old_file_name,new_file_name)
 		
 								
 
@@ -152,19 +155,15 @@ def compile_language(language):
 	else: 	
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
-compile_language('java')
 
-compile_language("Python")
 
-#remove_class_files()
-#compile_language('java')
-folder_name = build_language_path('java')
-run_java_files(folder_name)
+#compile_language("Python")
 
-#
+
 
 #folder_name = build_language_path('java')
 #remove_class_files(folder_name)
+compile_language('java')
 #run_java_files(folder_name)
 #remove_class_files()
 #compile_language("Python")
