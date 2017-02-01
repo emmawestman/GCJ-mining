@@ -3,8 +3,7 @@
 import urllib2
 import os
 from stuff_module import create_folder,build_base_url,filter_information, retrive_problem_ids
-from lxml import etree
-#import shutil
+
 
 
 io_set_id_0 = "0";
@@ -56,9 +55,9 @@ def download_all_pages(contest_id):
 		download_one_page_solutions(base_url,list_of_problem_ids,user_id_url)
 		i = i+30
 
-#READ FROM INPUT FILE 
-number_of_contests=int(raw_input())
-for cas in xrange(0,number_of_contests):
-    contest_id=(raw_input())
-    download_all_pages(contest_id)
+
+
+
+
+
 
