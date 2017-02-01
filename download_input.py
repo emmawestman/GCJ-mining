@@ -12,14 +12,6 @@ CONTEST_ID = "6254486"
 
 PROBLEM =['A', 'B', 'C', 'D'] 
 
-#PROBLEM_ID = "5652388522229760"
-
-#TOKEN = "NDU5YzFkMGU3OTk5ZjU5NWYxZjA1YjJlMGVkM2E4MjF8fDE0ODU4NjgyODI3NTUzMDA%3D"
-
-base_url =  build_base_url(CONTEST_ID)
-
-PROBLEM_IDS = retrive_problem_ids(base_url)
-print PROBLEM_IDS
 
 def retrive_token(base_url):
 	page = urllib2.urlopen(base_url+'#vf=1').read()
@@ -51,8 +43,4 @@ def download_all_input(c_id, prob, size, prob_ids,token):
 			retrive_input(c_id, p, s, prob_id,token)
 		i += 1
 
-
-#retrieve_solution_input(url_small)
-TOKEN = retrive_token(base_url)
-download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 

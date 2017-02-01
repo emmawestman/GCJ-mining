@@ -101,12 +101,21 @@ def compile_python(path):
 			index = root.find(regexp)
 			filename = root[index+len(regexp):]
 			index = filename.find('/')
-			filename = filename[:index] + '.in'
-			#print  os.path.join(PATH_INPUT,filename)
-		
+			user = filename[index+1:]
+			filename = filename[:index]
+			print 'Running problem: ' + filename + ', for user: ' + user
+			filename = filename + '.in'
+			
 			cmd = ['python ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
 			output, errors = p.communicate()
+	
+			
+		
+			'''if errors.startswith('Traceback'):
+				print error
+			else:
+				print 'Successfully copiled and ran ' + os.path.join(root,f)'''
 
 
 
@@ -115,6 +124,13 @@ def remove_class_files(language_path):
 		filelist = [ f for f in files if not(f.endswith(".java")) ]
 		for f in filelist:			
 			os.remove(os.path.join(root,f))
+
+
+#remove_class_files()		
+#compile_java()
+#run_java_files(build_language_path('java'))
+
+
 
 def compile_language(language):
 	path = os.path.join(PATH, language)
@@ -136,8 +152,14 @@ def compile_language(language):
 	else: 	
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
-#
 compile_language('java')
+
+compile_language("Python")
+
+#remove_class_files()
+#compile_language('java')
+folder_name = build_language_path('java')
+run_java_files(folder_name)
 
 #
 
@@ -147,5 +169,6 @@ compile_language('java')
 #remove_class_files()
 #compile_language("Python")
 #compile_python()
+
 
 
