@@ -1,6 +1,7 @@
 import os
 import subprocess
-
+import shutil
+from stuff_module import create_folder
 
 PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
@@ -15,6 +16,7 @@ def compile_java(path):
 			if (f.endswith(".java")):
 				subprocess.check_call(['javac', os.path.join(root,f) ])
 
+
 def run_java_files(path) :
 	problemfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
 	for problem_folder in problemfolders:
@@ -23,23 +25,75 @@ def run_java_files(path) :
 		for user_folder in userfolders:
 			userPATH = os.path.join(problemPATH,user_folder)
 			os.chdir(userPATH)
-			try:
-				java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
-				class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
-				if len(class_file)>0:
+			java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
+			class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
+			if len(class_file)>0:
 					class_name = class_file[0].split('.')[0]
-					run_java_file(problem_folder,user_folder,class_name)
-			except IndexError,e :
-				print 'This folder doesnt have a java file ' + problem_folder + ' ' + user_folder
+					run_java_file(userPATH,problem_folder,user_folder,class_name)
 
+def filter_substring(error_message_start,error_message_end,error_string):
+	indexes = []
+	start_index =error_string.find(error_message_start)
+	end_index = error_string.find(error_message_end)
+	indexes.append(start_index)
+	indexes.append(end_index)
+	return indexes
 
-def run_java_file(problem_folder,user_folder,class_name):
-	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
-	cmd = ['java ' +class_name]
+def get_exception_name(errors):
+	indexes = filter_substring('java.',':',errors)
+	exception_name = errors[indexes[0]:indexes[1]].split('.')[-1]
+	return exception_name
+
+def get_input_file(problem_folder):
+	problem_input = [f for f in os.listdir(PATH_INPUT) if (f.split('.')[0]==problem_folder)]
+	return problem_input[0]
+
+def run_java_command(class_name,args):	
+	cmd = ['java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	print output
+	return errors
 
+	
+def file_not_found_exception(errors,class_name,user_path,old_problem_name):
+	indexes =filter_substring(':',' (',errors)
+	new_file_name = errors[indexes[0]+2:indexes[1]]
+	print 'FILE NAME' + new_file_name
+	rename_file(user_path,PATH_INPUT,old_problem_name,new_file_name)
+	os.chdir(user_path)
+	print run_java_command(class_name,new_file_name)
+
+def run_java_file(user_path,problem_folder,user_folder,class_name):
+	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
+	old_problem_name = get_input_file(problem_folder) 
+	path_to_input = os.path.join(PATH_INPUT,old_problem_name)
+	args = '< '+ path_to_input
+	errors = run_java_command(class_name, args)
+	if len(errors)>0 :
+		exception_name = get_exception_name(errors)
+		if exception_name == 'FileNotFoundException':
+			file_not_found_exception(errors,class_name,user_path,old_problem_name)
+		else:
+			print 'JAVA EXCEPTION ' + exception_name
+		
+
+def rename_file(user_path,path_to_file,old_file_name,new_file_name):
+	dest_path= user_path
+	if new_file_name.find('/') !=-1:
+		path_to_create_folder = new_file_name.split('/')
+		curr_path = user_path
+		new_file_name = path_to_create_folder[-1]
+		lim = len(path_to_create_folder)-1
+		for x in range(0,lim):
+			name = path_to_create_folder[0]
+			create_folder(name)
+			curr_path = os.path.join(curr_path,name) 
+			os.chdir(curr_path)
+		shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
+		os.rename(old_file_name,new_file_name)
+	else:
+		shutil.copy(os.path.join(path_to_file,old_file_name),dest_path)
+		os.rename(old_file_name,new_file_name)
 		
 								
 
@@ -147,7 +201,8 @@ def compile_language(language):
 	if language == 'java':
 		java_path = build_language_path('java')
 		remove_class_files(path)
-		compile_java(java_path) 
+		compile_java(java_path)
+		run_java_files(java_path)
 	elif language == 'C':
 		print "C has no compile script yet"
 		print 'inne i c'
@@ -163,6 +218,7 @@ def compile_language(language):
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 
+<<<<<<< HEAD
 #compile_language("Python")
 compile_language("C#")
 
@@ -172,8 +228,17 @@ compile_language("C#")
 #compile_language('java')
 #folder_name = build_language_path('java')
 #run_java_files(folder_name)
+=======
+
+#compile_language("Python")
+
+>>>>>>> 9e76627355f3fac95c4a11822791c8e08c9ce4ea
 
 
+#folder_name = build_language_path('java')
+#remove_class_files(folder_name)
+compile_language('java')
+#run_java_files(folder_name)
 #remove_class_files()
 #compile_language("Python")
 #compile_python()
