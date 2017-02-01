@@ -91,9 +91,9 @@ def compile_csharp(path):
 				if "does not contain a static `Main' method suitable for an entry point" in errors:
 					# find function in file to call from main
 					# find namespace
-
+					namespace = find_namespace(f, root)
 					# create main file and call some function...
-					csharp_main('SolveProblem', f, 'GoogleCodeJam.Pancakes', root)
+					csharp_main('SolveProblem', f, namespace, root)
 					# run main file instead
 					cmd = ['mcs ' + os.path.join(root,'TestMain.cs ') + os.path.join(root, f) + ' < ' + os.path.join(PATH_INPUT,filename)]
 					p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -114,6 +114,17 @@ def csharp_main(function_name, filename, namespace, path):
 	file_content = 'namespace ' + namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + '();' + ' \n } \n } \n }'
 	file1.write(file_content)
 	file1.close()
+
+def find_namespace(filename, path):
+	full_path = os.path.join(path, filename)
+	file1 = open(full_path, "r")
+	content = file1.read()
+	index_start = content.find('namespace ') + len('namespace ')
+	content = content[index_start:]
+	index_end = content.find('\n')
+	namespace = content[:index_end]
+	return namespace
+
 
 
 
