@@ -85,8 +85,10 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 		new_file_name = path_to_create_folder[-1]
 		lim = len(path_to_create_folder)-1
 		for x in range(0,lim):
+			print 'in for loop'
 			name = path_to_create_folder[0]
 			create_folder(name)
+			print 'created folder'
 			curr_path = os.path.join(curr_path,name) 
 			os.chdir(curr_path)
 		shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
@@ -116,16 +118,13 @@ def compile_python(path):
 				print 'error'
 			else:
 				print 'Successfully compiled!'
-
-	
-			
 		
 			'''if errors.startswith('Traceback'):
 				print error
 			else:
 				print 'Successfully copiled and ran ' + os.path.join(root,f)'''
 
-def compile_csharp(path):
+def compile_run_csharp(path):
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			regexp = "/C#/"
@@ -149,16 +148,34 @@ def compile_csharp(path):
 					# create main file and call some function...
 					csharp_main('SolveProblem', f, namespace, root)
 					# run main file instead
-					cmd = ['mcs ' + os.path.join(root,'TestMain.cs ') + os.path.join(root, f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+					cmd = ['mcs ' + os.path.join(root,'TestMain.cs ') + os.path.join(root, f)]# + ' < ' + os.path.join(PATH_INPUT,filename)]
 					p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 					output, errors = p.communicate()
 					if len(errors) > 0 :
 						print 'I give up'
 						print errors
 					else: 
-						print 'Successfully added and ran main!' 
+						print 'Successfully added and compiled main!' 
+						# run main file
+						cmd = ['mcs ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
+						p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+						output, errors = p.communicate()
+						# gives "wrong" error message, not the same as when run manually
+						print errors
+						if len(errors) > 0:
+							#rename input file... hard when error message cant be parsed
+							# this is a hard coded test
+							# --create folder GCJ
+							rename_file(root, PATH_INPUT, filename, 'sheep/input.txt')
+
 			else:
 				print 'Successfully compiled!'
+				# run file
+				cmd = ['mono ' + os.path.join(root, f+'.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
+				print cmd
+				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				output, errors = p.communicate()
+				print errors
 
 def csharp_main(function_name, filename, namespace, path):
 	index = len(filename) -3
@@ -210,7 +227,7 @@ def compile_language(language):
 		print "C++ has no compile script yet"
 	elif language == 'C#':
 		csharp_path = build_language_path('C#')
-		compile_csharp(csharp_path)
+		compile_run_csharp(csharp_path)
 	elif language == "Python":
 		python_path = build_language_path('Python')
 		compile_python(python_path)
@@ -218,7 +235,7 @@ def compile_language(language):
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 
-<<<<<<< HEAD
+
 #compile_language("Python")
 compile_language("C#")
 
@@ -228,16 +245,15 @@ compile_language("C#")
 #compile_language('java')
 #folder_name = build_language_path('java')
 #run_java_files(folder_name)
-=======
+
 
 #compile_language("Python")
 
->>>>>>> 9e76627355f3fac95c4a11822791c8e08c9ce4ea
 
 
 #folder_name = build_language_path('java')
 #remove_class_files(folder_name)
-compile_language('java')
+#compile_language('java')
 #run_java_files(folder_name)
 #remove_class_files()
 #compile_language("Python")
