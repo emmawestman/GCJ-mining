@@ -1,6 +1,7 @@
 import os
 import urllib2
-
+from compile_support_module import filter_substring
+import re
 def build_base_url(contest_id):
    return 'https://code.google.com/codejam/contest/'+contest_id+'/scoreboard'
 
@@ -15,40 +16,26 @@ def create_folder (folder):
              raise
 
 
-def filter_information (regex,page):
+def filter_information(regex,page):
     remaining_page = page
     ids = []
     while regex in remaining_page:
-    index = remaining_page.find(regex)
-    index += len(regex)
-    remaining_page = remaining_page[index:]
-    # finding the start qutation mark for problem id
-    start_index = remaining_page.find("\"")
-    # find the end qutation mark for problem id
-    end_index = remaining_page[start_index+1:].find("\"")
-    # extract problem id string
-    item = remaining_page[start_index+1:end_index+2]
-    ids.append(item)
-    
-    remining_page = remaining_page[end_index+3:]
+    	index = remaining_page.find(regex)
+    	index += len(regex)
+    	remaining_page = remaining_page[index:]
+    	# finding the start qutation mark for problem id
+    	start_index = remaining_page.find("\"")
+    	# find the end qutation mark for problem id
+    	end_index = remaining_page[start_index+1:].find("\"")
+    	# extract problem id string
+    	item = remaining_page[start_index+1:end_index+2]
+    	ids.append(item)
+    	remining_page = remaining_page[end_index+3:]
     return ids
 
-def filter_information2 (regex, page):
-    remaining_page = page
+def filter_information2(regex, page):
     ids = []
-    while regex in remaining_page:
-	index = remaining_page.find(regex)
-	index += len(regex)
-	remaining_page = remaining_page[index:]
-	# finding the start qutation mark for problem id
-	start_index = remaining_page.find("/")
-	# find the end qutation mark for problem id
-	end_index = remaining_page[start_index+1:].find("/")
-	# extract problem id string
-	item = remaining_page[start_index+1:end_index+2]
-	ids.append(item)
-	
-	remining_page = remaining_page[end_index+3:]
+	result = re.match(r'regex',page)
 	
     return ids
 

@@ -2,9 +2,8 @@
 
 import urllib2
 import os
-from stuff_module import create_folder,build_base_url,filter_information, retrive_problem_ids
-
-
+from stuff_module import *
+CONTEST_PATH = 'https://code.google.com/codejam/contests.html'
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
@@ -56,8 +55,10 @@ def download_all_pages(contest_id):
 		i = i+30
 
 
+def get_all_contests_id():
+	answer = urllib2.urlopen(CONTEST_PATH).read()
+	list_of_duplicates = filter_information2('code.google.com/codejam/contest/','dashboard#s=p0',answer)
+	return list_of_duplicates
 
-
-
-
+print get_all_contests_id()
 

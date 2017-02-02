@@ -6,6 +6,8 @@ def filter_substring(error_message_start,error_message_end,error_string):
 	end_index = error_string.find(error_message_end)
 	indexes.append(start_index)
 	indexes.append(end_index)
+	print "START INDEX " + str(start_index)
+	print "END INDEX " + str(end_index)
 	return indexes
 
 def get_input_file(problem_folder):
