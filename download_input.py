@@ -14,7 +14,7 @@ PROBLEM =['A', 'B', 'C', 'D']
 
 
 def retrive_token(contest_id):
-	page = urllib2.urlopen('http://code.google.com/codejam/contest/'+contest_id+'/dashboard/do?cmd=GetInitialValues&zx=1486030808497&csrfmiddlewaretoken=undefined').read()
+	page = urllib2.urlopen('http://code.google.com/codejam/contest/'+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	return filter_information('\"csrf_middleware_token\":',page)[0]
 
 
@@ -45,5 +45,5 @@ def download_all_input(c_id, prob, size, prob_ids,token):
 
 
 
-#download_all_input(CONTEST_ID, PROBLEM, SIZE,retrive_problem_ids(build_base_url(CONTEST_ID)),retrive_token(CONTEST_ID))
+download_all_input(CONTEST_ID, PROBLEM, SIZE,retrive_problem_ids(build_base_url(CONTEST_ID)),retrive_token(CONTEST_ID))
 
