@@ -60,6 +60,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name):
 	indexes =filter_substring(':',' (No',errors)
 	new_file_name = errors[indexes[0]+2:indexes[1]]
 	rename_file(user_path,PATH_INPUT,old_problem_name,new_file_name)
+	os.chdir(user_path)
 	print run_java_command(class_name,new_file_name)
 
 def run_java_file(user_path,problem_folder,user_folder,class_name):
@@ -77,7 +78,11 @@ def run_java_file(user_path,problem_folder,user_folder,class_name):
 		
 
 def rename_file(user_path,path_to_file,old_file_name,new_file_name):
+<<<<<<< HEAD
 	curr_path = user_path
+=======
+	dest_path= user_path
+>>>>>>> 7d9504f7dd2bda307213e4a55e6a88749904c481
 	if new_file_name.find('/') !=-1:
 		path_to_create_folder = new_file_name.split('/')
 		new_file_name = path_to_create_folder[-1]
@@ -87,11 +92,20 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 			create_folder(name)
 			curr_path = os.path.join(curr_path,name) 
 			os.chdir(curr_path)
+<<<<<<< HEAD
 	shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
 	print "OLD NAME "
 	os.chdir(curr_path) 
 	os.rename(old_file_name,new_file_name)
 	os.chdir(user_path)	
+=======
+		shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
+		os.rename(old_file_name,new_file_name)
+	else:
+		shutil.copy(os.path.join(path_to_file,old_file_name),dest_path)
+		os.rename(old_file_name,new_file_name)
+		
+>>>>>>> 7d9504f7dd2bda307213e4a55e6a88749904c481
 								
 
 def compile_python(path):
@@ -107,8 +121,13 @@ def compile_python(path):
 			filename = filename + '.in'
 			
 			cmd = ['python ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
-			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
+			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
+			if len(errors) > 0:
+				print 'error'
+			else:
+				print 'Successfully compiled!'
+
 	
 			
 		
@@ -117,6 +136,62 @@ def compile_python(path):
 			else:
 				print 'Successfully copiled and ran ' + os.path.join(root,f)'''
 
+def compile_csharp(path):
+	for root, dirs, files in os.walk(path):
+		for f in files:
+			regexp = "/C#/"
+			index = root.find(regexp)
+			filename = root[index+len(regexp):]
+			index = filename.find('/')
+			user = filename[index+1:]
+			filename = filename[:index]
+			print 'Compiling problem: ' + filename + ', for user: ' + user
+			filename = filename + '.in'
+			
+			cmd = ['mcs ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+			output, errors = p.communicate()
+			if len(errors) > 0:
+				# fix issue where no main is missing
+				if "does not contain a static `Main' method suitable for an entry point" in errors:
+					# find function in file to call from main
+					# find namespace
+					namespace = find_namespace(f, root)
+					# create main file and call some function...
+					csharp_main('SolveProblem', f, namespace, root)
+					# run main file instead
+					cmd = ['mcs ' + os.path.join(root,'TestMain.cs ') + os.path.join(root, f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+					p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+					output, errors = p.communicate()
+					if len(errors) > 0 :
+						print 'I give up'
+						print errors
+					else: 
+						print 'Successfully added and ran main!' 
+			else:
+				print 'Successfully compiled!'
+
+def csharp_main(function_name, filename, namespace, path):
+	index = len(filename) -3
+	filename = filename[:index]
+	main_file= os.path.join(path, 'TestMain.cs')         
+	file1 = open(main_file, "w")
+	file_content = 'namespace ' + namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + '();' + ' \n } \n } \n }'
+	file1.write(file_content)
+	file1.close()
+
+def find_namespace(filename, path):
+	full_path = os.path.join(path, filename)
+	file1 = open(full_path, "r")
+	content = file1.read()
+	index_start = content.find('namespace ') + len('namespace ')
+	content = content[index_start:]
+	index_end = content.find('\n')
+	namespace = content[:index_end]
+	return namespace
+
+
+
 
 
 def remove_class_files(language_path):
@@ -124,13 +199,6 @@ def remove_class_files(language_path):
 		filelist = [ f for f in files if not(f.endswith(".java")) ]
 		for f in filelist:			
 			os.remove(os.path.join(root,f))
-
-
-#remove_class_files()		
-#compile_java()
-#run_java_files(build_language_path('java'))
-
-
 
 def compile_language(language):
 	path = os.path.join(PATH, language)
@@ -145,31 +213,14 @@ def compile_language(language):
 	elif language == "C++":
 		print "C++ has no compile script yet"
 	elif language == 'C#':
-		print "C# has no compile script yet"
+		csharp_path = build_language_path('C#')
+		compile_csharp(csharp_path)
 	elif language == "Python":
 		python_path = build_language_path('Python')
 		compile_python(python_path)
 	else: 	
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
-compile_language('java')
-
-#compile_language("Python")
-
-#remove_class_files()
-#compile_language('java')
-#folder_name = build_language_path('java')
-#remove_class_files(folder_name)
-#run_java_files(folder_name)
-
-#
-
-#folder_name = build_language_path('java')
-
-#run_java_files(folder_name)
-#remove_class_files()
-#compile_language("Python")
-#compile_python()
 
 
 
