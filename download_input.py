@@ -13,18 +13,9 @@ CONTEST_ID = "6254486"
 PROBLEM =['A', 'B', 'C', 'D'] 
 
 
-<<<<<<< HEAD
-def retrive_token():
-	page = urllib2.urlopen('https://code.google.com/codejam/contest/6254486/dashboard/do?cmd=GetInitialValues&zx=1485947670303&csrfmiddlewaretoken=undefined').read()
-	token = filter_information('token\":',page)[0]
-	print token
-	return token
-=======
 def retrive_token(contest_id):
 	page = urllib2.urlopen('http://code.google.com/codejam/contest/'+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	return filter_information('\"csrf_middleware_token\":',page)[0]
-
->>>>>>> compilingscripts
 
 #retrives the input file in constest c_id, for prob A/B/C/D, of size small/large
 def retrive_input(c_id, prob, size, prob_id,token): 
