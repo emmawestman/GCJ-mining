@@ -47,10 +47,24 @@ def compile_run_csharp(path):
 						# gives "wrong" error message, not the same as when run manually
 						print errors
 						if len(errors) > 0:
-							#rename input file... hard when error message cant be parsed
-							# this is a hard coded test
+							#rename input file... hard when error message not displayed
+							# this is a hard coded test case
 							# --create folder GCJ
-							rename_file(root, PATH_INPUT, filename, 'sheep/input.txt')
+							create_folder(os.path.join(root, "D:\\GCJ" ))
+							create_folder(os.path.join(root,"D:\\GCJ", 'sheep'))
+							input_path = os.path.join(PATH_INPUT, filename)
+							in_file = open(input_path, 'r')
+							content = in_file.read()
+							in_file.close()
+							new_file = os.path.join(root, "D:\\GCJ"	, 'sheep', 'input.txt')
+							out_file = open(new_file, 'w')
+							out_file.write(content)
+							out_file.close()
+							#rename_file(root, PATH_INPUT, filename, 'input.txt')
+							# run again
+							cmd = ['mcs ' + os.path.join(root,'TestMain.exe ') + ' < ' + new_file]
+							p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+							output, errors = p.communicate()
 
 			else:
 				print 'Successfully compiled!'
