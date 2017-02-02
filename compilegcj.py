@@ -114,7 +114,7 @@ def compile_python(path):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
-				print 'error'
+				print errors
 			else:
 				print 'Successfully compiled!'
 		
@@ -241,7 +241,7 @@ def compile_language(language):
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 
-compile_language("C#")
+compile_language("Python")
 
 
 
