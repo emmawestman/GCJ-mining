@@ -4,13 +4,14 @@ from stuff_module import create_folder
 from compile_java import *
 from compile_python import *
 from compile_csharp import *
+from compile_c import *
+
+
 PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 
 					
-
-
 
 def compile_language(language):
 	path = os.path.join(PATH, language)
@@ -19,10 +20,10 @@ def compile_language(language):
 		compile_java(java_path)
 		run_java_files(java_path)
 	elif language == 'C':
-		print "C has no compile script yet"
-		print 'inne i c'
+		compile_c(path)
 	elif language == "C++":
-		print "C++ has no compile script yet"
+		compile_c(path)
+		#print "C++ has no compile script yet"
 	elif language == 'C#':
 		compile_run_csharp(path)
 	elif language == "Python":
@@ -33,6 +34,6 @@ def compile_language(language):
 
 
 
-compile_language("C#")
+compile_language("C++")
 
 
