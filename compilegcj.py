@@ -168,10 +168,8 @@ def compile_run_csharp(path):
 							create_folder(os.path.join(root, "D:\\GCJ" ))
 							create_folder(os.path.join(root,"D:\\GCJ", 'sheep'))
 							input_path = os.path.join(PATH_INPUT, filename)
-							print input_path
 							in_file = open(input_path, 'r')
 							content = in_file.read()
-							print 'content: ' + content
 							in_file.close()
 							new_file = os.path.join(root, "D:\\GCJ"	, 'sheep', 'input.txt')
 							out_file = open(new_file, 'w')
