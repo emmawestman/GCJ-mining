@@ -176,6 +176,10 @@ def compile_run_csharp(path):
 							out_file.write(content)
 							out_file.close()
 							#rename_file(root, PATH_INPUT, filename, 'input.txt')
+							# run again
+							cmd = ['mcs ' + os.path.join(root,'TestMain.exe ') + ' < ' + new_file]
+							p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+							output, errors = p.communicate()
 
 			else:
 				print 'Successfully compiled!'
