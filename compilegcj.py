@@ -162,10 +162,22 @@ def compile_run_csharp(path):
 						# gives "wrong" error message, not the same as when run manually
 						print errors
 						if len(errors) > 0:
-							#rename input file... hard when error message cant be parsed
-							# this is a hard coded test
+							#rename input file... hard when error message not displayed
+							# this is a hard coded test case
 							# --create folder GCJ
-							rename_file(root, PATH_INPUT, filename, 'sheep/input.txt')
+							create_folder(os.path.join(root, "D:\\GCJ" ))
+							create_folder(os.path.join(root,"D:\\GCJ", 'sheep'))
+							input_path = os.path.join(PATH_INPUT, filename)
+							print input_path
+							in_file = open(input_path, 'r')
+							content = in_file.read()
+							print 'content: ' + content
+							in_file.close()
+							new_file = os.path.join(root, "D:\\GCJ"	, 'sheep', 'input.txt')
+							out_file = open(new_file, 'w')
+							out_file.write(content)
+							out_file.close()
+							#rename_file(root, PATH_INPUT, filename, 'input.txt')
 
 			else:
 				print 'Successfully compiled!'
