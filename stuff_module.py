@@ -33,11 +33,6 @@ def filter_information(regex,page):
     	remining_page = remaining_page[end_index+3:]
     return ids
 
-def filter_information2(regex, page):
-    ids = []
-	result = re.match(r'regex',page)
-	
-    return ids
 
 
 def retrive_problem_ids(url):
