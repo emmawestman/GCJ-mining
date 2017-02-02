@@ -44,6 +44,3 @@ def download_all_input(c_id, prob, size, prob_ids,token):
 		i += 1
 
 
-
-download_all_input(CONTEST_ID, PROBLEM, SIZE,retrive_problem_ids(build_base_url(CONTEST_ID)),retrive_token(CONTEST_ID))
-
