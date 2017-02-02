@@ -28,7 +28,7 @@ start = time.time()
 
 base_url =  download_input.build_base_url(CONTEST_ID)
 PROBLEM_IDS = download_input.retrive_problem_ids(base_url)
-TOKEN = download_input.retrive_token(base_url)
+TOKEN = download_input.retrive_token(CONTEST_ID)
 download_input.download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 
 end = time.time()
@@ -63,7 +63,9 @@ start = time.time()
 sorting.sort_files(PATH)
 end = time.time()
 diff = end - start
-write_to_log('Time for sorting all files: ', diff)'''
+write_to_log('Time for sorting all files: ', diff)
+'''
+
 	
 
 
