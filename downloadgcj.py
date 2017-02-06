@@ -57,8 +57,8 @@ def download_all_pages(contest_id):
 
 def get_all_contests_id():
 	answer = urllib2.urlopen(CONTEST_PATH).read()
-	list_of_duplicates = filter_information2('code.google.com/codejam/contest/','dashboard#s=p0',answer)
-	return list_of_duplicates
+	list_of_duplicates = filter_information2(answer)
+	return list(set(list_of_duplicates))
 
 print get_all_contests_id()
 

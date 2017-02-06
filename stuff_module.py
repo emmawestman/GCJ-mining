@@ -33,7 +33,11 @@ def filter_information(regex,page):
     	remining_page = remaining_page[end_index+3:]
     return ids
 
-
+def filter_information2(page):
+	list_of_matches = []
+	for match in re.findall(r'contest/[\d]+/dashboard',page): 
+		list_of_matches.append(match.split('/')[1])
+	return list_of_matches
 
 def retrive_problem_ids(url):
     page = urllib2.urlopen(url).read()
