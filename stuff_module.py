@@ -1,6 +1,5 @@
 import os
 import urllib2
-from compile_support_module import filter_substring
 import re
 def build_base_url(contest_id):
    return 'https://code.google.com/codejam/contest/'+contest_id+'/scoreboard'

@@ -1,4 +1,8 @@
 import os
+import shutil
+from stuff_module import create_folder
+
+PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 def filter_substring(error_message_start,error_message_end,error_string):
 	indexes = []
