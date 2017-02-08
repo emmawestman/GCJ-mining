@@ -4,15 +4,7 @@ from stuff_module import create_folder
 
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
-def filter_substring(error_message_start,error_message_end,error_string):
-	indexes = []
-	start_index =error_string.find(error_message_start)
-	end_index = error_string.find(error_message_end)
-	indexes.append(start_index)
-	indexes.append(end_index)
-	print "START INDEX " + str(start_index)
-	print "END INDEX " + str(end_index)
-	return indexes
+
 
 def get_input_file(problem_folder):
 	problem_input = [f for f in os.listdir(PATH_INPUT) if (f.split('.')[0]==problem_folder)]

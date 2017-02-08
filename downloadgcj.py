@@ -3,6 +3,7 @@
 import urllib2
 import os
 from stuff_module import *
+from finding_regexes import *
 CONTEST_PATH = 'https://code.google.com/codejam/contests.html'
 
 io_set_id_0 = "0";
@@ -19,7 +20,7 @@ def build_downloadproblem_url(base_url,problem,io_set_id,username) :
 def retrive_users(url):
     answer = urllib2.urlopen(url)
     page = answer.read()
-    return filter_information("\"n\":",page)
+    return filter_information('\"n\"\:\s*\"\w+\"',':',page)
 
 def retrieve_sol(base_url,problem,io_set_id,username):
     requesturl = build_downloadproblem_url(base_url,problem,io_set_id,username)
@@ -57,8 +58,11 @@ def download_all_pages(contest_id):
 
 def get_all_contests_id():
 	answer = urllib2.urlopen(CONTEST_PATH).read()
-	list_of_duplicates = filter_information2(answer)
+	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
 	return list(set(list_of_duplicates))
 
-print get_all_contests_id()
+
+
+download_all_pages('6254486')
+#print get_all_contests_id()
 
