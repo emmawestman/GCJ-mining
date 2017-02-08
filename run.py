@@ -39,7 +39,7 @@ diff = end - start
 write_to_log('Time to download all input files to solutions: ', diff)
 
 
-'''
+
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
 print 'Downloading solutions from GCJ...'
@@ -64,7 +64,7 @@ sorting.sort_files(PATH)
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-'''
+
 
 	
 
