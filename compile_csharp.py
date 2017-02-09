@@ -9,8 +9,12 @@ PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 def compile_run_csharp(path):
+	#number of files that successfylly compiles
+	succes_nbr = 0
+	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
 		for f in files:
+			nbr_of_files += 1
 			regexp = "/C#/"
 			index = root.find(regexp)
 			filename = root[index+len(regexp):]
@@ -39,6 +43,7 @@ def compile_run_csharp(path):
 						print 'I give up'
 						print errors
 					else: 
+						succes_nbr += 1
 						print 'Successfully added and compiled main!' 
 						# run main file
 						cmd = ['mcs ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
@@ -67,6 +72,7 @@ def compile_run_csharp(path):
 							output, errors = p.communicate()
 
 			else:
+				succes_nbr += 1
 				print 'Successfully compiled!'
 				# run file
 				cmd = ['mono ' + os.path.join(root, f+'.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
@@ -74,6 +80,7 @@ def compile_run_csharp(path):
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				print errors
+	return succes_nbr, nbr_of_files
 
 def csharp_main(function_name, filename, namespace, path):
 	index = len(filename) -3
