@@ -2,7 +2,7 @@
 
 import urllib2
 import os
-from stuff_module import create_folder,build_base_url,filter_information, retrive_problem_ids
+from stuff_module import create_folder
 
 BASE = "https://code.google.com/codejam/contest/"
 
@@ -12,10 +12,6 @@ CONTEST_ID = "6254486"
 
 PROBLEM =['A', 'B', 'C', 'D'] 
 
-
-def retrive_token(contest_id):
-	page = urllib2.urlopen('http://code.google.com/codejam/contest/'+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
-	return filter_information('\"csrf_middleware_token\":',page)[0]
 
 #retrives the input file in constest c_id, for prob A/B/C/D, of size small/large
 def retrive_input(c_id, prob, size, prob_id,token): 

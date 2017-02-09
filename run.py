@@ -16,6 +16,17 @@ CONTEST_ID = "6254486"
 
 PROBLEM =['A', 'B', 'C', 'D'] 
 
+def retrive_problem_ids(url):
+    page = urllib2.urlopen(url).read()
+    return filter_information('\"id\":\s+\"\d+\"',':',page)
+
+def build_base_url(contest_id):
+   return BASE+contest_id+'/scoreboard'
+
+def retrive_token(contest_id):
+	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
+	return filter_information('\"csrf_middleware_token\":',page)[0]
+
 def write_to_log(message, time):
 	completeName = os.path.join(home_path, 'log.txt')         
 	file1 = open(completeName, "a")
@@ -26,9 +37,9 @@ def write_to_log(message, time):
 print 'Downloading input files...'
 start = time.time()
 
-base_url =  download_input.build_base_url(CONTEST_ID)
-PROBLEM_IDS = download_input.retrive_problem_ids(base_url)
-TOKEN = download_input.retrive_token(CONTEST_ID)
+base_url = build_base_url(CONTEST_ID)
+PROBLEM_IDS =retrive_problem_ids(base_url)
+TOKEN = retrive_token(CONTEST_ID)
 download_input.download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 
 end = time.time()
@@ -47,7 +58,7 @@ start = time.time()
 number_of_contests = int(raw_input())
 for cas in xrange(0,number_of_contests):
     contest_id = (raw_input())
-    downloadgcj.download_all_pages(contest_id)
+    downloadgcj.download_all_pages(base_url,contest_id)
 
 print 'Done downloading solutions!'
 end = time.time()

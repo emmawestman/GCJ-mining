@@ -44,8 +44,7 @@ def download_one_page_solutions(base_url,list_of_problems,user_id_url):
 				print 'problem ' + problem + ' item ' + item + ' user ' + user
 
 
-def download_all_pages(contest_id):
-	base_url =  build_base_url(contest_id)
+def download_all_pages(base_url,contest_id):
 	list_of_problem_ids = retrive_problem_ids(base_url)
 	i = 1
 	while (i<10): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
