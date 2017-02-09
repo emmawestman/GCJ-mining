@@ -24,8 +24,15 @@ def compile_python(path):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
-				print 'Running problem: ' + filename + ', for user: ' + user
-				print errors
+				# Try to run with python 3.5
+				cmd = ['python3 ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				output, errors = p.communicate()
+				if len(errors) > 0:
+					print 'Running problem: ' + filename + ', for user: ' + user
+					print errors
+				else :
+					succes_nbr += 1
 			else:
 				succes_nbr += 1
 	return succes_nbr, nbr_of_files
