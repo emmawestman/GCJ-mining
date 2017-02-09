@@ -10,12 +10,15 @@ def compile_c(path):
 	print path
 	for root, dirs, files in os.walk(path):
 		for f in files:
+
 			nbr_of_files += 1
+			print 'file nbr: ' + str(nbr_of_files)
 			regexp = "/C/"
 			index = root.find(regexp)
 			filename = root[index+len(regexp):]
 			index = filename.find('/')
 			user = filename[index+1:]
+			print 'Running problem: ' + filename + ', for user: ' + user
 			filename = filename[:index]	
 			filename = filename + '.in'
 			# name without file ending
