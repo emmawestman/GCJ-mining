@@ -16,8 +16,10 @@ def compile_language(language):
 	path = os.path.join(PATH, language)
 	if language == 'java':
 		remove_old_files(language, path)
-		compile_java(path)
-		run_java_files(path)
+		a, b = compile_java(path)
+		c, d = run_java_files(path)
+		print 'Compile: ' + str(a) + '/' + str(b)
+		print 'Run: ' + str(c) + '/' + str(d) 
 	elif language == 'C':
 		compile_c(path)
 	elif language == "C++":
