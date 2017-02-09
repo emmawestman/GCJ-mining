@@ -35,9 +35,9 @@ def compile_language(language):
 
 
 
-compile_language("Python")
+#compile_language("Python")
 #compile_language("C")
-#compile_language("C++")
+compile_language("C++")
 #compile_language("C#")
 
 

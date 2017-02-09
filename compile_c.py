@@ -22,13 +22,18 @@ def compile_c(path):
 			index = f.find('.')
 			name = f[:index]
 
-	
+			
 			cmd = ['g++ ' + os.path.join(root,f) + ' -o ' + 'name']
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
-				print 'Running problem: ' + filename + ', for user: ' + user
-				print errors
+				# try with c++ 11 instead
+				cmd = ['g++ -std=c++11' + os.path.join(root,f) + ' -o ' + 'name']
+				if len(errors) > 0:
+					print 'Running problem: ' + filename + ', for user: ' + user
+					print errors
+				else:
+					succes_nbr +=1
 			else:
 				succes_nbr += 1
 	return succes_nbr, nbr_of_files
