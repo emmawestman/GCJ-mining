@@ -4,10 +4,11 @@ from compile_support_module import *
 from finding_regexes import *
 
 def file_not_found_exception(errors,class_name,user_path,old_problem_name):
-	indexes =filter_substring(':.+\(',':',errors)[0]
-	rename_file(user_path,PATH_INPUT,old_problem_name,indexes)
+	requested_file_name =filter_information(':\s.*\.\w*',':',errors)[0]
+	requested_file_name = requested_file_name.replace(':','')
+	rename_file(user_path,PATH_INPUT,old_problem_name,requested_file_name)
 	os.chdir(user_path)
-	print run_java_command(class_name,new_file_name)
+	print run_java_command(class_name,requested_file_name)
 
 def run_java_file(user_path,problem_folder,user_folder,class_name):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
@@ -20,7 +21,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name):
 		if exception_name == 'FileNotFoundException':
 			file_not_found_exception(errors,class_name,user_path,old_problem_name)
 		else:
-			print 'JAVA EXCEPTION ' + exception_name
+			errors
 
 
 def run_java_command(class_name,args):	
@@ -53,6 +54,4 @@ def run_java_files(path) :
 
 
 def get_exception_name(errors):
-	indexes = filter_substring('java.+[\n,\s]','.',errors)
-	exception_name = endexes.split('.')[2]
-	return exception_name
+	return  re.search('java.\w*.\w*', errors).group().split('.')[2]
