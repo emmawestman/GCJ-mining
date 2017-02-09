@@ -53,6 +53,6 @@ def run_java_files(path) :
 
 
 def get_exception_name(errors):
-	indexes = filter_substring('java.',':',errors)
+	indexes = filter_substring('java.+\n','.',errors)
 	exception_name = errors[indexes[0]:indexes[1]].split('.')[2]
 	return exception_name
