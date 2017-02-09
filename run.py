@@ -3,7 +3,8 @@ import sorting
 import download_input
 import os
 import time
-
+from finding_regexes import *
+import urllib2
 home_path = os.path.join('..')
 
 PATH = os.path.join('..','solutions_qualification_2016')
@@ -25,7 +26,9 @@ def build_base_url(contest_id):
 
 def retrive_token(contest_id):
 	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
-	return filter_information('\"csrf_middleware_token\":',page)[0]
+	token = filter_information('\"\w*=\"',None,page)[0]
+	print "TOKEN " + token	
+	return token
 
 def write_to_log(message, time):
 	completeName = os.path.join(home_path, 'log.txt')         
@@ -58,7 +61,7 @@ start = time.time()
 number_of_contests = int(raw_input())
 for cas in xrange(0,number_of_contests):
     contest_id = (raw_input())
-    downloadgcj.download_all_pages(base_url,contest_id)
+    downloadgcj.download_all_pages(base_url,PROBLEM_IDS,contest_id)
 
 print 'Done downloading solutions!'
 end = time.time()

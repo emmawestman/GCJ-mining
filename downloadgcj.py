@@ -44,8 +44,7 @@ def download_one_page_solutions(base_url,list_of_problems,user_id_url):
 				print 'problem ' + problem + ' item ' + item + ' user ' + user
 
 
-def download_all_pages(base_url,contest_id):
-	list_of_problem_ids = retrive_problem_ids(base_url)
+def download_all_pages(base_url,list_of_problem_ids,contest_id):
 	i = 1
 	while (i<10): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
@@ -60,8 +59,4 @@ def get_all_contests_id():
 	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
 	return list(set(list_of_duplicates))
 
-
-
-download_all_pages('6254486')
-#print get_all_contests_id()
 

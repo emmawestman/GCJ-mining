@@ -1,11 +1,11 @@
 import os
 import subprocess
 from compile_support_module import *
+from finding_regexes import *
 
 def file_not_found_exception(errors,class_name,user_path,old_problem_name):
-	indexes =filter_substring(':',' (No',errors)
-	new_file_name = errors[indexes[0]+2:indexes[1]]
-	rename_file(user_path,PATH_INPUT,old_problem_name,new_file_name)
+	indexes =filter_substring(':.+\(',':',errors)[0]
+	rename_file(user_path,PATH_INPUT,old_problem_name,indexes)
 	os.chdir(user_path)
 	print run_java_command(class_name,new_file_name)
 
@@ -53,6 +53,6 @@ def run_java_files(path) :
 
 
 def get_exception_name(errors):
-	indexes = filter_substring('java.+\n','.',errors)
-	exception_name = errors[indexes[0]:indexes[1]].split('.')[2]
+	indexes = filter_substring('java.+[\n,\s]','.',errors)
+	exception_name = endexes.split('.')[2]
 	return exception_name
