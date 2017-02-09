@@ -27,8 +27,10 @@ def compile_c(path):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
-				# try with c++ 11 instead
-				cmd = ['g++ -std=c++11' + os.path.join(root,f) + ' -o ' + 'name']
+				#try with c++ 11 instead
+				cmd = ['g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + 'name']
+				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				output, errors = p.communicate()
 				if len(errors) > 0:
 					print 'Running problem: ' + filename + ', for user: ' + user
 					print errors
