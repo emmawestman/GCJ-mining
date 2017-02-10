@@ -25,6 +25,7 @@ def compile_language(language):
 		#compile_c(path)
 		# c and c++ can be compiled with the same compiler for now
 	elif language == 'C#':
+		remove_old_files('cs', path)
 		a, b = compile_run_csharp(path)
 	elif language == "Python":
 		a,b = compile_python(path)
@@ -32,8 +33,8 @@ def compile_language(language):
 		print language ++ " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
 
-
-
+#path = os.path.join(PATH, 'C#')
+#remove_old_files('cs', path)
 input_language = raw_input("what language?")
 compile_language(input_language)
 
