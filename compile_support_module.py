@@ -57,6 +57,25 @@ def remove_old_files(language,language_path):
 				os.remove(os.path.join(root,f))
 
 
+def get_compile_info(regexp, root, f):
+	index = root.find(regexp)
+	filename = root[index+len(regexp):]
+	index = filename.find('/')
+	user = filename[index+1:]
+	index = f.find('.')
+	name = f[:index]
+	return user, name
+
+def get_run_info(regexp, root):
+	index = root.find(regexp)
+	filename = root[index+len(regexp)+1:]
+	index = filename.find('/')
+	user = filename[index+1:]
+	filename = filename[:index]	
+	input_file = filename + '.in' 	
+	return user, input_file
+
+
 
 
 

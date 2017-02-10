@@ -1,5 +1,6 @@
 import os
 import subprocess
+from compile_support_module import *
 
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
@@ -12,20 +13,15 @@ def compile_cpp(path):
 		for f in files:
 			nbr_of_files += 1
 			print 'compiling file nbr: ' + str(nbr_of_files)
-			regexp = "/C++/"
-			index = root.find(regexp)
-			filename = root[index+len(regexp):]
-			index = filename.find('/')
-			user = filename[index+1:]
-			index = f.find('.')
-			name = f[:index]
+			
+			user, filename = get_compile_info('C++', root, f)
 
-			cmd = ['g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,name)]
+			cmd = ['g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
 				#try with c++ 11 instead
-				cmd = ['g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + name]
+				cmd = ['g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				if len(errors) > 0:
@@ -47,21 +43,16 @@ def run_cpp(path):
 		for f in filelist:
 			nbr_of_files += 1
 			print 'running file nbr: ' + str(nbr_of_files)
-			regexp = "/C++/"
-			index = root.find(regexp)
-			filename = root[index+len(regexp):]
-			index = filename.find('/')
-			user = filename[index+1:]
-			filename = filename[:index]	
-			filename = filename + '.in'
-
+			
+			user, input_file = get_run_info('C++', root)
 		
-			cmd = [os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+			cmd = [os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
-				print 'Running problem: ' + filename + ', for user: ' + user
-				print errors
+				print 'Error Running problem: ' + root
+				#print errors
+
 			else:
 				succes_nbr += 1
 	return succes_nbr, nbr_of_files
