@@ -32,7 +32,7 @@ def run_python_2x(file_path,path_input):
 		print errors
 		error_name = filter_information('\w+Error',None,errors)
 		print error_name
-		if error_name =='ModuleNotFound':
+		if error_name =='ImportError':
 			missing_module_name = filter_information('\'\w+\'',None,errors)[0]
 			missing_module_name = missing_module_name.replace('\'','')
 			if missing_module_name == 'devtools':
