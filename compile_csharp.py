@@ -46,11 +46,11 @@ def compile_run_csharp(path):
 						succes_nbr += 1
 						#print 'Successfully added and compiled main!' 
 						# run main file
-						'''cmd = ['mcs ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
+						cmd = ['mono ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
 						p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-						output, errors = p.communicate()'''
+						output, errors = p.communicate()
 						# gives "wrong" error message, not the same as when run manually
-						#print errors
+						print errors
 						if len(errors) > 0:
 							
 							#rename input file... hard when error message not displayed
