@@ -23,8 +23,9 @@ def compile_run_csharp(path):
 			filename = filename[:index]
 			print 'Compiling problem: ' + filename + ', for user: ' + user
 			filename = filename + '.in'
-			
+		
 			cmd = ['mcs ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
+			print cmd
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			print errors
