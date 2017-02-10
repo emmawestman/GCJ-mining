@@ -30,7 +30,7 @@ def run_python_2x(file_path,path_input):
 	errors = run_python_commando('python ',file_path,path_input)
 	if len(errors) > 0:
 		error_list = filter_information('\w+Error',None,errors)
-		if not error_list:
+		if len(error_list)>0:
 			error_name = error_list[0]			
 			if error_name =='ImportError':
 				missing_module_name = filter_information('named\s\w+',None,errors)[0]
@@ -40,7 +40,7 @@ def run_python_2x(file_path,path_input):
 					run_python_2x(file_path,path_input)
 				elif missing_module_name == 'run':
 					rename_stuff_in_file('runpy','run',file_path)
-					return run_python_2x(file_path,path_input)
+					run_python_2x(file_path,path_input)
 				else :
 					pip_errors = pip_install_module(missing_module_name)
 					if len(pip_errors>0):
@@ -50,17 +50,15 @@ def run_python_2x(file_path,path_input):
 						return run_python_2x(file_path,path_input)
 			elif error_name == 'SyntaxError':
 				return run_python_3x(file_path,path_input)
-		else:
-			print errors
-			return 0
-	else :
-		return 1
+		print errors
+		return 0
+	return 1
 
 def run_python_3x(file_path,path_input):
 	errors = run_python_commando('python3 ',file_path,path_input)
 	if len(errors) > 0:
-		error_list = filter_information('\w+Error',None,errors)[-1]
-		if not error_list:			
+		error_list = filter_information('\w+Error',None,errors)
+		if len(error_list)>0:
 			error_name = error_list[0]			
 			if error_name =='ImportError':
 				missing_module_name = filter_information('named\s\w+',None,errors)[0]
@@ -75,13 +73,14 @@ def run_python_3x(file_path,path_input):
 					pip_errors = pip_install_module(missing_module_name)
 					if len(pip_errors>0):
 						print pip_errors
+						return 0
 					else:
 						return run_python_3x(file_path,path_input)
 		else:
 			print errors
 			return 0
-	else :
-		return 1
+	
+	return 1
  
 def rename_stuff_in_file(new_module_name,old_module_name,file_path):
 	#read old content
