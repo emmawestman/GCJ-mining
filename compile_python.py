@@ -63,7 +63,7 @@ def run_python_3x(file_path,path_input):
 			missing_module_name = filter_information('\'\w+\'',None,errors)[0]
 			missing_module_name = missing_module_name.replace('\'','')
 			if missing_module_name == 'devtools':
-				rename_stuff_in_file('','devtools',file_path)
+				rename_stuff_in_file('','import devtools',file_path)
 				run_python_3x(file_path,path_input)
 			elif missing_module_name == 'run':
 				rename_stuff_in_file('runpy','run',file_path)
@@ -86,11 +86,11 @@ def rename_stuff_in_file(new_module_name,old_module_name,file_path):
 	file_contents = file_manager.read()
 	file_manager.close()
 	#change to the "right module name"
-	file_contents= (re.sub(new_module_name,old_module_name,file_contents))
+	file_contents= file_contents.replace(old_module_name,new_module_name)
 	#write changes
 	file_manager=open(file_path,'w')
-	file_handle.write(file_contents)
-	file_handle.close()
+	file_manager.write(file_contents)
+	file_manager.close()
 
 def pip_install_module(pip_version,module_name):
 	cmd = [pip_version + ' install ' + module_name]
