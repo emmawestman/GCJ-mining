@@ -27,6 +27,7 @@ def compile_run_csharp(path):
 			cmd = ['mcs ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
+			print errors
 			if len(errors) > 0:
 				# fix issue where no main is missing
 				if "does not contain a static `Main' method suitable for an entry point" in errors:
