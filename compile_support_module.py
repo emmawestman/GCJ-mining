@@ -43,7 +43,11 @@ def find_namespace(filename, path):
 #language is the file ending for the language
 def remove_old_files(language,language_path):
 	for root, dirs, files in os.walk(language_path):
-		filelist = [ f for f in files if not(f.endswith(language)) ]
+		if language == 'C++' or language == 'C':
+			# remove executable files for c++ an c
+			filelist = [f for f in files if '.' not in f]
+		else:
+			filelist = [ f for f in files if not(f.endswith(language)) ]
 		for f in filelist:			
 			os.remove(os.path.join(root,f))
 		# remove extra created main files
@@ -51,4 +55,12 @@ def remove_old_files(language,language_path):
 			filelist = [ f for f in files if (f == 'TestMain.cs') ]
 			for f in filelist:			
 				os.remove(os.path.join(root,f))
+
+
+
+
+
+
+
+
 
