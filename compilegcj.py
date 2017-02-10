@@ -24,6 +24,7 @@ def compile_language(language):
 		a, b = compile_java(path)
 		c, d = run_java_files(path)
 	elif language == 'C':
+		remove_old_files(language, PATH)
 		a, b = compile_c(path)
 		c, d = run_c(path)
 	elif language == "C++":

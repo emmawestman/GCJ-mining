@@ -32,10 +32,6 @@ def compile_cpp(path):
 			filename = root[index+len(regexp):]
 			index = filename.find('/')
 			user = filename[index+1:]
-			#print 'Running problem: ' + filename + ', for user: ' + user
-			#filename = filename[:index]	
-			#filename = filename + '.in'
-			# name without file ending
 			index = f.find('.')
 			name = f[:index]
 
@@ -60,27 +56,26 @@ def compile_cpp(path):
 def run_cpp(path):
 	succes_nbr = 0
 	nbr_of_files = 0
-	for root, dirs, files in os.walk(path):
-		for f in files:
+	for root, dirs, files in os.walk(path):	
+		# only try to run the executable files
+		filelist = [f for f in files if '.' not in f]
+		for f in filelist:
+			print f
 			nbr_of_files += 1
 			regexp = "/C++/"
 			index = root.find(regexp)
 			filename = root[index+len(regexp):]
 			index = filename.find('/')
 			user = filename[index+1:]
-			filename = filename[:index]
-			print 'Running problem: ' + filename + ', for user: ' + user
+			filename = filename[:index]	
 			filename = filename + '.in'
-			# name without file ending
-			index = f.find('.')
-			name = f[:index]
 
-			
-			cmd = ['./' + os.path.join(root,name) + ' < ' + os.path.join(PATH_INPUT,filename)]
-			print cmd
+		
+			cmd = [os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
+				print 'Running problem: ' + filename + ', for user: ' + user
 				print errors
 			else:
 				succes_nbr += 1
