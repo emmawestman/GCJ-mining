@@ -29,9 +29,8 @@ def compile_python(path):
 def run_python_2x(file_path,path_input):
 	errors = run_python_commando('python ',file_path,path_input)
 	if len(errors) > 0:
-		print errors
-		error_name = filter_information('\w+Error',None,errors)
-		print error_name
+		error_name = filter_information('\w+Error',None,errors)[-1]
+		print "ERRROOORRRR " + error_name
 		if error_name =='ImportError':
 			missing_module_name = filter_information('\'\w+\'',None,errors)[0]
 			missing_module_name = missing_module_name.replace('\'','')
@@ -58,8 +57,9 @@ def run_python_2x(file_path,path_input):
 def run_python_3x(file_path,path_input):
 	errors = run_python_commando('python3',file_path,path_input)
 	if len(errors) > 0:
-		error_name = filter_information('\w+Error',None,errors)[0]
-		if error_name =='ModuleNotFound':
+		print errors
+		error_name = filter_information('\w+Error',None,errors)[-1]
+		if error_name =='ImportError':
 			missing_module_name = filter_information('\'\w+\'',None,errors)[0]
 			missing_module_name = missing_module_name.replace('\'','')
 			if missing_module_name == 'devtools':
