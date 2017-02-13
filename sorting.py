@@ -57,11 +57,7 @@ def sort_files(c_id):
 	
 	for zip_filename in all_zip_names: 
 		# only try to sort files that are zip files
-		print zip_filename
-		print zipfile.is_zipfile(zip_filename)
 		if zipfile.is_zipfile(zip_filename):
-			#zip_filename = all_zip_names[0]
-			print zip_filename
 		
 			# get the filename of file in the directory, now we assume the solution only consist of one fiel... thus 0
 			for filename in zipfile.ZipFile(os.path.join(PATH, zip_filename)).namelist():
