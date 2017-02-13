@@ -33,8 +33,11 @@ def retrive_input(c_id, prob, size, prob_id,token):
      
 def download_all_input(c_id, prob, size, prob_ids,token):
 	i = 0
-	for p in prob:
+	print "PROB LENGTH " + str(len(prob))
+	print prob_ids
+	for x in xrange(0,len(prob_ids)):
 		for s in size:
+			p = PROBLEM[x]
 			prob_id = prob_ids[i]
 			retrive_input(c_id, p, s, prob_id,token)
 		i += 1

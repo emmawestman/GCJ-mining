@@ -5,7 +5,6 @@ from stuff_module import create_folder
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 
-
 def get_input_file(problem_folder):
 	problem_input = [f for f in os.listdir(PATH_INPUT) if (f.split('.')[0]==problem_folder)]
 	return problem_input[0]
@@ -36,8 +35,6 @@ def find_namespace(filename, path):
 	namespace = content[:index_end]
 	return namespace
 
-
- 
 def rename_stuff_in_file(new_stuff,old_stuff,file_path):
 	#read old content
 	file_manager = open(file_path,'r')
@@ -50,11 +47,45 @@ def rename_stuff_in_file(new_stuff,old_stuff,file_path):
 	file_manager.write(file_contents)
 	file_manager.close()
 
-
-
-
 def remove_old_files(language,language_path):
 	for root, dirs, files in os.walk(language_path):
-		filelist = [ f for f in files if not(f.endswith(language)) ]
+		if language == 'C++' or language == 'C':
+			# remove executable files for c++ an c
+			filelist = [f for f in files if '.' not in f]
+		else:
+			filelist = [ f for f in files if not(f.endswith(language)) ]
 		for f in filelist:			
 			os.remove(os.path.join(root,f))
+		# remove extra created main files
+		if language == 'cs':
+			filelist = [ f for f in files if (f == 'TestMain.cs') ]
+			for f in filelist:			
+				os.remove(os.path.join(root,f))
+
+
+def get_compile_info(regexp, root, f):
+	index = root.find(regexp)
+	filename = root[index+len(regexp):]
+	index = filename.find('/')
+	user = filename[index+1:]
+	index = f.find('.')
+	name = f[:index]
+	return user, name
+
+def get_run_info(regexp, root):
+	index = root.find(regexp)
+	filename = root[index+len(regexp)+1:]
+	index = filename.find('/')
+	user = filename[index+1:]
+	filename = filename[:index]	
+	input_file = filename + '.in' 	
+	return user, input_file
+
+
+
+
+
+
+
+
+
