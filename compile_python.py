@@ -4,10 +4,12 @@ from compile_support_module import *
 from finding_regexes import *
 import re
 
-PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 
-def compile_python(path):
+
+def compile_python(c_id):
+	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'Python' ))
+	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0

@@ -7,7 +7,6 @@ from finding_regexes import *
 import urllib2
 home_path = os.path.join('..')
 
-PATH = os.path.join('..','solutions_qualification_2016')
 
 BASE = "https://code.google.com/codejam/contest/"
 
@@ -15,7 +14,9 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 
 #CONTEST_ID = "6254486"
 
-PROBLEM =['A', 'B', 'C', 'D'] 
+PROBLEM =['A', 'B', 'C', 'D', 'E'] 
+
+LANGUAGE = ['java', 'C', 'C++', 'C#', 'Python']
 
 
 def get_all_contests_id():
@@ -25,7 +26,7 @@ def get_all_contests_id():
 
 def retrive_problem_ids(url):
 	page = urllib2.urlopen(url).read()
-	print "PAGE RESPONSE " + page
+	#print "PAGE RESPONSE " + page
 	return filter_information('\"id\":\s+\"\d+\"',':',page)
 
 def build_base_url(contest_id):
@@ -34,7 +35,7 @@ def build_base_url(contest_id):
 def retrive_token(contest_id):
 	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	token = filter_information('\"\w*=\"',None,page)[0]
-	print "TOKEN " + token	
+	#print "TOKEN " + token	
 	return token
 
 def write_to_log(message, time):
@@ -91,13 +92,18 @@ write_to_log('Time to download all solutions: ', diff)
 # measure time to sort
 print 'Sarting to sort all zip files...'
 start = time.time()
-sorting.sort_files(PATH)
+
+for i in range(0,number_of_contests):
+	CONTEST_ID = list_of_contest_ids[i]
+	print 'Sorting contest ' + CONTEST_ID
+	sorting.sort_files(CONTEST_ID)
+
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
 
-	
+# Run the compile and run scripts on the downloaded files	
 
 
 

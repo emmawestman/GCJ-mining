@@ -2,10 +2,8 @@ import os
 import subprocess
 from compile_support_module import *
 
-PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
-
-	
-def compile_cpp(path):
+def compile_cpp(c_id):
+	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0
@@ -34,7 +32,9 @@ def compile_cpp(path):
 	return succes_nbr, nbr_of_files
 
 
-def run_cpp(path):
+def run_cpp(c_id):
+	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
+	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):	

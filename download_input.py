@@ -17,11 +17,11 @@ PROBLEM =['A', 'B', 'C', 'D']
 def retrive_input(c_id, prob, size, prob_id,token): 
 	url = BASE + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=1&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
 	answer = urllib2.urlopen(url).read()
-	print answer
+	#print answer
 	'''if answer.startswith('Server Error'):
        	return
     else :'''
-	path = os.path.join('..','input_qualification_2016')
+	path = os.path.join('..','input_' + c_id)
 	create_folder(path)
 	os.chdir(path)	
 	if size == "-small.practice.in":

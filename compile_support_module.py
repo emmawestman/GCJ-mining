@@ -3,7 +3,6 @@ import shutil
 from stuff_module import create_folder
 import re
 
-PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 
 def get_input_file(problem_folder):
@@ -48,7 +47,10 @@ def rename_stuff_in_file(new_stuff,old_stuff,file_path):
 	file_manager.write(file_contents)
 	file_manager.close()
 
-def remove_old_files(language,language_path):
+
+#language is the file ending for the language
+def remove_old_files(language, c_id):
+	language_path = os.path.realpath(os.path.join('..','solutions_' + c_id, language))
 	for root, dirs, files in os.walk(language_path):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c
