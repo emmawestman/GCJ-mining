@@ -19,9 +19,11 @@ def compile_language(language, c_id):
 	c = -1
 	d = -1
 	if language == 'java':
+		cwd = os.getcwd()
 		remove_old_files(language, c_id)
 		a, b = compile_java(c_id)
 		c, d = run_java_files(c_id)
+		os.chdir(cwd)
 	elif language == 'C':
 		remove_old_files(language, c_id)
 		a, b = compile_c(c_id)

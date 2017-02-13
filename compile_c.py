@@ -13,7 +13,7 @@ def compile_c(c_id):
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			nbr_of_files += 1
-			print 'compiling file nbr: ' + str(nbr_of_files)
+			print 'compiling c file nbr: ' + str(nbr_of_files)
 			
 			user, filename = get_compile_info('C', root, f)
 
@@ -38,7 +38,7 @@ def run_c(c_id):
 		filelist = [f for f in files if '.' not in f]
 		for f in filelist:
 			nbr_of_files += 1
-			print 'running file nbr: ' + str(nbr_of_files)
+			print 'running c file nbr: ' + str(nbr_of_files)
 			
 			user, input_file = get_run_info('C', root)
 		
