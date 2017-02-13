@@ -3,13 +3,14 @@ import os
 import shutil
 import subprocess
 from stuff_module import create_folder
-from compile_support_module import find_namespace
+from compile_support_module import *
 
 PATH = os.path.realpath(os.path.join('..','solutions_qualification_2016'))
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 def compile_run_csharp(path):
 	#number of files that successfylly compiles
+	remove_old_files('cpp',os.path.join(PATH,'C#'))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
@@ -31,7 +32,8 @@ def compile_run_csharp(path):
 			print errors
 			if len(errors) > 0:
 				# fix issue where no main is missing
-				if "does not contain a static `Main' method suitable for an entry point" in errors:
+				print "ERRORRR " + errors
+			'''	if "does not contain a static `Main' method suitable for an entry point" in errors:
 					# find function in file to call from main
 					# find namespace
 					namespace = find_namespace(f, root)
@@ -71,7 +73,7 @@ def compile_run_csharp(path):
 							# run again
 							cmd = ['mcs ' + os.path.join(root,'TestMain.exe ') + ' < ' + new_file]
 							p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-							output, errors = p.communicate()
+							output, errors = p.communicate()'''
 
 			else:
 				succes_nbr += 1
