@@ -2,10 +2,11 @@ import os
 import subprocess
 from compile_support_module import *
 
-PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
+
 
 	
-def compile_c(path):
+def compile_c(c_id):
+	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0
@@ -27,7 +28,9 @@ def compile_c(path):
 	return succes_nbr, nbr_of_files
 
 
-def run_c(path):
+def run_c(c_id):
+	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C' ))
+	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):	

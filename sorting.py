@@ -3,9 +3,9 @@ import downloadgcj
 import zipfile
 
 
-PATH = os.path.join('..','solutions_qualification_2016')
 
-def select_folder(filename):
+
+def select_folder(filename, path):
 	language = ""
 	if filename == '.java':
 		language = 'java' 
@@ -21,7 +21,7 @@ def select_folder(filename):
 		print "This is not one of the examined languages, this is: " + filename
 		# TODO remove this zip-file?
 		return -1
-	return os.path.join(PATH, language)
+	return os.path.join(path, language)
 
 def get_file_ending(filename):
 	index = filename.find(".")
@@ -34,7 +34,8 @@ def get_info(filename):
 
 
 
-def sort_files(path):
+def sort_files(c_id):
+	PATH = os.path.join('..','solutions_' + c_id)
 	# make a list of all files in the directory
 	all_zip_names = os.listdir(PATH)
 	
@@ -55,8 +56,9 @@ def sort_files(path):
 	downloadgcj.create_folder(python_path)
 	
 	for zip_filename in all_zip_names: 
-
 		# only try to sort files that are zip files
+		print zip_filename
+		print zipfile.is_zipfile(zip_filename)
 		if zipfile.is_zipfile(zip_filename):
 			#zip_filename = all_zip_names[0]
 			print zip_filename
@@ -68,10 +70,11 @@ def sort_files(path):
 
 				# extract file into this destination i.e. the correct language folder, problem id and username
 				username, prob_id = get_info(zip_filename)
-				print username
-				print prob_id
+				#print username
+				#print prob_id
+				print 'Sorting ' + prob_id + ' for user: ' + username + 'into ' + file_ending 
 				# language folder
-				dest = select_folder(file_ending)
+				dest = select_folder(file_ending, PATH)
 				''' check that the language is valid'''
 				if dest != -1:
 					# problem folder
@@ -80,7 +83,7 @@ def sort_files(path):
 					# username folder
 					dest = os.path.join(dest, username)
 					downloadgcj.create_folder(dest)
-					print dest
+					#print dest
 					zipfile.ZipFile(os.path.join(PATH, zip_filename)).extract(filename,dest)
 
 			#clean up, remove zip-file
