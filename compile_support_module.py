@@ -5,7 +5,7 @@ import re
 
 
 
-def get_input_file(problem_folder):
+def get_input_file(problem_folder, PATH_INPUT):
 	problem_input = [f for f in os.listdir(PATH_INPUT) if (f.split('.')[0]==problem_folder)]
 	return problem_input[0]
 

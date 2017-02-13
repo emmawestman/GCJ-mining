@@ -38,7 +38,7 @@ def compile_language(language, c_id):
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
-	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs compiled sucessfully'
+	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully'
 
 
 input_language = raw_input("what language?")
