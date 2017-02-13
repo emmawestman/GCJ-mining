@@ -49,7 +49,7 @@ def rename_stuff_in_file(new_stuff,old_stuff,file_path):
 
 #language is the file ending for the language
 def remove_old_files(language, c_id):
-	language_path = os.path.realpath(os.path.join('..','solutions_' + c_id, language)
+	language_path = os.path.realpath(os.path.join('..','solutions_' + c_id, language))
 	for root, dirs, files in os.walk(language_path):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c

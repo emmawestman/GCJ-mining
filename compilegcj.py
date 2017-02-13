@@ -42,6 +42,7 @@ def compile_language(language, c_id):
 
 
 input_language = raw_input("what language?")
+c_id = raw_input("which contest id?")
 compile_language(input_language, c_id)
 
 

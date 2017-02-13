@@ -7,7 +7,7 @@ import re
 
 
 
-def compile_python(path):
+def compile_python(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'Python' ))
 	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
 	#number of files that successfylly compiles
