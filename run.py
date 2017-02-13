@@ -38,7 +38,7 @@ def retrive_token(contest_id):
 	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	token = filter_information('\"\w*=\"',None,page)[0]
 	#print "TOKEN " + token	
-	return tokenlist_of
+	return token
 
 def write_to_log(message, time):
 	completeName = os.path.join(home_path, 'log.txt')         
