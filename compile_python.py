@@ -83,18 +83,6 @@ def run_python_3x(file_path,path_input):
 			return 0
 	
 	return 1
- 
-def rename_stuff_in_file(new_module_name,old_module_name,file_path):
-	#read old content
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	file_manager.close()
-	#change to the "right module name"
-	file_contents= file_contents.replace(old_module_name,new_module_name)
-	#write changes
-	file_manager=open(file_path,'w')
-	file_manager.write(file_contents)
-	file_manager.close()
 
 def pip_install_module(pip_version,module_name):
 	cmd = [pip_version + ' install ' + module_name]
