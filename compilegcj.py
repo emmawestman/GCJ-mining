@@ -39,11 +39,12 @@ def compile_language(language, c_id):
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
 	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully'
+	return a, b, c, d
 
 
-input_language = raw_input("what language?")
-c_id = raw_input("which contest id?")
-compile_language(input_language, c_id)
+#input_language = raw_input("what language?")
+#c_id = raw_input("which contest id?")
+#compile_language(input_language, c_id)
 
 
 

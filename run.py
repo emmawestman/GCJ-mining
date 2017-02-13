@@ -5,6 +5,7 @@ import os
 import time
 from finding_regexes import *
 import urllib2
+from compilegcj import * 
 home_path = os.path.join('..')
 
 
@@ -16,7 +17,7 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-LANGUAGE = ['java', 'C', 'C++', 'C#', 'Python']
+LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
 
 
 def get_all_contests_id():
@@ -36,7 +37,7 @@ def retrive_token(contest_id):
 	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	token = filter_information('\"\w*=\"',None,page)[0]
 	#print "TOKEN " + token	
-	return token
+	return tokenlist_of
 
 def write_to_log(message, time):
 	completeName = os.path.join(home_path, 'log.txt')         
@@ -50,7 +51,7 @@ print list_of_contest_ids
 
 #Ask user how many contests to download
 number_of_contests = int(raw_input('Number of contests?'))
-
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -102,8 +103,26 @@ end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
-
+'''
 # Run the compile and run scripts on the downloaded files	
+print 'Sarting to sort all zip files...'
+start = time.time()
+
+for i in range(0,number_of_contests):
+	CONTEST_ID = list_of_contest_ids[i]
+	for l in LANGUAGE:
+		l_start = time.time()
+		print 'Compile and Runs: ' + l + 'in contest: ' + CONTEST_ID
+		a, b, c, d = compile_language(l, CONTEST_ID)
+		l_end = time.time()
+		l_diff = l_start -l_end
+		write_to_log('Time to compile and run for '+ l +': ', l_diff)
+		write_to_log(l + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully', 0)
+		write_to_log(l + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully', 0)
+
+end = time.time()
+diff = end - start
+write_to_log('Time to compile and run all programs: ', diff)
 
 
 
