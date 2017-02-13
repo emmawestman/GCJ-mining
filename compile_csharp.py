@@ -40,6 +40,7 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file):
 		if "does not contain a static `Main' method suitable for an entry point" in errors:
 			# find function in file to call from main
 			# find namespace
+			print "ERROR " + errors
 			namespace = find_namespace(csharp_file_p, root)
 			# create main file and call some function...
 			csharp_main('SolveProblem', csharp_file_p, namespace, root)
@@ -52,36 +53,37 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file):
 		csharp_= csharp_file_p.split('.')[0]
 		csharp_exe = csharp_ + '.exe'
 		print 'CSHARP FILE ' + csharp_exe
-		return run_csharp(input_file,os.path.join(root,csharp_exe))
+		if csharp_file_p_dependecy is not None:
+			csharp_file_p = csharp_file_p_dependecy
+		return run_csharp(input_file,root,os.path.join(root,csharp_exe),csharp_file_p)
 
 def compile_csharp_command(csharp_file):
 	cmd = ['mcs ' + csharp_file]
-	print cmd
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors
 
-def run_csharp(input_file,csharp_exe):
-	errors = run_csharp_command(csharp_exe)
+def run_csharp(input_file,root,csharp_exe,original_class_file):
+	errors = run_csharp_command(csharp_exe,input_file)
 	if len(errors)>0:
-		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)
-		if error_name == 'System.IO.DirectoryNotFoundException':
-			rename_input_file(input_file,csharp_file)
-			return run_csharp(csharp_file)
+		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)[0]
+		if error_name.replace('\n','') == 'System.IO.DirectoryNotFoundException':
+			rename_input_file(input_file,os.path.join(root,original_class_file))
+			return compile_csharp(root,original_class_file,None,input_file)
 		else :
 			print errors
 			return 0
 	return 1
 
-def run_csharp_command(csharp_exe):
-	cmd = ['mono ' + csharp_exe]# + ' < ' + os.path.join(PATH_INPUT,filename)]
+def run_csharp_command(csharp_exe,filename):
+	cmd = ['mono ' + csharp_exe + ' < ' + os.path.join(PATH_INPUT,filename)]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors
 
 def rename_input_file(input_file,csharp_file):
 	old_regex = 'StreamReader\(.+\);'
-	new_regex = 'StreamReader('+ input_file + ');'
+	new_regex = 'StreamReader(\"'+ input_file + '\");'
 	rename_stuff_in_file(new_regex,old_regex,csharp_file)
 
 def csharp_main(function_name, filename, namespace, path):
@@ -90,5 +92,9 @@ def csharp_main(function_name, filename, namespace, path):
 	main_file= os.path.join(path, 'TestMain.cs')         
 	file1 = open(main_file, "w")
 	file_content = 'namespace ' + namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + '();' + ' \n } \n } \n }'
+	print "namespace " + namespace
 	file1.write(file_content)
 	file1.close()
+
+
+

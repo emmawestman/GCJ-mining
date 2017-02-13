@@ -1,6 +1,7 @@
 import os
 import shutil
 from stuff_module import create_folder
+import re
 
 PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
