@@ -4,7 +4,7 @@ import urllib2
 import os
 from stuff_module import *
 from finding_regexes import *
-CONTEST_PATH = 'https://code.google.com/codejam/contests.html'
+
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
@@ -54,9 +54,6 @@ def download_all_pages(base_url,list_of_problem_ids,contest_id):
 		i = i+30
 
 
-def get_all_contests_id():
-	answer = urllib2.urlopen(CONTEST_PATH).read()
-	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
-	return list(set(list_of_duplicates))
+
 
 

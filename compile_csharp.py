@@ -48,17 +48,19 @@ def compile_run_csharp(path):
 						print errors
 					else: 
 						succes_nbr += 1
-						print 'Successfully added and compiled main!' 
+						#print 'Successfully added and compiled main!' 
 						# run main file
-						cmd = ['mcs ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
+						cmd = ['mono ' + os.path.join(root,'TestMain.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
 						p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 						output, errors = p.communicate()
 						# gives "wrong" error message, not the same as when run manually
 						print errors
 						if len(errors) > 0:
+							
 							#rename input file... hard when error message not displayed
 							# this is a hard coded test case
 							# --create folder GCJ
+							'''
 							create_folder(os.path.join(root, "D:\\GCJ" ))
 							create_folder(os.path.join(root,"D:\\GCJ", 'sheep'))
 							input_path = os.path.join(PATH_INPUT, filename)
@@ -80,7 +82,6 @@ def compile_run_csharp(path):
 				print 'Successfully compiled!'
 				# run file
 				cmd = ['mono ' + os.path.join(root, f+'.exe ')]# + ' < ' + os.path.join(PATH_INPUT,filename)]
-				print cmd
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				print errors
