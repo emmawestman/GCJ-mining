@@ -12,7 +12,7 @@ BASE = "https://code.google.com/codejam/contest/"
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
 
-#CONTEST_ID = "6254486"
+list_of_contest_ids = ['6254486']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
@@ -45,8 +45,7 @@ def write_to_log(message, time):
 	file1.close()
 
 #Pre processing stuff...
-list_of_contest_ids = get_all_contests_id()
-print list_of_contest_ids
+#list_of_contest_ids = get_all_contests_id()
 
 #Ask user how many contests to download
 number_of_contests = int(raw_input('Number of contests?'))
