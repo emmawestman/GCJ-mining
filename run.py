@@ -54,7 +54,7 @@ print list_of_contest_ids
 
 #Ask user how many contests to download
 number_of_contests = int(raw_input('Number of contests?'))
-
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -89,7 +89,7 @@ print 'Done downloading solutions!'
 end = time.time()
 diff = end - start
 write_to_log('Time to download all solutions: ', diff)
-
+'''
 
 
 # Run the sorting function
@@ -105,7 +105,7 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-
+'''
 
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to sort all zip files...'
@@ -127,7 +127,7 @@ end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs: ', diff)
 
-
+'''
 
 
 

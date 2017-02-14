@@ -47,10 +47,7 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				try:
-					subprocess.check_call(['javac', os.path.join(root,f) ])
-				except subprocess.CallProcessError:
-					pass
+				subprocess.check_call(['javac', os.path.join(root,f) ])
 				succes_nbr += 1
 	return succes_nbr, nbr_of_files
 
