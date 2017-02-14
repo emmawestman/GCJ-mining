@@ -81,7 +81,7 @@ print 'Downloading solutions from GCJ...'
 start = time.time()
 for cas in range(0,number_of_contests):
 	contest_id = list_of_contest_ids[cas]
-	base_url = build_base_url(CONTEST_ID)
+	base_url = build_base_url(contest_id)
 	problem_ids =retrive_problem_ids(base_url)
 	downloadgcj.download_all_pages(base_url,problem_ids,contest_id)
 
@@ -89,7 +89,7 @@ print 'Done downloading solutions!'
 end = time.time()
 diff = end - start
 write_to_log('Time to download all solutions: ', diff)
-'''
+
 
 
 # Run the sorting function
@@ -106,7 +106,6 @@ end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 '''
-
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to sort all zip files...'
 start = time.time()
@@ -127,7 +126,20 @@ end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs: ', diff)
 
-'''
+
+#print log file
+completeName = os.path.join(home_path, 'log.txt')         
+file1 = open(completeName, "r")
+print file1.read()
+file1.close()
+
+
+
+
+
+
+
+
 
 
 

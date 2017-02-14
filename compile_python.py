@@ -18,6 +18,7 @@ def compile_python(c_id):
 			nbr_of_files += 1
 			regexp = "/Python/"
 			index = root.find(regexp)
+			print root
 			filename = root[index+len(regexp):]
 			index = filename.find('/')
 			user = filename[index+1:]
