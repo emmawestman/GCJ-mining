@@ -1,7 +1,7 @@
 
 import os
-import shutil
 import subprocess
+import re
 from stuff_module import create_folder
 from compile_support_module import *
 from finding_regexes import *
@@ -100,5 +100,29 @@ def csharp_main(function_name, filename, namespace, path):
 	file1.write(file_content)
 	file1.close()
 
+def filter_candidate_functions(file_path):
+	file_manager = open(file_path,'r')
+	file_contents = file_manager.read()
+	list_of_stuff = []
+	p = re.compile('(?:int|void|long|string)\s\w+\([\w+\s]*?\)')
+	return p.findall(file_contents)
 
+def build_main_function(filtered_function,input_file):
+	main_string = '('
+	p = re.compile('(\w+\s\w+)')
+	list_of_args = p.findall(filtered_function) 
+	for x in range(0,len(list_of_args)) :
+		group = list_of_args[x]
+		arg_type = group.split(' ')[0]
+		arg_decl = ''
+		if arg_type == 'StreamWriter':
+			arg_decl = 'new StreamWriter('+ input_file + ')'
+		if arg_type == 'StreamReader':
+			arg_decl = 'new StreamReader(output.txt)'
+		main_string+= arg_decl
+		if x != len(list_of_args)-1:
+			main_string+= ','
+	main_string+=');'
+	return main_string
 
+print build_main_function('Apabepa(StreamWriter g)','input.txt')
