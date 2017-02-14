@@ -59,8 +59,7 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
 				new_regex = new_regex[0]
 				new_regex = new_regex.replace('`','')
 				new_regex = new_regex.replace ('\'','')
-			flag = new_regex if len(new_regex)>0 else 'System.Numerics'
-			return compile_csharp (root,csharp_file_p,csharp_file_p_dependecy,input_file,new_regex)
+				return compile_csharp (root,csharp_file_p,csharp_file_p_dependecy,input_file,new_regex)
 		print errors
 		return 0
 	else :
@@ -82,7 +81,6 @@ def run_csharp(input_file,root,csharp_exe,original_class_file):
 	if len(errors)>0:
 		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)
 		if error_name and error_name[0].replace('\n','') == 'System.IO.DirectoryNotFoundException' and input_file is not None:
-			print "INNE I RATT BRANCH"
 			rename_input_file(input_file,os.path.join(root,original_class_file),root)
 			return compile_csharp(root,original_class_file,None,None,None)
 		print errors
@@ -121,10 +119,7 @@ def filter_candidate_functions(file_path):
 	file_contents = file_manager.read()
 	list_of_stuff = []
 	p = re.compile('static\s(?:int|void|long|string)\s(\w+\([\w+\s]*?\))')
-	list_ = p.findall(file_contents)
-	print "HERE COMES THE LIST"
-	print list_
-	return list_
+	return p.findall(file_contents)
 
 #ONLY HANDLING 
 def build_main_function(filtered_function,input_file):
