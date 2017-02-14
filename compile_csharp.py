@@ -63,13 +63,12 @@ def compile_csharp_command(csharp_file):
 def run_csharp(input_file,root,csharp_exe,original_class_file):
 	errors = run_csharp_command(csharp_exe,input_file)
 	if len(errors)>0:
-		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)[0]
-		if error_name.replace('\n','') == 'System.IO.DirectoryNotFoundException' and input_file is not None:
+		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)
+		if error_name and error_name[0].replace('\n','') == 'System.IO.DirectoryNotFoundException' and input_file is not None:
 			print "INNE I RATT BRANCH"
 			rename_input_file(input_file,os.path.join(root,original_class_file),root)
 			return compile_csharp(root,original_class_file,None,None)
-		else :
-			print errors
+		print errors
 		return 0
 	return 1
 
