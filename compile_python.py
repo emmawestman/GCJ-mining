@@ -92,7 +92,7 @@ def pip_install_module(pip_version,module_name):
 	return errors
 
 def run_python_commando(pythonversion,path_file,path_input):	
-	cmd = [pythonversion + path_file + ' < ' + path_input]
+	cmd = ['timeout 120s ' + pythonversion + path_file + ' < ' + path_input]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors

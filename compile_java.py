@@ -2,7 +2,6 @@ import os
 import subprocess
 from compile_support_module import *
 from finding_regexes import *
-#from TimedOutExc import *
 
 def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 	requested_file_name =filter_information(':\s.*\.\w*',':',errors)[0]
@@ -33,15 +32,15 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 			return 0
 	return 1
 
-#@deadline(10)
+
 def run_java_command(class_name,args):	
-	cmd = ['java ' + class_name + ' ' + args ]
+	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	if errors.find('Exception in thread')!= -1:
 		return errors
 
-#@deadline(10)
+
 def compile_one_java_file(cmd):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
@@ -55,7 +54,7 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['javac ' + os.path.join(root,f)]
+				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
 				errors = compile_one_java_file(cmd)
 				succes_nbr += 1
 	return succes_nbr, nbr_of_files

@@ -17,7 +17,8 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = ['C++']
 
 
 
@@ -126,13 +127,13 @@ end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs: ', diff)
 
-
+'''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")
 print file1.read()
 file1.close()
-
+'''
 
 
 
