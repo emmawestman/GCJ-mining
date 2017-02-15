@@ -18,7 +18,7 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
 #LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['C++']
+LANGUAGE = ['java']
 
 
 
@@ -55,7 +55,7 @@ print list_of_contest_ids
 
 #Ask user how many contests to download
 number_of_contests = int(raw_input('Number of contests?'))
-
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -106,9 +106,9 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-
+'''
 # Run the compile and run scripts on the downloaded files	
-print 'Sarting to sort all zip files...'
+print 'Sarting to copile and run all files...'
 start = time.time()
 
 for i in range(0,number_of_contests):

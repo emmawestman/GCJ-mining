@@ -9,7 +9,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
 	rename_file(user_path,PATH_INPUT,old_problem_name,requested_file_name)
 	os.chdir(user_path)
-	print run_java_command(class_name,requested_file_name)
+	return run_java_command(class_name,requested_file_name)
 
 
 def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
@@ -18,33 +18,28 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	user, input_file = get_run_info('java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
-	try :
-		errors = run_java_command(class_name, args)
-	except :
-		print 'Took too long'
-	if errors is not None:
+
+	flag,errors = run_java_command(class_name, args)
+	if flag == 0:
 		exception_name = get_exception_name(errors)
 		if exception_name == 'FileNotFoundException':
-			file_not_found_exception(errors,class_name,user_path,input_file, c_id)
-			return 1
-		else:
-			errors
-			return 0
+			flag,errors = file_not_found_exception(errors,class_name,user_path,input_file, c_id)
+			print errors
+			return flag
+		return 0
 	return 1
 
 
 def run_java_command(class_name,args):	
-	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
+	cmd = ['java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	if errors.find('Exception in thread')!= -1:
-		return errors
+		return 0,errors
+	return 1,None
 
 
-def compile_one_java_file(cmd):
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return errors
+	
 
 def compile_java(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'java' ))
@@ -54,9 +49,13 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
-				errors = compile_one_java_file(cmd)
-				succes_nbr += 1
+				cmd = ['javac ' + os.path.join(root,f)]
+				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				output, errors = p.communicate()
+				if 'Note' in errors or len(errors) == 0:
+					succes_nbr += 1
+				else:
+					print errors
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :
