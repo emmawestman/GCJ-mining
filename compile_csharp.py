@@ -29,6 +29,12 @@ def compile_run_csharp(c_id):
 	return succes_nbr, nbr_of_files
 
 
+def remove_files_in_a_user_solution(root):
+	files = os.listdir(root)
+	filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
+	for file in filelist:			
+		os.remove(os.path.join(root,file))
+
 def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
 	csharp_file = ''
 	if flag is not None:
@@ -46,7 +52,6 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
 			namespace = find_namespace(csharp_file_p, root)
 			# create main file and call some function...
 			filter_candidates = filter_candidate_functions(os.path.join(root,csharp_file_p))
-			print 'FUNCTION ' + filter_candidates[0]
 			csharp_main(filter_candidates[0], csharp_file_p, namespace, root,input_file)
 			# run main file instead
 			return compile_csharp (root,'TestMain.cs',csharp_file_p,input_file,flag)
@@ -80,8 +85,9 @@ def run_csharp(input_file,root,csharp_exe,original_class_file):
 	errors = run_csharp_command(csharp_exe,input_file)
 	if len(errors)>0:
 		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)
-		if error_name and error_name[0].replace('\n','') == 'System.IO.DirectoryNotFoundException' and input_file is not None:
-			rename_input_file(input_file,os.path.join(root,original_class_file),root)
+		if error_name and error_name[0].replace('\n','') == ('System.IO.DirectoryNotFoundException' or 'System.IO.FileNotFoundException') and input_file is not None:
+			remove_files_in_a_user_solution(root)
+			change_input_streams(input_file,os.path.join(root,original_class_file),root)
 			return compile_csharp(root,original_class_file,None,None,None)
 		print errors
 		return 0
@@ -95,14 +101,33 @@ def run_csharp_command(csharp_exe,input_file):
 	output, errors = p.communicate()
 	return errors
 
-def rename_input_file(input_file,csharp_file,root):
-	old_regex = 'StreamReader\(.*?\)\)?'
-	new_regex = 'StreamReader(\"'+ input_file + '\")'
+def rename_input_file(input_file,csharp_file,errors):
+	old_regex = filter_information('\".*?\"',None,errors)[0]
+	old_regex = old_regex.split('.')[-1]
+	new_regex = input_file
 	rename_stuff_in_file(new_regex,old_regex,csharp_file)
-	old_regex ='StreamWriter\(.*?\)\)?'
-	output_file = os.path.join(root,'output.txt')
-	new_regex ='StreamWriter(\"'+ output_file + '\")'
-	rename_stuff_in_file(new_regex,old_regex,csharp_file)
+
+def change_input_streams(input_file,csharp_file,root):
+	file_manager = open(csharp_file, "r")
+	contents = file_manager.read()
+	file_manager.close()
+	old_input = re.findall(r'new StreamReader\((.*)\)',contents)[0]
+	new_file_input = '\"'+input_file+'\"'
+	new_file_contents = contents.replace(old_input,new_file_input)
+	file_manager=open(csharp_file,'w')
+	file_manager.write(new_file_contents)
+	file_manager.close()
+	file_manager = open(csharp_file, "r")
+	contents = file_manager.read()
+	file_manager.close()
+	old_input = re.findall(r'new StreamWriter\((.*)\)',contents)[0]
+	new_file_input = '\"' + os.path.join(root,'output.txt') + '\"'
+	new_file_contents = contents.replace(old_input,new_file_input)
+	file_manager=open(csharp_file,'w')
+	file_manager.write(new_file_contents)
+	file_manager.close()
+	
+
 
 def csharp_main(full_function_decl, filename, namespace, path,input_file):
 	index = len(filename) -3
@@ -114,6 +139,7 @@ def csharp_main(full_function_decl, filename, namespace, path,input_file):
 	file1.write(file_content)
 	file1.close()
 
+#ONLY CHOOSING STATIC FUNCTIONS
 def filter_candidate_functions(file_path):
 	file_manager = open(file_path,'r')
 	file_contents = file_manager.read()
@@ -121,7 +147,7 @@ def filter_candidate_functions(file_path):
 	p = re.compile('static\s(?:int|void|long|string)\s(\w+\([\w+\s]*?\))')
 	return p.findall(file_contents)
 
-#ONLY HANDLING 
+#ONLY HANDLING ONE StreamWriter and StreamReader
 def build_main_function(filtered_function,input_file):
 	main_string = '('
 	p = re.compile('(\w+\s\w+)')
@@ -130,14 +156,12 @@ def build_main_function(filtered_function,input_file):
 		group = list_of_args[x]
 		arg_type = group.split(' ')[0]
 		arg_decl = ''
-		if arg_type == 'StreamWriter':
-			arg_decl = 'new StreamWriter('+ input_file + ')'
 		if arg_type == 'StreamReader':
-			arg_decl = 'new StreamReader(output.txt)'
+			arg_decl = 'new StreamReader(\''+ input_file + '\')'
+		if arg_type == 'StreamWriter':
+			arg_decl = 'new StreamWriter(output.txt)'
 		main_string+= arg_decl
 		if x != len(list_of_args)-1 and ',' in main_string:
 			main_string+= ','
 	main_string+=');'
-	print 'MAIN STRING ' + main_string + '\n'
 	return main_string
-

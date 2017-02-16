@@ -57,13 +57,12 @@ def remove_old_files(language, c_id):
 			filelist = [f for f in files if '.' not in f]
 		else:
 			filelist = [ f for f in files if not(f.endswith(language)) ]
-		for f in filelist:			
-			os.remove(os.path.join(root,f))
 		# remove extra created main files
-		if language == 'cs':
-			filelist = [ f for f in files if (f == 'TestMain.cs') ]
-			for f in filelist:			
-				os.remove(os.path.join(root,f))
+		if language == 'C#':
+			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
+			for file in filelist:
+				os.remove(os.path.join(root,file))
+
 
 
 def get_compile_info(regexp, root, f):
