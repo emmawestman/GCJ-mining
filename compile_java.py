@@ -20,7 +20,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	args = '< '+ path_to_input
 
 	flag,errors = run_java_command(class_name, args)
-	if flag == 0:
+	if flag == 0 and errors != None:
 		exception_name = get_exception_name(errors)
 		if exception_name == 'FileNotFoundException':
 			flag,errors = file_not_found_exception(errors,class_name,user_path,input_file, c_id)
@@ -57,7 +57,7 @@ def compile_java(c_id):
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				exit_code = check_exit_code()
-				if exit_code == 0:
+				if int(exit_code) == 0:
 					if 'Note' in errors or len(errors) == 0:
 						succes_nbr += 1
 					else:

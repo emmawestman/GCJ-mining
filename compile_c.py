@@ -21,7 +21,7 @@ def compile_c(c_id):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			exit_code = check_exit_code()
-			if exit_code == 0:
+			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'failed to run problem: ' + root
 					print errors
@@ -48,7 +48,7 @@ def run_c(c_id):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			exit_code = check_exit_code()
-			if exit_code == 0:
+			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
 					#print errors

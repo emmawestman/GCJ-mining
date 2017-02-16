@@ -18,7 +18,7 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
 #LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['Python']
+LANGUAGE = ['java']
 
 
 
@@ -66,19 +66,18 @@ get_all_contests_id()
 
 
 #Pre processing stuff...
-#list_of_contest_ids = get_all_contests_id()
-list_of_contest_ids = ['6254486', '4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
-'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
+list_of_contest_ids = get_all_contests_id()
+#list_of_contest_ids = ['6254486', '4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
+#'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
 print list_of_contest_ids
 
 
 
 #Ask user how many contests to download
 #number_of_contests = int(raw_input('Number of contests?'))
-number_of_contests = len(list_of_contest_ids)
+number_of_contests = 2 #len(list_of_contest_ids)
 
-
-
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -150,7 +149,7 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs: ', diff)
-
+'''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")

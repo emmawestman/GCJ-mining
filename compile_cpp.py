@@ -23,7 +23,7 @@ def compile_cpp(c_id):
 			cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
   			errors = copile_one_cpp_file(cmd)
 			exit_code = check_exit_code()
-			if exit_code == 0:
+			if int(exit_code) == 0:
 				if len(errors) > 0:
 					'''
 					#try with c++ 11 instead
@@ -65,7 +65,7 @@ def run_cpp(c_id):
 			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
   			errors = run_one_cpp_file(cmd)
 			exit_code = check_exit_code()
-			if exit_code == 0:
+			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
 					#print errors
