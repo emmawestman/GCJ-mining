@@ -13,11 +13,11 @@ def compile_c(c_id):
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			nbr_of_files += 1
-			print 'compiling file nbr: ' + str(nbr_of_files)
+			print 'compiling c file nbr: ' + str(nbr_of_files)
 			
 			user, filename = get_compile_info('C', root, f)
 
-			cmd = ['g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
+			cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
@@ -38,11 +38,11 @@ def run_c(c_id):
 		filelist = [f for f in files if '.' not in f]
 		for f in filelist:
 			nbr_of_files += 1
-			print 'running file nbr: ' + str(nbr_of_files)
+			print 'running c file nbr: ' + str(nbr_of_files)
 			
 			user, input_file = get_run_info('C', root)
 		
-			cmd = [os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
+			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			if len(errors) > 0:
