@@ -84,7 +84,12 @@ def get_run_info(regexp, root):
 	return user, input_file
 
 
-
+def check_exit_code():
+	cmd = ['echo $?']
+	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, errors = p.communicate()
+	return output
+	
 
 
 

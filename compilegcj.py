@@ -19,9 +19,11 @@ def compile_language(language, c_id):
 	c = -1
 	d = -1
 	if language == 'java':
+		cwd = os.getcwd()
 		remove_old_files(language, c_id)
 		a, b = compile_java(c_id)
 		c, d = run_java_files(c_id)
+		os.chdir(cwd)
 	elif language == 'C':
 		remove_old_files(language, c_id)
 		a, b = compile_c(c_id)
@@ -39,11 +41,15 @@ def compile_language(language, c_id):
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
 	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully'
+	return a, b, c, d
 
 
 #input_language = raw_input("what language?")
 #c_id = raw_input("which contest id?")
-compile_language('Python','6254486')
+
+#compile_language('C#','6254486')
+
+#compile_language(input_language, c_id)
 
 
 
