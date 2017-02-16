@@ -15,7 +15,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
 	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
-	user, input_file = get_run_info('timeout 120s java', os.getcwd())
+	user, input_file = get_run_info('java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
 
@@ -31,12 +31,16 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 
 
 def run_java_command(class_name,args):	
-	cmd = ['java ' + class_name + ' ' + args ]
+	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	if errors.find('Exception in thread')!= -1:
-		return 0,errors
-	return 1,None
+	exit_code = check_exit_code()
+	if exit_code == 0:
+		if errors.find('Exception in thread')!= -1:
+			return 0,errors
+		return 1,None
+	else:
+		return 0, None
 
 
 	
@@ -52,10 +56,12 @@ def compile_java(c_id):
 				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
-				if 'Note' in errors or len(errors) == 0:
-					succes_nbr += 1
-				else:
-					print errors
+				exit_code = check_exit_code()
+				if exit_code == 0:
+					if 'Note' in errors or len(errors) == 0:
+						succes_nbr += 1
+					else:
+						print errors
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :
