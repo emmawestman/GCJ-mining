@@ -15,22 +15,24 @@ def compile_python(c_id):
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
 		for f in files:
-			nbr_of_files += 1
-			regexp = "/Python/"
-			index = root.find(regexp)
-			print root
-			filename = root[index+len(regexp):]
-			index = filename.find('/')
-			user = filename[index+1:]
-			filename = filename[:index]
-			filename = filename + '.in'
-			path_file = os.path.join(root,f)
-			path_input = os.path.join(PATH_INPUT,filename)
-			succes_nbr += run_python_2x(path_file,path_input)
+			if f.endswith('.py'):
+				nbr_of_files += 1
+				print nbr_of_files
+				regexp = "/Python/"
+				index = root.find(regexp)
+				filename = root[index+len(regexp):]
+				index = filename.find('/')
+				user = filename[index+1:]
+				filename = filename[:index]
+				filename = filename + '.in'
+				print filename
+				path_file = os.path.join(root,f)
+				path_input = os.path.join(PATH_INPUT,filename)
+				succes_nbr += run_python_2x(path_file,path_input)
 	return succes_nbr, nbr_of_files
 
 def run_python_2x(file_path,path_input):
-	errors = run_python_commando('python ',file_path,path_input)
+	errors = run_python_commando('timeout 120s python ',file_path,path_input)
 	if len(errors) > 0:
 		error_list = filter_information('\w+Error',None,errors)
 		if len(error_list)>0:
@@ -58,7 +60,7 @@ def run_python_2x(file_path,path_input):
 	return 1
 
 def run_python_3x(file_path,path_input):
-	errors = run_python_commando('python3 ',file_path,path_input)
+	errors = run_python_commando('timeout 120s python3 ',file_path,path_input)
 	if len(errors) > 0:
 		error_list = filter_information('\w+Error',None,errors)
 		if len(error_list)>0:
@@ -91,8 +93,9 @@ def pip_install_module(pip_version,module_name):
 	output, errors = p.communicate()
 	return errors
 
-def run_python_commando(pythonversion,path_file,path_input):	
-	cmd = ['timeout 120s ' + pythonversion + path_file + ' < ' + path_input]
+def run_python_commando(pythonversion,path_file,path_input):
+	print path_input	
+	cmd = [pythonversion + path_file + ' < ' + path_input]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors

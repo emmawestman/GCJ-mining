@@ -18,7 +18,7 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
 #LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['java']
+LANGUAGE = ['Python']
 
 
 

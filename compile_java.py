@@ -15,7 +15,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
 	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
-	user, input_file = get_run_info('java', os.getcwd())
+	user, input_file = get_run_info('timeout 120s java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
 
@@ -49,7 +49,7 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['javac ' + os.path.join(root,f)]
+				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				if 'Note' in errors or len(errors) == 0:
