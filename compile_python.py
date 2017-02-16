@@ -35,7 +35,9 @@ def run_python_2x(file_path,path_input):
 		if len(error_list)>0:
 			error_name = error_list[0]			
 			if error_name =='ImportError':
-				handle_import_error(file_path,path_input,errors)
+				error_code = handle_import_error(file_path,path_input,errors,'pip')
+				if error_code == 1:
+					return run_python_2x(file_path,path_input)
 			elif error_name == 'SyntaxError':
 				return run_python_3x(file_path,path_input)
 		print errors
@@ -47,17 +49,14 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 	missing_module_name = missing_module_name.replace('named','')
 	if missing_module_name == 'devtools':
 		rename_stuff_in_file('','import devtools',file_path)
-		run_python_2x(file_path,path_input)
 	elif missing_module_name == 'run':
 		rename_stuff_in_file('runpy','run',file_path)
-		run_python_2x(file_path,path_input)
 	else :
 		pip_errors = pip_install_module(pip_version,missing_module_name)
 		if len(pip_errors)>0:
 			print pip_errors
 			return 0
-		else:
-			return run_python_2x(file_path,path_input)
+	return 1
 
 
 def run_python_3x(file_path,path_input):
@@ -67,11 +66,11 @@ def run_python_3x(file_path,path_input):
 		if len(error_list)>0:
 			error_name = error_list[0]			
 			if error_name =='ImportError':
-				handle_import_error(file_path,path_input,errors,pip_version)
-		else:
-			print errors
-			return 0
-	
+				error_code = handle_import_error(file_path,path_input,errors,'pip3')
+				if error_code == 1:
+					return run_python_3x(file_path,path_input)
+		print errors
+		return 0
 	return 1
 
 def pip_install_module(pip_version,module_name):
