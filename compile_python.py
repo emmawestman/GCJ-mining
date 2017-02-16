@@ -44,8 +44,8 @@ def run_python_2x(file_path,path_input):
 					rename_stuff_in_file('runpy','run',file_path)
 					run_python_2x(file_path,path_input)
 				else :
-					pip_errors = pip_install_module(missing_module_name)
-					if len(pip_errors>0):
+					pip_errors = pip_install_module('pip',missing_module_name)
+					if len(pip_errors)>0:
 						print pip_errors
 						return 0
 					else:
@@ -72,8 +72,8 @@ def run_python_3x(file_path,path_input):
 					rename_stuff_in_file('runpy','run',file_path)
 					run_python_3x(file_path,path_input)
 				else :
-					pip_errors = pip_install_module(missing_module_name)
-					if len(pip_errors>0):
+					pip_errors = pip_install_module('pip3',missing_module_name)
+					if len(pip_errors)>0:
 						print pip_errors
 						return 0
 					else:
