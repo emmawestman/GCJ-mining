@@ -17,8 +17,8 @@ list_of_contest_ids = ['6254486']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['Python']
+LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+#LANGUAGE = ['Python']
 
 
 
