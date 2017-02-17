@@ -92,9 +92,7 @@ def pip_install_module(pip_version,module_name):
 def run_python_commando(pythonversion,path_file,path_input):
 	print path_input	
 	cmd = [pythonversion + path_file + ' < ' + path_input + '; echo $?']
-	print cmd
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	exit_code = check_exit_code()
 	output, errors = p.communicate()
 	exit_code = p.returncode
 	return errors, exit_code
