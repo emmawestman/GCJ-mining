@@ -32,9 +32,10 @@ def compile_language(language, c_id):
 		remove_old_files(language, c_id)
 		a, b = compile_cpp(c_id)
 		c, d = run_cpp(c_id)
+
 	elif language == 'C#':
 		remove_old_files(language,c_id)
-		#a, b = compile_run_csharp(c_id)
+		a, b = compile_run_csharp(c_id)
 	elif language == "Python":
 		a,b = compile_python(c_id)
 	else: 	
