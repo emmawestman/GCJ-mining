@@ -17,9 +17,8 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = get_LANGUAGE()
 
+LANGUAGE = get_LANGUAGE()
 
 
 def get_all_contests_id():
