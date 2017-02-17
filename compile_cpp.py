@@ -5,7 +5,8 @@ from compile_support_module import *
 def copile_one_cpp_file(cmd):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	return errors
+	exit_code = p.returncode
+	return errors, exit_code
 
 def compile_cpp(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
@@ -21,8 +22,7 @@ def compile_cpp(c_id):
 			user, filename = get_compile_info('C++', root, f)
 			#cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
-  			errors = copile_one_cpp_file(cmd)
-			exit_code = check_exit_code()
+  			errors, exit_code = copile_one_cpp_file(cmd)
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					'''
@@ -46,7 +46,8 @@ def compile_cpp(c_id):
 def run_one_cpp_file(cmd):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	return errors
+	exit_code = p.returncode
+	return errors, exit_code
 
 def run_cpp(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
@@ -63,8 +64,7 @@ def run_cpp(c_id):
 			user, input_file = get_run_info('C++', root)
 		
 			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
-  			errors = run_one_cpp_file(cmd)
-			exit_code = check_exit_code()
+  			errors, exit_code = run_one_cpp_file(cmd)
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root

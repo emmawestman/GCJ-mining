@@ -95,11 +95,8 @@ def run_python_commando(pythonversion,path_file,path_input):
 	print cmd
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	exit_code = check_exit_code()
-	#print exit_code
 	output, errors = p.communicate()
-	print output
-	exit_code = check_exit_code()
-	print exit_code
+	exit_code = p.returncode
 	return errors, exit_code
 
 

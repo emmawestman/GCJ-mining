@@ -20,7 +20,7 @@ def compile_c(c_id):
 			cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
-			exit_code = check_exit_code()
+			exit_code = p.returncode
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'failed to run problem: ' + root
@@ -47,7 +47,7 @@ def run_c(c_id):
 			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
-			exit_code = check_exit_code()
+			exit_code = p.retruncode
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
