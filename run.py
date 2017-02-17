@@ -17,8 +17,8 @@ list_of_contest_ids = ['6254486']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-#LANGUAGE = ['Python']
+#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = ['C++']
 
 
 
@@ -62,25 +62,25 @@ def clean_home_dir():
 		os.remove(f)
 
 clean_home_dir()
-get_all_contests_id()
+#get_all_contests_id()
 
 
 #Pre processing stuff...
 
-list_of_contest_ids = get_all_contests_id()
+#list_of_contest_ids = get_all_contests_id()
 list_of_contest_ids = ['6254486', '4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
 '3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
 #print list_of_contest_ids
-list_of_contest_ids = get_all_contests_id()
+#list_of_contest_ids = get_all_contests_id()
 
 
 
 
 #Ask user how many contests to download
 #number_of_contests = int(raw_input('Number of contests?'))
-number_of_contests = 2 #len(list_of_contest_ids)
+number_of_contests = len(list_of_contest_ids)
 
-'''
+
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -88,7 +88,7 @@ for i in range(0,number_of_contests):
 	CONTEST_ID = list_of_contest_ids[i]
 	print 'Downloading contest ' + CONTEST_ID
 	base_url = build_base_url(CONTEST_ID)
-	PROBLEM_IDS =retrive_problem_ids(base_url)		
+	PROBLEM_IDS =retrive_problem_ids(base_url)	
 	TOKEN = retrive_token(CONTEST_ID)
 	download_input.download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 
@@ -100,7 +100,7 @@ diff = end - start
 write_to_log('Time to download all input files to solutions: ', diff)
 
 
-
+'''
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
 print 'Downloading solutions from GCJ...'
@@ -131,8 +131,8 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-
 '''
+
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
 start = time.time()
