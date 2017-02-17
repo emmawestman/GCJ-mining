@@ -33,8 +33,8 @@ def compile_language(language, c_id):
 		a, b = compile_cpp(c_id)
 		c, d = run_cpp(c_id)
 	elif language == 'C#':
-		remove_old_files('cs', c_id)
-		a, b = compile_run_csharp(c_id)
+		remove_old_files(language,c_id)
+		#a, b = compile_run_csharp(c_id)
 	elif language == "Python":
 		a,b = compile_python(c_id)
 	else: 	
@@ -46,6 +46,9 @@ def compile_language(language, c_id):
 
 #input_language = raw_input("what language?")
 #c_id = raw_input("which contest id?")
+
+compile_language('Python','6254486')
+
 #compile_language(input_language, c_id)
 
 

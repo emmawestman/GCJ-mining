@@ -13,12 +13,12 @@ BASE = "https://code.google.com/codejam/contest/"
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
 
-#CONTEST_ID = "6254486"
+list_of_contest_ids = ['6254486']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
 #LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['java']
+LANGUAGE = ['Python']
 
 
 
@@ -66,10 +66,13 @@ get_all_contests_id()
 
 
 #Pre processing stuff...
+
 list_of_contest_ids = get_all_contests_id()
 #list_of_contest_ids = ['6254486', '4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
 #'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
 print list_of_contest_ids
+#list_of_contest_ids = get_all_contests_id()
+
 
 
 
