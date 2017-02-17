@@ -70,7 +70,7 @@ clean_home_dir()
 
 #Ask user how many contests to download
 number_of_contests = int(raw_input('Number of contests?'))
-'''
+
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -141,14 +141,14 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs: ', diff)
-
 '''
+
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")
 print file1.read()
 file1.close()
-'''
+
 
 
 
