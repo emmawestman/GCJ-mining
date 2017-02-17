@@ -34,7 +34,7 @@ def run_java_command(class_name,args):
 	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	exit_code = check_exit_code()
+	exit_code = p.retruncode
 	if exit_code == 0:
 		if errors.find('Exception in thread')!= -1:
 			return 0,errors
@@ -56,7 +56,7 @@ def compile_java(c_id):
 				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
-				exit_code = check_exit_code()
+				exit_code = p.retruncode
 				if int(exit_code) == 0:
 					if 'Note' in errors or len(errors) == 0:
 						succes_nbr += 1
