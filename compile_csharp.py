@@ -10,7 +10,7 @@ PATH_INPUT = os.path.realpath(os.path.join('..','input_qualification_2016'))
 
 def compile_run_csharp(path):
 	#number of files that successfylly compiles
-	remove_old_files('cpp',os.path.join(PATH,'C#'))
+	remove_old_files('.cpp',os.path.join(PATH,'C#'))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
@@ -74,7 +74,6 @@ def compile_run_csharp(path):
 							cmd = ['mcs ' + os.path.join(root,'TestMain.exe ') + ' < ' + new_file]
 							p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 							output, errors = p.communicate()'''
-
 			else:
 				succes_nbr += 1
 				print 'Successfully compiled!'
