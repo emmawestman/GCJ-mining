@@ -1,8 +1,9 @@
 import os
 import subprocess
 import csv
+from constants import *
 
-LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = get_LANGUAGE()
 
 
 # creates on row with prob_id, langage, user, blank, comment, code
@@ -18,7 +19,7 @@ def cloc_problem(c_id, prob_id, lang, user) :
 # creates a file containing rows with the format describen in cloc_problem
 def cloc_contest(c_id) :
 	# create file to store data in
-	complete_name = os.path.join('..', 'cloc_' + c_id + '.csv')         
+	complete_name = os.path.join('..', 'GCJ-Backup', 'cloc_' + c_id + '.csv')         
 	with open(complete_name, 'wb') as csvfile :
 		writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 		path = os.path.realpath(os.path.join('..','solutions_' + c_id))
@@ -31,4 +32,9 @@ def cloc_contest(c_id) :
 					result = cloc_problem(c_id, p_id, l, user)
 					writer.writerow(result)
 
-cloc_contest('2984486')
+# calcualte cloc for all contests
+def cloc_all() :
+	for c_id in get_CONTEST_IDS() :
+		cloc_contest(c_id)
+
+cloc_all()
