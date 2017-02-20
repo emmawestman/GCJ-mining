@@ -35,31 +35,34 @@ def find_namespace(filename, path):
 	namespace = content[:index_end]
 	return namespace
 
-def find_out_what_regex(regex,file_path):
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	file_manager.close()
+def find_out_what_regex(regex,file_contents):
 	found_matches = re.search(regex,file_contents)
 	if found_matches is not None:
-		return found_matches.group(0)
+		match = found_matches.group(0)
+		return match
 	return None
 
 
-def rename_stuff_in_file(new_stuff,old_stuff,file_path,counter):
+def rename_stuff_in_file(new_stuff,old_stuff,file_contents,counter):
 	#read old content
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	file_manager.close()
 	#change to the "right module name"
 	if (counter == 0):
 		file_contents= re.sub(old_stuff,new_stuff,file_contents)
 	else :
 		file_contents= re.sub(old_stuff,new_stuff,file_contents,counter)
+	return file_contents
+
+def get_contents_of_file(file_path):
+	file_manager = open(file_path,'r')
+	file_contents = file_manager.read()
+	file_manager.close()
+	return file_contents,file_manager
+
+def write_new_contents_to_the_file(file_path,file_contents):
 	#write changes
 	file_manager=open(file_path,'w')
 	file_manager.write(file_contents)
 	file_manager.close()
-
 
 #language is the file ending for the language
 def remove_old_files(language, c_id):

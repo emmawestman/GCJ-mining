@@ -48,15 +48,42 @@ def run_python_2x(file_path,path_input,c_id,root):
 
 
 def handle_file_not_found(input_file,root,c_id,file_path):
+	file_contents,file_manager = get_contents_of_file(file_path)
+	changed_content = rename_input_file(file_contents,input_file)
+	write_new_contents_to_the_file(file_path,changed_content) # write changes to the python file
+	file_contents,file_manager = get_contents_of_file(file_path)
+	changed_contents = rename_output_file(file_contents,root)
+	write_new_contents_to_the_file(file_path,changed_contents)
+
+
+
+def create_a_copy_of_input_file(c_id,input_file):
 	dst = input_file + '(1)'
 	number_of_files = len(os.listdir(PATH_INPUT+c_id)) 
 	copyfile(input_file, dst) #create a copy of input file
-	old_regex = find_out_what_regex('open\(.*[\'\"]r[\'\"]\)',file_path) # find out what regex
+	return dst,number_of_files
+
+def rename_input_file(file_contents,input_file):
+	old_regex = find_out_what_regex('open\((.*[\'\"]r[\'\"])\)',file_contents) # find out what regex
+	new_regex = 'open (\'' + input_file + '\''+ ',' +' \'r\')'
 	if old_regex is None:
-		old_regex = find_out_what_regex('open\(.*?\)',file_path)
-	new_regex = 'open(\'' + input_file + '\', \'r\')'
-	rename_stuff_in_file(new_regex,old_regex,file_path,1)
-	return number_of_files,dst
+		old_regex = find_out_what_regex('with open\((.*?)\)',file_contents)
+		new_regex = 'with open (\'' + input_file + '\''+ ',' +' \'r\')' 
+		if old_regex is None :
+			old_regex = find_out_what_regex('file\(.*?\)',file_contents)
+			new_regex = 'file(' + input_file +')'
+	print 'OLD REGEX ' + old_regex
+	new_content = file_contents.replace(old_regex,new_regex)
+	return new_content
+
+def rename_output_file(file_contents,root): 
+	old_regex = re.findall('open\(.*[\'\"]w[\'\"]\)',file_contents) # find out what regex
+	if len(old_regex) > 0:
+		old_regex = old_regex[0]
+		new_regex = 'open(\'' +  os.path.join(root,'output.txt') + '\'' + ',' + '\'w\')'
+		file_contents = file_contents.replace(old_regex,new_regex)
+	return file_contents
+
 
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 	return 0
@@ -101,3 +128,7 @@ def run_python_commando(pythonversion,path_file,path_input):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors
+
+
+
+
