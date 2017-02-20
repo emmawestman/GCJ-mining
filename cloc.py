@@ -13,11 +13,13 @@ def cloc_problem(c_id, prob_id, lang, user) :
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	data = [int(s) for s in output.split() if s.isdigit()]
+	print data
 	result = [prob_id , lang, user, str(data[4]), str(data[5]), str(data[6])]
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
 def cloc_contest(c_id) :
+	print 'CLOC for ' + c_id
 	# create file to store data in
 	complete_name = os.path.join('..', 'GCJ-backup', 'cloc_' + c_id + '.csv')         
 	with open(complete_name, 'wb') as csvfile :
