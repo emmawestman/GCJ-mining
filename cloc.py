@@ -19,7 +19,7 @@ def cloc_problem(c_id, prob_id, lang, user) :
 # creates a file containing rows with the format describen in cloc_problem
 def cloc_contest(c_id) :
 	# create file to store data in
-	complete_name = os.path.join('..', 'GCJ-Backup', 'cloc_' + c_id + '.csv')         
+	complete_name = os.path.join('..', 'GCJ-backup', 'cloc_' + c_id + '.csv')         
 	with open(complete_name, 'wb') as csvfile :
 		writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 		path = os.path.realpath(os.path.join('..','solutions_' + c_id))
