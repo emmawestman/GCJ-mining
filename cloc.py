@@ -9,12 +9,17 @@ LANGUAGE = get_LANGUAGE()
 # creates on row with prob_id, langage, user, blank, comment, code
 def cloc_problem(c_id, prob_id, lang, user) :
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, lang, prob_id, user))
+	print path
 	cmd = ['cloc ' + path ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	data = [int(s) for s in output.split() if s.isdigit()]
-	print data
-	result = [prob_id , lang, user, str(data[4]), str(data[5]), str(data[6])]
+	if len(data) == 3 :
+		print output
+		result = [prob_id , lang, user]
+		# or result = [prob_id , lang, user, '-1', '-1', '-1']
+	else :
+		result = [prob_id , lang, user, str(data[4]), str(data[5]), str(data[6])]
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
