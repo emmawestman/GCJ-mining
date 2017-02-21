@@ -14,12 +14,9 @@ def cloc_problem(c_id, prob_id, lang, user) :
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	data = [int(s) for s in output.split() if s.isdigit()]
-	if len(data) == 3 :
-		print output
-		result = [prob_id , lang, user]
-		# or result = [prob_id , lang, user, '-1', '-1', '-1']
-	else :
+	if len(data) != 3 :
 		result = [prob_id , lang, user, str(data[4]), str(data[5]), str(data[6])]
+		print result
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
