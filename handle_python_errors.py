@@ -1,46 +1,8 @@
 from compile_support_module import *
-from finding_regexes import *
-import re
+import subprocess
 from shutil import copyfile
-from compile_python import *
+from handle_compilation_errors import *
 
-def handle_python_2x_errors(file_path,path_input,c_id,root,errors):
-	error_name = get_error_name(errors)
-	if error_name =='ImportError':
-		flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
-		if flag == 0:
-			return run_python_3x(file_path,path_input,c_id,root)
-		return run_python_2x(file_path,path_input,c_id,root)	
-	elif error_name == 'SyntaxError':
-		return run_python_3x(file_path,path_input,c_id,root)
-	elif error_name =='FileNotFoundError' or error_name == 'IOError':
-		handle_file_not_found(path_input,root,c_id,file_path)
-		return run_python_2x(file_path,path_input,c_id,root)
-	elif error_name == 'IndexError':
-		handle_file_not_found(path_input,root,c_id,file_path)
-		ret_flag = run_python_2x(file_path,path_input,c_id,root)
-		return ret_flag
-	print errors
-	return 0
-
-def handle_python_3x_errors(errors_name,errors,file_path,path_input):
-	if error_name =='ImportError':
-		flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
-		if flag == 1:
-			return run_python_3x(file_path,path_input,c_id,root)
-		remove_module_name(missing_module_name,file_path)
-	elif error_name =='FileNotFoundError' or error_name =='IOError':
-		handle_file_not_found(path_input,root,c_id,file_path)
-		return run_python_3x(file_path,path_input,c_id,root)
-	return 0
-
-		
-def get_error_name (errors):
-	error_list = filter_information('\w+Error',None,errors)
-	if len(error_list)>0:
-		error_name = error_list[0]
-		return error_name
-	return errors 
 
 
 def handle_import_error(file_path,path_input,pip_version):
@@ -56,13 +18,26 @@ def handle_import_error(file_path,path_input,pip_version):
 
 
 def handle_file_not_found(input_file,root,c_id,file_path):
-	file_contents = get_contents_of_file(file_path)
-	changed_content = rename_input_file(file_contents,input_file)
+	changed_content = rename_input_file(get_contents_of_file(input_file),file_contents)
 	#write_new_contents_to_the_file(file_path,changed_content) # write changes to the python file
 	#file_contents = get_contents_of_file(file_path)
-	changed_contents = rename_output_file(file_contents,root)
+	regex = 'open\(.*[\'\"]w[\'\"]\)'
+	new_output = 'open(\'' +  os.path.join(root,'output.txt') + '\'' + ',' + '\'w\')'
+	changed_contents = rename_output_file(regex,new_output,file_contents,root)
 	write_new_contents_to_the_file(file_path,changed_contents)
+	
+def get_error_name (errors):
+	error_list = filter_information('\w+Error',None,errors)
+	if len(error_list)>0:
+		error_name = error_list[0]
+		return error_name
+	return errors 
 
+def pip_install_module(pip_version,module_name):
+	cmd = [pip_version + ' install ' + module_name]
+	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, errors = p.communicate()
+	return errors
 
 
 def create_a_copy_of_input_file(c_id,input_file):
@@ -77,26 +52,6 @@ def get_old_new_regex_dict(input_file):
 		'with open\((.*?)\)':'with open (\'' + input_file + '\''+ ',' +' \'r\')',
 		'file\(.*?\)':'file(\'' + input_file +'\')',
 		'open\((.*?)\)':'\'' + input_file +'\''}
-
-def find_old_new_regex(file_contents,input_file):
-	regex_dict = get_old_new_regex_dict(input_file)
-	for key, value in regex_dict.iteritems():
-		old_regex = find_out_what_regex(key,file_contents)
-		if old_regex is not None:
-			return old_regex,value
-
-def rename_input_file(file_contents,input_file):
-	old_regex,new_regex = find_old_new_regex(file_contents,input_file)
-	new_content = file_contents.replace(old_regex,new_regex)
-	return new_content
-
-def rename_output_file(file_contents,root): 
-	old_regex = re.findall('open\(.*[\'\"]w[\'\"]\)',file_contents) # find out what regex
-	if len(old_regex) > 0:
-		old_regex = old_regex[0]
-		new_regex = 'open(\'' +  os.path.join(root,'output.txt') + '\'' + ',' + '\'w\')'
-		file_contents = file_contents.replace(old_regex,new_regex)
-	return file_contents
 
 
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):

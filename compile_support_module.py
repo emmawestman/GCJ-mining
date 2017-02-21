@@ -8,6 +8,18 @@ import re
 def get_input_file(root):
 	return re.search('\d+\_\d', root).group(0)
 
+def get_contents_of_file(file_path):
+	file_manager = open(file_path,'r')
+	file_contents = file_manager.read()
+	file_manager.close()
+	return file_contents
+
+def write_new_contents_to_the_file(file_path,file_contents):
+	#write changes
+	file_manager=open(file_path,'w')
+	file_manager.write(file_contents)
+	file_manager.close()
+
 def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 	curr_path = user_path
 	if new_file_name.find('/') !=-1:
@@ -26,42 +38,13 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 
 def find_namespace(filename, path):
 	full_path = os.path.join(path, filename)
-	file1 = open(full_path, "r")
-	content = file1.read()
+	content = get_contents_of_file(full_path)
 	index_start = content.find('namespace ') + len('namespace ')
 	content = content[index_start:]
 	index_end = content.find('\n')
 	namespace = content[:index_end]
 	return namespace
 
-def find_out_what_regex(regex,file_contents):
-	found_matches = re.search(regex,file_contents)
-	if found_matches is not None:
-		match = found_matches.group(0)
-		return match
-	return None
-
-
-def rename_stuff_in_file(new_stuff,old_stuff,file_contents,counter):
-	#read old content
-	#change to the "right module name"
-	if (counter == 0):
-		file_contents= re.sub(old_stuff,new_stuff,file_contents)
-	else :
-		file_contents= re.sub(old_stuff,new_stuff,file_contents,counter)
-	return file_contents
-
-def get_contents_of_file(file_path):
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	file_manager.close()
-	return file_contents
-
-def write_new_contents_to_the_file(file_path,file_contents):
-	#write changes
-	file_manager=open(file_path,'w')
-	file_manager.write(file_contents)
-	file_manager.close()
 
 #language is the file ending for the language
 def remove_old_files(language, c_id):
@@ -78,6 +61,19 @@ def remove_old_files(language, c_id):
 			for file in filelist:
 				os.remove(os.path.join(root,file))
 
+
+
+def rename_input_file(old_regex,new_input,input_file,contents):
+	old_input = re.findall(old_regex,contents)[0]
+	new_file_contents = contents.replace(old_input,new_input)
+	return new_file_contents
+
+def rename_output_file(regex,new_output,file_contents,root):
+	old_input = re.findall(regex,file_contents)
+	if len(old_input)>0:
+		old_input = old_input[0]
+		file_contents = contents.replace(old_input,new_input,file_input)
+	return file_contents
 
 
 def get_compile_info(regexp, root, f):
