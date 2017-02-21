@@ -23,8 +23,8 @@ def compile_run_csharp(c_id):
 				user = filename[index+1:]
 				filename = filename[:index]
 				print 'Compiling problem: ' + filename + ', for user: ' + user
-				filename = filename + '.in'
-				input_file = os.path.join(PATH_INPUT,filename)
+				filename = get_input_file(root)+'.in'
+				input_file = os.path.join(input_path,filename)
 				succes_nbr += compile_csharp (root,f,None,input_file,None) # REALLY COMPILE AND RUN CSHARP
 	return succes_nbr, nbr_of_files
 

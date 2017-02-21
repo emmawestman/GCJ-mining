@@ -5,9 +5,8 @@ import re
 
 
 
-def get_input_file(problem_folder, PATH_INPUT):
-	problem_input = [f for f in os.listdir(PATH_INPUT) if (f.split('.')[0]==problem_folder)]
-	return problem_input[0]
+def get_input_file(root):
+	return re.search('\d+\_\d', root).group(0)
 
 def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 	curr_path = user_path
@@ -56,7 +55,7 @@ def get_contents_of_file(file_path):
 	file_manager = open(file_path,'r')
 	file_contents = file_manager.read()
 	file_manager.close()
-	return file_contents,file_manager
+	return file_contents
 
 def write_new_contents_to_the_file(file_path,file_contents):
 	#write changes
