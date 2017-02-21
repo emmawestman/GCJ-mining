@@ -54,9 +54,11 @@ def get_old_new_regex_dict(input_file):
 		'open\((.*?)\)':'\'' + input_file +'\''}
 
 
+#TODO FIXA
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 	return 0
 
+#TODO FIXA DETTA
 def find_missing_module_name(errors):
 	missing_module_name = find_out_what_regex('named\s(\w+)',errors)
 	missing_module_name = missing_module_name.replace('named ','')
