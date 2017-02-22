@@ -52,7 +52,6 @@ def write_to_log(message, time):
 def clean_home_dir():
 	files = os.listdir(os.getcwd())
 	to_remove = [ f for f in files if not(f.endswith('.py')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.pyc')) ]
 	to_remove = [ f for f in to_remove if not(f.endswith('.in')) ]
 	to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
 	to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]

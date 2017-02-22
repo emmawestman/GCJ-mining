@@ -63,19 +63,6 @@ def remove_old_files(language, c_id):
 
 
 
-def rename_input_file(old_regex,new_input,input_file,contents):
-	old_input = re.findall(old_regex,contents)[0]
-	new_file_contents = contents.replace(old_input,new_input)
-	return new_file_contents
-
-def rename_output_file(regex,new_output,file_contents,root):
-	old_input = re.findall(regex,file_contents)
-	if len(old_input)>0:
-		old_input = old_input[0]
-		file_contents = contents.replace(old_input,new_input,file_input)
-	return file_contents
-
-
 def get_compile_info(regexp, root, f):
 	index = root.find(regexp)
 	filename = root[index+len(regexp):]
