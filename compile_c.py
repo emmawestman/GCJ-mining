@@ -22,7 +22,7 @@ def compile_c(c_id):
 			output, errors = p.communicate()
 			exit_code = p.returncode
 			if int(exit_code) == 0:
-				if len(errors) > 0:
+				if len(errors) > 0 and 'warning' not in errors:
 					print 'failed to run problem: ' + root
 					print errors
 				else:

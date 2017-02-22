@@ -62,7 +62,7 @@ def clean_home_dir():
 
 clean_home_dir()
 
-
+'''
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
 list_of_contest_ids = get_CONTEST_IDS()
@@ -71,7 +71,7 @@ list_of_contest_ids = get_CONTEST_IDS()
 #number_of_contests = int(raw_input('Number of contests?'))
 number_of_contests = len(list_of_contest_ids)
 
-'''
+
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -121,7 +121,7 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-'''
+
 
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
@@ -143,7 +143,7 @@ end = time.time()
 diff = end - start
 
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
-
+'''
 
 '''
 #print log file
