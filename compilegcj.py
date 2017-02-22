@@ -6,6 +6,7 @@ from compile_csharp import *
 from compile_c import *
 from compile_cpp import *
 from compile_support_module import *
+from handle_compilation_errors import *
 
 PATH = os.path.realpath(os.path.join('..','solutions_'))
 #PATH_INPUT = os.path.realpath(os.path.join('..','input_'))

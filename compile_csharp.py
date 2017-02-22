@@ -6,7 +6,7 @@ from stuff_module import create_folder
 from compile_support_module import *
 from finding_regexes import *
 
-
+	
 def compile_run_csharp(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C#' ))
 	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
