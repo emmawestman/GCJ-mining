@@ -2,6 +2,8 @@ import os
 import shutil
 from stuff_module import create_folder
 import re
+import subprocess
+
 
 
 
@@ -99,12 +101,6 @@ def get_run_info(regexp, root):
 	input_file = filename + '.in' 	
 	return user, input_file
 
-
-def check_exit_code():
-	cmd = ['echo $?']
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return output
 	
 
 
