@@ -2,11 +2,11 @@ from compile_support_module import *
 import subprocess
 from shutil import copyfile
 from handle_compilation_errors import *
+from finding_regexes import *
 
 
 
-
-def handle_import_error(file_path,path_input,pip_version):
+def handle_import_error(file_path,path_input,errors,pip_version):n
 	missing_module_name = find_missing_module_name(errors)
 	if missing_module_name == 'run':
 		rename_stuff_in_file('runpy','run',file_path,1)
@@ -19,12 +19,13 @@ def handle_import_error(file_path,path_input,pip_version):
 
 
 def handle_file_not_found(input_file,root,c_id,file_path):
-	changed_content = rename_input_file(get_contents_of_file(input_file),file_contents)
+	file_contents = get_contents_of_file(file_path)
+	new_input = '\''+input_file+'\'' + ' ,\'r\''
+	changed_contents = rename_inorout_file(get_old_new_regex_regex(),new_input,file_contents)
 	#write_new_contents_to_the_file(file_path,changed_content) # write changes to the python file
 	#file_contents = get_contents_of_file(file_path)
-	regex = 'open\(.*[\'\"]w[\'\"]\)'
-	new_output = 'open(\'' +  os.path.join(root,'output.txt') + '\'' + ',' + '\'w\')'
-	changed_contents = rename_output_file(regex,new_output,file_contents,root)
+	new_output = '\''+os.path.join(root,'output.txt') + '\' ,\'w\''
+	changed_contents = rename_inorout_file(get_old_new_regex_dict_output(),new_output,changed_contents)
 	write_new_contents_to_the_file(file_path,changed_contents)
 	
 def get_error_name (errors):
@@ -48,12 +49,11 @@ def create_a_copy_of_input_file(c_id,input_file):
 	return dst,number_of_files
 
 #dictionary for old- new regex pairs
-def get_old_new_regex_dict(input_file):
-	return {'open\((.*[\'\"]r[\'\"])\)':'open (\'' + input_file + '\''+ ',' +' \'r\')',
-		'with open\((.*?)\)':'with open (\'' + input_file + '\''+ ',' +' \'r\')',
-		'file\(.*?\)':'file(\'' + input_file +'\')',
-		'open\((.*?)\)':'\'' + input_file +'\''}
+def get_old_new_regex_regex():
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)']
 
+def get_old_new_regex_dict_output():
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"]w[\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
 
 #TODO FIXA
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):
