@@ -7,11 +7,6 @@ from compile_support_module import *
 from finding_regexes import *
 
 
-<<<<<<< HEAD
-def compile_run_csharp(path):
-	#number of files that successfylly compiles
-	remove_old_files('.cpp',os.path.join(PATH,'C#'))
-=======
 def compile_run_csharp(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C#' ))
 	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
@@ -21,15 +16,9 @@ def compile_run_csharp(c_id):
 		for f in files:
 			if f.endswith('.cs'):
 				nbr_of_files += 1
-				regexp = "/C#/"
-				index = root.find(regexp)
-				filename = root[index+len(regexp):]
-				index = filename.find('/')
-				user = filename[index+1:]
-				filename = filename[:index]
 				print 'Compiling problem: ' + filename + ', for user: ' + user
-				filename = filename + '.in'
-				input_file = os.path.join(PATH_INPUT,filename)
+				filename = get_input_file(root)+'.in'
+				input_file = os.path.join(input_path,filename)
 				succes_nbr += compile_csharp (root,f,None,input_file,None) # REALLY COMPILE AND RUN CSHARP
 	return succes_nbr, nbr_of_files
 
@@ -106,33 +95,13 @@ def run_csharp_command(csharp_exe,input_file):
 	output, errors = p.communicate()
 	return errors
 
-def rename_input_file(input_file,csharp_file,errors):
-	old_regex = filter_information('\".*?\"',None,errors)[0]
-	old_regex = old_regex.split('.')[-1]
-	new_regex = input_file
-	rename_stuff_in_file(new_regex,old_regex,csharp_file)
 
 def change_input_streams(input_file,csharp_file,root):
-	file_manager = open(csharp_file, "r")
-	contents = file_manager.read()
-	file_manager.close()
-	old_input = re.findall(r'new StreamReader\((.*)\)',contents)[0]
-	new_file_input = '\"'+input_file+'\"'
-	new_file_contents = contents.replace(old_input,new_file_input)
-	file_manager=open(csharp_file,'w')
-	file_manager.write(new_file_contents)
-	file_manager.close()
-	file_manager = open(csharp_file, "r")
-	contents = file_manager.read()
-	file_manager.close()
-	old_input = re.findall(r'new StreamWriter\((.*)\)',contents)[0]
-	new_file_input = '\"' + os.path.join(root,'output.txt') + '\"'
-	new_file_contents = contents.replace(old_input,new_file_input)
-	file_manager=open(csharp_file,'w')
-	file_manager.write(new_file_contents)
-	file_manager.close()
-	
-
+	file_contents = get_contents_of_file(file_path)
+	file_contents = rename_input_file('new StreamReader\((.*)\)','\"'+input_file+'\"',input_file,file_contents)
+	new_output = '\"' + os.path.join(root,'output.txt') + '\"'
+	file_contents = rename_output_file('new StreamWriter\((.*)\)',new_output,file_contents,root)
+	write_new_contents_to_the_file(csharp_file,file_contents)
 
 def csharp_main(full_function_decl, filename, namespace, path,input_file):
 	index = len(filename) -3
