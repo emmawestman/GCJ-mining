@@ -21,10 +21,10 @@ def compile_cpp(c_id):
 			
 			user, filename = get_compile_info('C++', root, f)
 			#cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-			cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
+			cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
 			if int(exit_code) == 0:
-				if len(errors) > 0:
+				if len(errors) > 0 and 'warning' not in errors:
 					'''
 					#try with c++ 11 instead
 					cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
