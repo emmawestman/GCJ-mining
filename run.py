@@ -62,6 +62,12 @@ def clean_home_dir():
 
 clean_home_dir()
 
+## clean vm
+CIDS = ['4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
+'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
+for c_id in CIDS :
+	remove_old_files(language, c_id)
+
 '''
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
