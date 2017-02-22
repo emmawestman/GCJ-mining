@@ -71,7 +71,7 @@ list_of_contest_ids = get_CONTEST_IDS()
 #number_of_contests = int(raw_input('Number of contests?'))
 number_of_contests = len(list_of_contest_ids)
 
-
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -141,9 +141,10 @@ for i in range(0,number_of_contests):
 
 end = time.time()
 diff = end - start
-<<<<<<< HEAD
+
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
-'''
+
+
 '''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
