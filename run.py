@@ -68,7 +68,6 @@ CIDS = ['4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244
 for c_id in CIDS :
 	remove_old_files('C++', c_id)
 
-'''
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
 list_of_contest_ids = get_CONTEST_IDS()
@@ -77,6 +76,7 @@ list_of_contest_ids = get_CONTEST_IDS()
 #number_of_contests = int(raw_input('Number of contests?'))
 number_of_contests = len(list_of_contest_ids)
 
+'''
 
 # Run the downloading function for downloding input
 print 'Downloading input files...'
