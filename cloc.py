@@ -17,6 +17,8 @@ def cloc_problem(c_id, prob_id, lang, user) :
 	if len(data) != 3 :
 		result = [prob_id , lang, user, str(data[4]), str(data[5]), str(data[6])]
 		print result
+	else :
+		result = []
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
@@ -34,7 +36,8 @@ def cloc_contest(c_id) :
 				users = os.listdir(os.path.join(path_lang, p_id))
 				for user in users :
 					result = cloc_problem(c_id, p_id, l, user)
-					writer.writerow(result)
+					if len(result) != 0:
+						writer.writerow(result)
 
 # calcualte cloc for all contests
 def cloc_all() :
