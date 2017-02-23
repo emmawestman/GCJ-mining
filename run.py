@@ -8,6 +8,7 @@ import urllib2
 from compilegcj import * 
 from datetime import datetime
 from constants import *
+from stuff_module import clean_home_dir
 
 home_path = os.path.join('..')
 
@@ -55,19 +56,13 @@ def write_to_log(message, time):
 	file1.close()
 
 
-def clean_home_dir():
-	files = os.listdir(os.getcwd())
-	to_remove = [ f for f in files if not(f.endswith('.py')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.in')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('README.txt')) ]
-	for f in to_remove:
-		os.remove(f)
-
 clean_home_dir()
 
+## clean vm
+CIDS = ['4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
+'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
+for c_id in CIDS :
+	remove_old_files('C++', c_id)
 
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
@@ -127,8 +122,8 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-'''
 
+'''
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
 start = time.time()
@@ -148,6 +143,7 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time to compile and run all programs in contest:' + CONTEST_ID, diff)
+
 
 '''
 #print log file

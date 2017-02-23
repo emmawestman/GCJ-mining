@@ -1,0 +1,1065 @@
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+sh: 1: pause: not found
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+Processing test #   1: Ok. Time elapsed: 0.008114 secs
+Processing test #   2: Ok. Time elapsed: 0.002194 secs
+Processing test #   3: Ok. Time elapsed: 0.000383 secs
+Processing test #   4: Ok. Time elapsed: 0.000375 secs
+Processing test #   5: Ok. Time elapsed: 0.000278 secs
+Processing test #   6: Ok. Time elapsed: 0.000369 secs
+Processing test #   7: Ok. Time elapsed: 0.002192 secs
+Processing test #   8: Ok. Time elapsed: 0.000507 secs
+Processing test #   9: Ok. Time elapsed: 0.00052 secs
+Processing test #  10: Ok. Time elapsed: 0.000542 secs
+Processing test #  11: Ok. Time elapsed: 0.00037 secs
+Processing test #  12: Ok. Time elapsed: 0.000615 secs
+Processing test #  13: Ok. Time elapsed: 0.000331 secs
+Processing test #  14: Ok. Time elapsed: 0.000277 secs
+Processing test #  15: Ok. Time elapsed: 0.000274 secs
+Processing test #  16: Ok. Time elapsed: 0.000347 secs
+Processing test #  17: Ok. Time elapsed: 0.000276 secs
+Processing test #  18: Ok. Time elapsed: 0.00036 secs
+Processing test #  19: Ok. Time elapsed: 0.000498 secs
+Processing test #  20: Ok. Time elapsed: 0.000419 secs
+Processing test #  21: Ok. Time elapsed: 0.000619 secs
+Processing test #  22: Ok. Time elapsed: 0.00034 secs
+Processing test #  23: Ok. Time elapsed: 0.000558 secs
+Processing test #  24: Ok. Time elapsed: 0.000389 secs
+Processing test #  25: Ok. Time elapsed: 0.000495 secs
+Processing test #  26: Ok. Time elapsed: 0.003397 secs
+Processing test #  27: Ok. Time elapsed: 0.000421 secs
+Processing test #  28: Ok. Time elapsed: 0.001151 secs
+Processing test #  29: Ok. Time elapsed: 0.000281 secs
+Processing test #  30: Ok. Time elapsed: 0.000421 secs
+Processing test #  31: Ok. Time elapsed: 0.000639 secs
+Processing test #  32: Ok. Time elapsed: 0.000578 secs
+Processing test #  33: Ok. Time elapsed: 0.000375 secs
+Processing test #  34: Ok. Time elapsed: 0.000681 secs
+Processing test #  35: Ok. Time elapsed: 0.000492 secs
+Processing test #  36: Ok. Time elapsed: 0.000548 secs
+Processing test #  37: Ok. Time elapsed: 0.000889 secs
+Processing test #  38: Ok. Time elapsed: 0.000911 secs
+Processing test #  39: Ok. Time elapsed: 0.000441 secs
+Processing test #  40: Ok. Time elapsed: 0.000367 secs
+Processing test #  41: Ok. Time elapsed: 0.000275 secs
+Processing test #  42: Ok. Time elapsed: 0.000552 secs
+Processing test #  43: Ok. Time elapsed: 0.000495 secs
+Processing test #  44: Ok. Time elapsed: 0.00033 secs
+Processing test #  45: Ok. Time elapsed: 0.000624 secs
+Processing test #  46: Ok. Time elapsed: 0.000547 secs
+Processing test #  47: Ok. Time elapsed: 0.00062 secs
+Processing test #  48: Ok. Time elapsed: 0.000394 secs
+Processing test #  49: Ok. Time elapsed: 0.000501 secs
+Processing test #  50: Ok. Time elapsed: 0.000568 secs
+Processing test #  51: Ok. Time elapsed: 0.001124 secs
+Processing test #  52: Ok. Time elapsed: 0.000961 secs
+Processing test #  53: Ok. Time elapsed: 0.000622 secs
+Processing test #  54: Ok. Time elapsed: 0.000281 secs
+Processing test #  55: Ok. Time elapsed: 0.000888 secs
+Processing test #  56: Ok. Time elapsed: 0.000404 secs
+Processing test #  57: Ok. Time elapsed: 0.000364 secs
+Processing test #  58: Ok. Time elapsed: 0.000517 secs
+Processing test #  59: Ok. Time elapsed: 0.000281 secs
+Processing test #  60: Ok. Time elapsed: 0.000276 secs
+Processing test #  61: Ok. Time elapsed: 0.001294 secs
+Processing test #  62: Ok. Time elapsed: 0.00047 secs
+Processing test #  63: Ok. Time elapsed: 0.000439 secs
+Processing test #  64: Ok. Time elapsed: 0.001126 secs
+Processing test #  65: Ok. Time elapsed: 0.000276 secs
+Processing test #  66: Ok. Time elapsed: 0.000548 secs
+Processing test #  67: Ok. Time elapsed: 0.00048 secs
+Processing test #  68: Ok. Time elapsed: 0.000978 secs
+Processing test #  69: Ok. Time elapsed: 0.001124 secs
+Processing test #  70: Ok. Time elapsed: 0.000394 secs
+Processing test #  71: Ok. Time elapsed: 0.000547 secs
+Processing test #  72: Ok. Time elapsed: 0.000327 secs
+Processing test #  73: Ok. Time elapsed: 0.000329 secs
+Processing test #  74: Ok. Time elapsed: 0.001115 secs
+Processing test #  75: Ok. Time elapsed: 0.000276 secs
+Processing test #  76: Ok. Time elapsed: 0.000929 secs
+Processing test #  77: Ok. Time elapsed: 0.000512 secs
+Processing test #  78: Ok. Time elapsed: 0.000673 secs
+Processing test #  79: Ok. Time elapsed: 0.000888 secs
+Processing test #  80: Ok. Time elapsed: 0.000403 secs
+Processing test #  81: Ok. Time elapsed: 0.000378 secs
+Processing test #  82: Ok. Time elapsed: 0.000465 secs
+Processing test #  83: Ok. Time elapsed: 0.000494 secs
+Processing test #  84: Ok. Time elapsed: 0.000391 secs
+Processing test #  85: Ok. Time elapsed: 0.000387 secs
+Processing test #  86: Ok. Time elapsed: 0.000455 secs
+Processing test #  87: Ok. Time elapsed: 0.000576 secs
+Processing test #  88: Ok. Time elapsed: 0.000406 secs
+Processing test #  89: Ok. Time elapsed: 0.000666 secs
+Processing test #  90: Ok. Time elapsed: 0.000447 secs
+Processing test #  91: Ok. Time elapsed: 0.00039 secs
+Processing test #  92: Ok. Time elapsed: 0.000328 secs
+Processing test #  93: Ok. Time elapsed: 0.001132 secs
+Processing test #  94: Ok. Time elapsed: 0.000519 secs
+Processing test #  95: Ok. Time elapsed: 0.000394 secs
+Processing test #  96: Ok. Time elapsed: 0.000542 secs
+Processing test #  97: Ok. Time elapsed: 0.000501 secs
+Processing test #  98: Ok. Time elapsed: 0.0005 secs
+Processing test #  99: Ok. Time elapsed: 0.000917 secs
+Processing test # 100: Ok. Time elapsed: 0.001129 secs
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+sh: 1: pause: not found
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+1/100: 0.008097
+2/100: 0.002943
+3/100: 0.002319
+4/100: 0.002008
+5/100: 0.000998
+6/100: 0.001453
+7/100: 0.00238
+8/100: 0.000608
+9/100: 0.000121
+10/100: 0.000184
+11/100: 0.000203
+12/100: 0.000786
+13/100: 0.000487
+14/100: 6.8e-05
+15/100: 0.000207
+16/100: 0.004859
+17/100: 0.000218
+18/100: 8.6e-05
+19/100: 6.6e-05
+20/100: 0.000116
+21/100: 0.00143
+22/100: 0.001116
+23/100: 0.007128
+24/100: 0.00193
+25/100: 0.000244
+26/100: 0.000124
+27/100: 6.3e-05
+28/100: 0.000117
+29/100: 0.000208
+30/100: 0.000167
+31/100: 0.000418
+32/100: 7.8e-05
+33/100: 0.000777
+34/100: 8.7e-05
+35/100: 0.000116
+36/100: 0.000114
+37/100: 0.000114
+38/100: 0.000119
+39/100: 0.000114
+40/100: 0.001439
+41/100: 0.006144
+42/100: 0.001524
+43/100: 0.000249
+44/100: 0.000903
+45/100: 0.000118
+46/100: 0.001131
+47/100: 0.004687
+48/100: 0.003267
+49/100: 0.001929
+50/100: 0.000753
+51/100: 0.000123
+52/100: 6.4e-05
+53/100: 0.000117
+54/100: 0.000116
+55/100: 0.000115
+56/100: 0.001416
+57/100: 0.00315
+58/100: 0.00214
+59/100: 0.002673
+60/100: 0.000165
+61/100: 6.8e-05
+62/100: 0.000149
+63/100: 0.001439
+64/100: 0.00148
+65/100: 0.000118
+66/100: 0.002065
+67/100: 0.001735
+68/100: 0.00184
+69/100: 0.001704
+70/100: 0.001698
+71/100: 9.9e-05
+72/100: 0.000939
+73/100: 0.000119
+74/100: 0.001545
+75/100: 6.4e-05
+76/100: 0.000325
+77/100: 0.005122
+78/100: 0.001754
+79/100: 0.001752
+80/100: 0.000712
+81/100: 0.001321
+82/100: 0.00012
+83/100: 0.000508
+84/100: 0.000797
+85/100: 0.000117
+86/100: 0.000119
+87/100: 0.000366
+88/100: 0.001674
+89/100: 0.005357
+90/100: 0.003742
+91/100: 0.00011
+92/100: 0.000397
+93/100: 0.004814
+94/100: 0.000957
+95/100: 0.001704
+96/100: 0.002725
+97/100: 0.000141
+98/100: 0.000544
+99/100: 0.000117
+100/100: 0.000281
+Total: 0.125532
+  Ave: 0.00125532
+
+/solutions_4314486/C++
+Processing test #   1: Ok. Time elapsed: 0.005982 secs
+Processing test #   2: Ok. Time elapsed: 0.00085 secs
+Processing test #   3: Ok. Time elapsed: 0.000249 secs
+Processing test #   4: Ok. Time elapsed: 0.000296 secs
+Processing test #   5: Ok. Time elapsed: 0.000211 secs
+Processing test #   6: Ok. Time elapsed: 0.000243 secs
+Processing test #   7: Ok. Time elapsed: 0.003469 secs
+Processing test #   8: Ok. Time elapsed: 0.001006 secs
+Processing test #   9: Ok. Time elapsed: 0.000285 secs
+Processing test #  10: Ok. Time elapsed: 0.00041 secs
+Processing test #  11: Ok. Time elapsed: 0.000404 secs
+Processing test #  12: Ok. Time elapsed: 0.001454 secs
+Processing test #  13: Ok. Time elapsed: 0.00087 secs
+Processing test #  14: Ok. Time elapsed: 0.000199 secs
+Processing test #  15: Ok. Time elapsed: 0.00028 secs
+Processing test #  16: Ok. Time elapsed: 0.000878 secs
+Processing test #  17: Ok. Time elapsed: 0.000402 secs
+Processing test #  18: Ok. Time elapsed: 0.000263 secs
+Processing test #  19: Ok. Time elapsed: 0.000198 secs
+Processing test #  20: Ok. Time elapsed: 0.000281 secs
+Processing test #  21: Ok. Time elapsed: 0.002575 secs
+Processing test #  22: Ok. Time elapsed: 0.002103 secs
+Processing test #  23: Ok. Time elapsed: 0.00288 secs
+Processing test #  24: Ok. Time elapsed: 0.000284 secs
+Processing test #  25: Ok. Time elapsed: 0.00036 secs
+Processing test #  26: Ok. Time elapsed: 0.000277 secs
+Processing test #  27: Ok. Time elapsed: 0.000216 secs
+Processing test #  28: Ok. Time elapsed: 0.000322 secs
+Processing test #  29: Ok. Time elapsed: 0.000283 secs
+Processing test #  30: Ok. Time elapsed: 0.000353 secs
+Processing test #  31: Ok. Time elapsed: 0.000774 secs
+Processing test #  32: Ok. Time elapsed: 0.000199 secs
+Processing test #  33: Ok. Time elapsed: 0.001457 secs
+Processing test #  34: Ok. Time elapsed: 0.00024 secs
+Processing test #  35: Ok. Time elapsed: 0.000284 secs
+Processing test #  36: Ok. Time elapsed: 0.000323 secs
+Processing test #  37: Ok. Time elapsed: 0.000277 secs
+Processing test #  38: Ok. Time elapsed: 0.000275 secs
+Processing test #  39: Ok. Time elapsed: 0.000277 secs
+Processing test #  40: Ok. Time elapsed: 0.001718 secs
+Processing test #  41: Ok. Time elapsed: 0.001564 secs
+Processing test #  42: Ok. Time elapsed: 0.000226 secs
+Processing test #  43: Ok. Time elapsed: 0.000209 secs
+Processing test #  44: Ok. Time elapsed: 0.001653 secs
+Processing test #  45: Ok. Time elapsed: 0.000317 secs
+Processing test #  46: Ok. Time elapsed: 0.001963 secs
+Processing test #  47: Ok. Time elapsed: 0.002771 secs
+Processing test #  48: Ok. Time elapsed: 0.000598 secs
+Processing test #  49: Ok. Time elapsed: 0.001082 secs
+Processing test #  50: Ok. Time elapsed: 0.001302 secs
+Processing test #  51: Ok. Time elapsed: 0.000273 secs
+Processing test #  52: Ok. Time elapsed: 0.000189 secs
+Processing test #  53: Ok. Time elapsed: 0.000288 secs
+Processing test #  54: Ok. Time elapsed: 0.000271 secs
+Processing test #  55: Ok. Time elapsed: 0.000266 secs
+Processing test #  56: Ok. Time elapsed: 0.002504 secs
+Processing test #  57: Ok. Time elapsed: 0.001045 secs
+Processing test #  58: Ok. Time elapsed: 0.000381 secs
+Processing test #  59: Ok. Time elapsed: 0.001318 secs
+Processing test #  60: Ok. Time elapsed: 0.000268 secs
+Processing test #  61: Ok. Time elapsed: 0.000188 secs
+Processing test #  62: Ok. Time elapsed: 0.000188 secs
+Processing test #  63: Ok. Time elapsed: 0.002597 secs
+Processing test #  64: Ok. Time elapsed: 0.002698 secs
+Processing test #  65: Ok. Time elapsed: 0.000268 secs
+Processing test #  66: Ok. Time elapsed: 0.001738 secs
+Processing test #  67: Ok. Time elapsed: 0.000267 secs
+Processing test #  68: Ok. Time elapsed: 0.000271 secs
+Processing test #  69: Ok. Time elapsed: 0.000316 secs
+Processing test #  70: Ok. Time elapsed: 0.002152 secs
+Processing test #  71: Ok. Time elapsed: 0.00023 secs
+Processing test #  72: Ok. Time elapsed: 0.001627 secs
+Processing test #  73: Ok. Time elapsed: 0.00028 secs
+Processing test #  74: Ok. Time elapsed: 0.002787 secs
+Processing test #  75: Ok. Time elapsed: 0.000197 secs
+Processing test #  76: Ok. Time elapsed: 0.000607 secs
+Processing test #  77: Ok. Time elapsed: 0.0028 secs
+Processing test #  78: Ok. Time elapsed: 0.000284 secs
+Processing test #  79: Ok. Time elapsed: 0.000281 secs
+Processing test #  80: Ok. Time elapsed: 0.000794 secs
+Processing test #  81: Ok. Time elapsed: 0.002222 secs
+Processing test #  82: Ok. Time elapsed: 0.000278 secs
+Processing test #  83: Ok. Time elapsed: 0.000922 secs
+Processing test #  84: Ok. Time elapsed: 0.001415 secs
+Processing test #  85: Ok. Time elapsed: 0.000285 secs
+Processing test #  86: Ok. Time elapsed: 0.000282 secs
+Processing test #  87: Ok. Time elapsed: 0.000686 secs
+Processing test #  88: Ok. Time elapsed: 0.000279 secs
+Processing test #  89: Ok. Time elapsed: 0.001414 secs
+Processing test #  90: Ok. Time elapsed: 0.00245 secs
+Processing test #  91: Ok. Time elapsed: 0.000213 secs
+Processing test #  92: Ok. Time elapsed: 0.000684 secs
+Processing test #  93: Ok. Time elapsed: 0.00281 secs
+Processing test #  94: Ok. Time elapsed: 0.000199 secs
+Processing test #  95: Ok. Time elapsed: 0.000278 secs
+Processing test #  96: Ok. Time elapsed: 0.001324 secs
+Processing test #  97: Ok. Time elapsed: 0.000241 secs
+Processing test #  98: Ok. Time elapsed: 0.001055 secs
+Processing test #  99: Ok. Time elapsed: 0.000278 secs
+Processing test # 100: Ok. Time elapsed: 0.000544 secs
+
+/solutions_4314486/C++
+5 3 8
+2 0 1
+4 2 4
+7 5 32
+2 0 1
+4 2 4
+48 46 70368744177664
+27 25 33554432
+7 5 32
+10 8 256
+13 11 2048
+34 32 4294967296
+25 23 8388608
+49 47 140737488355328
+7 5 32
+25 23 8388608
+11 9 512
+3 1 2
+49 47 140737488355328
+7 5 32
+48 46 70368744177664
+42 40 1099511627776
+50 48 281474976710656
+7 5 32
+11 9 512
+7 5 32
+7 5 32
+7 5 32
+7 5 32
+11 9 512
+23 21 2097152
+50 48 281474976710656
+34 32 4294967296
+4 2 4
+7 5 32
+7 5 32
+7 5 32
+7 5 32
+7 5 32
+23 21 2097152
+38 36 68719476736
+3 1 2
+4 2 4
+37 35 34359738368
+7 5 32
+41 39 549755813888
+50 48 281474976710656
+18 16 65536
+28 26 67108864
+32 30 1073741824
+7 5 32
+25 23 8388608
+7 5 32
+7 5 32
+7 5 32
+47 45 35184372088832
+28 26 67108864
+9 7 128
+33 31 2147483648
+7 5 32
+3 1 2
+25 23 8388608
+48 46 70368744177664
+49 47 140737488355328
+7 5 32
+38 36 68719476736
+7 5 32
+7 5 32
+7 5 32
+44 42 4398046511104
+4 2 4
+37 35 34359738368
+7 5 32
+50 48 281474976710656
+2 0 1
+19 17 131072
+50 48 281474976710656
+7 5 32
+7 5 32
+23 21 2097152
+44 42 4398046511104
+7 5 32
+26 24 16777216
+34 32 4294967296
+7 5 32
+7 5 32
+21 19 524288
+7 5 32
+34 32 4294967296
+47 45 35184372088832
+50 48 281474976710656
+21 19 524288
+50 48 281474976710656
+50 48 281474976710656
+7 5 32
+33 31 2147483648
+4 2 4
+27 25 33554432
+7 5 32
+17 15 32768
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+sh: 1: pause: not found
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+1/46: 0.007385
+2/46: 0.006724
+3/46: 0.003536
+4/46: 0.001034
+5/46: 0.001212
+6/46: 0.000935
+7/46: 0.001104
+8/46: 0.000973
+9/46: 0.001054
+10/46: 0.00115
+11/46: 0.000309
+12/46: 0.000112
+13/46: 9.6e-05
+14/46: 0.000193
+15/46: 0.000108
+16/46: 0.000102
+17/46: 6.5e-05
+18/46: 8.5e-05
+19/46: 6.1e-05
+20/46: 0.0001
+21/46: 9.8e-05
+22/46: 0.000107
+23/46: 9.7e-05
+24/46: 0.000102
+25/46: 9.4e-05
+26/46: 8.7e-05
+27/46: 0.000125
+28/46: 0.000104
+29/46: 0.000579
+30/46: 0.000937
+31/46: 0.000998
+32/46: 0.000919
+33/46: 0.001307
+34/46: 0.000929
+35/46: 0.001018
+36/46: 0.001037
+37/46: 0.000614
+38/46: 0.000117
+39/46: 6.4e-05
+40/46: 0.000103
+41/46: 0.0001
+42/46: 9.9e-05
+43/46: 0.0001
+44/46: 9.7e-05
+45/46: 0.000101
+46/46: 8.5e-05
+Total: 0.036356
+  Ave: 0.000790348
+
+/solutions_4314486/C++
+Processing test #   1: Ok. Time elapsed: 0.004862 secs
+Processing test #   2: Ok. Time elapsed: 0.001105 secs
+Processing test #   3: Ok. Time elapsed: 0.000305 secs
+Processing test #   4: Ok. Time elapsed: 0.000419 secs
+Processing test #   5: Ok. Time elapsed: 0.000305 secs
+Processing test #   6: Ok. Time elapsed: 0.000304 secs
+Processing test #   7: Ok. Time elapsed: 0.000268 secs
+Processing test #   8: Ok. Time elapsed: 0.000263 secs
+Processing test #   9: Ok. Time elapsed: 0.000274 secs
+Processing test #  10: Ok. Time elapsed: 0.000303 secs
+Processing test #  11: Ok. Time elapsed: 0.00032 secs
+Processing test #  12: Ok. Time elapsed: 0.000269 secs
+Processing test #  13: Ok. Time elapsed: 0.000273 secs
+Processing test #  14: Ok. Time elapsed: 0.003803 secs
+Processing test #  15: Ok. Time elapsed: 0.000145 secs
+Processing test #  16: Ok. Time elapsed: 0.00037 secs
+Processing test #  17: Ok. Time elapsed: 0.000243 secs
+Processing test #  18: Ok. Time elapsed: 0.000296 secs
+Processing test #  19: Ok. Time elapsed: 0.000288 secs
+Processing test #  20: Ok. Time elapsed: 0.00028 secs
+Processing test #  21: Ok. Time elapsed: 0.000279 secs
+Processing test #  22: Ok. Time elapsed: 0.00027 secs
+Processing test #  23: Ok. Time elapsed: 0.000262 secs
+Processing test #  24: Ok. Time elapsed: 0.000266 secs
+Processing test #  25: Ok. Time elapsed: 0.000257 secs
+Processing test #  26: Ok. Time elapsed: 0.00025 secs
+Processing test #  27: Ok. Time elapsed: 0.00014 secs
+Processing test #  28: Ok. Time elapsed: 0.000128 secs
+Processing test #  29: Ok. Time elapsed: 0.000115 secs
+Processing test #  30: Ok. Time elapsed: 0.000162 secs
+Processing test #  31: Ok. Time elapsed: 0.00012 secs
+Processing test #  32: Ok. Time elapsed: 0.000116 secs
+Processing test #  33: Ok. Time elapsed: 0.000124 secs
+Processing test #  34: Ok. Time elapsed: 0.000118 secs
+Processing test #  35: Ok. Time elapsed: 0.00012 secs
+Processing test #  36: Ok. Time elapsed: 0.000129 secs
+Processing test #  37: Ok. Time elapsed: 0.000122 secs
+Processing test #  38: Ok. Time elapsed: 0.00012 secs
+Processing test #  39: Ok. Time elapsed: 0.000108 secs
+Processing test #  40: Ok. Time elapsed: 0.000123 secs
+Processing test #  41: Ok. Time elapsed: 0.000147 secs
+Processing test #  42: Ok. Time elapsed: 0.000124 secs
+Processing test #  43: Ok. Time elapsed: 0.000116 secs
+Processing test #  44: Ok. Time elapsed: 0.000121 secs
+Processing test #  45: Ok. Time elapsed: 0.000121 secs
+Processing test #  46: Ok. Time elapsed: 0.000114 secs
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+1 in 2
+2 in 4
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 4
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+1 in 2
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 4
+1 in 2
+1 in 3
+1 in 2
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+2 in 4
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+1 in 2
+1 in 3
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+1 in 3
+1 in 2
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 5
+1 in 3
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+3 in 7
+2 in 5
+1 in 3
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+2 in 6
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+3 in 6
+2 in 4
+1 in 2
+1 in 2
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+sh: 1: pause: not found
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+1/100: 0.003542
+2/100: 0.007164
+3/100: 0.001702
+4/100: 0.001424
+5/100: 0.008386
+6/100: 0.00044
+7/100: 0.000317
+8/100: 0.001026
+9/100: 0.007715
+10/100: 0.011483
+11/100: 0.001623
+12/100: 0.008942
+13/100: 0.001545
+14/100: 0.00044
+15/100: 0.000149
+16/100: 0.000126
+17/100: 0.000247
+18/100: 0.000248
+19/100: 0.000276
+20/100: 0.010278
+21/100: 0.000168
+22/100: 0.000163
+23/100: 0.000789
+24/100: 8.7e-05
+25/100: 0.000164
+26/100: 0.00017
+27/100: 0.000344
+28/100: 0.000168
+29/100: 0.00802
+30/100: 0.000389
+31/100: 0.000526
+32/100: 0.000176
+33/100: 0.003196
+34/100: 0.02194
+35/100: 0.000169
+36/100: 9.9e-05
+37/100: 0.01282
+38/100: 0.003008
+39/100: 0.000357
+40/100: 0.000158
+41/100: 0.000173
+42/100: 0.000112
+43/100: 0.000775
+44/100: 0.006952
+45/100: 0.000266
+46/100: 0.000793
+47/100: 0.000377
+48/100: 0.001369
+49/100: 0.005668
+50/100: 0.001435
+51/100: 0.013249
+52/100: 0.000317
+53/100: 0.009548
+54/100: 0.000248
+55/100: 0.007391
+56/100: 0.000129
+57/100: 0.001277
+58/100: 0.0001
+59/100: 0.000441
+60/100: 0.000265
+61/100: 7.6e-05
+62/100: 9.2e-05
+63/100: 0.000143
+64/100: 0.000656
+65/100: 0.000199
+66/100: 0.010635
+67/100: 0.021804
+68/100: 0.00018
+69/100: 0.002263
+70/100: 0.000151
+71/100: 0.000112
+72/100: 0.00036
+73/100: 7.6e-05
+74/100: 0.000474
+75/100: 0.000104
+76/100: 0.000473
+77/100: 0.000377
+78/100: 0.00643
+79/100: 0.000329
+80/100: 0.000645
+81/100: 0.002738
+82/100: 0.00058
+83/100: 0.000144
+84/100: 0.001365
+85/100: 0.006826
+86/100: 0.000252
+87/100: 0.001403
+88/100: 0.022683
+89/100: 0.000371
+90/100: 0.000737
+91/100: 0.000262
+92/100: 0.000302
+93/100: 0.000225
+94/100: 9e-05
+95/100: 0.00089
+96/100: 0.000228
+97/100: 0.001329
+98/100: 0.009269
+99/100: 0.003276
+100/100: 0.002288
+Total: 0.271706
+  Ave: 0.00271706
+
+/solutions_4314486/C++
+Processing test #   1: Ok. Time elapsed: 0.007572 secs
+Processing test #   2: Ok. Time elapsed: 0.00202 secs
+Processing test #   3: Ok. Time elapsed: 0.000364 secs
+Processing test #   4: Ok. Time elapsed: 0.000367 secs
+Processing test #   5: Ok. Time elapsed: 0.005364 secs
+Processing test #   6: Ok. Time elapsed: 0.000899 secs
+Processing test #   7: Ok. Time elapsed: 0.000746 secs
+Processing test #   8: Ok. Time elapsed: 0.002634 secs
+Processing test #   9: Ok. Time elapsed: 0.00601 secs
+Processing test #  10: Ok. Time elapsed: 0.013998 secs
+Processing test #  11: Ok. Time elapsed: 0.004133 secs
+Processing test #  12: Ok. Time elapsed: 0.008485 secs
+Processing test #  13: Ok. Time elapsed: 0.003874 secs
+Processing test #  14: Ok. Time elapsed: 0.001141 secs
+Processing test #  15: Ok. Time elapsed: 0.000595 secs
+Processing test #  16: Ok. Time elapsed: 0.000388 secs
+Processing test #  17: Ok. Time elapsed: 0.000608 secs
+Processing test #  18: Ok. Time elapsed: 0.000622 secs
+Processing test #  19: Ok. Time elapsed: 0.00061 secs
+Processing test #  20: Ok. Time elapsed: 0.018569 secs
+Processing test #  21: Ok. Time elapsed: 0.000388 secs
+Processing test #  22: Ok. Time elapsed: 0.000431 secs
+Processing test #  23: Ok. Time elapsed: 0.001552 secs
+Processing test #  24: Ok. Time elapsed: 0.000332 secs
+Processing test #  25: Ok. Time elapsed: 0.000279 secs
+Processing test #  26: Ok. Time elapsed: 0.000628 secs
+Processing test #  27: Ok. Time elapsed: 0.001234 secs
+Processing test #  28: Ok. Time elapsed: 0.000633 secs
+Processing test #  29: Ok. Time elapsed: 0.009118 secs
+Processing test #  30: Ok. Time elapsed: 0.000913 secs
+Processing test #  31: Ok. Time elapsed: 0.001193 secs
+Processing test #  32: Ok. Time elapsed: 0.000505 secs
+Processing test #  33: Ok. Time elapsed: 0.008088 secs
+Processing test #  34: Ok. Time elapsed: 0.027817 secs
+Processing test #  35: Ok. Time elapsed: 0.000507 secs
+Processing test #  36: Ok. Time elapsed: 0.000276 secs
+Processing test #  37: Ok. Time elapsed: 0.018591 secs
+Processing test #  38: Ok. Time elapsed: 0.000979 secs
+Processing test #  39: Ok. Time elapsed: 0.000688 secs
+Processing test #  40: Ok. Time elapsed: 0.000608 secs
+Processing test #  41: Ok. Time elapsed: 0.000457 secs
+Processing test #  42: Ok. Time elapsed: 0.000329 secs
+Processing test #  43: Ok. Time elapsed: 0.003181 secs
+Processing test #  44: Ok. Time elapsed: 0.004293 secs
+Processing test #  45: Ok. Time elapsed: 0.000712 secs
+Processing test #  46: Ok. Time elapsed: 0.002046 secs
+Processing test #  47: Ok. Time elapsed: 0.001436 secs
+Processing test #  48: Ok. Time elapsed: 0.000722 secs
+Processing test #  49: Ok. Time elapsed: 0.00188 secs
+Processing test #  50: Ok. Time elapsed: 0.005333 secs
+Processing test #  51: Ok. Time elapsed: 0.031019 secs
+Processing test #  52: Ok. Time elapsed: 0.000685 secs
+Processing test #  53: Ok. Time elapsed: 0.010908 secs
+Processing test #  54: Ok. Time elapsed: 0.000953 secs
+Processing test #  55: Ok. Time elapsed: 0.00411 secs
+Processing test #  56: Ok. Time elapsed: 0.000387 secs
+Processing test #  57: Ok. Time elapsed: 0.002914 secs
+Processing test #  58: Ok. Time elapsed: 0.000417 secs
+Processing test #  59: Ok. Time elapsed: 0.001042 secs
+Processing test #  60: Ok. Time elapsed: 0.000613 secs
+Processing test #  61: Ok. Time elapsed: 0.000275 secs
+Processing test #  62: Ok. Time elapsed: 0.000281 secs
+Processing test #  63: Ok. Time elapsed: 0.000559 secs
+Processing test #  64: Ok. Time elapsed: 0.001673 secs
+Processing test #  65: Ok. Time elapsed: 0.000764 secs
+Processing test #  66: Ok. Time elapsed: 0.018016 secs
+Processing test #  67: Ok. Time elapsed: 0.038685 secs
+Processing test #  68: Ok. Time elapsed: 0.000594 secs
+Processing test #  69: Ok. Time elapsed: 0.006002 secs
+Processing test #  70: Ok. Time elapsed: 0.00039 secs
+Processing test #  71: Ok. Time elapsed: 0.000327 secs
+Processing test #  72: Ok. Time elapsed: 0.001001 secs
+Processing test #  73: Ok. Time elapsed: 0.000276 secs
+Processing test #  74: Ok. Time elapsed: 0.001159 secs
+Processing test #  75: Ok. Time elapsed: 0.000332 secs
+Processing test #  76: Ok. Time elapsed: 0.001173 secs
+Processing test #  77: Ok. Time elapsed: 0.001485 secs
+Processing test #  78: Ok. Time elapsed: 0.003729 secs
+Processing test #  79: Ok. Time elapsed: 0.000468 secs
+Processing test #  80: Ok. Time elapsed: 0.002229 secs
+Processing test #  81: Ok. Time elapsed: 0.007101 secs
+Processing test #  82: Ok. Time elapsed: 0.001476 secs
+Processing test #  83: Ok. Time elapsed: 0.000394 secs
+Processing test #  84: Ok. Time elapsed: 0.00352 secs
+Processing test #  85: Ok. Time elapsed: 0.003648 secs
+Processing test #  86: Ok. Time elapsed: 0.000546 secs
+Processing test #  87: Ok. Time elapsed: 0.003596 secs
+Processing test #  88: Ok. Time elapsed: 0.033808 secs
+Processing test #  89: Ok. Time elapsed: 0.001165 secs
+Processing test #  90: Ok. Time elapsed: 0.001946 secs
+Processing test #  91: Ok. Time elapsed: 0.000679 secs
+Processing test #  92: Ok. Time elapsed: 0.000683 secs
+Processing test #  93: Ok. Time elapsed: 0.000896 secs
+Processing test #  94: Ok. Time elapsed: 0.000311 secs
+Processing test #  95: Ok. Time elapsed: 0.001988 secs
+Processing test #  96: Ok. Time elapsed: 0.000503 secs
+Processing test #  97: Ok. Time elapsed: 0.003507 secs
+Processing test #  98: Ok. Time elapsed: 0.012709 secs
+Processing test #  99: Ok. Time elapsed: 0.000934 secs
+Processing test # 100: Ok. Time elapsed: 0.001301 secs
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+sh: 1: pause: not found
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+1/50: 0.002818
+2/50: 0.00607
+3/50: 0.001156
+4/50: 0.001044
+5/50: 0.004776
+6/50: 0.001084
+7/50: 0.004345
+8/50: 0.003858
+9/50: 0.003901
+10/50: 0.001299
+11/50: 0.001026
+12/50: 0.003803
+13/50: 0.001012
+14/50: 0.001039
+15/50: 0.003779
+16/50: 0.003985
+17/50: 0.003927
+18/50: 0.001087
+19/50: 0.001086
+20/50: 0.003826
+21/50: 0.001122
+22/50: 0.003833
+23/50: 0.003878
+24/50: 0.003825
+25/50: 0.001113
+26/50: 0.003848
+27/50: 0.003867
+28/50: 0.003973
+29/50: 0.00401
+30/50: 0.003843
+31/50: 0.001088
+32/50: 0.003827
+33/50: 0.003802
+34/50: 0.001064
+35/50: 0.003928
+36/50: 0.001132
+37/50: 0.00219
+38/50: 0.004025
+39/50: 0.003845
+40/50: 0.001054
+41/50: 0.001015
+42/50: 0.003989
+43/50: 0.003898
+44/50: 0.00381
+45/50: 0.004608
+46/50: 0.003922
+47/50: 0.004024
+48/50: 0.003838
+49/50: 0.003965
+50/50: 0.000989
+Total: 0.148246
+  Ave: 0.00296492
+
+/solutions_4314486/C++
+Processing test #   1: Ok. Time elapsed: 0.004904 secs
+Processing test #   2: Ok. Time elapsed: 0.001014 secs
+Processing test #   3: Ok. Time elapsed: 0.000288 secs
+Processing test #   4: Ok. Time elapsed: 0.000406 secs
+Processing test #   5: Ok. Time elapsed: 0.001528 secs
+Processing test #   6: Ok. Time elapsed: 0.000249 secs
+Processing test #   7: Ok. Time elapsed: 0.00109 secs
+Processing test #   8: Ok. Time elapsed: 0.001096 secs
+Processing test #   9: Ok. Time elapsed: 0.001722 secs
+Processing test #  10: Ok. Time elapsed: 0.0006 secs
+Processing test #  11: Ok. Time elapsed: 0.000249 secs
+Processing test #  12: Ok. Time elapsed: 0.000982 secs
+Processing test #  13: Ok. Time elapsed: 0.00029 secs
+Processing test #  14: Ok. Time elapsed: 0.000258 secs
+Processing test #  15: Ok. Time elapsed: 0.001246 secs
+Processing test #  16: Ok. Time elapsed: 0.001226 secs
+Processing test #  17: Ok. Time elapsed: 0.001224 secs
+Processing test #  18: Ok. Time elapsed: 0.000292 secs
+Processing test #  19: Ok. Time elapsed: 0.000248 secs
+Processing test #  20: Ok. Time elapsed: 0.001174 secs
+Processing test #  21: Ok. Time elapsed: 0.000327 secs
+Processing test #  22: Ok. Time elapsed: 0.001269 secs
+Processing test #  23: Ok. Time elapsed: 0.001227 secs
+Processing test #  24: Ok. Time elapsed: 0.001194 secs
+Processing test #  25: Ok. Time elapsed: 0.000377 secs
+Processing test #  26: Ok. Time elapsed: 0.001198 secs
+Processing test #  27: Ok. Time elapsed: 0.001361 secs
+Processing test #  28: Ok. Time elapsed: 0.001186 secs
+Processing test #  29: Ok. Time elapsed: 0.001204 secs
+Processing test #  30: Ok. Time elapsed: 0.001222 secs
+Processing test #  31: Ok. Time elapsed: 0.000288 secs
+Processing test #  32: Ok. Time elapsed: 0.001216 secs
+Processing test #  33: Ok. Time elapsed: 0.001276 secs
+Processing test #  34: Ok. Time elapsed: 0.000259 secs
+Processing test #  35: Ok. Time elapsed: 0.001211 secs
+Processing test #  36: Ok. Time elapsed: 0.000373 secs
+Processing test #  37: Ok. Time elapsed: 0.0006 secs
+Processing test #  38: Ok. Time elapsed: 0.001185 secs
+Processing test #  39: Ok. Time elapsed: 0.001195 secs
+Processing test #  40: Ok. Time elapsed: 0.000249 secs
+Processing test #  41: Ok. Time elapsed: 0.000264 secs
+Processing test #  42: Ok. Time elapsed: 0.001197 secs
+Processing test #  43: Ok. Time elapsed: 0.00117 secs
+Processing test #  44: Ok. Time elapsed: 0.001259 secs
+Processing test #  45: Ok. Time elapsed: 0.001143 secs
+Processing test #  46: Ok. Time elapsed: 0.001155 secs
+Processing test #  47: Ok. Time elapsed: 0.001052 secs
+Processing test #  48: Ok. Time elapsed: 0.001197 secs
+Processing test #  49: Ok. Time elapsed: 0.00123 secs
+Processing test #  50: Ok. Time elapsed: 0.000247 secs
+
+/solutions_4314486/C++
+timedout
+/solutions_4314486/C++
+timedout
