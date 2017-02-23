@@ -9,7 +9,7 @@ CONTEST_IDS = ['6254486', '4304486', '11254486', '4314486', '6224486', '4224486'
 
 # contest on emmas computer
 #['1128486', '2984486']
-LANGUAGE = ['C++']#['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
 
