@@ -31,7 +31,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 
 
 def run_java_command(class_name,args):	
-	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
+	cmd = ['timeout 30s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	exit_code = p.returncode
@@ -53,7 +53,7 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
+				cmd = ['timeout 30s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				exit_code = p.returncode
