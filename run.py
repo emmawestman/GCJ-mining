@@ -95,7 +95,7 @@ print 'Done downloing input files!'
 
 diff = end - start
 write_to_log('Time to download all input files to solutions: ', diff)
-
+'''
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
@@ -127,8 +127,8 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-'''
 
+'''
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
 start = time.time()
@@ -151,7 +151,6 @@ diff = end - start
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
 
 
-'''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")
