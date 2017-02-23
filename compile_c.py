@@ -25,6 +25,10 @@ def compile_c(c_id):
 				if len(errors) > 0 and 'warning' not in errors:
 					print 'failed to run problem: ' + root
 					print errors
+					file1 = open('compile_c_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
 				else:
 					succes_nbr += 1
 	return succes_nbr, nbr_of_files
@@ -51,6 +55,10 @@ def run_c(c_id):
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
+					file1 = open('c_run_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
 					#print errors
 				else:
 					succes_nbr += 1

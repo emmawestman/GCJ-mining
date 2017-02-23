@@ -37,6 +37,10 @@ def run_java_command(class_name,args):
 	exit_code = p.returncode
 	if exit_code == 0:
 		if errors.find('Exception in thread')!= -1:
+			file1 = open('java_run_errors.txt', "a")
+			file1.write(os.getcwd() + '\n')
+			file1.write(errors + '\n')
+			file1.close()
 			return 0,errors
 		return 1,None
 	else:
@@ -62,6 +66,10 @@ def compile_java(c_id):
 						succes_nbr += 1
 					else:
 						print errors
+						file1 = open('java_compile_errors.txt', "a")
+						file1.write(path + '\n')
+						file1.write(errors + '\n')
+						file1.close()
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :
