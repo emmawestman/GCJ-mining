@@ -8,6 +8,7 @@ import urllib2
 from compilegcj import * 
 from datetime import datetime
 from constants import *
+from stuff_module import clean_home_dir
 
 home_path = os.path.join('..')
 
@@ -48,17 +49,7 @@ def write_to_log(message, time):
 	file1.write(message)
 	file1.close()
 
-def clean_home_dir():
-	files = os.listdir(os.getcwd())
-	to_remove = [ f for f in files if not(f.endswith('.py')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.pyc')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.in')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('README.txt')) ]
-	for f in to_remove:
-		os.remove(f)
+
 
 clean_home_dir()
 
@@ -95,7 +86,7 @@ print 'Done downloing input files!'
 
 diff = end - start
 write_to_log('Time to download all input files to solutions: ', diff)
-'''
+
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
@@ -150,7 +141,7 @@ diff = end - start
 
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
 
-
+'''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")

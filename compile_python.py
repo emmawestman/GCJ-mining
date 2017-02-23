@@ -24,14 +24,14 @@ def compile_python(c_id):
 
 
 def run_python_2x(file_path,path_input,c_id,root):
-	errors = run_python_commando('python ',file_path,path_input)
+	errors = run_python_commando('timeout 30s python ',file_path,path_input)
 	if len(errors) > 0:
 		return handle_python_2x_errors(file_path,path_input,c_id,root,errors)			
 	return 1
 
 
 def run_python_3x(file_path,path_input,c_id,root):
-	errors = run_python_commando('python3 ',file_path,path_input)
+	errors = run_python_commando('timeout 30s python3 ',file_path,path_input)
 	if len(errors) > 0:
 		return handle_python_3x_errors(errors,file_path,path_input,c_id,root)
 	return 1
