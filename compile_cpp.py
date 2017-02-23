@@ -26,7 +26,9 @@ def compile_cpp(c_id):
 			#cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
+			# no timeout
 			if int(exit_code) == 0:
+				# an error occured
 				if len(errors) > 0 and 'warning' not in errors:
 					'''
 					#try with c++ 11 instead
@@ -48,6 +50,13 @@ def compile_cpp(c_id):
 				else:
 					print 'success!'
 					succes_nbr += 1
+			else :
+				print 'Timeout for file: ' + os.path.join(root,f)
+				file1 = open('cpp_compile_errors.txt', "a")
+				file1.write(path + '\n')
+				file1.write('timedout' + '\n')
+				file1.close()
+				
 	return succes_nbr, nbr_of_files
 
 
@@ -74,7 +83,9 @@ def run_cpp(c_id):
 		
 			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
   			errors, exit_code = run_one_cpp_file(cmd)
+			# no timeout
 			if int(exit_code) == 0:
+				# a runtime error occured
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
 					print errors
@@ -86,6 +97,13 @@ def run_cpp(c_id):
 				else:
 					print 'success!'
 					succes_nbr += 1
+			else :
+				print 'Timedout Running problem: ' + root
+				file1 = open('cpp_run_errors.txt', "a")
+				file1.write(path + '\n')
+				file1.write('timedout' + '\n')
+				file1.close()
+
 	return succes_nbr, nbr_of_files
 
 
