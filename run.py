@@ -17,9 +17,8 @@ SIZE = ["-small.practice.in", "-large.practice.in"]
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = get_LANGUAGE()
 
+LANGUAGE = get_LANGUAGE()
 
 
 def get_all_contests_id():
@@ -62,14 +61,14 @@ def clean_home_dir():
 
 clean_home_dir()
 
+
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
-
 list_of_contest_ids = get_CONTEST_IDS()
 
 
 #number_of_contests = int(raw_input('Number of contests?'))
-number_of_contests = 2 #len(list_of_contest_ids)
+number_of_contests = len(list_of_contest_ids)
 
 '''
 # Run the downloading function for downloding input
@@ -79,7 +78,7 @@ for i in range(0,number_of_contests):
 	CONTEST_ID = list_of_contest_ids[i]
 	print 'Downloading contest ' + CONTEST_ID
 	base_url = build_base_url(CONTEST_ID)
-	PROBLEM_IDS =retrive_problem_ids(base_url)		
+	PROBLEM_IDS =retrive_problem_ids(base_url)	
 	TOKEN = retrive_token(CONTEST_ID)
 	download_input.download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
 
@@ -89,7 +88,6 @@ print 'Done downloing input files!'
 
 diff = end - start
 write_to_log('Time to download all input files to solutions: ', diff)
-
 
 
 # Run the downloading fucntion
@@ -122,8 +120,8 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-
 '''
+
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
 start = time.time()
@@ -143,8 +141,8 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
-'''
 
+'''
 #print log file
 completeName = os.path.join(home_path, 'log.txt')         
 file1 = open(completeName, "r")

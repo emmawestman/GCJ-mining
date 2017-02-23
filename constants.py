@@ -13,3 +13,19 @@ def get_LANGUAGE() :
 
 def get_PROBLEM() :
 	return PROBLEM
+
+def get_FILE_ENDING(lang):
+	if lang == 'java':
+		return ['.java']
+	elif lang == 'Python':
+		return ['.py']
+	elif lang == 'C' :
+		return ['.c']
+	elif lang == 'C#' :
+		return ['.cs']
+	elif lang == 'C++' :
+		return ['.cpp', '.C', '.cc', '.CPP', '.c++', '.cp', '.cxx']
+	else :
+		print 'Not a valid language'
+
+
