@@ -10,40 +10,28 @@ from compile_support_module import remove_all_old_files
 languages = get_LANGUAGE()
 contest_ids = ['1128486', '2984486']#get_CONTEST_IDS()
 
-def count(c_id, lang) :
+
+
+def count_everything():
 	countfile = open('nbr_of_files.txt', "a")
 	now = str(datetime.now())
 	countfile.write(now + '\n')
-	countfile.write(c_id + '\n')
-
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, lang ))
-	directories = os.listdir(path)
-	print directories 
-	for root, dirs, files in os.walk(path):
-		print dirs
-		# get p_id
-		nbr = 0
-		for f in files:
-			print f
-			this_file_ending = f.split('.')[1]
-			this_file_ending = '.' + this_file_ending
-			if any (e == this_file_ending for e in get_FILE_ENDING(lang)):
-				nbr += 1
-		countfile.write(lang + '\t' + 'nbr of files: ' + str(nbr) + '\n')
+	
+	for c_id in contest_ids:
+		countfile.write('\n')
+		countfile.write('Contest id: ' + c_id + '\n')
+		for l in languages:
+			path = os.path.realpath(os.path.join('..','solutions_' + c_id, l))
+			p_ids = os.listdir(path)
+			nbr = 0	
+			for p_id in p_ids:
+				if p_id in os.listdir(path) :
+					p_id_path = os.path.join(path, p_id)
+					nbr = len(os.listdir(p_id_path))
+				countfile.write(l + '\t' + p_id + '\t' + 'nbr of files: ' + str(nbr) + '\n')
 	countfile.close()
 
-def test_any(f):
-	fe = ['.cpp', '.c++', '.cxx']
-	ffe = f.split('.')[1]
-	ffe = '.' + ffe
-	print ffe
-	if any (e == ffe for e in fe):
-		print True
 
-def count_everything():
-	for c_id in contest_ids :
-		for l in languages :
-			count(c_id, l)
 
 remove_all_old_files()
 count_everything()
