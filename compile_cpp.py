@@ -23,8 +23,8 @@ def compile_cpp(c_id):
 			print 'compiling c++ file nbr: ' + str(nbr_of_files)
 			
 			user, filename = get_compile_info('C++', root, f)
-			cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-			#cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
+
+			cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
 			# no timeout
 			if int(exit_code) == 0:
@@ -36,23 +36,6 @@ def compile_cpp(c_id):
 					file1.write(path + '\n')
 					file1.write(errors + '\n')
 					file1.close()
-
-					#try with c++ 11 instead
-					cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
-  					errors = copile_one_cpp_file(cmd)
-					print 'Error in file: ' + os.path.join(root,f)
-					print errors
-					file1 = open('cpp_compile_errors.txt', "a")
-					file1.write('recompiled with c++11 \n' )
-					file1.write(errors + '\n')
-					file1.close()
-	
-					if len(errors) > 0:
-						print 'failed to run problem with g++11: ' + filename + ', for user: ' + user
-						print errors
-					else:
-						succes_nbr +=1
-					
 					
 				else:
 					print 'success!'
