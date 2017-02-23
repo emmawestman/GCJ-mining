@@ -18,9 +18,11 @@ def count_everything():
 	countfile.write(now + '\n')
 	
 	for c_id in contest_ids:
+		print 'Counting for contest id ' + c_id + '...'
 		countfile.write('\n')
 		countfile.write('Contest id: ' + c_id + '\n')
 		for l in languages:
+			print 'Counting for contest language ' + l + ' in ' + c_id + '...'
 			path = os.path.realpath(os.path.join('..','solutions_' + c_id, l))
 			p_ids = os.listdir(path)
 			nbr = 0	
