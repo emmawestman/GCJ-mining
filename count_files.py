@@ -8,7 +8,7 @@ from compile_support_module import remove_all_old_files
 # problem_id, language, nbr_of_files
 
 languages = get_LANGUAGE()
-contest_ids = ['1128486', '2984486']#get_CONTEST_IDS()
+contest_ids = get_CONTEST_IDS()
 
 
 
