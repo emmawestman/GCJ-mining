@@ -40,13 +40,20 @@ def retrive_token(contest_id):
 	#print "TOKEN " + token	
 	return token
 
+
+def format_time(time):
+	m = time / 60
+	s = time % 60
+	return str(m) + 'min ' + str(s) +'sec'
+
 def write_to_log(message, time):
-	completeName = os.path.join(home_path, 'log.txt')         
+	completeName = os.path.join(home_path, 'run_all_log.txt')         
 	file1 = open(completeName, "a")
 	now = str(datetime.now())
-	message = now + " : " + message + str(time) + "sec \n"
+	message = now + " : " + message + format_time(time) + " \n"
 	file1.write(message)
 	file1.close()
+
 
 def clean_home_dir():
 	files = os.listdir(os.getcwd())
@@ -134,13 +141,13 @@ for i in range(0,number_of_contests):
 		a, b, c, d = compile_language(l, CONTEST_ID)
 		l_end = time.time()
 		l_diff = l_end - l_start
-		write_to_log('Time to compile and run for '+ l +': ', l_diff)
+		write_to_log('Time to compile and run for '+ l + ' in ' + CONTEST_ID + ': ', l_diff)
 		write_to_log(l + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully', 0)
 		write_to_log(l + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully', 0)
 
 end = time.time()
 diff = end - start
-write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
+write_to_log('Time to compile and run all programs in contest:' + CONTEST_ID, diff)
 
 '''
 #print log file
