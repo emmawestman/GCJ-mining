@@ -141,7 +141,6 @@ for i in range(0,number_of_contests):
 
 end = time.time()
 diff = end - start
-<<<<<<< HEAD
 write_to_log(CONTEST_ID + ': Time to compile and run all programs: ', diff)
 '''
 '''

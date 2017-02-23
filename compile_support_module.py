@@ -3,6 +3,7 @@ import shutil
 from stuff_module import create_folder
 import subprocess
 import re
+from constants import *
 
 
 
@@ -68,6 +69,11 @@ def remove_old_files(language, c_id):
 			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
 			for file in filelist:
 				os.remove(os.path.join(root,file))
+
+def remove_all_old_files() :
+	for c_id in get_CONTEST_IDS() :
+		for l in get_LANGUAGE() :
+			remove_old_files(l, c_id)
 
 
 
