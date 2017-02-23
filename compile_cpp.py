@@ -23,7 +23,6 @@ def compile_cpp(c_id):
 			print 'compiling c++ file nbr: ' + str(nbr_of_files)
 			
 			user, filename = get_compile_info('C++', root, f)
-
 			cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
 			# no timeout
@@ -36,7 +35,7 @@ def compile_cpp(c_id):
 					file1.write(path + '\n')
 					file1.write(errors + '\n')
 					file1.close()
-					
+
 				else:
 					print 'success!'
 					succes_nbr += 1
