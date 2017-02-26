@@ -75,6 +75,7 @@ def count_avg(group) :
 			comment += int(elements[4])
 			code += int(elements[5])
 		print p_id + ' ' + language + ' ' + str(blank/size) + ' ' + str(comment/size) + ' ' + str(code/size)
+		return [p_id, language, str(blank/size), str(comment/size), str(code/size)]
 
 
 def avg_all() :
@@ -83,7 +84,12 @@ def avg_all() :
 		content = read_csv_file('cloc_' + c_id + '.csv')
 		groups = group_by(content)
 		#verify_groups(groups)
-		count_avg(groups)
+		rerult = count_avg(groups)
+		complete_name = os.path.join('..', 'GCJ-backup', 'cloc_avg' + c_id + '.csv') 
+		with open(complete_name, 'wb') as csvfile :
+			writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+			writer.writerow(result)
+
 
 def clean_dirs():
 	c_ids = get_CONTEST_IDS()
