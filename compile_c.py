@@ -51,7 +51,7 @@ def run_c(c_id):
 			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
-			exit_code = p.retruncode
+			exit_code = p.returncode
 			if int(exit_code) == 0:
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
