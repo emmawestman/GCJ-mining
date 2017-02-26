@@ -6,7 +6,7 @@ from finding_regexes import *
 
 
 
-def handle_import_error(file_path,path_input,errors,pip_version):n
+def handle_import_error(file_path,path_input,errors,pip_version):
 	missing_module_name = find_missing_module_name(errors)
 	if missing_module_name == 'run':
 		rename_stuff_in_file('runpy','run',file_path,1)
