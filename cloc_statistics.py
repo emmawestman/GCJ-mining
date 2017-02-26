@@ -85,7 +85,7 @@ def avg_all() :
 		groups = group_by(content)
 		#verify_groups(groups)
 		result = count_avg(groups)
-		complete_name = os.path.join('..', 'GCJ-backup', 'cloc_avg' + c_id + '.csv') 
+		complete_name = os.path.join('..', 'GCJ-backup', 'cloc_avg_' + c_id + '.csv') 
 		with open(complete_name, 'wb') as csvfile :
 			writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 			writer.writerow(result)
