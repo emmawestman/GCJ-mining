@@ -6,9 +6,6 @@ import re
 from constants import *
 
 
-
-
-
 def get_input_file(root):
 	return re.search('\d+\_\d', root).group(0)
 
@@ -49,24 +46,23 @@ def remove_old_files(language, c_id):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c
 			filelist = [f for f in files if '.' not in f]
-			for f in filelist:
-				os.remove(os.path.join(root,f))
-		else:
-			filelist = [ f for f in files if not(f.endswith(language)) ]
-			for f in filelist:
-				os.remove(os.path.join(root,f))
+		elif language == 'Python':
+			filelist = [ f for f in files if (f == '.py' ) ]
 
 		# remove extra created main files
-		if language == 'C#':
+		elif language == 'C#':
 			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
-			for file in filelist:
-				os.remove(os.path.join(root,file))
+		else:
+			filelist = [ f for f in files if not(f.endswith(language)) ]
+		# remove the files!
+		for file in filelist:
+			os.remove(os.path.join(root,file))
+
 
 def remove_all_old_files() :
 	for c_id in get_CONTEST_IDS() :
 		for l in get_LANGUAGE() :
 			remove_old_files(l, c_id)
-
 
 
 def get_compile_info(regexp, root, f):
@@ -87,7 +83,6 @@ def get_run_info(regexp, root):
 	input_file = filename + '.in' 	
 	return user, input_file
 
-	
 
 
 

@@ -31,3 +31,8 @@ def handle_file_not_found(file_path,list_of_possible_inregexes,list_of_outregexe
 	changed_contents = rename_input_file(list_of_possible_regexes,new_input,file_contents)
 	changed_contents = rename_output_file(list_of_outregexes,new_output,changed_contents)
 	write_new_contents_to_the_file(file_path,changed_contents)
+
+#error = 'Traceback (most recent call last): File "b.py", line 3, in <module> import os, sys, ljqpy, time ImportError: No module named ljqpy'
+#res = find_out_what_regex('named\s(\w+)', error)
+#print res
+

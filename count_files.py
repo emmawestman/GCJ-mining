@@ -37,6 +37,7 @@ def count_everything():
 
 remove_all_old_files()
 count_everything()
+<<<<<<< HEAD
 
 
 
@@ -44,3 +45,5 @@ count_everything()
 
 
 
+=======
+>>>>>>> 24835815379ad7212eae03fb23f3a7525ecac572

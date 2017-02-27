@@ -93,6 +93,7 @@ list_of_contest_ids = get_CONTEST_IDS()
 number_of_contests = len(list_of_contest_ids)
 >>>>>>> compile_csharp
 
+
 '''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
@@ -145,6 +146,8 @@ diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
 '''
+
+
 # Run the compile and run scripts on the downloaded files	
 print 'Sarting to compile and run all files...'
 start = time.time()

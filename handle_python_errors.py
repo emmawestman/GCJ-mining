@@ -8,6 +8,9 @@ from finding_regexes import *
 
 def handle_import_error(file_path,path_input,errors,pip_version):
 	missing_module_name = find_missing_module_name(errors)
+	if '\'' in missing_module_name :
+		missing_module_name = missing_module_name[1:len(missing_module_name)-1]
+	print 'handle import error ' + missing_module_name
 	if missing_module_name == 'run':
 		rename_stuff_in_file('runpy','run',file_path,1)
 	else :
@@ -53,6 +56,7 @@ def get_possibile_input_regex():
 def get_possibile_output_regex():
 	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
 
+
 #TODO FIXA
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 	return 0
@@ -60,10 +64,19 @@ def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 #TODO FIXA DETTA
 def find_missing_module_name(errors):
 	missing_module_name = find_out_what_regex('named\s(\w+)',errors)
+	# i.e. if python3 '' around library name in error message
+	if missing_module_name is None :
+		missing_module_name = find_out_what_regex('named\s(\'\w+\')',errors)
 	missing_module_name = missing_module_name.replace('named ','')
 	if missing_module_name is None :
 		missing_module_name = find_out_what_regex('from\s(\w+)\simport',errors)
-		print "missing module name " + missing_module_name
 		missing_module_name = missing_module_name.replace('from ','')
 		missing_module_name = missing_module_name.replace(' import','')
 	return missing_module_name
+
+
+
+
+#error = 'File "/Users/emmawestman/Documents/Chalmers/master/master-thesis/Code/solutions_6254486/Python/5634697451274240_0/Ljq/b.py", line 3, in <module> import os, sys, ljqpy, time ImportError: No module named \'ljqpy\''
+#res = find_missing_module_name(error)
+#print 'returned ' + res
