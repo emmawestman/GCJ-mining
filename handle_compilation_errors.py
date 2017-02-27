@@ -1,21 +1,20 @@
 import re
 
-def find_old_new_regex(regex_dict,file_contents):
-	for key, value in regex_dict.iteritems():
+def find_old_new_regex(regex_list,file_contents):
+	for key in regex_list:
 		old_regex = find_out_what_regex(key,file_contents)
-		if old_regex is not None:
+		if len(old_regex)>0:
 			return old_regex,value
-
+	return 
 
 def find_out_what_regex(regex,file_contents):
-	found_matches = re.search(regex,file_contents)
-	if found_matches is not None:
-		match = found_matches.group(0)
-		return match
-	return None
+	found_matches = []
+	for match in re.finditer(regex,file_contents,r.S)
+		found_matches.append(match.group(0))
+	return found_matches
 
-def rename_input_file(regex_dict,contents):
-	old_input,new_input = find_old_new_regex(regex_dict,file_contents)
+def rename_input_file(regex_list,contents):
+	old_input,new_input = find_old_new_regex(regex_list,file_contents)
 	new_file_contents = contents.replace(old_input,new_input)
 	return new_file_contents
 

@@ -36,7 +36,6 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
 	csharp_file+= os.path.join(root,csharp_file_p)
 	if csharp_file_p_dependecy is not None :
 		csharp_file = csharp_file + ' ' + os.path.join(root,csharp_file_p_dependecy)
-	print 'CSHARP COMMAND ' + csharp_file
 	errors = compile_csharp_command(csharp_file)
 	if len(errors)>0:
 		print errors
@@ -115,9 +114,7 @@ def csharp_main(full_function_decl, filename, namespace, path,input_file):
 
 #ONLY CHOOSING STATIC FUNCTIONS
 def filter_candidate_functions(file_path):
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	list_of_stuff = []
+	file_contents = get_contents_of_file(file_path)
 	p = re.compile('static\s(?:int|void|long|string)\s(\w+\([\w+\s]*?\))')
 	return p.findall(file_contents)
 

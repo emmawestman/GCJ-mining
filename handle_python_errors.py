@@ -50,10 +50,10 @@ def create_a_copy_of_input_file(c_id,input_file):
 
 #dictionary for old- new regex pairs
 def get_old_new_regex_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)']
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)','file\(.*?\)']
 
 def get_old_new_regex_dict_output():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"]w[\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
 
 #TODO FIXA
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):
