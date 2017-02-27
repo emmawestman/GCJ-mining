@@ -7,18 +7,19 @@ from finding_regexes import *
 import urllib2
 from compilegcj import * 
 from datetime import datetime
+from constants import *
 home_path = os.path.join('..')
 
 BASE = "https://code.google.com/codejam/contest/"
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
 
-list_of_contest_ids = ['6254486']
+
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-#LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
-LANGUAGE = ['Python']
+
+LANGUAGE = get_LANGUAGE()
 
 
 
@@ -66,10 +67,14 @@ clean_home_dir()
 
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
+list_of_contest_ids = get_CONTEST_IDS() 
 
 #Ask user how many contests to download
-number_of_contests = int(raw_input('Number of contests?'))
+#number_of_contests = int(raw_input('Number of contests?'))
+number_of_contests = len(list_of_contest_ids)
 
+
+'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -147,7 +152,7 @@ completeName = os.path.join(home_path, 'log.txt')
 file1 = open(completeName, "r")
 print file1.read()
 file1.close()
-
+'''
 
 
 
