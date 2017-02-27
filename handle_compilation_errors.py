@@ -9,7 +9,7 @@ def find_old_regex(regex_list,file_contents):
 
 def find_out_what_regex(regex,file_contents):
 	found_matches = []
-	for match in re.finditer(regex,file_contents,r.S)
+	for match in re.finditer(regex,file_contents,r.S):
 		found_matches.append(match.group(0))
 	return found_matches
 
