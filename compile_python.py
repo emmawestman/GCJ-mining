@@ -27,7 +27,7 @@ def run_python_2x(file_path,path_input,c_id,root):
 
 	print "Running file python " + file_path
 	args = ' < ' + path_input
-	errors = run_python_commando('timeout 30s python ',file_path,path_input)
+	errors = run_python_command('python ',file_path, args)
 	if len(errors) > 0:
 		return handle_python_2x_errors(file_path,path_input,c_id,root,errors)			
 	return 1
@@ -37,7 +37,7 @@ def run_python_3x(file_path,path_input,c_id,root):
 
 	print "Running file python3 " + file_path
 	args = ' < ' + path_input
-	errors = run_python_commando('timeout 30s python3 ',file_path,path_input)
+	errors = run_python_command('python3 ',file_path, args)
 	if len(errors) > 0:
 		return handle_python_3x_errors(errors,file_path,path_input,c_id,root)
 	return 1
@@ -59,7 +59,7 @@ def handle_python_2x_errors(file_path,path_input,c_id,root,errors):
 	elif error_name == 'SyntaxError':
 		return run_python_3x(file_path,path_input,c_id,root)
 	elif error_name =='FileNotFoundError' or error_name == 'IOError':
-		handle_file_not_found(path_input,root,c_id,file_path)
+		handle_python_file_not_found(path_input,root,c_id,file_path)
 		run_python_2x(file_path,path_input,c_id,root)
 	elif error_name == 'IndexError':
 		args = ' ' + path_input +' '+os.path.join(root,'output.txt')
@@ -77,20 +77,8 @@ def handle_python_3x_errors(errors,file_path,path_input,c_id,root):
 		if flag == 1:
 			return run_python_3x(file_path,path_input,c_id,root)
 	elif error_name =='FileNotFoundError' or error_name =='IOError':
-		handle_file_not_found(path_input,root,c_id,file_path)
+		handle_python_file_not_found(path_input,root,c_id,file_path)
 		run_python_3x(file_path,path_input,c_id,root)
 	print errors
 	return 0
 
-def handle_python_3x_errors(errors,file_path,path_input):
-	error_name = get_error_name(errors)
-	if error_name =='ImportError':
-		flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
-		if flag == 1:
-			return run_python_3x(file_path,path_input,c_id,root)
-		remove_module_name(missing_module_name,file_path)
-	elif error_name =='FileNotFoundError' or error_name =='IOError':
-		handle_file_not_found(path_input,root,c_id,file_path)
-		return run_python_3x(file_path,path_input,c_id,root)
-	print errors
-	return 0

@@ -8,28 +8,19 @@ import urllib2
 from compilegcj import * 
 from datetime import datetime
 from constants import *
-<<<<<<< HEAD
-=======
+
 from stuff_module import clean_home_dir
 
->>>>>>> compile_csharp
 home_path = os.path.join('..')
 
 BASE = "https://code.google.com/codejam/contest/"
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
 
-<<<<<<< HEAD
 
 
 PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-
-LANGUAGE = get_LANGUAGE()
-=======
-PROBLEM =['A', 'B', 'C', 'D', 'E'] 
-
->>>>>>> compile_csharp
 
 LANGUAGE = get_LANGUAGE()
 
@@ -70,28 +61,16 @@ def write_to_log(message, time):
 
 clean_home_dir()
 
-## clean vm
-CIDS = ['4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
-'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
-for c_id in CIDS :
-	remove_old_files('C++', c_id)
 
 #Pre processing stuff...
 #list_of_contest_ids = get_all_contests_id()
-<<<<<<< HEAD
+
 list_of_contest_ids = get_CONTEST_IDS() 
 
 #Ask user how many contests to download
 #number_of_contests = int(raw_input('Number of contests?'))
 number_of_contests = len(list_of_contest_ids)
 
-=======
-list_of_contest_ids = get_CONTEST_IDS()
-
-
-#number_of_contests = int(raw_input('Number of contests?'))
-number_of_contests = len(list_of_contest_ids)
->>>>>>> compile_csharp
 
 
 '''

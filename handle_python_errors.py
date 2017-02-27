@@ -24,9 +24,9 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 def handle_python_file_not_found(input_file,root,c_id,file_path):
 	new_input = '\''+input_file+'\'' + ' ,\'r\''
 	new_output = '\''+os.path.join(root,'output.txt') + '\' ,\'w\''
-	list_of_inregexes = get_possibile_input_regex()
+	list_of_inregexes = get_possible_input_regex()
 	list_of_outregexes = get_possible_output_regex()
-	handle_file_not_found(file_path,list_of_regexes,new_input,new_output)
+	handle_file_not_found(file_path,list_of_inregexes,list_of_outregexes,new_input,new_output)
 
 
 def get_error_name (errors):
@@ -50,11 +50,11 @@ def create_a_copy_of_input_file(c_id,input_file):
 	return dst,number_of_files
 
 #dictionary for old- new regex pairs
-def get_possibile_input_regex():
+def get_possible_input_regex():
 	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)','file\(.*?\)']
 
-def get_possibile_output_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
+def get_possible_output_regex():
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"][wa][\'\"]\)']
 
 
 #TODO FIXA
@@ -63,12 +63,9 @@ def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 
 #TODO FIXA DETTA
 def find_missing_module_name(errors):
-	missing_module_name = find_out_what_regex('named\s(\w+)',errors)
-	# i.e. if python3 '' around library name in error message
-	if missing_module_name is None :
-		missing_module_name = find_out_what_regex('named\s(\'\w+\')',errors)
-	missing_module_name = missing_module_name.replace('named ','')
-	if missing_module_name is None :
+	missing_module_name = find_out_what_regex('named\s(\'?\w+\'?)',errors)
+	missing_module_name = missing_module_name[0].replace('named ','')
+	if missing_module_name is len(missing_module_name) == 0  :
 		missing_module_name = find_out_what_regex('from\s(\w+)\simport',errors)
 		missing_module_name = missing_module_name.replace('from ','')
 		missing_module_name = missing_module_name.replace(' import','')
@@ -76,7 +73,3 @@ def find_missing_module_name(errors):
 
 
 
-
-#error = 'File "/Users/emmawestman/Documents/Chalmers/master/master-thesis/Code/solutions_6254486/Python/5634697451274240_0/Ljq/b.py", line 3, in <module> import os, sys, ljqpy, time ImportError: No module named \'ljqpy\''
-#res = find_missing_module_name(error)
-#print 'returned ' + res
