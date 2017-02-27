@@ -6,6 +6,8 @@ from compile_csharp import *
 from compile_c import *
 from compile_cpp import *
 from compile_support_module import *
+from handle_compilation_errors import *
+from stuff_module import clean_home_dir
 
 PATH = os.path.realpath(os.path.join('..','solutions_'))
 #PATH_INPUT = os.path.realpath(os.path.join('..','input_'))
@@ -24,19 +26,24 @@ def compile_language(language, c_id):
 		a, b = compile_java(c_id)
 		c, d = run_java_files(c_id)
 		os.chdir(cwd)
+		clean_home_dir()
 	elif language == 'C':
 		remove_old_files(language, c_id)
 		a, b = compile_c(c_id)
 		c, d = run_c(c_id)
+		clean_home_dir()
 	elif language == "C++":
 		remove_old_files(language, c_id)
 		a, b = compile_cpp(c_id)
 		c, d = run_cpp(c_id)
+		clean_home_dir()
 	elif language == 'C#':
 		remove_old_files(language,c_id)
-		#a, b = compile_run_csharp(c_id)
+		a, b = compile_run_csharp(c_id)
+		clean_home_dir()
 	elif language == "Python":
 		a,b = compile_python(c_id)
+		clean_home_dir()
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
@@ -47,7 +54,7 @@ def compile_language(language, c_id):
 #input_language = raw_input("what language?")
 #c_id = raw_input("which contest id?")
 
-compile_language('Python','6254486')
+compile_language('C#','6254486')
 
 #compile_language(input_language, c_id)
 

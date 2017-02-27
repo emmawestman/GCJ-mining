@@ -17,14 +17,20 @@ def compile_c(c_id):
 			
 			user, filename = get_compile_info('C', root, f)
 
-			cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
+			cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
-			if len(errors) > 0:
-				print 'failed to run problem: ' + root
-				print errors
-			else:
-				succes_nbr += 1
+			exit_code = p.returncode
+			if int(exit_code) == 0:
+				if len(errors) > 0 and 'warning' not in errors:
+					print 'failed to run problem: ' + root
+					print errors
+					file1 = open('compile_c_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
+				else:
+					succes_nbr += 1
 	return succes_nbr, nbr_of_files
 
 
@@ -42,15 +48,20 @@ def run_c(c_id):
 			
 			user, input_file = get_run_info('C', root)
 		
-			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
+			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
-			if len(errors) > 0:
-				print 'Error Running problem: ' + root
-				#print errors
-
-			else:
-				succes_nbr += 1
+			exit_code = p.returncode
+			if int(exit_code) == 0:
+				if len(errors) > 0:
+					print 'Error Running problem: ' + root
+					file1 = open('c_run_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
+					#print errors
+				else:
+					succes_nbr += 1
 	return succes_nbr, nbr_of_files
 
 

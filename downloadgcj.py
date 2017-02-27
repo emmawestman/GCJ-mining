@@ -6,6 +6,7 @@ from stuff_module import *
 from finding_regexes import *
 
 
+
 io_set_id_0 = "0";
 io_set_id_1 = "1"
 
@@ -46,7 +47,7 @@ def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id):
 
 def download_all_pages(base_url,list_of_problem_ids,contest_id):
 	i = 1
-	while (i<225): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
+	while (i<100): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
 		user_id_url = build_user_id_url(base_url,contest_id,str(i))
 		print user_id_url

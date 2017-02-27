@@ -15,12 +15,12 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
 	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
-	user, input_file = get_run_info('timeout 120s java', os.getcwd())
+	user, input_file = get_run_info('java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
 
 	flag,errors = run_java_command(class_name, args)
-	if flag == 0:
+	if flag == 0 and errors != None:
 		exception_name = get_exception_name(errors)
 		if exception_name == 'FileNotFoundException':
 			flag,errors = file_not_found_exception(errors,class_name,user_path,input_file, c_id)
@@ -31,12 +31,20 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 
 
 def run_java_command(class_name,args):	
-	cmd = ['java ' + class_name + ' ' + args ]
+	cmd = ['timeout 30s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	if errors.find('Exception in thread')!= -1:
-		return 0,errors
-	return 1,None
+	exit_code = p.returncode
+	if exit_code == 0:
+		if errors.find('Exception in thread')!= -1:
+			file1 = open('java_run_errors.txt', "a")
+			file1.write(os.getcwd() + '\n')
+			file1.write(errors + '\n')
+			file1.close()
+			return 0,errors
+		return 1,None
+	else:
+		return 0, None
 
 
 	
@@ -49,13 +57,19 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
+				cmd = ['timeout 30s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
-				if 'Note' in errors or len(errors) == 0:
-					succes_nbr += 1
-				else:
-					print errors
+				exit_code = p.returncode
+				if int(exit_code) == 0:
+					if 'Note' in errors or len(errors) == 0:
+						succes_nbr += 1
+					else:
+						print errors
+						file1 = open('java_compile_errors.txt', "a")
+						file1.write(path + '\n')
+						file1.write(errors + '\n')
+						file1.close()
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :

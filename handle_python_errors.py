@@ -18,16 +18,14 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 	return 1,None
 
 
-def handle_file_not_found(input_file,root,c_id,file_path):
-	file_contents = get_contents_of_file(file_path)
+def handle_python_file_not_found(input_file,root,c_id,file_path):
 	new_input = '\''+input_file+'\'' + ' ,\'r\''
-	changed_contents = rename_inorout_file(get_old_new_regex_regex(),new_input,file_contents)
-	#write_new_contents_to_the_file(file_path,changed_content) # write changes to the python file
-	#file_contents = get_contents_of_file(file_path)
 	new_output = '\''+os.path.join(root,'output.txt') + '\' ,\'w\''
-	changed_contents = rename_inorout_file(get_old_new_regex_dict_output(),new_output,changed_contents)
-	write_new_contents_to_the_file(file_path,changed_contents)
-	
+	list_of_inregexes = get_possibile_input_regex()
+	list_of_outregexes = get_possible_output_regex()
+	handle_file_not_found(file_path,list_of_regexes,new_input,new_output)
+
+
 def get_error_name (errors):
 	error_list = filter_information('\w+Error',None,errors)
 	if len(error_list)>0:
@@ -49,11 +47,11 @@ def create_a_copy_of_input_file(c_id,input_file):
 	return dst,number_of_files
 
 #dictionary for old- new regex pairs
-def get_old_new_regex_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)']
+def get_possibile_input_regex():
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)','file\(.*?\)']
 
-def get_old_new_regex_dict_output():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"]w[\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
+def get_possibile_output_regex():
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"]w[\'\"]\)']
 
 #TODO FIXA
 def remove_copy_of_input_file(number_of_files,dst,root,c_id):

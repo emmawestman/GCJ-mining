@@ -1,7 +1,11 @@
 import os
 import shutil
 from stuff_module import create_folder
+import subprocess
 import re
+from constants import *
+
+
 
 
 
@@ -36,14 +40,6 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 	os.rename(old_file_name,new_file_name)
 	os.chdir(user_path)	
 
-def find_namespace(filename, path):
-	full_path = os.path.join(path, filename)
-	content = get_contents_of_file(full_path)
-	index_start = content.find('namespace ') + len('namespace ')
-	content = content[index_start:]
-	index_end = content.find('\n')
-	namespace = content[:index_end]
-	return namespace
 
 
 #language is the file ending for the language
@@ -53,13 +49,23 @@ def remove_old_files(language, c_id):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c
 			filelist = [f for f in files if '.' not in f]
+			for f in filelist:
+				os.remove(os.path.join(root,f))
 		else:
 			filelist = [ f for f in files if not(f.endswith(language)) ]
+			for f in filelist:
+				os.remove(os.path.join(root,f))
+
 		# remove extra created main files
 		if language == 'C#':
 			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
 			for file in filelist:
 				os.remove(os.path.join(root,file))
+
+def remove_all_old_files() :
+	for c_id in get_CONTEST_IDS() :
+		for l in get_LANGUAGE() :
+			remove_old_files(l, c_id)
 
 
 
@@ -81,12 +87,6 @@ def get_run_info(regexp, root):
 	input_file = filename + '.in' 	
 	return user, input_file
 
-
-def check_exit_code():
-	cmd = ['echo $?']
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return output
 	
 
 
