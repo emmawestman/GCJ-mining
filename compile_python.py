@@ -7,6 +7,7 @@ PATH_INPUT = os.path.realpath(os.path.join('..','input_'))
 
 def compile_python(c_id):
 	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'Python' ))
+	print path
 	input_path = PATH_INPUT + c_id
 	succes_nbr = 0
 	nbr_of_files = 0
