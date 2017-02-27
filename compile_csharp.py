@@ -65,13 +65,7 @@ def compile_csharp_command(csharp_file):
 def run_csharp(input_file,root,csharp_exe,original_class_file):
 	errors = run_csharp_command(csharp_exe,input_file)
 	if len(errors)>0:
-		error_name = filter_information('Unhandled Exception:\n\w+\.\w+\.\w+',':',errors)
-		if error_name and error_name[0].replace('\n','') == ('System.IO.DirectoryNotFoundException' or 'System.IO.FileNotFoundException') and input_file is not None:
-			remove_files_in_a_user_solution(root)
-			change_input_streams(input_file,os.path.join(root,original_class_file),root)
-			return compile_csharp(root,original_class_file,None,None,None)
-		print errors
-		return 0
+		
 	return 1
 
 
