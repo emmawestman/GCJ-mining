@@ -22,3 +22,8 @@ def rename_inorout_file(regex_list,input_file,file_contents):
 			new_input = found_match.replace(find_what_to_replace,input_file)
 			file_contents = file_contents.replace(copyofmatch,new_input)
 	return file_contents
+
+
+#error = 'Traceback (most recent call last): File "b.py", line 3, in <module> import os, sys, ljqpy, time ImportError: No module named ljqpy'
+#res = find_out_what_regex('named\s(\w+)', error)
+#print res
