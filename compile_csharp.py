@@ -84,5 +84,3 @@ def run_csharp_command(csharp_exe,input_file):
 	output, errors = p.communicate()
 	return errors
 
-
-
