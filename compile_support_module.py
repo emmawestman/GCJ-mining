@@ -2,6 +2,7 @@ import os
 import shutil
 from stuff_module import create_folder
 import re
+from constants import *
 
 
 
@@ -53,15 +54,25 @@ def remove_old_files(language, c_id):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c
 			filelist = [f for f in files if '.' not in f]
+		elif language == 'Python':
+			filelist = [ f for f in files if (f == '.py' ) ]
+		# remove extra created main files
+		elif language == 'C#':
+			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
 		else:
 			filelist = [ f for f in files if not(f.endswith(language)) ]
-		# remove extra created main files
-		if language == 'C#':
-			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
-			for file in filelist:
-				os.remove(os.path.join(root,file))
+		# remove the files!
+		for file in filelist:
+			os.remove(os.path.join(root,file))
 
-
+def remove_all_old_files():
+	print 'clean all old files'
+	cids = get_CONTEST_IDS()
+	langs = get_LANGUAGE()
+	print langs
+	for c in cids:
+		for l in langs:
+			remove_old_files(l, c)
 
 def get_compile_info(regexp, root, f):
 	index = root.find(regexp)
@@ -82,11 +93,6 @@ def get_run_info(regexp, root):
 	return user, input_file
 
 
-def check_exit_code():
-	cmd = ['echo $?']
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return output
 	
 
 
