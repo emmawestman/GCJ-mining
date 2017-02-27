@@ -1,58 +1,42 @@
+from handle_compilation_errors import *
+import re
 
-def create_main_file():
-	namespace = find_namespace(csharp_file_p, root)
+def create_main_file(root,csharp_file_p,input_file):
+	full_path = os.path.join(root,csharp_file_p)
+	namespace = find_namespace(full_path)
 	# create main file and call some function...
-	filter_candidates = filter_candidate_functions(os.path.join(root,csharp_file_p))
-	print 'FUNCTION ' + filter_candidates[0]
+	filter_candidates = filter_candidate_functions(full_path)
 	csharp_main(filter_candidates[0], csharp_file_p, namespace, root,input_file)
 
 
-
 def change_input_streams(input_file,csharp_file,root):
-	file_manager = open(csharp_file, "r")
-	contents = file_manager.read()
-	file_manager.close()
-	old_input = re.findall(r'new StreamReader\((.*)\)',contents)[0]
+	file_contents = get_contents_of_file(file_path
+	list_of_inregexes = ['new StreamReader\((.*)\)']
 	new_file_input = '\"'+input_file+'\"'
-	new_file_contents = contents.replace(old_input,new_file_input)
-	file_manager=open(csharp_file,'w')
-	file_manager.write(new_file_contents)
-	file_manager.close()
-	file_manager = open(csharp_file, "r")
-	contents = file_manager.read()
-	file_manager.close()
-	old_input = re.findall(r'new StreamWriter\((.*)\)',contents)[0]
-	new_file_input = '\"' + os.path.join(root,'output.txt') + '\"'
-	new_file_contents = contents.replace(old_input,new_file_input)
-	file_manager=open(csharp_file,'w')
-	file_manager.write(new_file_contents)
-	file_manager.close()
+	list_of_outregexes = ['new StreamWriter\((.*)\)']
+	new_file_output = '\"' + os.path.join(root,'output.txt') + '\"'
+	handle_file_not_found(file_path,list_of_regexes,new_input,new_output)
 	
-
-
 def rename_input_file(input_file,csharp_file,errors):
 	old_regex = filter_information('\".*?\"',None,errors)[0]
 	old_regex = old_regex.split('.')[-1]
 	new_regex = input_file
 	rename_stuff_in_file(new_regex,old_regex,csharp_file)
 
+def find_namespace(full_path):
+	file_contentes = get_contents_of_file(file_path)
+	return re.search('r(?:namespace)\s\w+').group(0)
 
-
-def csharp_main(full_function_decl, filename, namespace, path,input_file):
-	index = len(filename) -3
-	filename = filename[:index]
+def csharp_main(full_function_decl, csharp_filename, namespace,root,input_file):
+	filename =  csharp_filename.split('.')[0]
 	function_name = re.findall(r'(\w+)',full_function_decl)[0]
-	main_file= os.path.join(path, 'TestMain.cs')         
-	file1 = open(main_file, "w")
+	main_file = os.path.join(root, 'TestMain.cs')         
 	file_content = 'namespace ' + namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + ' \n } \n } \n }'
-	file1.write(file_content)
-	file1.close()
+	write_new_contents_to_the_file(main_file,file_content)
 
 #ONLY CHOOSING STATIC FUNCTIONS
 def filter_candidate_functions(file_path):
-	file_manager = open(file_path,'r')
-	file_contents = file_manager.read()
-	list_of_stuff = []
+	file_contents = get_contents_of_file(file_path)
 	p = re.compile('static\s(?:int|void|long|string)\s(\w+\([\w+\s]*?\))')
 	return p.findall(file_contents)
 

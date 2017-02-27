@@ -40,14 +40,6 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 	os.rename(old_file_name,new_file_name)
 	os.chdir(user_path)	
 
-def find_namespace(filename, path):
-	full_path = os.path.join(path, filename)
-	content = get_contents_of_file(full_path)
-	index_start = content.find('namespace ') + len('namespace ')
-	content = content[index_start:]
-	index_end = content.find('\n')
-	namespace = content[:index_end]
-	return namespace
 
 
 #language is the file ending for the language
