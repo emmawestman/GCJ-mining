@@ -31,12 +31,16 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 
 
 def run_java_command(class_name,args):	
-	cmd = ['timeout 120s java ' + class_name + ' ' + args ]
+	cmd = ['timeout 30s java ' + class_name + ' ' + args ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	exit_code = p.returncode
 	if exit_code == 0:
 		if errors.find('Exception in thread')!= -1:
+			file1 = open('java_run_errors.txt', "a")
+			file1.write(os.getcwd() + '\n')
+			file1.write(errors + '\n')
+			file1.close()
 			return 0,errors
 		return 1,None
 	else:
@@ -53,7 +57,7 @@ def compile_java(c_id):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['timeout 120s javac ' + os.path.join(root,f)]
+				cmd = ['timeout 30s javac ' + os.path.join(root,f)]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				exit_code = p.returncode
@@ -62,6 +66,10 @@ def compile_java(c_id):
 						succes_nbr += 1
 					else:
 						print errors
+						file1 = open('java_compile_errors.txt', "a")
+						file1.write(path + '\n')
+						file1.write(errors + '\n')
+						file1.close()
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :

@@ -1,8 +1,10 @@
 import os
 import shutil
 from stuff_module import create_folder
-import re
 import subprocess
+import re
+from constants import *
+
 
 
 
@@ -55,13 +57,23 @@ def remove_old_files(language, c_id):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c
 			filelist = [f for f in files if '.' not in f]
+			for f in filelist:
+				os.remove(os.path.join(root,f))
 		else:
 			filelist = [ f for f in files if not(f.endswith(language)) ]
+			for f in filelist:
+				os.remove(os.path.join(root,f))
+
 		# remove extra created main files
 		if language == 'C#':
 			filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
 			for file in filelist:
 				os.remove(os.path.join(root,file))
+
+def remove_all_old_files() :
+	for c_id in get_CONTEST_IDS() :
+		for l in get_LANGUAGE() :
+			remove_old_files(l, c_id)
 
 
 

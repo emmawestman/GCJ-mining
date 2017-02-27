@@ -69,7 +69,7 @@ def compile_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
 		return run_csharp(input_file,root,os.path.join(root,csharp_exe),csharp_file_p)
 
 def compile_csharp_command(csharp_file):
-	cmd = ['mcs ' + csharp_file]
+	cmd = ['timeout 30s mcs ' + csharp_file]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors
@@ -89,7 +89,7 @@ def run_csharp(input_file,root,csharp_exe,original_class_file):
 def run_csharp_command(csharp_exe,input_file):
 	if input_file is not None :
 		csharp_exe = csharp_exe + ' < ' + input_file
-	cmd = ['mono ' + csharp_exe ]
+	cmd = ['timeout 30s mono ' + csharp_exe ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors

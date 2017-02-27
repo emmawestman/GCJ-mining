@@ -14,31 +14,38 @@ def compile_cpp(c_id):
 	succes_nbr = 0
 	nbr_of_files = 0
 	print path
+
+	file1 = open('cpp_errors.txt', "a")
+	file1.write(path + '\n')
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			nbr_of_files += 1
 			print 'compiling c++ file nbr: ' + str(nbr_of_files)
 			
 			user, filename = get_compile_info('C++', root, f)
-			#cmd = ['timeout 120s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-			cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
+			cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
+			# no timeout
 			if int(exit_code) == 0:
-				if len(errors) > 0:
-					'''
-					#try with c++ 11 instead
-					cmd = ['timeout 120s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + filename]
-  					errors = copile_one_cpp_file(cmd)
-	
-					if len(errors) > 0:
-						print 'failed to run problem with g++11: ' + filename + ', for user: ' + user
-						print errors
-					else:
-						succes_nbr +=1
-					'''
+				# an error occured
+				if len(errors) > 0 and 'warning' not in errors:
+					print 'Error in file: ' + os.path.join(root,f)
 					print errors
+					file1 = open('cpp_compile_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
+
 				else:
+					print 'success!'
 					succes_nbr += 1
+			else :
+				print 'Timeout for file: ' + os.path.join(root,f)
+				file1 = open('cpp_compile_errors.txt', "a")
+				file1.write(path + '\n')
+				file1.write('timedout' + '\n')
+				file1.close()
+				
 	return succes_nbr, nbr_of_files
 
 
@@ -63,15 +70,29 @@ def run_cpp(c_id):
 			
 			user, input_file = get_run_info('C++', root)
 		
-			cmd = ['timeout 120s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
+			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
   			errors, exit_code = run_one_cpp_file(cmd)
+			# no timeout
 			if int(exit_code) == 0:
+				# a runtime error occured
 				if len(errors) > 0:
 					print 'Error Running problem: ' + root
-					#print errors
+					print errors
+					file1 = open('cpp_run_errors.txt', "a")
+					file1.write(path + '\n')
+					file1.write(errors + '\n')
+					file1.close()
 
 				else:
+					print 'success!'
 					succes_nbr += 1
+			else :
+				print 'Timedout Running problem: ' + root
+				file1 = open('cpp_run_errors.txt', "a")
+				file1.write(path + '\n')
+				file1.write('timedout' + '\n')
+				file1.close()
+
 	return succes_nbr, nbr_of_files
 
 
