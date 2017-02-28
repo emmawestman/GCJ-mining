@@ -2,29 +2,29 @@ import re
 from compile_support_module import *
 
 def find_old_regex(regex_list,file_contents):
-	for key in regex_list:
-		old_regex = find_out_what_regex(key,file_contents)
+	for regex in regex_list:
+		old_regex = find_out_what_regex(regex,file_contents)
+		print old_regex
 		if len(old_regex)>0:
 			return old_regex
-	return 
+	return []
 
 def find_out_what_regex(regex,file_contents):
-	found_matches = []
-	for match in re.finditer(regex,file_contents):
-		found_matches.append(match.group(0))
-	return found_matches
+	return re.findall(regex,file_contents)
 
-def rename_input_file(regex_list,new_input,contents):
-	old_input = find_old_regex(regex_list,contents)
+def rename_input_file(regex_list,new_input,file_contents):
+	old_input = find_old_regex(regex_list,file_contents)
 	for oi in old_input :
-		new_file_contents = contents.replace(oi,new_input)
-	return new_file_contents
+		what_to_replace = re.search(r'\((.*?)\)',oi).group(1)
+		print "WHAT TO REPLACE " + what_to_replace
+		file_contents = file_contents.replace(what_to_replace,new_input)
+	return file_contents
 
-def rename_output_file(regex,new_output,file_contents):
-	old_input = re.findall(regex,file_contents)
-	if len(old_input)>0:
-		old_input = old_input[0]
-		file_contents = contents.replace(old_input,new_input,file_input)
+def rename_output_file(regex_list,new_output,file_contents):
+	old_input = find_old_regex(regex_list,file_contents)
+	for oi in old_input :
+		what_to_replace = re.search(r'\((.*?)\)',oi).group(1)
+		file_contents = file_contents.replace(what_to_replace,new_output)
 	return file_contents
 
 

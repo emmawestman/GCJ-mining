@@ -51,7 +51,7 @@ def create_a_copy_of_input_file(c_id,input_file):
 
 #dictionary for old- new regex pairs
 def get_possible_input_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(\w+\.?\w+?\)','file\(.*?\)']
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(.*[\'\"]?r?[\'\"]?\)']
 
 def get_possible_output_regex():
 	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"][wa][\'\"]\)']
