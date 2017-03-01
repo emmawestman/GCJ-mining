@@ -58,7 +58,7 @@ def compile_language(language, c_id):
 
 #compile_language('C#','6254486')
 
-#compile_language('Python','6254486')
+compile_language('Python','6254486')
 
 
 #compile_language(input_language, c_id)
