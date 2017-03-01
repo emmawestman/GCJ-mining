@@ -27,22 +27,23 @@ def compile_run_csharp(c_id):
 				nbr_of_files += 1
 				print 'Compiling problem: ' + root
 				filename = get_input_file(root)+'.in'
-				input_file = os.path.join(input_path,filename)
-				succes_nbr += compile_csharp (root,f,None,input_file,None) # REALLY COMPILE AND RUN CSHARP
+				input_file = os.path.join(PATH_INPUT,filename)
+				succes_nbr += compile_and_run_csharp(root,f,None,input_file,None) # REALLY COMPILE AND RUN CSHARP
 	return succes_nbr, nbr_of_files
 
 
-def build_arguments (flag,csharp_file,csharp_file_p_dependecy,root):
+def build_arguments (flag,csharp_file_p,csharp_file_p_dependecy,root):
 	csharp_file = ''
 	if flag is not None:
 		csharp_file = '-r:'+flag+'.dll '
 	csharp_file+= os.path.join(root,csharp_file_p)
 	if csharp_file_p_dependecy is not None :
 		csharp_file = csharp_file + ' ' + os.path.join(root,csharp_file_p_dependecy)
+	
 	return csharp_file
 
 def compile_and_run_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag):
-	csharp_file = build_arguments (flag,csharp_file,csharp_file_p_dependecy,root)
+	csharp_file = build_arguments (flag, csharp_file_p, csharp_file_p_dependecy,root)
 	errors = compile_csharp_command(csharp_file)
 	if len(errors)>0:
 		handle_compilation_errors(errors)
@@ -54,6 +55,7 @@ def compile_and_run_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file
 
 def compile_csharp_command(csharp_file):
 	cmd = ['timeout 30s mcs ' + csharp_file]
+	print cmd
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
 	return errors
@@ -65,7 +67,7 @@ def run_csharp_command(csharp_exe,input_file):
 	cmd = ['timeout 30s mono ' + csharp_exe ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output, errors = p.communicate()
-	return errors
+	return errors	 
 
 
 def run_csharp(input_file,root,csharp_exe,original_class_file):

@@ -7,14 +7,13 @@ CONTEST_IDS = ['6254486']# '4304486', '11254486', '4314486', '6224486', '4224486
 
 # contest on emmas computer
 #['1128486', '2984486']
-LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = ['C#'] #['java', 'C', 'C++', 'Python', 'C#']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
 
 # get the folder above the git repo from collect_data folder
 HOME_PATH = os.path.join('../../')
-# get the folder above the git repo from compile/some_language folder
-HOME_PATH2 = os.path.join('../../../')
+
 
 BASE = "https://code.google.com/codejam/contest/"
 
@@ -35,9 +34,6 @@ def get_PROBLEM() :
 
 def get_HOME_PATH() :
 	return HOME_PATH
-
-def get_HOME_PATH2() :
-	return HOME_PATH2
 
 def get_SIZE() :
 	return SIZE
