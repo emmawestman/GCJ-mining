@@ -1,4 +1,4 @@
-
+import os
 
 # all selceted contest ids
 
@@ -11,6 +11,16 @@ LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
 
+HOME_PATH = os.path.join('../../')
+
+BASE = "https://code.google.com/codejam/contest/"
+
+SIZE = ["-small.practice.in", "-large.practice.in"]
+
+BASE = "https://code.google.com/codejam/contest/"
+
+
+
 def get_CONTEST_IDS() :
 	return CONTEST_IDS
 
@@ -19,6 +29,15 @@ def get_LANGUAGE() :
 
 def get_PROBLEM() :
 	return PROBLEM
+
+def get_HOME_PATH() :
+	return HOME_PATH
+
+def get_SIZE() :
+	return SIZE
+
+def get_BASE() :
+	return BASE
 
 
 def get_FILE_ENDING(lang):

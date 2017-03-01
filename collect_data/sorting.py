@@ -1,7 +1,12 @@
 import os
 import downloadgcj
 import zipfile
+import sys
 
+# import own modules from iffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
 
 
 
@@ -42,7 +47,7 @@ def get_zip_files(files):
 
 
 def sort_files(c_id):
-	PATH = os.path.join('..','solutions_' + c_id)
+	PATH = os.path.join(get_HOME_PATH(),'solutions_' + c_id)
 	# make a list of all files in the directory
 	all_zip_names = os.listdir(PATH)
 

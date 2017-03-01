@@ -4,8 +4,12 @@ import urllib2
 import os
 from stuff_module import *
 from finding_regexes import *
+import sys
 
-
+# import own modules from iffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
@@ -29,10 +33,9 @@ def retrieve_sol(base_url,problem,io_set_id,username, c_id):
     if answer.startswith('Server Error'):
         return
     else :
-        path = os.path.join('..','solutions_' +c_id)
+        path = os.path.join(get_HOME_PATH(),'solutions_' +c_id)
         create_folder(path)
-        os.chdir(path)
-        with open(username+'_'+problem+'_'+io_set_id,'w') as f:
+        with open(os.path.join(path,username+'_'+problem+'_'+io_set_id),'w') as f:
             f.write(answer)
 
 def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id):
@@ -47,7 +50,7 @@ def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id):
 
 def download_all_pages(base_url,list_of_problem_ids,contest_id):
 	i = 1
-	while (i<100): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
+	while (i<10): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
 		user_id_url = build_user_id_url(base_url,contest_id,str(i))
 		print user_id_url

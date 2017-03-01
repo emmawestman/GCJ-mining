@@ -5,28 +5,20 @@ import os
 import time
 from finding_regexes import *
 import urllib2
-from compilegcj import * 
 from datetime import datetime
-from constants import *
-
+import sys
 from stuff_module import clean_home_dir
 
-home_path = os.path.join('..')
-
-BASE = "https://code.google.com/codejam/contest/"
-
-SIZE = ["-small.practice.in", "-large.practice.in"]
-
+# import own modules from iffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
 
 
-PROBLEM =['A', 'B', 'C', 'D', 'E'] 
 
-
-LANGUAGE = get_LANGUAGE()
-
-
+# not needed at the moment since competisions ids are selected
 def get_all_contests_id():
-	answer = urllib2.urlopen(BASE).read()	
+	answer = urllib2.urlopen(get_BASE()).read()	
 	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
 	return list(set(list_of_duplicates))
 
@@ -36,10 +28,10 @@ def retrive_problem_ids(url):
 	return filter_information('\"id\":\s+\"\d+\"',':',page)
 
 def build_base_url(contest_id):
-   return BASE+contest_id+'/scoreboard'
+   return get_BASE()+contest_id+'/scoreboard'
 
 def retrive_token(contest_id):
-	page = urllib2.urlopen(BASE+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
+	page = urllib2.urlopen(get_BASE()+contest_id+'/dashboard/do?cmd=GetInitialValues').read()
 	token = filter_information('\"\w*=\"',None,page)[0]
 	#print "TOKEN " + token	
 	return token
@@ -51,7 +43,7 @@ def format_time(time):
 	return str(m) + 'min ' + str(s) +'sec'
 
 def write_to_log(message, time):
-	completeName = os.path.join(home_path, 'run_all_log.txt')         
+	completeName = os.path.join(get_HOME_PATH(), 'log.txt')         
 	file1 = open(completeName, "a")
 	now = str(datetime.now())
 	message = now + " : " + message + format_time(time) + " \n"
@@ -59,6 +51,13 @@ def write_to_log(message, time):
 	file1.close()
 
 
+def print_log_file():
+	completeName = os.path.join(get_HOME_PATH(), 'log.txt')         
+	file1 = open(completeName, "r")
+	print file1.read()
+	file1.close()
+
+# removes outputfiles and similar files created by solutions
 clean_home_dir()
 
 
@@ -73,7 +72,6 @@ number_of_contests = len(list_of_contest_ids)
 
 
 
-'''
 # Run the downloading function for downloding input
 print 'Downloading input files...'
 start = time.time()
@@ -83,7 +81,7 @@ for i in range(0,number_of_contests):
 	base_url = build_base_url(CONTEST_ID)
 	PROBLEM_IDS =retrive_problem_ids(base_url)	
 	TOKEN = retrive_token(CONTEST_ID)
-	download_input.download_all_input(CONTEST_ID, PROBLEM, SIZE, PROBLEM_IDS,TOKEN)
+	download_input.download_all_input(CONTEST_ID, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
 
 end = time.time()
 
@@ -124,37 +122,7 @@ end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
-'''
 
-
-# Run the compile and run scripts on the downloaded files	
-print 'Sarting to compile and run all files...'
-start = time.time()
-
-for i in range(0,number_of_contests):
-	CONTEST_ID = list_of_contest_ids[i]
-	for l in LANGUAGE:
-		l_start = time.time()
-		print 'Compiles and Runs: ' + l + ' in contest: ' + CONTEST_ID
-		a, b, c, d = compile_language(l, CONTEST_ID)
-		l_end = time.time()
-		l_diff = l_end - l_start
-		write_to_log('Time to compile and run for '+ l + ' in ' + CONTEST_ID + ': ', l_diff)
-		write_to_log(l + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully', 0)
-		write_to_log(l + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully', 0)
-
-end = time.time()
-diff = end - start
-write_to_log('Time to compile and run all programs in contest:' + CONTEST_ID, diff)
-
-
-'''
-#print log file
-completeName = os.path.join(home_path, 'log.txt')         
-file1 = open(completeName, "r")
-print file1.read()
-file1.close()
-'''
 
 
 

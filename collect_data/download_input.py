@@ -3,14 +3,12 @@
 import urllib2
 import os
 from stuff_module import create_folder
+import sys
 
-BASE = "https://code.google.com/codejam/contest/"
-
-SIZE = ["-small.practice.in", "-large.practice.in"]
-
-#CONTEST_ID = "6254486"
-
-PROBLEM =['A', 'B', 'C', 'D','E'] 
+# import own modules from iffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
 
 
 
@@ -20,7 +18,7 @@ def retrive_input(c_id, prob, size, prob_id,token):
 		s = '0'
 	else:
 		s = '1'
-	url = BASE + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=' + s + '&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
+	url = get_BASE() + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=' + s + '&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
 	answer = urllib2.urlopen(url).read()
 	path = os.path.join('..','input_' + c_id)
 	create_folder(path)
