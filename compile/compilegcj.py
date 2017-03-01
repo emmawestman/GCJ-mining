@@ -11,7 +11,7 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from finding_regexes import *
 from stuff_module import *
-from log import *
+
 
 cpp_path = os.path.join(os.getcwd(), 'compile_c/')
 sys.path.insert(0, cpp_path)
@@ -79,13 +79,11 @@ for i in range(0,number_of_contests):
 		a, b, c, d = compile_language(l, CONTEST_ID)
 		l_end = time.time()
 		l_diff = l_end - l_start
-		write_to_log('Time to compile and run for '+ l + ' in ' + CONTEST_ID + ': ', l_diff)
-		write_to_log(l + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully', 0)
-		write_to_log(l + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully', 0)
+	
 
 end = time.time()
 diff = end - start
-write_to_log('Time to compile and run all programs in contest:' + CONTEST_ID, diff)
+
 
 
 

@@ -10,13 +10,14 @@ def create_main_file(root,csharp_file_p,input_file):
 
 
 def change_input_streams(input_file,csharp_file,root):
-	file_contents = get_contents_of_file(file_path
+	file_path = os.path.join(root, csharp_file)
+	file_contents = get_contents_of_file(file_path)
 	list_of_inregexes = ['new StreamReader\((.*)\)']
 	new_file_input = '\"'+input_file+'\"'
 	list_of_outregexes = ['new StreamWriter\((.*)\)']
 	new_file_output = '\"' + os.path.join(root,'output.txt') + '\"'
-	handle_file_not_found(file_path,list_of_regexes,new_input,new_output)
-	
+	handle_file_not_found(file_path,list_of_inregexes, list_of_outregexes, new_file_input,new_file_output)
+
 def rename_input_file(input_file,csharp_file,errors):
 	old_regex = filter_information('\".*?\"',None,errors)[0]
 	old_regex = old_regex.split('.')[-1]
@@ -24,14 +25,14 @@ def rename_input_file(input_file,csharp_file,errors):
 	rename_stuff_in_file(new_regex,old_regex,csharp_file)
 
 def find_namespace(full_path):
-	file_contentes = get_contents_of_file(file_path)
-	return re.search('r(?:namespace)\s\w+').group(0)
+	file_contentes = get_contents_of_file(full_path)
+	return re.search('(?:namespace)\s((?:\w+.)+?(?:\w+))', file_contentes).group(0)
 
 def csharp_main(full_function_decl, csharp_filename, namespace,root,input_file):
 	filename =  csharp_filename.split('.')[0]
 	function_name = re.findall(r'(\w+)',full_function_decl)[0]
-	main_file = os.path.join(root, 'TestMain.cs')         
-	file_content = 'namespace ' + namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + ' \n } \n } \n }'
+	main_file = os.path.join(root, 'TestMain.cs')
+	file_content = namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + ' \n } \n } \n }'
 	write_new_contents_to_the_file(main_file,file_content)
 
 #ONLY CHOOSING STATIC FUNCTIONS
@@ -44,7 +45,7 @@ def filter_candidate_functions(file_path):
 def build_main_function(filtered_function,input_file):
 	main_string = '('
 	p = re.compile('(\w+\s\w+)')
-	list_of_args = p.findall(filtered_function) 
+	list_of_args = p.findall(filtered_function)
 	for x in range(0,len(list_of_args)) :
 		group = list_of_args[x]
 		arg_type = group.split(' ')[0]

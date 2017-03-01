@@ -1,4 +1,4 @@
-
+import os
 
 def remove_files_in_a_user_solution(root):
 	files = os.listdir(root)

@@ -1,5 +1,12 @@
 import re
 from compile_support_module import *
+import sys
+
+# import own modules from diffrent directory
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
+from finding_regexes import *
+
 
 def find_old_regex(regex_list,file_contents):
 	for regex in regex_list:
