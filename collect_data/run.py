@@ -77,48 +77,45 @@ number_of_contests = len(list_of_contest_ids)
 # Run the downloading function for downloding input
 
 def download_input(contest_id):
-	start = time.time()
-	print 'Downloading input contest ' + contest_id
 	base_url = build_base_url(contest_id)
 	PROBLEM_IDS =retrive_problem_ids(base_url)	
 	TOKEN = retrive_token(contest_id)
 	download_all_input(contest_id, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
-	end = time.time()
 
-print 'Downloading input files...'
-pool = mp.Pool(processes = 6)
-results = pool.map(download_input,list_of_contest_ids)
 
-print 'Done downloing input files!'
+def download_input_serial():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	for x in list_of_contest_ids:
+		download_input(x)
 
-#write_to_log('Time to download all input files to solutions: ', diff)
+def download_input_mp():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	pool = mp.Pool(processes = 6)
+	results = pool.map(download_input,list_of_contest_ids)
 
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
 def download_solution(contest_id):
-	print 'Downloading solutions from GCJ...'
-	start = time.time()
 	base_url = build_base_url(contest_id)
-	print 'Downloading contest ' + contest_id
 	problem_ids =retrive_problem_ids(base_url)
 	download_all_pages(base_url,problem_ids,contest_id)
-	end = time.time()
-
-print 'Downloading solutions from GCJ...'
-pool2 = mp.Pool(processes = 6)
-results = pool2.map(download_solution,list_of_contest_ids)
 
 
-print 'Done downloading solutions!'
-#end = time.time()
-#diff = end - start
-#write_to_log('Time to download all solutions: ', diff)
+def download_solution_serial():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	for x in list_of_contest_ids:
+		download_solution(x)
+
+def download_solution_mp():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	pool2 = mp.Pool(processes = 6)
+	results = pool2.map(download_solution,list_of_contest_ids)
 
 
 
-# Run the sorting function
-# measure time to sort
+
+
 '''
 print 'Sarting to sort all zip files...'
 start = time.time()
@@ -133,7 +130,6 @@ diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
 '''
-
 
 
 
