@@ -1,14 +1,15 @@
-import downloadgcj
+from downloadgcj import *
 import sorting
-import download_input
+from download_input import *
 import os
+import multiprocessing as mp
 import time
 import urllib2
 from datetime import datetime
 import sys
 
-
 # import own modules from diffrent directory
+
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
@@ -56,42 +57,47 @@ number_of_contests = len(list_of_contest_ids)
 
 
 # Run the downloading function for downloding input
-print 'Downloading input files...'
-start = time.time()
-for i in range(0,number_of_contests):
-	CONTEST_ID = list_of_contest_ids[i]
-	print 'Downloading contest ' + CONTEST_ID
-	base_url = build_base_url(CONTEST_ID)
+
+def download_input(contest_id):
+	base_url = build_base_url(contest_id)
 	PROBLEM_IDS =retrive_problem_ids(base_url)	
-	TOKEN = retrive_token(CONTEST_ID)
-	download_input.download_all_input(CONTEST_ID, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
+	TOKEN = retrive_token(contest_id)
+	download_all_input(contest_id, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
 
-end = time.time()
 
-print 'Done downloing input files!'
+def download_input_serial():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	for x in list_of_contest_ids:
+		download_input(x)
 
-diff = end - start
-write_to_log('Time to download all input files to solutions: ', diff)
+def download_input_mp():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	pool = mp.Pool(processes = 6)
+	results = pool.map(download_input,list_of_contest_ids)
 
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
-print 'Downloading solutions from GCJ...'
-start = time.time()
-for cas in range(0,number_of_contests):
-	contest_id = list_of_contest_ids[cas]
+def download_solution(contest_id):
 	base_url = build_base_url(contest_id)
 	problem_ids =retrive_problem_ids(base_url)
-	downloadgcj.download_all_pages(base_url,problem_ids,contest_id)
-
-print 'Done downloading solutions!'
-end = time.time()
-diff = end - start
-write_to_log('Time to download all solutions: ', diff)
+	download_all_pages(base_url,problem_ids,contest_id)
 
 
-# Run the sorting function
-# measure time to sort
+def download_solution_serial():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	for x in list_of_contest_ids:
+		download_solution(x)
+
+def download_solution_mp():
+	list_of_contest_ids = get_CONTEST_IDS() 
+	pool2 = mp.Pool(processes = 6)
+	results = pool2.map(download_solution,list_of_contest_ids)
+
+
+
+'''
+>>>>>>> parallelization
 print 'Sarting to sort all zip files...'
 start = time.time()
 
@@ -104,8 +110,7 @@ end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
-
-
+'''
 
 
 
