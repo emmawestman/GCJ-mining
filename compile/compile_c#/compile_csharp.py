@@ -17,15 +17,15 @@ from constants import *
 
 
 def compile_run_csharp(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C#' ))
-	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C#' ))
+	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			if f.endswith('.cs'):
 				nbr_of_files += 1
-				print 'Compiling problem: ' + filename + ', for user: ' + user
+				print 'Compiling problem: ' + root
 				filename = get_input_file(root)+'.in'
 				input_file = os.path.join(input_path,filename)
 				succes_nbr += compile_csharp (root,f,None,input_file,None) # REALLY COMPILE AND RUN CSHARP

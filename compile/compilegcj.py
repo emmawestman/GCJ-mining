@@ -44,29 +44,19 @@ def compile_language(language, c_id):
 	d = -1
 	if language == 'java':
 		cwd = os.getcwd()
-		remove_old_files(language, c_id)
 		a, b = compile_java(c_id)
 		c, d = run_java_files(c_id)
 		os.chdir(cwd)
-		clean_home_dir()
 	elif language == 'C':
-		remove_old_files(language, c_id)
 		a, b = compile_c(c_id)
 		c, d = run_c(c_id)
-		clean_home_dir()
 	elif language == "C++":
-		remove_old_files(language, c_id)
 		a, b = compile_cpp(c_id)
 		c, d = run_cpp(c_id)
-		clean_home_dir()
 	elif language == 'C#':
-		remove_old_files(language,c_id)
 		a, b = compile_run_csharp(c_id)
-		clean_home_dir()
 	elif language == "Python":
-		remove_old_files(language,c_id)
 		a,b = compile_python(c_id)
-		clean_home_dir()
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
@@ -82,9 +72,10 @@ number_of_contests = len(list_of_contest_ids)
 
 for i in range(0,number_of_contests):
 	CONTEST_ID = list_of_contest_ids[i]
-	for l in LANGUAGE:
+	for l in get_LANGUAGE():
 		l_start = time.time()
 		print 'Compiles and Runs: ' + l + ' in contest: ' + CONTEST_ID
+		remove_old_files(l, CONTEST_ID)
 		a, b, c, d = compile_language(l, CONTEST_ID)
 		l_end = time.time()
 		l_diff = l_end - l_start

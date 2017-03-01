@@ -18,7 +18,7 @@ def copile_one_cpp_file(cmd):
 	return errors, exit_code
 
 def compile_cpp(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C++' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C++' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0
@@ -66,8 +66,8 @@ def run_one_cpp_file(cmd):
 	return errors, exit_code
 
 def run_cpp(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C++' ))
-	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C++' ))
+	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):	

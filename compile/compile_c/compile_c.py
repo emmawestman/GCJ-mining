@@ -16,7 +16,7 @@ from constants import *
 
 	
 def compile_c(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0
@@ -45,7 +45,7 @@ def compile_c(c_id):
 
 
 def run_c(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
 	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0

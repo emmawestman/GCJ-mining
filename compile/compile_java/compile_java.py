@@ -58,7 +58,7 @@ def run_java_command(class_name,args):
 	
 
 def compile_java(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'java' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'java' ))
 	nbr_of_files = 0
 	succes_nbr = 0
 	for root, dirs, files in os.walk(path):
@@ -92,7 +92,7 @@ def run_java_files(c_id) :
 			nbr_of_files += 1
 			userPATH = os.path.join(problemPATH,user_folder)
 
-			print userPATH
+			#print userPATH
 			os.chdir(userPATH)
 			java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
 			class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO

@@ -21,7 +21,7 @@ def clean_home_dir():
 	to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
 	to_remove = [ f for f in to_remove if not(f.endswith('README.txt')) ]
 	to_remove = [ f for f in to_remove if not(f.endswith('errors.txt')) ]
-	for f in files_to_remove:
+	for f in to_remove:
 		print 'removed file: ' + f
 		os.remove(f)
 
