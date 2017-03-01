@@ -6,7 +6,7 @@ import sys
 # import own modules from diffrent directory
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
-from constants import 
+from constants import *
 
 PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_'))
 

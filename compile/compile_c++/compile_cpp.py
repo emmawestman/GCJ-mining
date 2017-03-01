@@ -9,7 +9,7 @@ from compile_support_module import *
 
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
-from constats import 
+from constants import *
 
 def copile_one_cpp_file(cmd):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)

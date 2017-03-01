@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+import time
 from compile_support_module import *
 from handle_compilation_errors import *
 
@@ -75,6 +76,9 @@ def compile_language(language, c_id):
 # compile all languages
 print 'Sarting to compile and run all files...'
 start = time.time()
+
+list_of_contest_ids = get_CONTEST_IDS()
+number_of_contests = len(list_of_contest_ids)
 
 for i in range(0,number_of_contests):
 	CONTEST_ID = list_of_contest_ids[i]

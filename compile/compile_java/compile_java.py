@@ -9,7 +9,7 @@ from compile_support_module import *
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from finding_regexes import *
-from constats import *
+from constants import *
 
 def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 	requested_file_name =filter_information(':\s.*\.\w*',':',errors)[0]
@@ -81,7 +81,7 @@ def compile_java(c_id):
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :
-	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'java'))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'java'))
 	nbr_of_files = 0
 	succes_nbr = 0
 	problemfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]

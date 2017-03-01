@@ -1,6 +1,6 @@
 import os
 import shutil
-from stuff_module import create_folder
+
 import subprocess
 import re
 import sys
@@ -9,6 +9,7 @@ import sys
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
+from stuff_module import create_folder
 
 
 

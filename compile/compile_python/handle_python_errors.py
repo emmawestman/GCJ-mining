@@ -1,7 +1,7 @@
 import subprocess
 from shutil import copyfile
 import sys
-
+import os
 
 # import own modules from diffrent directory
 compile_path = os.path.join(os.getcwd(), '../')
