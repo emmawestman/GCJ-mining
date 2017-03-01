@@ -13,6 +13,8 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 	print 'handle import error ' + missing_module_name
 	if missing_module_name == 'run':
 		rename_stuff_in_file('runpy','run',file_path,1)
+	if missing_module_name == 'devtools':
+		rename_stuff_in_file('import\sdevtools','',file_path,1)
 	else :
 		pip_errors = pip_install_module(pip_version,missing_module_name)
 		if len(pip_errors)>0:
@@ -51,10 +53,10 @@ def create_a_copy_of_input_file(c_id,input_file):
 
 #dictionary for old- new regex pairs
 def get_possible_input_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(.*[\'\"]?r?[\'\"]?\)']
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\s?\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(.*[\'\"]?r?[\'\"]?\)']
 
 def get_possible_output_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"][wa][\'\"]\)']
+	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\s?\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"][wa][\'\"]\)']
 
 
 #TODO FIXA
@@ -64,11 +66,12 @@ def remove_copy_of_input_file(number_of_files,dst,root,c_id):
 #TODO FIXA DETTA
 def find_missing_module_name(errors):
 	missing_module_name = find_out_what_regex('named\s(\'?\w+\'?)',errors)
-	missing_module_name = missing_module_name[0].replace('named ','')
-	if missing_module_name is len(missing_module_name) == 0  :
-		missing_module_name = find_out_what_regex('from\s(\w+)\simport',errors)
-		missing_module_name = missing_module_name.replace('from ','')
-		missing_module_name = missing_module_name.replace(' import','')
+	if len(missing_module_name) > 0 :
+		missing_module_name = missing_module_name[0].replace('named ','')
+		return missing_module_name	
+	missing_module_name = find_out_what_regex('from\s(\w+)\simport',errors)
+	missing_module_name = missing_module_name[0].replace('from ','')
+	missing_module_name = missing_module_name.replace(' import','')
 	return missing_module_name
 
 
