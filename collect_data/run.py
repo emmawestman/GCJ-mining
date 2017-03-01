@@ -1,13 +1,15 @@
-import downloadgcj
+from downloadgcj import *
 import sorting
-import download_input
+from download_input import *
 import os
+import multiprocessing as mp
 import time
 from finding_regexes import *
 import urllib2
 from datetime import datetime
 import sys
 from stuff_module import clean_home_dir
+
 
 # import own modules from iffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -73,43 +75,51 @@ number_of_contests = len(list_of_contest_ids)
 
 
 # Run the downloading function for downloding input
-print 'Downloading input files...'
-start = time.time()
-for i in range(0,number_of_contests):
-	CONTEST_ID = list_of_contest_ids[i]
-	print 'Downloading contest ' + CONTEST_ID
-	base_url = build_base_url(CONTEST_ID)
-	PROBLEM_IDS =retrive_problem_ids(base_url)	
-	TOKEN = retrive_token(CONTEST_ID)
-	download_input.download_all_input(CONTEST_ID, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
 
-end = time.time()
+def download_input(contest_id):
+	start = time.time()
+	print 'Downloading input contest ' + contest_id
+	base_url = build_base_url(contest_id)
+	PROBLEM_IDS =retrive_problem_ids(base_url)	
+	TOKEN = retrive_token(contest_id)
+	download_all_input(contest_id, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
+	end = time.time()
+
+print 'Downloading input files...'
+pool = mp.Pool(processes = 6)
+results = pool.map(download_input,list_of_contest_ids)
 
 print 'Done downloing input files!'
 
-diff = end - start
-write_to_log('Time to download all input files to solutions: ', diff)
+#write_to_log('Time to download all input files to solutions: ', diff)
 
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE 
-print 'Downloading solutions from GCJ...'
-start = time.time()
-for cas in range(0,number_of_contests):
-	contest_id = list_of_contest_ids[cas]
+def download_solution(contest_id):
+	print 'Downloading solutions from GCJ...'
+	start = time.time()
 	base_url = build_base_url(contest_id)
+	print 'Downloading contest ' + contest_id
 	problem_ids =retrive_problem_ids(base_url)
-	downloadgcj.download_all_pages(base_url,problem_ids,contest_id)
+	download_all_pages(base_url,problem_ids,contest_id)
+	end = time.time()
+
+print 'Downloading solutions from GCJ...'
+pool2 = mp.Pool(processes = 6)
+results = pool2.map(download_solution,list_of_contest_ids)
+
 
 print 'Done downloading solutions!'
-end = time.time()
-diff = end - start
-write_to_log('Time to download all solutions: ', diff)
+#end = time.time()
+#diff = end - start
+#write_to_log('Time to download all solutions: ', diff)
 
 
 
 # Run the sorting function
 # measure time to sort
+'''
 print 'Sarting to sort all zip files...'
 start = time.time()
 
@@ -122,7 +132,7 @@ end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
-
+'''
 
 
 
