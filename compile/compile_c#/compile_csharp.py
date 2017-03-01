@@ -2,14 +2,23 @@
 import os
 import subprocess
 import re
-from stuff_module import create_folder
+import sys
+
+# import own modules from iffrent directory
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
 from compile_support_module import *
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
+from stuff_module import *
 from finding_regexes import *
+from constants import *
+
 
 
 def compile_run_csharp(c_id):
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C#' ))
-	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C#' ))
+	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):

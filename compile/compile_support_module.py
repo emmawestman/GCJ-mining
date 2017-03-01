@@ -3,7 +3,13 @@ import shutil
 from stuff_module import create_folder
 import subprocess
 import re
+import sys
+
+# import own modules from iffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
 from constants import *
+
 
 
 def get_input_file(root):
@@ -41,7 +47,7 @@ def rename_file(user_path,path_to_file,old_file_name,new_file_name):
 
 #language is the file ending for the language
 def remove_old_files(language, c_id):
-	language_path = os.path.realpath(os.path.join('..','solutions_' + c_id, language))
+	language_path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, language))
 	for root, dirs, files in os.walk(language_path):
 		if language == 'C++' or language == 'C':
 			# remove executable files for c++ an c

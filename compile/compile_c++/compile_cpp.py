@@ -1,6 +1,15 @@
 import os
 import subprocess
+import sys
+
+# import own modules from diffretn directory
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
 from compile_support_module import *
+
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
+from constats import 
 
 def copile_one_cpp_file(cmd):
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -9,7 +18,7 @@ def copile_one_cpp_file(cmd):
 	return errors, exit_code
 
 def compile_cpp(c_id):
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C++' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
 	nbr_of_files = 0
@@ -57,8 +66,8 @@ def run_one_cpp_file(cmd):
 	return errors, exit_code
 
 def run_cpp(c_id):
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'C++' ))
-	PATH_INPUT = os.path.realpath(os.path.join('..','input_' + c_id))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'C++' ))
+	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):	

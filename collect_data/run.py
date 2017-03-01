@@ -3,16 +3,18 @@ import sorting
 import download_input
 import os
 import time
-from finding_regexes import *
 import urllib2
 from datetime import datetime
 import sys
-from stuff_module import clean_home_dir
 
-# import own modules from iffrent directory
+
+# import own modules from diffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
+from finding_regexes import *
+from stuff_module import *
+from log import *
 
 
 
@@ -37,25 +39,6 @@ def retrive_token(contest_id):
 	return token
 
 
-def format_time(time):
-	m = time / 60
-	s = time % 60
-	return str(m) + 'min ' + str(s) +'sec'
-
-def write_to_log(message, time):
-	completeName = os.path.join(get_HOME_PATH(), 'log.txt')         
-	file1 = open(completeName, "a")
-	now = str(datetime.now())
-	message = now + " : " + message + format_time(time) + " \n"
-	file1.write(message)
-	file1.close()
-
-
-def print_log_file():
-	completeName = os.path.join(get_HOME_PATH(), 'log.txt')         
-	file1 = open(completeName, "r")
-	print file1.read()
-	file1.close()
 
 # removes outputfiles and similar files created by solutions
 clean_home_dir()
@@ -105,7 +88,6 @@ print 'Done downloading solutions!'
 end = time.time()
 diff = end - start
 write_to_log('Time to download all solutions: ', diff)
-
 
 
 # Run the sorting function

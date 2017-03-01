@@ -1,7 +1,15 @@
-from compile_support_module import *
 import subprocess
 from shutil import copyfile
+import sys
+
+
+# import own modules from diffrent directory
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
 from handle_compilation_errors import *
+from compile_support_module import *
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
 from finding_regexes import *
 
 

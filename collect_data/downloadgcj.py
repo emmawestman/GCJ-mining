@@ -2,14 +2,15 @@
 
 import urllib2
 import os
-from stuff_module import *
-from finding_regexes import *
 import sys
 
 # import own modules from iffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
+from finding_regexes import *
+from stuff_module import *
+
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"

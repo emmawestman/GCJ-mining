@@ -1,12 +1,20 @@
 import os
 import subprocess
+import sys
+
+# import own modules from diffrent directory
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
 from compile_support_module import *
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
 from finding_regexes import *
+from constats import *
 
 def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 	requested_file_name =filter_information(':\s.*\.\w*',':',errors)[0]
 	requested_file_name = requested_file_name.replace(':','')
-	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
+	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + c_id)
 	rename_file(user_path,PATH_INPUT,old_problem_name,requested_file_name)
 	os.chdir(user_path)
 	return run_java_command(class_name,requested_file_name)
@@ -14,7 +22,7 @@ def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
 
 def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
-	PATH_INPUT = os.path.join(os.getcwd(), '../../../../input_' + c_id)
+	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + c_id)
 	user, input_file = get_run_info('java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
@@ -50,7 +58,7 @@ def run_java_command(class_name,args):
 	
 
 def compile_java(c_id):
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'java' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'java' ))
 	nbr_of_files = 0
 	succes_nbr = 0
 	for root, dirs, files in os.walk(path):
@@ -73,7 +81,7 @@ def compile_java(c_id):
 	return succes_nbr, nbr_of_files
 
 def run_java_files(c_id) :
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'java'))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'java'))
 	nbr_of_files = 0
 	succes_nbr = 0
 	problemfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]

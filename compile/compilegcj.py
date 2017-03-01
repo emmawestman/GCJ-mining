@@ -1,17 +1,38 @@
 import os
 import shutil
-from compile_java import *
-from compile_python import *
-from compile_csharp import *
-from compile_c import *
-from compile_cpp import *
+import sys
 from compile_support_module import *
 from handle_compilation_errors import *
-from stuff_module import clean_home_dir
 
-PATH = os.path.realpath(os.path.join('..','solutions_'))
-#PATH_INPUT = os.path.realpath(os.path.join('..','input_'))
+# import own modules from diffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
+from finding_regexes import *
+from stuff_module import *
+from log import *
 
+cpp_path = os.path.join(os.getcwd(), 'compile_c/')
+sys.path.insert(0, cpp_path)
+from compile_c import *
+
+cpp_path = os.path.join(os.getcwd(), 'compile_c++/')
+sys.path.insert(0, cpp_path)
+from compile_cpp import *
+
+csharp_path = os.path.join(os.getcwd(), 'compile_c#/')
+sys.path.insert(0, csharp_path)
+from compile_csharp import *
+
+
+java_path = os.path.join(os.getcwd(), 'compile_java/')
+sys.path.insert(0, java_path)
+from compile_java import *
+
+
+python_path = os.path.join(os.getcwd(), 'compile_python/')
+sys.path.insert(0, python_path)
+from compile_python import *
 
 					
 
@@ -51,17 +72,27 @@ def compile_language(language, c_id):
 	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully'
 	return a, b, c, d
 
+# compile all languages
+print 'Sarting to compile and run all files...'
+start = time.time()
 
-#input_language = raw_input("what language?")
-#c_id = raw_input("which contest id?")
+for i in range(0,number_of_contests):
+	CONTEST_ID = list_of_contest_ids[i]
+	for l in LANGUAGE:
+		l_start = time.time()
+		print 'Compiles and Runs: ' + l + ' in contest: ' + CONTEST_ID
+		a, b, c, d = compile_language(l, CONTEST_ID)
+		l_end = time.time()
+		l_diff = l_end - l_start
+		write_to_log('Time to compile and run for '+ l + ' in ' + CONTEST_ID + ': ', l_diff)
+		write_to_log(l + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully', 0)
+		write_to_log(l + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully', 0)
+
+end = time.time()
+diff = end - start
+write_to_log('Time to compile and run all programs in contest:' + CONTEST_ID, diff)
 
 
-#compile_language('C#','6254486')
-
-compile_language('Python','6254486')
-
-
-#compile_language(input_language, c_id)
 
 
 

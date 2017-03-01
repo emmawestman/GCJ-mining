@@ -1,12 +1,18 @@
 import os
 import subprocess
 from handle_python_errors import *
+import sys
 
-PATH_INPUT = os.path.realpath(os.path.join('..','input_'))
+# import own modules from diffrent directory
+gcj_path = os.path.join(os.getcwd(), '../../')
+sys.path.insert(0, gcj_path)
+from constants import 
+
+PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_'))
 
 
 def compile_python(c_id):
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id, 'Python' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH2(),'solutions_' + c_id, 'Python' ))
 	print path
 	input_path = PATH_INPUT + c_id
 	succes_nbr = 0
