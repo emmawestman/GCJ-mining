@@ -1,6 +1,11 @@
 import csv 
 import os
 
+# import own modules from diffrent directory
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
+
 def read_csv_file(filename) :
 	path = os.path.join('../..', 'GCJ-backup', filename)
 	with open(path, 'rb') as csvfile:
@@ -31,24 +36,31 @@ def write_to_csv_file(filename, dict) :
         values = dict[u].values()
         row = [u] + values
         matrix.append(row)
-
-	with open(path, 'wb') as csvfile:
+    with open(path, 'wb') as csvfile:
 	    writer = csv.writer(csvfile, delimiter=' ', quotechar=',')
 	    for row in matrix:
 	       writer.writerow(row)
-    
 
-def create_csv(c_id, p_id, users, lang) :
-	complete_name = os.path.join('../..', 'GCJ-backup', c_id + '_' + p_id + '.csv') 
-	with open(complete_name, 'wb') as csvfile :
-		writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)  
-		#write header
-		writer.writerow(['user_id', 'rank', 'lang'])
-		i = 1 
-		for u in users :
-			result = [u, i, lang]
-			writer.writerow(result)
-			i += 1
+
+
+def create_csv(c_id) :
+        path = os.path.realpath(os.path.join('..','solutions_' + c_id))
+        user_ids = []
+	    for l in get_LANGUAGE() :
+	        path_lang = os.path.join(path, l, p_id)
+            prob_ids = os.listdir(path_lang)
+			for p_id in prob_ids :
+				users = os.listdir(os.path.join(path_lang, p_id))
+                user_ids.append(users)
+
+        complete_name = os.path.join('../..', 'GCJ-backup', c_id + '_' + p_id + '.csv') 
+	    with open(complete_name, 'wb') as csvfile :
+		    writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)  
+		    #write header
+		    writer.writerow(['user_id'])
+		    for u in user_ids :
+		    	result = [u]
+			    writer.writerow(result)
 
 def change_column(c_id, p_id, users, column_name, new_values) : 
     filename = c_id + '_' + p_id + '.csv'
@@ -58,11 +70,9 @@ def change_column(c_id, p_id, users, column_name, new_values) :
         user_dict[column_name] = new_values[idx]
     write_to_csv_file(filename, dict)
 	
-	#writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-	#writer.writerow(result)
 
 	
-create_csv('c123', 'p123',['user1', 'user2', 'user3', 'user4', 'user5'] , 'C++')
+create_csv('c123', 'p123',['user1', 'user2', 'user3', 'user4', 'user5'])
 print read_csv_file('c123_p123.csv')
 change_column('c123', 'p123', ['user1', 'user2', 'user3', 'user4', 'user5'], 'lang', ['C++', 'C++', 'Python', 'java', 'C++'])
 print read_csv_file('c123_p123.csv')
