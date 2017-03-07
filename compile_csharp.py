@@ -67,7 +67,7 @@ def run_csharp(input_file,root,csharp_exe,original_class_file):
 
 
 def handle_compilation_errors(errors):
-	if "does not contain a static `Main' method suitable for an entry point" in errors:  
+	if "does not contain a static `Main' method suitable for an entry point" in errors:
 		create_main_file()
 		return compile_csharp (root,'TestMain.cs',csharp_file_p,input_file,flag)
 	if 'The type or namespace name' in errors:
@@ -91,7 +91,3 @@ def handle_run_errors(errors):
 		return compile_csharp(root,original_class_file,None,None,None)
 	print errors
 	return 0
-
-
-
-
