@@ -4,16 +4,8 @@ import csv
 import os
 from constants import *
 from compile_support_module import *
+from write_to_csv import *
 
-def read_csv_file(filename) :
-	path = os.path.join('..', 'GCJ-backup', filename)
-	print path
-	with open(path, 'rb') as csvfile:
-	    reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-	    content = ""
-	    for row in reader:
-	        content +=  ', '.join(row) +'\n'
-	    return content
 
 
 def group_by(content) :
