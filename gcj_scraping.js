@@ -14,14 +14,23 @@ var terminate = function(){
 };
 
 var processPage = function (){
-  stats = this.evaluate(getTableData)
+  var table_rows = document.querySelectorAll('table#scb-score-table tbody#scb-table-body');
+  for (row in table_rows)
+    this.echo(row);
+  stats = Array.prototype.map.call(table_rows, function(tr) {
+      return {
+        username : tr.querySelector('td').textContent,
+        rank: tr.querySelector('td').textContent,
+        penalty: tr.querySelector('td[class=scb-player-name]').textContent
+      };
+    });
   require('utils').dump(stats);
 };
 
-
-
-var getTableData = function(){
-  var table_rows = document.querySelectorAll("tbody#scb-table-body");
+function getTableData(){
+  this.echo("inside getTableData");
+  var table_rows = document.querySelectorAll('table#scb-score-table tbody#scb-table-body');
+  this.echo(table_rows);
   return Array.prototype.map.call(table_rows, function(tr) {
     return {
         username : tr.querySelector('td').textContent,
