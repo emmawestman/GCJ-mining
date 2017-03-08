@@ -10,7 +10,7 @@ from constants import *
 def read_csv_file(filename) :
 	path = os.path.join('../..', 'GCJ-backup', filename)
 	with open(path, 'rb') as csvfile:
-	    reader = csv.reader(csvfile, delimiter=' ', quotechar=',')
+	    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
 	    content = []
 	    for row in reader:
 	        content.append(row)
@@ -38,7 +38,7 @@ def write_to_csv_file(filename, dict) :
         row = [u] + values
         matrix.append(row)
     with open(path, 'wb') as csvfile:
-	    writer = csv.writer(csvfile, delimiter=' ', quotechar=',')
+	    writer = csv.writer(csvfile, delimiter=',', quotechar='|')
 	    for row in matrix:
 	       writer.writerow(row)
 
@@ -80,7 +80,7 @@ def create_init_csv(c_id, dict) :
         p_dict = dict[p_id]
         complete_name = os.path.join(get_HOME_PATH(), 'GCJ-backup', c_id + '_' + p_id + '.csv')
         with open(complete_name, 'wb') as csvfile :
-            writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)
+            writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             #write header
             user_ids = p_dict['user_ids']
             langs = p_dict['language']
