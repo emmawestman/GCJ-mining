@@ -50,8 +50,8 @@ def get_user_ids(c_id) :
         prob_ids = os.listdir(path_lang)
         for p_id in prob_ids :
             users = os.listdir(os.path.join(path_lang, p_id))
-			print os.path.join(path_lang, p_id)
-			print users
+            print os.path.join(path_lang, p_id)
+            print users
             try :
                 old_users = dict [p_id]
             except KeyError:
