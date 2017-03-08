@@ -27,7 +27,7 @@ def read_csv_file(filename) :
         return dict
 
 def write_to_csv_file(filename, dict) :
-    path = os.path.join('../..', 'GCJ-backup', filename)
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
     users = dict.keys()
     attr_names = dict[users[0]].keys()
     first_row = ['user_id'] + attr_names
@@ -43,6 +43,15 @@ def write_to_csv_file(filename, dict) :
 	       writer.writerow(row)
 
 def get_user_ids(c_id) :
+    dict = init_csv(c_id)
+    new_dict = {}
+    p_ids = dict.keys();
+    for id_ in p_ids :
+		p_dict = dict [id_]
+		new_dict [id_] = p_dict['user_ids']
+    return new_dict
+
+def init_csv(c_id) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id))
     dict = {}
     for l in get_LANGUAGE() :
@@ -50,36 +59,32 @@ def get_user_ids(c_id) :
         prob_ids = os.listdir(path_lang)
         for p_id in prob_ids :
             users = os.listdir(os.path.join(path_lang, p_id))
-            print os.path.join(path_lang, p_id)
-            print users
             try :
-                old_users = dict [p_id]
+                prob_dict = dict [p_id]
+                old_users = prob_dict['user_ids']
+                old_langs = prob_dict ['language']
             except KeyError:
+                prob_dict = {}
                 old_users = []
-            dict [p_id] =  old_users + users
-    print dict
+                old_langs = []
+        	prob_dict['user_ids'] =  old_users + users
+            langs =  [l] * len(users)
+            prob_dict ['language'] = old_langs + langs
+    return dict
 
-def create_csv(c_id) :
-        path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id))
-        user_ids = []
-        for l in get_LANGUAGE() :
-            path_lang = os.path.join(path, l)
-            prob_ids = os.listdir(path_lang)
-            for p_id in prob_ids :
-                users = os.listdir(os.path.join(path_lang, p_id))
-                print os.path.join(path_lang, p_id)
-                print users
-                user_ids.append(users)
-
-        print user_ids
-
-        complete_name = os.path.join('../..', 'GCJ-backup', c_id + '_' + p_id + '.csv')
+def create_init_csv(c_id, dict) :
+	p_ids = dict.keys()
+	for p_id in p_ids :
+		p_dict = dict[p_id]
+        complete_name = os.path.join(get_HOME_PATH(), 'GCJ-backup', c_id + '_' + p_id + '.csv')
         with open(complete_name, 'wb') as csvfile :
             writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)
             #write header
-            writer.writerow(['user_id'])
-            for u in user_ids :
-                result = [u]
+            user_ids = p_dict['user_ids']
+            langs = p_dict['language']
+            writer.writerow(['user_id', 'language'])
+            for idx, u in enumerate(user_ids) :
+                result = [u, lnags[idx]]
                 writer.writerow(result)
 
 def change_column(c_id, p_id, users, column_name, new_values) :
@@ -91,7 +96,7 @@ def change_column(c_id, p_id, users, column_name, new_values) :
     write_to_csv_file(filename, dict)
 
 
-get_user_ids('11254486')
+init_csv('11254486')
 #create_csv('11254486')
 '''
 print read_csv_file('c123_p123.csv')
