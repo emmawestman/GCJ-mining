@@ -73,9 +73,10 @@ def init_csv(c_id) :
     create_init_csv(c_id, dict)
 
 def create_init_csv(c_id, dict) :
-	p_ids = dict.keys()
-	for p_id in p_ids :
-		p_dict = dict[p_id]
+    p_ids = dict.keys()
+    print p_ids
+    for p_id in p_ids :
+        p_dict = dict[p_id]
         complete_name = os.path.join(get_HOME_PATH(), 'GCJ-backup', c_id + '_' + p_id + '.csv')
         with open(complete_name, 'wb') as csvfile :
             writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)
