@@ -57,8 +57,7 @@ def get_user_ids(c_id) :
             except KeyError:
                 old_users = []
             dict [p_id] =  old_users + users
-            print old_users
-        print dict
+    print dict
 
 def create_csv(c_id) :
         path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id))
