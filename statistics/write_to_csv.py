@@ -87,7 +87,7 @@ def create_init_csv(c_id, dict) :
             langs = p_dict['language']
             writer.writerow(['user_id', 'language'])
             for idx, u in enumerate(user_ids) :
-                result = [u, lnags[idx]]
+                result = [u, langs[idx]]
                 writer.writerow(result)
 
 def change_column(c_id, p_id, users, column_name, new_values) :
