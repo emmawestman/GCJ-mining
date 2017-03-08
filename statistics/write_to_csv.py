@@ -57,6 +57,7 @@ def get_user_ids(c_id) :
             except KeyError:
                 old_users = []
             dict [p_id] =  old_users.append(users)
+            print dict [p_id]
 
         print dict
 
