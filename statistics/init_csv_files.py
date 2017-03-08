@@ -12,3 +12,5 @@ def run_init() :
     for c_id in get_CONTEST_IDS() :
         dict = init_csv(c_id)
         create_init_csv(c_id, dict)
+
+run_init()
