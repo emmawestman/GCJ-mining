@@ -20,7 +20,7 @@ def retrive_input(c_id, prob, size, prob_id,token):
 		s = '1'
 	url = get_BASE() + c_id + '/dashboard/do/' + prob + size +'?cmd=GetInputFile&problem=' + prob_id + '&input_id=' + s + '&filename=' + prob + size+'&redownload_last=1&agent=website&csrfmiddlewaretoken=' + token
 	answer = urllib2.urlopen(url).read()
-	path = os.path.join(get_HOME_PATH(),'input_' + c_id)
+	path = os.path.join(get_HOME_PATH(),'input')
 	create_folder(path)
 	with open(os.path.join(path,prob_id + "_" + s + '.in'), 'w') as f:
 		f.write(answer)

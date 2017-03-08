@@ -10,11 +10,12 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from finding_regexes import *
 from stuff_module import *
-
+from write_to_csv import *
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"
 
+dict = {}
 
 def build_user_id_url(base_url,contest_id,pos):
    return base_url+'/do/?cmd=GetScoreboard&contest_id='+contest_id+'&show_type=all&start_pos='+pos
@@ -34,16 +35,18 @@ def retrieve_sol(base_url,problem,io_set_id,username, c_id):
     if answer.startswith('Server Error'):
         return
     else :
-        path = os.path.join(get_HOME_PATH(),'solutions_' +c_id)
+        path = os.path.join(get_HOME_PATH(),'solutions_'+ problem+'_'+io_set_id)
         create_folder(path)
-        with open(os.path.join(path,username+'_'+problem+'_'+io_set_id),'w') as f:
+        with open(os.path.join(path,username),'w') as f:
             f.write(answer)
 
-def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id):
-    all_users_id = retrive_users(user_id_url)
-    list_of_items = ['0','1']
-    for problem in list_of_problems :
-        for user in all_users_id :
+def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id,i):
+	all_users_id = retrive_users(user_id_url)
+	list_of_items = ['0','1']
+	for problem in list_of_problems :
+		for user in all_users_id :
+			dict[user] = i
+			i=i+1
 			for item in list_of_items :
 				retrieve_sol(base_url,problem,item,user, c_id)
 				print 'problem ' + problem + ' item ' + item + ' user ' + user
@@ -54,7 +57,6 @@ def download_all_pages(base_url,list_of_problem_ids,contest_id):
 	while (i<3030): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
 		print 'dowloading solutions from ' + str(i)
 		user_id_url = build_user_id_url(base_url,contest_id,str(i))
-		download_one_page_solutions(base_url,list_of_problem_ids,user_id_url, contest_id)
+		print user_id_url
+		download_one_page_solutions(base_url,list_of_problem_ids,user_id_url, contest_id,i)
 		i = i+30
-
-

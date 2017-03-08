@@ -2,12 +2,10 @@ import os
 
 # all selceted contest ids
 
-CONTEST_IDS = ['6254486','4304486', '11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486', 
-'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
+CONTEST_IDS = ['6254486','4304486'] #,'11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486',
+#'3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
 
-# contest on emmas computer
-#['1128486', '2984486']
-LANGUAGE = ['C#'] #['java', 'C', 'C++', 'Python', 'C#']
+LANGUAGE = ['java', 'C', 'C++', 'Python', 'C#']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
 
@@ -16,8 +14,6 @@ HOME_PATH = os.path.join('../../')
 
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
-
-BASE = "https://code.google.com/codejam/contest/"
 
 
 
@@ -39,6 +35,9 @@ def get_SIZE() :
 def get_BASE() :
 	return BASE
 
+def get_PROBLEM_IDS(gcj_path):
+	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
+		return content.split('\n')
 
 def get_FILE_ENDING(lang):
 	if lang == 'java':
@@ -53,5 +52,3 @@ def get_FILE_ENDING(lang):
 		return ['.cpp', '.C', '.cc', '.CPP', '.c++', '.cp', '.cxx']
 	else :
 		print 'Not a valid language'
-
-
