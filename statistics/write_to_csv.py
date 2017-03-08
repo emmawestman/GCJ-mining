@@ -52,7 +52,7 @@ def get_user_ids(c_id) :
     return new_dict
 
 def init_csv(c_id) :
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id))
+    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(c_id)))
     dict = {}
     for l in get_LANGUAGE() :
         path_lang = os.path.join(path, l)
@@ -71,7 +71,7 @@ def init_csv(c_id) :
             prob_dict['user_ids'] =  old_users + users
             langs =  [l] * len(users)
             prob_dict ['language'] = old_langs + langs
-    create_init_csv(c_id, dict)
+    return dict
 
 def create_init_csv(c_id, dict) :
     p_ids = dict.keys()
@@ -90,7 +90,7 @@ def create_init_csv(c_id, dict) :
                 writer.writerow(result)
 
 def change_column(c_id, p_id, users, column_name, new_values) :
-    filename = c_id + '_' + p_id + '.csv'
+    filename = str(c_id) + '_' + str(p_id) + '.csv'
     dict = read_csv_file(filename)
     for idx, u in enumerate(users) :
         user_dict = dict[u]
@@ -98,12 +98,5 @@ def change_column(c_id, p_id, users, column_name, new_values) :
     write_to_csv_file(filename, dict)
 
 
-init_csv('11254486')
-#create_csv('11254486')
-'''
-print read_csv_file('c123_p123.csv')
-change_column('c123', 'p123', ['user1', 'user2', 'user3', 'user4', 'user5'], 'lang', ['C++', 'C++', 'Python', 'java', 'C++'])
-print read_csv_file('c123_p123.csv')
-change_column('c123', 'p123', ['user1', 'user2', 'user3', 'user4', 'user5'], 'compiler', ['-', '-', '3.5', '-', '-'])
-print read_csv_file('c123_p123.csv')
-'''
+#dict = init_csv('11254486')
+#create_init_csv('11254486', dict)

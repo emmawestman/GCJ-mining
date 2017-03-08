@@ -12,7 +12,7 @@ LANGUAGE = get_LANGUAGE()
 
 # creates on row with prob_id, langage, user, blank, comment, code
 def cloc_problem(c_id, prob_id, lang, user) :
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, lang, prob_id, user))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(c_id), lang, prob_id, user))
 	print path
 	cmd = ['cloc ' + path ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -23,31 +23,36 @@ def cloc_problem(c_id, prob_id, lang, user) :
 		print result
 	else :
 		result = ['-', '-', '-']
+		print result
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
-def cloc_contest_problem(c_id, p_id) :
-	print 'CLOC for ' + c_id
-	path = os.path.realpath(os.path.join('..','solutions_' + c_id))
-    results = []
-    user_ids = []
+def cloc_contest(c_id) :
+	print 'CLOC for ' + str(c_id)
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(c_id)))
+	results = []
+	prob_ids = []
+	all_user_ids = get_user_ids(c_id)
 	for l in LANGUAGE :
-	    path_lang = os.path.join(path, l, p_id)
-        prob_ids = os.listdir(path_lang)
-			for p_id in prob_ids :
-				users = os.listdir(os.path.join(path_lang, p_id))
-			    for user in users :
-				    results.append(cloc_problem(c_id, p_id, l, user))
-            user_ids.append(users)
-    # write to csv
-    change_column(c_id, p_id, user_ids, 'cloc', [row[2] for row in results])
-    change_column(c_id, p_id, user_ids, 'blanks', [row[0] for row in results])
-    change_column(c_id, p_id, user_ids, 'coments', [row[1] for row in results])
-         
+		path_lang = os.path.join(path, l)
+		prob_ids = os.listdir(path_lang)
+		for p_id in prob_ids :
+			users = os.listdir(os.path.join(path_lang, p_id))
+			for user in users :
+				results.append(cloc_problem(c_id, p_id, l, user))
+				#user_ids.append(users)
+				# write to csv
+	for p_id in prob_ids :
+		user_ids = all_user_ids [p_id]
+		print user_ids
+	 	change_column(c_id, p_id, user_ids, 'cloc', [row[2] for row in results])
+		change_column(c_id, p_id, user_ids, 'blanks', [row[0] for row in results])
+		change_column(c_id, p_id, user_ids, 'coments', [row[1] for row in results])
+
 
 # calcualte cloc for all contests
 def cloc_all() :
 	for c_id in get_CONTEST_IDS() :
-        cloc_contest_problem(c_id)
+		cloc_contest(c_id)
 
 cloc_all()
