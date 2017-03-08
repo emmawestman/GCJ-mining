@@ -70,7 +70,7 @@ def init_csv(c_id) :
         	prob_dict['user_ids'] =  old_users + users
             langs =  [l] * len(users)
             prob_dict ['language'] = old_langs + langs
-    return dict
+    create_init_csv(c_id, dict)
 
 def create_init_csv(c_id, dict) :
 	p_ids = dict.keys()
