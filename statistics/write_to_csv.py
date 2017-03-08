@@ -1,4 +1,4 @@
-import csv 
+import csv
 import os
 import sys
 
@@ -20,7 +20,7 @@ def read_csv_file(filename) :
         for row in content[1:] :
             user_id = row[0]
             user_dict = {}
-            
+
             for idx, a in enumerate(attr_names) :
                 user_dict[a] = row[idx +1]
             dict[user_id] = user_dict
@@ -45,11 +45,13 @@ def write_to_csv_file(filename, dict) :
 def get_user_ids(c_id) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id))
     dict = {}
-    for l in get_LANGUAGE() :            
+    for l in get_LANGUAGE() :
         path_lang = os.path.join(path, l)
         prob_ids = os.listdir(path_lang)
         for p_id in prob_ids :
             users = os.listdir(os.path.join(path_lang, p_id))
+			print os.path.join(path_lang, p_id)
+			print users
             try :
                 old_users = dict [p_id]
             except KeyError:
@@ -72,25 +74,25 @@ def create_csv(c_id) :
 
         print user_ids
 
-        complete_name = os.path.join('../..', 'GCJ-backup', c_id + '_' + p_id + '.csv') 
+        complete_name = os.path.join('../..', 'GCJ-backup', c_id + '_' + p_id + '.csv')
         with open(complete_name, 'wb') as csvfile :
-            writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)  
+            writer = csv.writer(csvfile, delimiter=' ', quotechar=',', quoting=csv.QUOTE_MINIMAL)
             #write header
             writer.writerow(['user_id'])
             for u in user_ids :
                 result = [u]
                 writer.writerow(result)
 
-def change_column(c_id, p_id, users, column_name, new_values) : 
+def change_column(c_id, p_id, users, column_name, new_values) :
     filename = c_id + '_' + p_id + '.csv'
     dict = read_csv_file(filename)
     for idx, u in enumerate(users) :
         user_dict = dict[u]
         user_dict[column_name] = new_values[idx]
     write_to_csv_file(filename, dict)
-	
 
-get_user_ids('11254486')	
+
+get_user_ids('11254486')
 #create_csv('11254486')
 '''
 print read_csv_file('c123_p123.csv')
@@ -99,7 +101,3 @@ print read_csv_file('c123_p123.csv')
 change_column('c123', 'p123', ['user1', 'user2', 'user3', 'user4', 'user5'], 'compiler', ['-', '-', '3.5', '-', '-'])
 print read_csv_file('c123_p123.csv')
 '''
-
-
-
-
