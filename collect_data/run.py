@@ -89,15 +89,17 @@ def download_solution_serial():
 	for x in list_of_contest_ids:
 		download_solution(x)
 
-def download_solution_mp():
+def download_solutions_mp():
 	list_of_contest_ids = get_CONTEST_IDS() 
 	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,list_of_contest_ids)
 
 
 
-'''
->>>>>>> parallelization
+
+download_input_mp()
+download_solutions_mp()
+
 print 'Sarting to sort all zip files...'
 start = time.time()
 
@@ -109,8 +111,6 @@ for i in range(0,number_of_contests):
 end = time.time()
 diff = end - start
 write_to_log('Time for sorting all files: ', diff)
-
-'''
 
 
 
