@@ -68,10 +68,9 @@ def init_csv(c_id) :
                 dict[p_id] = prob_dict
                 old_users = []
                 old_langs = []
-        	prob_dict['user_ids'] =  old_users + users
+            prob_dict['user_ids'] =  old_users + users
             langs =  [l] * len(users)
             prob_dict ['language'] = old_langs + langs
-	print dict
     create_init_csv(c_id, dict)
 
 def create_init_csv(c_id, dict) :
