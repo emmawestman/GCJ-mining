@@ -56,9 +56,8 @@ def get_user_ids(c_id) :
                 old_users = dict [p_id]
             except KeyError:
                 old_users = []
-            dict [p_id] =  old_users.append(users)
-            print dict [p_id]
-
+            dict [p_id] =  old_users + users
+            print old_users
         print dict
 
 def create_csv(c_id) :
