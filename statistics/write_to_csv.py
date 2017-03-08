@@ -96,7 +96,3 @@ def change_column(c_id, p_id, users, column_name, new_values) :
         user_dict = dict[u]
         user_dict[column_name] = new_values[idx]
     write_to_csv_file(filename, dict)
-
-
-#dict = init_csv('11254486')
-#create_init_csv('11254486', dict)
