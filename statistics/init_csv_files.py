@@ -9,8 +9,9 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 def run_init() :
-    for c_id in get_CONTEST_IDS() :
-        dict = init_csv(c_id)
-        create_init_csv(c_id, dict)
+    for p_id in get_PROBLEM_IDS(gcj_path) :
+        dict = init_csv(p_id)
+        create_init_csv(p_id, dict)
 
 run_init()
+

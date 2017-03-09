@@ -80,7 +80,7 @@ def download_input_mp():
 def download_solution(contest_id):
 	base_url = build_base_url(contest_id)
 	problem_ids = retrive_problem_ids(base_url)
-	with open (os.path.join(gcj_path,'p_ids.in'),'wb') as f :
+	with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
 		for problem_id in problem_ids:
 			f.write(problem_id+'\n')
 	download_all_pages(base_url,problem_ids,contest_id)
@@ -112,22 +112,8 @@ diff = end - start
 write_to_log('Time for sorting all files: ', diff)
 
 
-
-
-
-
-
-
-
-=======
-#download_input_serial()
-sorting.sort_files('5652388522229760',0)
-#download_solution_serial()
-'''
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
-	for i in range(0,1):
-		print 'Sorting contest ' + problem_id
-		sorting.sort_files(problem_id,i)
-'''		
->>>>>>> csv
+	print 'Sorting contest ' + problem_id
+	sorting.sort_files(problem_id)
+	

@@ -49,8 +49,8 @@ def comparingFunction(f):
 	return not os.path.isdir(os.path.join(PATH,f));
 
 
-def sort_files(p_id,size_flag):
-	PATH = os.path.join(get_HOME_PATH(),'solutions_' + p_id+'_'+str(size_flag))
+def sort_files(p_id):
+	PATH = os.path.join(get_HOME_PATH(),'solutions_' + p_id)
 	# make a list of all files in the directory
 	all_zip_names = os.listdir(PATH)
 
