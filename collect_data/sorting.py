@@ -72,30 +72,26 @@ def sort_files(p_id):
 
 	all_zip_names = get_zip_files(all_zip_names,PATH)
 	print all_zip_names
-	for zip_filename in all_zip_names:
-		for filename in zipfile.ZipFile(os.path.join(PATH, zip_filename)).namelist():
+	for username in all_zip_names:
+		print zipfile.ZipFile(os.path.join(PATH, username)).namelist()
+		for filename in zipfile.ZipFile(os.path.join(PATH, username)).namelist():
 			file_ending = get_file_ending(filename)
 			print file_ending
 
 			# extract file into this destination i.e. the correct language folder, problem id and username
-			username, prob_id = get_info(zip_filename)
-			#print username
-			#print prob_id
-			print 'Sorting ' + prob_id + ' for user: ' + username + 'into ' + file_ending
+			#username, prob_id = get_info(zip_filename)
+			print 'Sorting ' + p_id + ' for user: ' + username + ' into ' + file_ending
 			# language folder
 			dest = select_folder(file_ending, PATH)
 			''' check that the language is valid'''
 			if dest != -1:
-				# problem folder
-				dest = os.path.join(dest, prob_id)
-				downloadgcj.create_folder(dest)
 				# username folder
 				dest = os.path.join(dest, username)
 				downloadgcj.create_folder(dest)
 				#print dest
-				zipfile.ZipFile(os.path.join(PATH, zip_filename)).extract(filename,dest)
+				zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
 
 		#clean up, remove zip-file
 
-		os.remove(os.path.join(PATH, zip_filename))
+		os.remove(os.path.join(PATH, username))
 	print "Done sorting all zip files!"
