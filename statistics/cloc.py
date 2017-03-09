@@ -11,8 +11,8 @@ LANGUAGE = get_LANGUAGE()
 
 
 # creates on row with prob_id, langage, user, blank, comment, code
-def cloc_problem(c_id, prob_id, lang, user) :
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(c_id), lang, prob_id, user))
+def cloc_file(prob_id, lang, user) :
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + prob_id, lang, user))
 	print path
 	cmd = ['cloc ' + path ]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -27,32 +27,38 @@ def cloc_problem(c_id, prob_id, lang, user) :
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
-def cloc_contest(c_id) :
-	print 'CLOC for ' + str(c_id)
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(c_id)))
-	results = []
+def cloc_problem(p_id) :
+	print 'CLOC for ' + str(p_id)
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(p_id)))
 	prob_ids = []
-	all_user_ids = get_user_ids(c_id)
+	dict = {}
 	for l in LANGUAGE :
 		path_lang = os.path.join(path, l)
-		prob_ids = os.listdir(path_lang)
-		for p_id in prob_ids :
-			users = os.listdir(os.path.join(path_lang, p_id))
-			for user in users :
-				results.append(cloc_problem(c_id, p_id, l, user))
-				#user_ids.append(users)
-				# write to csv
-	for p_id in prob_ids :
-		user_ids = all_user_ids [p_id]
-		print user_ids
-	 	change_column(c_id, p_id, user_ids, 'cloc', [row[2] for row in results])
-		change_column(c_id, p_id, user_ids, 'blanks', [row[0] for row in results])
-		change_column(c_id, p_id, user_ids, 'coments', [row[1] for row in results])
+		try :
+			prob_dict = dict [p_id]
+		except KeyError:
+			prob_dict = read_csv_file(str(p_id) + '.csv')
+			dict[p_id] = prob_dict
+		users = os.listdir(path_lang)
+		for user in users :
+			results = (cloc_file(p_id, l, user))
+			# update user dict
+			user_dict = prob_dict[user]
+			user_dict['cloc'] = results[2]
+			user_dict['blanks'] = results[0]
+			user_dict['comments'] = results[1]
+	# write to dict to file
+	write_to_csv_file(str(p_id) + '.csv', dict)
+
+
+
 
 
 # calcualte cloc for all contests
 def cloc_all() :
-	for c_id in get_CONTEST_IDS() :
-		cloc_contest(c_id)
+	# one dir up
+	one_up = os.path.join(os.getcwd(), '../')
+	for problem_id in get_PROBLEM_IDS(one_up):
+		cloc_problem(problem_id)
 
 cloc_all()

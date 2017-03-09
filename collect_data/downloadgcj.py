@@ -10,7 +10,7 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from finding_regexes import *
 from stuff_module import *
-from write_to_csv import *
+
 
 io_set_id_0 = "0";
 io_set_id_1 = "1"

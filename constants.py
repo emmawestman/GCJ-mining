@@ -43,7 +43,14 @@ def get_BASE() :
 
 def get_PROBLEM_IDS(gcj_path):
 	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
-		return content.split('\n')
+		p_ids = content.read().split('\n')
+		p_ids = p_ids [:len(p_ids)-1]
+		ret_list = []
+		for p_id in p_ids :
+			for i in [0,1] :
+				ret_list.append(p_id+'_'+str(i))
+	return ret_list
+
 
 def get_FILE_ENDING(lang):
 	if lang == 'java':
@@ -58,3 +65,5 @@ def get_FILE_ENDING(lang):
 		return ['.cpp', '.C', '.cc', '.CPP', '.c++', '.cp', '.cxx']
 	else :
 		print 'Not a valid language'
+
+
