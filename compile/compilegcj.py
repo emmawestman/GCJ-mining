@@ -35,28 +35,35 @@ python_path = os.path.join(os.getcwd(), 'compile_python/')
 sys.path.insert(0, python_path)
 from compile_python import *
 
+python_path = os.path.join(os.getcwd(), '../statistics')
+sys.path.insert(0, python_path)
+from write_to_csv import *
+
 					
 
-def compile_language(language, c_id):
+def compile_language(language, p_id):
 	a = -1
 	b = -1
 	c = -1
 	d = -1
+	filename = p_id + '.csv'
 	if language == 'java':
 		cwd = os.getcwd()
-		a, b = compile_java(c_id)
-		c, d = run_java_files(c_id)
+		a, b = compile_java(p_id)
+		c, d = run_java_files(p_id)
 		os.chdir(cwd)
 	elif language == 'C':
-		a, b = compile_c(c_id)
-		c, d = run_c(c_id)
+		a, b = compile_c(p_id)
+		c, d = run_c(p_id)
 	elif language == "C++":
-		a, b = compile_cpp(c_id)
-		c, d = run_cpp(c_id)
+		a, b = compile_cpp(p_id)
+		c, d = run_cpp(p_id)
 	elif language == 'C#':
-		a, b = compile_run_csharp(c_id)
+		a, b = compile_run_csharp(p_id)
 	elif language == "Python":
-		a,b = compile_python(c_id)
+		dict = read_csv_file(filename)
+		a,b,updated_dict = compile_python(p_id, dict)
+		write_to_csv_file(filename, updated_dict)
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
@@ -65,24 +72,20 @@ def compile_language(language, c_id):
 
 # compile all languages
 print 'Sarting to compile and run all files...'
-start = time.time()
 
-list_of_contest_ids = get_CONTEST_IDS()
-number_of_contests = len(list_of_contest_ids)
+list_of_problem_ids = get_PROBLEM_IDS(gcj_path)
+number_of_problems = len(list_of_problem_ids)
 
-for i in range(0,number_of_contests):
-	CONTEST_ID = list_of_contest_ids[i]
+for i in range(0,number_of_problems):
+	PROBLEM_ID = list_of_problem_ids[i]
+	dict = read_csv_file(PROBLEM_ID + '.csv')
 	for l in get_LANGUAGE():
-		l_start = time.time()
-		print 'Compiles and Runs: ' + l + ' in contest: ' + CONTEST_ID
-		remove_old_files(l, CONTEST_ID)
-		a, b, c, d = compile_language(l, CONTEST_ID)
-		l_end = time.time()
-		l_diff = l_end - l_start
+		print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
+		remove_old_files(l, PROBLEM_ID)
+		a, b, c, d = compile_language(l, PROBLEM_ID)
+
 	
 
-end = time.time()
-diff = end - start
 
 
 

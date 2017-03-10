@@ -46,7 +46,7 @@ def compile_c(c_id):
 
 def run_c(c_id):
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
-	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH2(),'input_' + c_id))
+	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):	
