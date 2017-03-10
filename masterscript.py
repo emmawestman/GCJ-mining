@@ -1,12 +1,14 @@
-gcj_path = os.path.join(os.getcwd(), '/collect_data')
+import sys
+import os
+gcj_path = os.path.join(os.getcwd(), 'collect_data/')
 sys.path.insert(0, gcj_path)
 from run import *
 
-gcj_path = os.path.join(os.getcwd(), '/statistics')
+gcj_path = os.path.join(os.getcwd(), 'statistics/')
 sys.path.insert(0, gcj_path)
 from cloc import *
 
-gcj_path = os.path.join(os.getcwd(), '/compile')
+gcj_path = os.path.join(os.getcwd(), 'compile/')
 sys.path.insert(0, gcj_path)
 from compilegcj import *
 

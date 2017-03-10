@@ -13,29 +13,29 @@ from finding_regexes import *
 from stuff_module import *
 
 
-cpp_path = os.path.join(os.getcwd(), 'compile_c/')
-sys.path.insert(0, cpp_path)
+c_path = os.path.join(os.getcwd(), 'compile/compile_c/')
+sys.path.insert(0, c_path)
 from compile_c import *
 
-cpp_path = os.path.join(os.getcwd(), 'compile_c++/')
+cpp_path = os.path.join(os.getcwd(), 'compile/compile_c++/')
 sys.path.insert(0, cpp_path)
 from compile_cpp import *
 
-csharp_path = os.path.join(os.getcwd(), 'compile_c#/')
+csharp_path = os.path.join(os.getcwd(), 'compile/compile_c#/')
 sys.path.insert(0, csharp_path)
 from compile_csharp import *
 
 
-java_path = os.path.join(os.getcwd(), 'compile_java/')
+java_path = os.path.join(os.getcwd(), 'compile/compile_java/')
 sys.path.insert(0, java_path)
 from compile_java import *
 
 
-python_path = os.path.join(os.getcwd(), 'compile_python/')
+python_path = os.path.join(os.getcwd(), 'compile/compile_python/')
 sys.path.insert(0, python_path)
 from compile_python import *
 
-python_path = os.path.join(os.getcwd(), '../statistics')
+python_path = os.path.join(os.getcwd(), 'statistics/')
 sys.path.insert(0, python_path)
 from write_to_csv import *
 

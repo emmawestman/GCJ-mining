@@ -67,7 +67,7 @@ def download_input_serial():
 
 def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool = mp.Pool(processes = 6)
+	pool = mp.Pool(processes = 5)
 	results = pool.map(download_input,list_of_contest_ids)
 
 
@@ -89,13 +89,13 @@ def download_solution_serial():
 
 def download_solutions_mp():
 	list_of_contest_ids = get_CONTEST_IDS() 
-	pool2 = mp.Pool(processes = 6)
+	pool2 = mp.Pool(processes = 5)
 	results = pool2.map(download_solution,list_of_contest_ids)
 
 def download_table_data_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
-	pool2 = mp.Pool(processes = 6)
+	pool2 = mp.Pool(processes = 5)
 	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
 
 def master_do_all_stuff():
@@ -105,4 +105,4 @@ def master_do_all_stuff():
 	for problem_id in get_PROBLEM_IDS(gcj_path):
 		print 'Sorting contest ' + problem_id
 		sorting.sort_files(problem_id)
-	
+

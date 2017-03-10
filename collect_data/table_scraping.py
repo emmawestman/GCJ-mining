@@ -39,5 +39,5 @@ def download_table_data(contest_id_and_limit):
 
 
 	
-download_table_data(('6254486',30))
+
 	

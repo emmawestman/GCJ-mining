@@ -3,7 +3,7 @@ import subprocess
 from write_to_csv import *
 
 # import own modules from diffrent directory
-gcj_path = os.path.join(os.getcwd(), '../')
+gcj_path = os.getcwd()
 sys.path.insert(0, gcj_path)
 from constants import *
 
