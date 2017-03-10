@@ -1,6 +1,7 @@
 from downloadgcj import *
 import sorting
 from download_input import *
+from table_scraping import *
 import os
 import multiprocessing as mp
 import time
@@ -16,13 +17,8 @@ from constants import *
 from finding_regexes import *
 from stuff_module import *
 
-problem_ids = []
+NUMBER_OF_PAGES = 3030
 
-# not needed at the moment since competisions ids are selected
-def get_all_contests_id():
-	answer = urllib2.urlopen(get_BASE()).read()
-	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
-	return list(set(list_of_duplicates))
 
 def retrive_problem_ids(url):
 	page = urllib2.urlopen(url).read()
@@ -83,7 +79,7 @@ def download_solution(contest_id):
 	with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
 		for problem_id in problem_ids:
 			f.write(problem_id+'\n')
-	download_all_pages(base_url,problem_ids,contest_id)
+	download_all_pages(base_url,problem_ids,contest_id,NUMBER_OF_PAGES)
 
 
 def download_solution_serial():
@@ -96,9 +92,15 @@ def download_solutions_mp():
 	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,list_of_contest_ids)
 
-download_input_mp()
-download_solutions_mp()
+def download_table_data_mp():
+	list_of_contest_ids = get_CONTEST_IDS()
+	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
+	pool2 = mp.Pool(processes = 6)
+	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
 
+#download_input_mp()
+#download_solutions_mp()
+download_table_data_mp()
 
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
