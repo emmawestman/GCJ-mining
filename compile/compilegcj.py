@@ -70,19 +70,18 @@ def compile_language(language, p_id, dict):
 # compile all languages
 print 'Sarting to compile and run all files...'
 
-
-list_of_problem_ids = get_PROBLEM_IDS(gcj_path)
-number_of_problems = len(list_of_problem_ids)
-
-for i in range(0,number_of_problems):
-	PROBLEM_ID = list_of_problem_ids[i]
-	filename = PROBLEM_ID + '.csv'
-	dict = read_csv_file(filename)
-	for l in get_LANGUAGE():
-		print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
-		remove_old_files(l, PROBLEM_ID)
-		dict = compile_language(l, PROBLEM_ID, dict)
-	write_to_csv_file(filename, dict)
+def compile_all():
+	list_of_problem_ids = get_PROBLEM_IDS(gcj_path)
+	number_of_problems = len(list_of_problem_ids)
+	for i in range(0,number_of_problems):
+		PROBLEM_ID = list_of_problem_ids[i]
+		filename = PROBLEM_ID + '.csv'
+		dict = read_csv_file(filename)
+		for l in get_LANGUAGE():
+			print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
+			remove_old_files(l, PROBLEM_ID)
+			dict = compile_language(l, PROBLEM_ID, dict)
+		write_to_csv_file(filename, dict)
 
 	
 

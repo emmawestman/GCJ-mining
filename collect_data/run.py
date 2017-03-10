@@ -98,12 +98,11 @@ def download_table_data_mp():
 	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
 
-#download_input_mp()
-#download_solutions_mp()
-download_table_data_mp()
-
-print 'Starting to sort all zip files...'
-for problem_id in get_PROBLEM_IDS(gcj_path):
-	print 'Sorting contest ' + problem_id
-	sorting.sort_files(problem_id)
+def master_do_all_stuff():
+	download_input_mp()
+	download_solutions_mp()
+	download_table_data_mp()
+	for problem_id in get_PROBLEM_IDS(gcj_path):
+		print 'Sorting contest ' + problem_id
+		sorting.sort_files(problem_id)
 	

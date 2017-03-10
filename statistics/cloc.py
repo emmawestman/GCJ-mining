@@ -56,4 +56,3 @@ def cloc_all() :
 	for problem_id in get_PROBLEM_IDS(one_up):
 		cloc_problem(problem_id)
 
-cloc_all()
