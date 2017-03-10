@@ -14,7 +14,7 @@ HOME_PATH = os.path.join('../../')
 
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
-
+BASE = "https://code.google.com/codejam/contest/"
 
 
 def get_CONTEST_IDS() :

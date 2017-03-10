@@ -99,18 +99,6 @@ def download_solutions_mp():
 download_input_mp()
 download_solutions_mp()
 
-print 'Sarting to sort all zip files...'
-start = time.time()
-
-for i in range(0,number_of_contests):
-	CONTEST_ID = list_of_contest_ids[i]
-	print 'Sorting contest ' + CONTEST_ID
-	sorting.sort_files(CONTEST_ID)
-
-end = time.time()
-diff = end - start
-write_to_log('Time for sorting all files: ', diff)
-
 
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
