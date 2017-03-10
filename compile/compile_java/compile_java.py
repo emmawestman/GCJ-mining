@@ -11,18 +11,18 @@ sys.path.insert(0, gcj_path)
 from finding_regexes import *
 from constants import *
 
-def file_not_found_exception(errors,class_name,user_path,old_problem_name,c_id):
+def file_not_found_exception(errors,class_name,user_path,old_problem_name,p_id):
 	requested_file_name =filter_information(':\s.*\.\w*',':',errors)[0]
 	requested_file_name = requested_file_name.replace(':','')
-	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + c_id)
+	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + p_id)
 	rename_file(user_path,PATH_INPUT,old_problem_name,requested_file_name)
 	os.chdir(user_path)
 	return run_java_command(class_name,requested_file_name)
 
 
-def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
+def run_java_file(user_path,problem_folder,user_folder,class_name, p_id):
 	print 'running java file ' + problem_folder + ' ' + user_folder + ' ' + class_name 
-	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + c_id)
+	PATH_INPUT = os.path.join(os.getcwd(), '../../../../../../input_' + p_id)
 	user, input_file = get_run_info('java', os.getcwd())
 	path_to_input = os.path.join(PATH_INPUT, input_file)
 	args = '< '+ path_to_input
@@ -31,7 +31,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, c_id):
 	if flag == 0 and errors != None:
 		exception_name = get_exception_name(errors)
 		if exception_name == 'FileNotFoundException':
-			flag,errors = file_not_found_exception(errors,class_name,user_path,input_file, c_id)
+			flag,errors = file_not_found_exception(errors,class_name,user_path,input_file, p_id)
 			print errors
 			return flag
 		return 0
@@ -45,10 +45,6 @@ def run_java_command(class_name,args):
 	exit_code = p.returncode
 	if exit_code == 0:
 		if errors.find('Exception in thread')!= -1:
-			file1 = open('java_run_errors.txt', "a")
-			file1.write(os.getcwd() + '\n')
-			file1.write(errors + '\n')
-			file1.close()
 			return 0,errors
 		return 1,None
 	else:
@@ -57,31 +53,38 @@ def run_java_command(class_name,args):
 
 	
 
-def compile_java(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'java' ))
+def compile_java(p_id, dict):
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'java' ))
 	nbr_of_files = 0
 	succes_nbr = 0
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			nbr_of_files += 1
 			if (f.endswith(".java")):
-				cmd = ['timeout 30s javac ' + os.path.join(root,f)]
+				full_path = os.path.join(root,f)
+				cmd = ['timeout 30s javac ' + full_path]
 				p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				output, errors = p.communicate()
 				exit_code = p.returncode
+				# update user dict
+				user_id = get_user_id(full_path)
+				user_dict = dict[user_id]
+				user_dict['compiler_version'] = '-'
 				if int(exit_code) == 0:
 					if 'Note' in errors or len(errors) == 0:
 						succes_nbr += 1
+						user_dict['compiled'] = 'YES'
 					else:
 						print errors
-						file1 = open('java_compile_errors.txt', "a")
-						file1.write(path + '\n')
-						file1.write(errors + '\n')
-						file1.close()
-	return succes_nbr, nbr_of_files
+						user_dict['compiled'] = 'NO'
+				else :
+					print 'Timeout for file: ' + full_path
+					user_dict['compiled'] = 'NO'
+	print dict
+	return succes_nbr, nbr_of_files, dict
 
-def run_java_files(c_id) :
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'java'))
+def run_java_files(p_id) :
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'java'))
 	nbr_of_files = 0
 	succes_nbr = 0
 	problemfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
@@ -98,7 +101,7 @@ def run_java_files(c_id) :
 			class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
 			if len(class_file)>0:
 					class_name = class_file[0].split('.')[0]
-					succes_nbr += run_java_file(userPATH,problem_folder,user_folder,class_name, c_id)
+					succes_nbr += run_java_file(userPATH,problem_folder,user_folder,class_name, p_id)
 	return succes_nbr, nbr_of_files
 
 

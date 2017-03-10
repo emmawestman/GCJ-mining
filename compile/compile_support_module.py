@@ -71,6 +71,13 @@ def remove_all_old_files() :
 		for l in get_LANGUAGE() :
 			remove_old_files(l, c_id)
 
+def get_user_id(path) :
+	index = re.findall("/\w+", path)
+	user_idx = len(index)-2
+	user = index[user_idx]
+	user_id = user[1:]
+	return user_id
+
 
 def get_compile_info(regexp, root, f):
 	index = root.find(regexp)

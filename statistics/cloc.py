@@ -31,22 +31,17 @@ def cloc_problem(p_id) :
 	print 'CLOC for ' + str(p_id)
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + str(p_id)))
 	prob_ids = []
-	dict = {}
-	for l in LANGUAGE :
-		path_lang = os.path.join(path, l)
-		try :
-			prob_dict = dict [p_id]
-		except KeyError:
-			prob_dict = read_csv_file(str(p_id) + '.csv')
-			dict[p_id] = prob_dict
-		users = os.listdir(path_lang)
-		for user in users :
-			results = (cloc_file(p_id, l, user))
-			# update user dict
-			user_dict = prob_dict[user]
-			user_dict['cloc'] = results[2]
-			user_dict['blanks'] = results[0]
-			user_dict['comments'] = results[1]
+	dict = read_csv_file(str(p_id) + '.csv')
+	users = dict.keys()
+	for user in users :
+		user_dict = dict[user]
+		lang = user_dict['language']
+		results = (cloc_file(p_id, lang, user))
+		# update user dict
+		user_dict = dict[user]
+		user_dict['cloc'] = results[2]
+		user_dict['blanks'] = results[0]	
+		user_dict['comments'] = results[1]
 	# write to dict to file
 	write_to_csv_file(str(p_id) + '.csv', dict)
 
