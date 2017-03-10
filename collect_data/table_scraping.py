@@ -7,7 +7,9 @@ def table_scraping(url):
 	raw_data = urllib2.urlopen(url).read()
 	json_data = json.loads(raw_data)
 	for row in json_data['rows']:
-		print row['n'] + row ['pen'] + row['pts']
+		print row['n']
+		print row ['pen'] 
+		print row['pts']
 
 
 

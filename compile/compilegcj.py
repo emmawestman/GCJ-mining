@@ -67,7 +67,7 @@ def compile_language(language, c_id):
 print 'Sarting to compile and run all files...'
 start = time.time()
 
-list_of_contest_ids = get_CONTEST_IDS()
+list_of_contest_ids = get_PROBLEM_IDS()
 number_of_contests = len(list_of_contest_ids)
 
 for i in range(0,number_of_contests):
