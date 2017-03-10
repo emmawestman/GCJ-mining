@@ -72,14 +72,10 @@ def remove_all_old_files() :
 			remove_old_files(l, c_id)
 
 def get_user_id(path) :
-	print path
 	index = re.findall("/\w+", path)
-	print index
 	user_idx = len(index)-2
 	user = index[user_idx]
-	print user
 	user_id = user[1:]
-	print user_id
 	return user_id
 
 

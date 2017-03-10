@@ -25,6 +25,13 @@ def compile_python(p_id, dict):
 				path_file = os.path.join(root,f)
 				path_input = os.path.join(input_path,filename)
 				succes_of_file, dict = run_python_2x(path_file,path_input,p_id,root, dict)
+				# update dict compiled YES/NO
+				user_id = get_user_id(path_file)
+				user_dict = dict[user_id]
+				if succes_of_file == 1 :
+					user_dict['compiled'] = 'YES'
+				else :
+					user_dict['compiled'] = 'NO'
 				succes_nbr += succes_of_file
 	return succes_nbr, nbr_of_files, dict
 
@@ -55,7 +62,7 @@ def run_python_command(pythonversion,path_file,args,dict):
 		version = "3.5"
 	else:
 		version = "2.7"
-	user_dict['compiler'] = version
+	user_dict['compiler_version'] = version
 
 	cmd = [pythonversion + path_file + args]
 	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
