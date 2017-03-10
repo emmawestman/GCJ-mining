@@ -15,7 +15,7 @@ from constants import *
 
 
 	
-def compile_c(c_id):
+def compile_c(c_id, dict):
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
@@ -31,17 +31,19 @@ def compile_c(c_id):
 			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			output, errors = p.communicate()
 			exit_code = p.returncode
+			# update user dict
+			user_id = get_user_id(os.path.join(root,f))
+			user_dict = dict[user_id]
+			user_dict['compiler_version'] = '-'
 			if int(exit_code) == 0:
 				if len(errors) > 0 and 'warning' not in errors:
 					print 'failed to run problem: ' + root
 					print errors
-					file1 = open('compile_c_errors.txt', "a")
-					file1.write(path + '\n')
-					file1.write(errors + '\n')
-					file1.close()
+					user_dict['compiled'] = 'NO'
 				else:
 					succes_nbr += 1
-	return succes_nbr, nbr_of_files
+					user_dict['compiled'] = 'YES'
+	return succes_nbr, nbr_of_files, dict
 
 
 def run_c(c_id):

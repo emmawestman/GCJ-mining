@@ -17,7 +17,7 @@ def copile_one_cpp_file(cmd):
 	exit_code = p.returncode
 	return errors, exit_code
 
-def compile_cpp(c_id):
+def compile_cpp(c_id, dict):
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C++' ))
 	#number of files that successfylly compiles
 	succes_nbr = 0
@@ -34,28 +34,29 @@ def compile_cpp(c_id):
 			user, filename = get_compile_info('C++', root, f)
 			cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
   			errors, exit_code = copile_one_cpp_file(cmd)
+  			# update user dict
+			user_id = get_user_id(os.path.join(root,f))
+			user_dict = dict[user_id]
+			user_dict['compiler_version'] = '-'
 			# no timeout
 			if int(exit_code) == 0:
 				# an error occured
 				if len(errors) > 0 and 'warning' not in errors:
 					print 'Error in file: ' + os.path.join(root,f)
 					print errors
-					file1 = open('cpp_compile_errors.txt', "a")
-					file1.write(path + '\n')
-					file1.write(errors + '\n')
-					file1.close()
+					user_dict['compiled'] = 'NO'
+	
 
 				else:
 					print 'success!'
 					succes_nbr += 1
+					user_dict['compiled'] = 'YES'
 			else :
 				print 'Timeout for file: ' + os.path.join(root,f)
-				file1 = open('cpp_compile_errors.txt', "a")
-				file1.write(path + '\n')
-				file1.write('timedout' + '\n')
-				file1.close()
+				user_dict['compiled'] = 'NO'
 				
-	return succes_nbr, nbr_of_files
+				
+	return succes_nbr, nbr_of_files, dict
 
 
 
