@@ -56,7 +56,7 @@ def compile_language(language, p_id, dict):
 		c, d, dict = run_c(p_id, dict)
 	elif language == "C++":
 		a, b, dict = compile_cpp(p_id, dict)
-		c, d = run_cpp(p_id)
+		c, d, dict = run_cpp(p_id, dict)
 	elif language == 'C#':
 		a, b, dict = compile_run_csharp(p_id, dict)
 	elif language == "Python":
