@@ -53,7 +53,7 @@ def compile_language(language, p_id, dict):
 		os.chdir(cwd)
 	elif language == 'C':
 		a, b, dict = compile_c(p_id, dict)
-		c, d = run_c(p_id)
+		c, d, dict = run_c(p_id, dict)
 	elif language == "C++":
 		a, b, dict = compile_cpp(p_id, dict)
 		c, d = run_cpp(p_id)

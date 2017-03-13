@@ -28,15 +28,14 @@ def compile_c(c_id, dict):
 			user, filename = get_compile_info('C', root, f)
 
 			cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-			output, errors = p.communicate()
-			exit_code = p.returncode
+	
+            exit_code, errors = exe_cmd(cmd)
 			# update user dict
 			user_id = get_user_id(os.path.join(root,f))
 			user_dict = dict[user_id]
 			user_dict['compiler_version'] = '-'
 			if int(exit_code) == 0:
-				if len(errors) > 0 and 'warning' not in errors:
+				if 'warning' not in errors:
 					print 'failed to run problem: ' + root
 					print errors
 					user_dict['compiled'] = 'NO'
@@ -46,7 +45,7 @@ def compile_c(c_id, dict):
 	return succes_nbr, nbr_of_files, dict
 
 
-def run_c(c_id):
+def run_c(c_id, dict):
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
 	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
 	succes_nbr = 0
@@ -61,19 +60,14 @@ def run_c(c_id):
 			user, input_file = get_run_info('C', root)
 		
 			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
-			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-			output, errors = p.communicate()
-			exit_code = p.returncode
-			if int(exit_code) == 0:
-				if len(errors) > 0:
-					print 'Error Running problem: ' + root
-					file1 = open('c_run_errors.txt', "a")
-					file1.write(path + '\n')
-					file1.write(errors + '\n')
-					file1.close()
-					#print errors
-				else:
-					succes_nbr += 1
-	return succes_nbr, nbr_of_files
+			exit_code, errors = exe_cmd(cmd)
+			if int(exit_code) == 0 :
+				succes_nbr += 1
+
+            # wirite mesuremnts to csv
+            user_dict = dict[user]
+            mesurements = get_mesurments(errors)
+            write_to_user_dict(user_dict, exit_code, mesurments)
+	return succes_nbr, nbr_of_files, dict
 
 
