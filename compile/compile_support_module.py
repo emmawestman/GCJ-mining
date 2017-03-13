@@ -109,9 +109,9 @@ def get_mesurments(errors) :
 
 def exe_cmd(cmd) :
     full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-	p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	exit_code = p.returncode
+    p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, errors = p.communicate()
+    exit_code = p.returncode
     return exit_code, errors
 
 def write_to_user_dict(user_dict, exit_code, mesurments):
