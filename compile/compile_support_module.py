@@ -28,23 +28,6 @@ def write_new_contents_to_the_file(file_path,file_contents):
 	file_manager.write(file_contents)
 	file_manager.close()
 
-def rename_file(user_path,path_to_file,old_file_name,new_file_name):
-	curr_path = user_path
-	if new_file_name.find('/') !=-1:
-		path_to_create_folder = new_file_name.split('/')
-		new_file_name = path_to_create_folder[-1]
-		lim = len(path_to_create_folder)-1
-		for x in range(0,lim):
-			name = path_to_create_folder[0]
-			create_folder(name)
-			curr_path = os.path.join(curr_path,name) 
-			os.chdir(curr_path)
-	shutil.copy(os.path.join(path_to_file,old_file_name),curr_path)
-	os.chdir(curr_path) 
-	os.rename(old_file_name,new_file_name)
-	os.chdir(user_path)	
-
-
 
 #language is the file ending for the language
 def remove_old_files(language, c_id):
@@ -107,12 +90,20 @@ def get_mesurments(errors) :
         res.append(s[1:])
     return res
 
-def exe_cmd(cmd) :
-    full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-    p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# to run with flags
+def full_exe_cmd(cmd) :
+    full_cmd = ["/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""]
+ 	return run_process(full_cmd)
+
+# to compile
+def run_process(cmd):
+	full_cmd = [cmd]
+	subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
     exit_code = p.returncode
     return exit_code, errors
+
+
 
 def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['exit_code'] = exit_code
