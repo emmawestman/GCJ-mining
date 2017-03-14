@@ -34,7 +34,7 @@ def retrieve_sol(base_url,problem,io_set_id,username, c_id):
     if answer.startswith('Server Error'):
         return
     else :
-        path = os.path.join(get_HOME_PATH(),'solutions_'+ problem+'_'+io_set_id)
+        path = os.path.join(get_HOME_PATH(),'datacollection','solutions_'+ problem+'_'+io_set_id)
         create_folder(path)
         with open(os.path.join(path,username),'w') as f:
             f.write(answer)

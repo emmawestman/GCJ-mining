@@ -48,7 +48,7 @@ def get_zip_files(files,PATH):
 def comparingFunction(f):
     return not os.path.isdir(os.path.join(PATH,f));
 
-def find_dest(filen_names_list) :
+def find_dest(file_names_list,PATH) :
     dest = -1
     for file_name in file_names_list :
         file_ending = get_file_ending(file_name)
@@ -84,7 +84,7 @@ def sort_files(p_id):
     for username in all_zip_names:
         file_names_list = zipfile.ZipFile(os.path.join(PATH, username)).namelist()
         # find corerct language
-        dest = find_dest(file_names_list)
+        dest = find_dest(file_names_list,PATH)
         if not dest == -1 :
             # create folder
             dest = os.path.join(dest, username)
@@ -98,4 +98,7 @@ def sort_files(p_id):
         #clean up, remove zip-file
         os.remove(os.path.join(PATH, username))
     print "Done sorting all zip files!"
+
+sort_files('5658068650033152_1')
+
 
