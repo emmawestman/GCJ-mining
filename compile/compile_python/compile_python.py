@@ -36,20 +36,21 @@ def compile_python(p_id, dict):
 	return succes_nbr, nbr_of_files, dict
 
 
+def run_python(file_path,path_input,pythonversion)
+	print "Running file python3 " + file_path
+	args = ' < ' + path_input
+	return run_python_command(pythonversion,file_path, args, dict)
+
 
 def run_python_2x(file_path,path_input,p_id,root, dict):
-	print "Running file python " + file_path
-	args = ' < ' + path_input
-	errors, dict = run_python_command('python ',file_path, args, dict)
+	errors, dict = run_python(file_path,path_input,'python')
 	if len(errors) > 0:
 		return handle_python_2x_errors(file_path,path_input,p_id,root,errors,dict) 			
 	return 1, dict
 
 
 def run_python_3x(file_path,path_input,p_id,root,dict):
-	print "Running file python3 " + file_path
-	args = ' < ' + path_input
-	errors, dict = run_python_command('python3 ',file_path, args, dict)
+	errors, dict = run_python(file_path,path_input,'python3')
 	if len(errors) > 0:
 		return handle_python_3x_errors(errors,file_path,path_input,p_id,root,dict)
 	return 1, dict
