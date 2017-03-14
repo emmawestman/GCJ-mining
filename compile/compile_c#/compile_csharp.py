@@ -62,7 +62,7 @@ def build_arguments (flag,csharp_file_p,csharp_file_p_dependecy,root,dict):
 
 def compile_and_run_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag,dict):
 	csharp_file = build_arguments (flag, csharp_file_p, csharp_file_p_dependecy,root,dict)
-    cmd = ['mcs ' + csharp_file]
+    cmd = 'mcs ' + csharp_file
 	exit_code errors = run_process(cmd)
 	if not exit_code == 0:_
 		return handle_compilation_errors(errors, root,csharp_file_p,csharp_file_p_dependecy,input_file, flag, dict)
@@ -75,7 +75,7 @@ def compile_and_run_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file
 def run_csharp_command(csharp_exe,input_file):
 	if input_file is not None :
 		csharp_exe = csharp_exe + ' < ' + input_file
-	cmd = ['mono ' + csharp_exe ]
+	cmd = 'mono ' + csharp_exe 
 	return full_exe_cmd(cmd)
  
 

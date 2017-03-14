@@ -25,7 +25,7 @@ def compile_c(c_id, dict):
             nbr_of_files += 1
             print 'compiling c file nbr: ' + str(nbr_of_files)
             user, filename = get_compile_info('C', root, f)
-            cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
+            cmd = 'timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
 	
             exit_code, errors = run_process(cmd)
             # update user dict
@@ -57,7 +57,7 @@ def run_c(c_id, dict):
 			
             user, input_file = get_run_info('C', root)
 		
-            cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
+            cmd = 'timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)
             exit_code, errors = full_exe_cmd(cmd)
             if int(exit_code) == 0 :
                 succes_nbr += 1
