@@ -39,12 +39,7 @@ def run_java_file(user_path,problem_folder,user_folder,class_name, p_id):
 
 def run_java_command(class_name,args):	
 	cmd = 'timeout 30s java ' + class_name + ' ' + args 
-	exit_code, errors = full_exe_cmd(cmd)
-
-def run_java_compile(full_path) :
-	cmd = ['timeout 30s javac ' + full_path]
-	return run_process(cmd)
-	
+	exit_code, errors = full_exe_cmd(cmd)	
 
 def compile_java(p_id, dict):
 	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'java' ))

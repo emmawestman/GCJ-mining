@@ -25,9 +25,9 @@ def compile_c(c_id, dict):
             nbr_of_files += 1
             print 'compiling c file nbr: ' + str(nbr_of_files)
             user, filename = get_compile_info('C', root, f)
-            cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
+            cmd = 'timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
 	
-            exit_code, errors = exe_cmd(cmd)
+            exit_code, errors = run_process(cmd)
             # update user dict
             user_id = get_user_id(os.path.join(root,f))
             suser_dict = dict[user_id]
@@ -57,14 +57,12 @@ def run_c(c_id, dict):
 			
             user, input_file = get_run_info('C', root)
 		
-            cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
-            exit_code, errors = exe_cmd(cmd)
+            cmd = 'timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)
+            exit_code, errors = full_exe_cmd(cmd)
             if int(exit_code) == 0 :
                 succes_nbr += 1
-            # wirite mesuremnts to csv
-            user_dict = dict[user]
-            mesurements = get_mesurments(errors)    
-            write_to_user_dict(user_dict, exit_code, mesurments)
+            # update dictonary with run mesurments
+            do_run_mesurments(exit_code, errors, dict, root)
 	return succes_nbr, nbr_of_files, dict
 
 

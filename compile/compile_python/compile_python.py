@@ -36,7 +36,7 @@ def compile_python(p_id, dict):
 	return succes_nbr, nbr_of_files, dict
 
 
-def run_python(file_path,path_input,pythonversion)
+def run_python(file_path,path_input,pythonversion):
 	print "Running file python3 " + file_path
 	args = ' < ' + path_input
 	return run_python_command(pythonversion,file_path, args, dict)
