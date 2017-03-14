@@ -48,6 +48,15 @@ def get_zip_files(files,PATH):
 def comparingFunction(f):
 	return not os.path.isdir(os.path.join(PATH,f));
 
+def find_dest(filen_names_list) :
+    dest = -1
+    for file_name in file_names_list :
+        file_ending = get_file_ending(file_name)
+        try_dest = select_folder(file_ending, PATH)
+        if not try_dest == -1 :
+            dest = try_dest
+    return dest
+
 
 def sort_files(p_id):
 	PATH = os.path.join(get_HOME_PATH(),'solutions_' + p_id)
@@ -73,25 +82,20 @@ def sort_files(p_id):
 	all_zip_names = get_zip_files(all_zip_names,PATH)
 	print all_zip_names
 	for username in all_zip_names:
-		print zipfile.ZipFile(os.path.join(PATH, username)).namelist()
-		for filename in zipfile.ZipFile(os.path.join(PATH, username)).namelist():
-			file_ending = get_file_ending(filename)
-			print file_ending
+        file_names_list = zipfile.ZipFile(os.path.join(PATH, username)).namelist()
+        # find corerct language
+        dest = find_dest(file_names_list)
+        if not dest == -1 :
+            # create folder
+            dest = os.path.join(dest, username)
+			downloadgcj.create_folder(dest)
 
-			# extract file into this destination i.e. the correct language folder, problem id and username
-			#username, prob_id = get_info(zip_filename)
-			print 'Sorting ' + p_id + ' for user: ' + username + ' into ' + file_ending
-			# language folder
-			dest = select_folder(file_ending, PATH)
-			''' check that the language is valid'''
-			if dest != -1:
-				# username folder
-				dest = os.path.join(dest, username)
-				downloadgcj.create_folder(dest)
-				#print dest
-				zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
+		    for filename in file_names_list:
+			    print 'Sorting ' + p_id + ' for user: ' + username + ' into ' + dest
+			    # unpack files into folder
+			    zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
 
 		#clean up, remove zip-file
-
 		os.remove(os.path.join(PATH, username))
 	print "Done sorting all zip files!"
+
