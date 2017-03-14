@@ -16,7 +16,7 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from finding_regexes import *
 from stuff_module import *
-
+from write_to_csv import *
 NUMBER_OF_PAGES = 3030
 
 
@@ -67,7 +67,7 @@ def download_input_serial():
 
 def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool = mp.Pool(processes = 5)
+	pool = mp.Pool(processes = 6)
 	results = pool.map(download_input,list_of_contest_ids)
 
 
@@ -89,14 +89,24 @@ def download_solution_serial():
 
 def download_solutions_mp():
 	list_of_contest_ids = get_CONTEST_IDS() 
-	pool2 = mp.Pool(processes = 5)
+	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,list_of_contest_ids)
 
 def download_table_data_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
-	pool2 = mp.Pool(processes = 5)
+	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
+
+def map_problem_id_to_contest_id():
+	problem_id_contest_id_dict = {}
+	list_of_contest_ids = get_CONTEST_IDS()
+	for contest_id in list_of_contest_ids :
+		base_url = build_base_url(contest_id)
+		problem_ids = retrive_problem_ids(base_url)
+		for problem_id in problem_ids:
+			problem_id_contest_id_dict[problem_id] = contest_id
+	write_dict_to_file('cid_pid_map.csv', problem_id_contest_id_dict)
 
 def master_do_all_stuff():
 	download_input_mp()
@@ -106,3 +116,4 @@ def master_do_all_stuff():
 		print 'Sorting contest ' + problem_id
 		sorting.sort_files(problem_id)
 
+map_problem_id_to_contest_id()

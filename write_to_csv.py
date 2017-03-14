@@ -8,12 +8,12 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 def read_csv_file(filename) :
-	path = os.path.join('../..', 'GCJ-backup', filename)
-	with open(path, 'rb') as csvfile:
-	    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-	    content = []
-	    for row in reader:
-	        content.append(row)
+    path = os.path.join('../..', 'GCJ-backup', filename)
+    with open(path, 'rb') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        content = []
+        for row in reader:
+            content.append(row)
         attr_names = content[0][1:]
 
         dict = {}
@@ -38,17 +38,28 @@ def write_to_csv_file(filename, dict) :
         row = [u] + values
         matrix.append(row)
     with open(path, 'wb') as csvfile:
-	    writer = csv.writer(csvfile, delimiter=',', quotechar='|')
-	    for row in matrix:
-	       writer.writerow(row)
+        writer = csv.writer(csvfile, delimiter=',', quotechar='|')
+        for row in matrix:
+           writer.writerow(row)
+
+def write_dict_to_file(filename, problem_id_contest_id_dict):
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
+    problem_ids = problem_id_contest_id_dict.keys()
+    with open(path, 'w') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',', quotechar='|')
+        for problem in problem_ids:
+            row =[]
+            row.append(problem)
+            row.append(problem_id_contest_id_dict[problem])
+            writer.writerow(row)
 
 def get_user_ids(c_id) :
     dict = init_csv(c_id)
     new_dict = {}
     p_ids = dict.keys();
     for id_ in p_ids :
-		p_dict = dict [id_]
-		new_dict [id_] = p_dict['user_ids']
+        p_dict = dict [id_]
+        new_dict [id_] = p_dict['user_ids']
     return new_dict
 
 def init_csv(c_id) :

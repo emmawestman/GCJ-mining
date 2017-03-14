@@ -2,6 +2,7 @@ import urllib2
 import json
 import os
 import sys
+
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
@@ -17,13 +18,11 @@ def write_statistics_to_csv(statistics_dict,user_dict,contest_id):
 		write_to_csv_file(problem_id+'.csv', user_dict)
 	write_to_csv_file(contest_id+'.csv', statistics_dict) 
 
-
 def download_table_data(contest_id_and_limit):
 	contest_id,limit= contest_id_and_limit
 	statistics_dict = {}
 	user_dict = {}
 	for pos in range(1,limit+1,30):
-		print "for loop"
 		url = build_table_url(contest_id,pos)
 		raw_data = urllib2.urlopen(url).read()
 		json_data = json.loads(raw_data)
@@ -35,9 +34,3 @@ def download_table_data(contest_id_and_limit):
 			statistics_dict[row['n']]=row_data_dict	
 	write_statistics_to_csv (statistics_dict,user_dict,contest_id)
 
-
-
-
-	
-
-	

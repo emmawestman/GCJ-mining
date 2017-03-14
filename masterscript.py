@@ -13,5 +13,5 @@ sys.path.insert(0, gcj_path)
 from compilegcj import *
 
 master_do_all_stuff()
-cloc_all()
-compile_all()
+#cloc_all()
+#compile_all()
