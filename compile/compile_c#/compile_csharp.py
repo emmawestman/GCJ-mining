@@ -62,35 +62,33 @@ def build_arguments (flag,csharp_file_p,csharp_file_p_dependecy,root,dict):
 
 def compile_and_run_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_file,flag,dict):
 	csharp_file = build_arguments (flag, csharp_file_p, csharp_file_p_dependecy,root,dict)
-	errors = compile_csharp_command(csharp_file)
-	if len(errors)>0:
+    cmd = ['mcs ' + csharp_file]
+	exit_code errors = run_process(cmd)
+	if not exit_code == 0:_
 		return handle_compilation_errors(errors, root,csharp_file_p,csharp_file_p_dependecy,input_file, flag, dict)
-	csharp_exe= csharp_file_p.replace('.cs','.exe')
+    csharp_exe= csharp_file_p.replace('.cs','.exe')
 	if csharp_file_p_dependecy is not None:
 		csharp_file_p = csharp_file_p_dependecy
 	return run_csharp(input_file,root,os.path.join(root,csharp_exe),csharp_file_p, dict)
-
-def compile_csharp_command(csharp_file):
-	cmd = ['mcs ' + csharp_file]
-	print cmd
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return errors
 
 
 def run_csharp_command(csharp_exe,input_file):
 	if input_file is not None :
 		csharp_exe = csharp_exe + ' < ' + input_file
 	cmd = ['mono ' + csharp_exe ]
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	return errors	 
+	return full_exe_cmd(cmd)
+ 
 
 
 def run_csharp(input_file,root,csharp_exe,original_class_file, dict):
-	errors = run_csharp_command(csharp_exe,input_file)
-	if len(errors)>0:
+	exit_code, errors = run_csharp_command(csharp_exe,input_file)
+	if not exit_code == 0:
 		handle_run_errors(errors, root, original_class_file, input_file, dict)
+    # update dictonary
+    user = get_user_id(root)
+	user_dict = dict[user]
+    mesurements = get_mesurments(errors)    
+    write_to_user_dict(user_dict, exit_code, mesurments)
 	return 1
 
 
@@ -118,6 +116,11 @@ def handle_run_errors(errors, root, original_class_file, input_file, dict):
 		change_input_streams(input_file,os.path.join(root,original_class_file),root)
 		return compile_and_run_csharp(root,original_class_file,None,None,None, dict)
 	print errors
+    # update dictonary
+    user = get_user_id(root)
+	user_dict = dict[user]
+    mesurements = get_mesurments(errors)    
+    write_to_user_dict(user_dict, exit_code, mesurments)
 	return 0
 
 

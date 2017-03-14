@@ -27,7 +27,7 @@ def compile_cpp(c_id, dict):
             
             user, filename = get_compile_info('C++', root, f)
             cmd = ['timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-            exit_code, errors = exe_cmd(cmd)
+            exit_code, errors = run_process(cmd)
             # update user dict
             user_id = get_user_id(os.path.join(root,f))
             user_dict = dict[user_id]
@@ -61,7 +61,7 @@ def run_cpp(c_id, dict):
             user, input_file = get_run_info('C++', root)
         
             cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)]
-            exit_code, errors = exe_cmd(cmd)
+            exit_code, errors = full_exe_cmd(cmd)
             # no timeout
             if int(exit_code) == 0:
                 print 'success!'
