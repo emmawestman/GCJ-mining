@@ -24,8 +24,8 @@ def compile_cpp(c_id, dict):
             exit_code, errors = run_process(cmd)
             
             # update dictonary
-            set_compile_exitcode(dict,full_path,exit_code)
-            set_compiler_version(dict,full_path,'-')
+            dict = set_compile_exitcode(dict,full_path,exit_code)
+            dict = set_compiler_version(dict,full_path,'-')
             
             if not int(exit_code) == 0:
 				print 'failed to run problem: ' + root
@@ -43,14 +43,14 @@ def run_cpp(c_id, dict):
         filelist = [f for f in files if '.' not in f]
         for f in filelist:
             user, input_file = get_run_info('C++', root)
-            print 'compiling c++ file for: ' + user + ' in problem ' + p_i
+            print 'running c++ file for: ' + user + ' in problem ' + p_i
             
             # do run commando
             cmd = 'timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)
             exit_code, errors = full_exe_cmd(cmd)
             
             # update dictonary with run mesurments
-            do_run_mesurments(exit_code, errors, dict, root)
+            dict = do_run_mesurments(exit_code, errors, dict, root)
 
     return dict
 

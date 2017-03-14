@@ -52,7 +52,6 @@ def compile_java(p_id, dict):
 				dict = set_compile_exitcode(dict,full_path,exit_code)  				
 	return dict
 
-def set
 
 
 def run_java_files(p_id) :

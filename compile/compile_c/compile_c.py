@@ -28,8 +28,8 @@ def compile_c(p_id, dict):
             exit_code, errors = run_process(cmd)
 
             # update dictonary
-            set_compile_exitcode(dict,full_path,exit_code)
-            set_compiler_version(dict,full_path,'-')
+            dict = set_compile_exitcode(dict,full_path,exit_code)
+            dict = set_compiler_version(dict,full_path,'-')
     
             if not int(exit_code) == 0:
 				print 'failed to run problem: ' + root
@@ -53,7 +53,7 @@ def run_c(p_id, dict):
             exit_code, errors = full_exe_cmd(cmd)
 
             # update dictonary with run mesurments
-            do_run_mesurments(exit_code, errors, dict, root)
+            dict = do_run_mesurments(exit_code, errors, dict, root)
 	return dict
 
 

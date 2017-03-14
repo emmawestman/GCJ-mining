@@ -40,9 +40,13 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['nbr_file_out'] = mesurments[7]
     user_dict['nbr_file_in'] = mesurments[8]
     user_dict['swap_main_memory'] = mesurments[9]
+    return dict
 
 def set_run_mesurments(exit_code, errors, dict, root) :
     user = get_user_id(root)
     user_dict = dict[user]
     mesurements = get_mesurments(errors)    
-    write_to_user_dict(user_dict, exit_code, mesurments)
+    return write_to_user_dict(user_dict, exit_code, mesurments)
+
+
+
