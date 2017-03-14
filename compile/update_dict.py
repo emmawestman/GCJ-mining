@@ -19,6 +19,14 @@ def set_compile_exitcode(dict,full_path,exit_code) :
 def set_compiler_version(dict,full_path,version) :
 	return set_column_in_user_dict(dict,full_path,'compiler_version',version)
 
+def get_mesurments(errors) :
+    regex = "\,\d?\.?\d*"
+    res = [] 
+    output = re.findall(regex, errors)
+    #remove first comma
+    for s in output :
+        res.append(s[1:])
+    return res
 
 def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['exit_code'] = exit_code
@@ -32,3 +40,9 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['nbr_file_out'] = mesurments[7]
     user_dict['nbr_file_in'] = mesurments[8]
     user_dict['swap_main_memory'] = mesurments[9]
+
+def set_run_mesurments(exit_code, errors, dict, root) :
+    user = get_user_id(root)
+    user_dict = dict[user]
+    mesurements = get_mesurments(errors)    
+    write_to_user_dict(user_dict, exit_code, mesurments)
