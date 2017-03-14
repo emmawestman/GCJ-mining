@@ -97,6 +97,7 @@ def full_exe_cmd(cmd) :
 
 # to compile
 def run_process(cmd):
+	full_cmd = [cmd]
 	subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
     exit_code = p.returncode
