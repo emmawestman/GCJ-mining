@@ -61,10 +61,8 @@ def run_c(c_id, dict):
             exit_code, errors = full_exe_cmd(cmd)
             if int(exit_code) == 0 :
                 succes_nbr += 1
-            # wirite mesuremnts to csv
-            user_dict = dict[user]
-            mesurements = get_mesurments(errors)    
-            write_to_user_dict(user_dict, exit_code, mesurments)
+            # update dictonary with run mesurments
+            do_run_mesurments(exit_code, errors, dict, root)
 	return succes_nbr, nbr_of_files, dict
 
 

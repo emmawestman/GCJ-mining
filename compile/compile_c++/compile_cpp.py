@@ -68,10 +68,8 @@ def run_cpp(c_id, dict):
                 succes_nbr += 1
             else :
                 print 'Error: ' + exit_code + ' for file: ' + os.path.join(root,f)
-            # wirite mesuremnts to csv
-            user_dict = dict[user]
-            mesurements = get_mesurments(errors)    
-            write_to_user_dict(user_dict, exit_code, mesurments)
+            # update dictonary with run mesurments
+            do_run_mesurments(exit_code, errors, dict, root)
 
     return succes_nbr, nbr_of_files, dict
 

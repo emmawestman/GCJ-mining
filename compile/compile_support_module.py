@@ -118,6 +118,12 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['nbr_file_in'] = mesurments[8]
     user_dict['swap_main_memory'] = mesurments[9]
 
+def do_run_mesurments(exit_code, errors, dict, root) :
+    user = get_user_id(root)
+    user_dict = dict[user]
+    mesurements = get_mesurments(errors)    
+    write_to_user_dict(user_dict, exit_code, mesurments)
+
 
 
 

@@ -116,11 +116,8 @@ def handle_run_errors(errors, root, original_class_file, input_file, dict):
         change_input_streams(input_file,os.path.join(root,original_class_file),root)
         return compile_and_run_csharp(root,original_class_file,None,None,None, dict)
     print errors
-    # update dictonary
-    user = get_user_id(root)
-    user_dict = dict[user]
-    mesurements = get_mesurments(errors)    
-    write_to_user_dict(user_dict, exit_code, mesurments)
+    # update dictonary with run mesurments
+    do_run_mesurments(exit_code, errors, dict, root)
     return 0
 
 
