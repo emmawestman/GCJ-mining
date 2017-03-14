@@ -48,7 +48,6 @@ def run_java_command(class_name,args):
 	else:
 		return 0, None
 
-def getUser
 	
 
 def compile_java(p_id, dict):
