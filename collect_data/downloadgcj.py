@@ -42,10 +42,10 @@ def retrieve_sol(contest_id,problem,io_set_id,username):
 
 
 def download_one_page(problem_id,contest_id,page_number):
-    user_id_url = build_user_id_url(base_url,contest_id,str(page_number))
+    user_id_url = build_user_id_url(contest_id,str(page_number))
     all_users_id = retrive_users(user_id_url)
     list_of_items = ['0','1']
-    for item in list_of_problems :
+    for item in list_of_items :
         for user in all_users_id:
+            print "downloading solution " + contest_id + ' ' + problem_id + ' ' + user +' page nbr '+ str(page_number)
             retrieve_sol(contest_id,problem_id,item,user)
-            print 'contest_id ' + contest_id +' problem ' + problem_id + ' page number ' + page_number + ' user ' + user

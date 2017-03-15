@@ -100,8 +100,7 @@ def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	pool = mp.Pool(processes = 6)
 	for contest_id in list_of_contest_ids:
-		base_url = build_base_url(contest_id)
-		problem_ids = retrive_problem_ids(base_url)
+		problem_ids = retrive_problem_ids(build_base_url(contest_id))
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
 			first_func = partial(download_one_page,problem_id)
