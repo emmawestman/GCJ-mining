@@ -82,11 +82,11 @@ def sort_files(p_id,dict):
 			#username, prob_id = get_info(zip_filename)
 			print 'Sorting ' + p_id + ' for user: ' + username + ' into ' + file_ending
 			# language folder
-			dest = select_folder(file_ending, PATH)
+			dest,language = select_folder(file_ending, PATH)
 			''' check that the language is valid'''
 			if dest != -1:
 				# username folder 
-				dest,language = os.path.join(dest, username)
+				dest = os.path.join(dest, username)
 				user_dict = dict[username]
 				user_dict['languge'] = language
 				downloadgcj.create_folder(dest)
