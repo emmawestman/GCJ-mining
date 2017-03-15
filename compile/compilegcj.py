@@ -48,25 +48,25 @@ def compile_language(language, p_id, dict):
 	d = -1
 	if language == 'java':
 		cwd = os.getcwd()
-		a, b, dict = compile_java(p_id, dict)
-		c, d = run_java_files(p_id)
-		os.chdir(cwd)
+		dict = compile_java(p_id, dict)
+		dict = run_java_files(p_id,dict)
 	elif language == 'C':
-		a, b, dict = compile_c(p_id, dict)
-		c, d, dict = run_c(p_id, dict)
+		dict = compile_c(p_id, dict)
+		dict = run_c(p_id, dict)
 	elif language == "C++":
-		a, b, dict = compile_cpp(p_id, dict)
-		c, d, dict = run_cpp(p_id, dict)
+		dict = compile_cpp(p_id, dict)
+		dict = run_cpp(p_id, dict)
 	elif language == 'C#':
-		a, b, dict = compile_run_csharp(p_id, dict)
+		dict = compile_run_csharp(p_id, dict)
 	elif language == "Python":
-		a,b, dict = compile_python(p_id, dict)
+		dict = compile_python(p_id, dict)
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
-	print language + ': ' + str(a) + ' out of ' + str(b) + ' programs compiled sucessfully'
-	print language + ': ' + str(c) + ' out of ' + str(d) + ' programs ran sucessfully'
 	return dict
 
+compile_language('java','1285485_0')
+
+'''
 # compile all languages
 print 'Sarting to compile and run all files...'
 
@@ -82,7 +82,7 @@ for i in range(0,number_of_problems):
 		remove_old_files(l, PROBLEM_ID)
 		dict = compile_language(l, PROBLEM_ID, dict)
 	write_to_csv_file(filename, dict)
-
+'''
 	
 
 
