@@ -40,7 +40,7 @@ def write_to_csv_file(filename, dict) :
         values = dict[u].values()
         row = [u] + values
         matrix.append(row)
-    with open(path, 'wb') as csvfile:
+    with open(path, 'w') as csvfile:
 	    writer = csv.writer(csvfile, delimiter=',', quotechar='|')
 	    for row in matrix:
 	       writer.writerow(row)

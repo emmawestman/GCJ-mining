@@ -98,7 +98,3 @@ def sort_files(p_id):
         #clean up, remove zip-file
         os.remove(os.path.join(PATH, username))
     print "Done sorting all zip files!"
-
-sort_files('5658068650033152_1')
-
-

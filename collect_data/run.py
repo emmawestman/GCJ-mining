@@ -8,6 +8,7 @@ import time
 import urllib2
 from datetime import datetime
 import sys
+from functools import partial
 
 # import own modules from diffrent directory
 
@@ -55,7 +56,7 @@ number_of_contests = len(list_of_contest_ids)
 
 def download_input(contest_id):
 	base_url = build_base_url(contest_id)
-	PROBLEM_IDS =retrive_problem_ids(base_url)
+	PROBLEM_IDS = retrive_problem_ids(base_url)
 	TOKEN = retrive_token(contest_id)
 	download_all_input(contest_id, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
 
@@ -79,7 +80,7 @@ def download_solution(contest_id):
 	with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
 		for problem_id in problem_ids:
 			f.write(problem_id+'\n')
-	download_all_pages(base_url,problem_ids,contest_id,NUMBER_OF_PAGES)
+	#download_all_pages(base_url,problem_ids,contest_id,NUMBER_OF_PAGES)
 
 
 def download_solution_serial():
@@ -88,15 +89,16 @@ def download_solution_serial():
 		download_solution(x)
 
 def download_solutions_mp():
-	list_of_contest_ids = get_CONTEST_IDS() 
+	list_of_contest_ids = get_CONTEST_IDS()
 	pool2 = mp.Pool(processes = 6)
 	results = pool2.map(download_solution,list_of_contest_ids)
 
 def download_table_data_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
 	pool2 = mp.Pool(processes = 6)
-	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
+	scarp = partial(download_table_data, NUMBER_OF_PAGES)
+	pool2.map(scarp, list_of_contest_ids)
+
 
 def map_problem_id_to_contest_id():
 	problem_id_contest_id_dict = {}
@@ -115,5 +117,3 @@ def master_do_all_stuff():
 	for problem_id in get_PROBLEM_IDS(gcj_path):
 		print 'Sorting contest ' + problem_id
 		sorting.sort_files(problem_id)
-
-map_problem_id_to_contest_id()
