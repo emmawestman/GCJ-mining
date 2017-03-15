@@ -22,6 +22,7 @@ problem_ids = []
 
 NUMBER_OF_PAGES = 3030
 
+
 # not needed at the moment since competisions ids are selected
 def get_all_contests_id():
 	answer = urllib2.urlopen(get_BASE()).read()
@@ -75,7 +76,7 @@ def download_input_serial():
 
 def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool = mp.Pool(processes = 6)
+	pool = mp.Pool(processes = NBR_OF_PROCESSES)
 	results = pool.map(download_input,list_of_contest_ids)
 
 
@@ -94,19 +95,28 @@ def download_solutions_serial():
 				download_one_page(problem_id,contest_id,limit)
 			
 
+
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	pool = mp.Pool(processes = 6)
 	for contest_id in list_of_contest_ids:
-		base_url = build_base_url(contest_id)
-		problem_ids = retrive_problem_ids(base_url)
+		problem_ids = retrive_problem_ids(build_base_url(contest_id))
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
 			first_func = partial(download_one_page,problem_id)
 			partial_download_func = partial(first_func,contest_id)
 			pool.map(partial_download_func,list_of_pages)
-			
-			
+
+def download_table_data_mp():
+	list_of_contest_ids = get_CONTEST_IDS()
+	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
+	pool2 = mp.Pool(processes = NBR_OF_PROCESSES)
+	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
+
+
+
+
+
 
 
 print 'Starting to sort all zip files...'
@@ -115,3 +125,5 @@ for problem_id in get_PROBLEM_IDS(gcj_path):
 	dict = read_csv_file(problem_id+'.csv')
 	dict = sorting.sort_files(problem_id,dict)
 	write_to_csv_file(problem_id+'.csv',dict)
+
+
