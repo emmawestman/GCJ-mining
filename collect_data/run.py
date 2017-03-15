@@ -16,6 +16,7 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from finding_regexes import *
 from stuff_module import *
+from write_to_csv import *
 
 problem_ids = []
 
@@ -80,19 +81,18 @@ def download_input_mp():
 
 # Run the downloading fucntion
 #READ FROM INPUT FILE
-def download_solution(contest_id):
-	base_url = build_base_url(contest_id)
-	problem_ids = retrive_problem_ids(base_url)
-	with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
-		for problem_id in problem_ids:
-			f.write(problem_id+'\n')
-	download_all_pages(base_url,problem_ids,contest_id)
 
 
-def download_solution_serial():
+def download_solutions_serial():
 	list_of_contest_ids = get_CONTEST_IDS()
-	for x in list_of_contest_ids:
-		download_solution(x)
+	list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
+	for contest_id in list_of_contest_ids:
+		base_url = build_base_url(contest_id)
+		problem_ids = retrive_problem_ids(base_url)
+		for problem_id in problem_ids:
+			for limit in list_of_pages:
+				download_one_page(problem_id,contest_id,limit)
+			
 
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
@@ -100,9 +100,6 @@ def download_solution_mp():
 	for contest_id in list_of_contest_ids:
 		base_url = build_base_url(contest_id)
 		problem_ids = retrive_problem_ids(base_url)
-		with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
-			for problem_id in problem_ids:
-				f.write(problem_id+'\n')
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
 			first_func = partial(download_one_page,problem_id)
@@ -111,17 +108,10 @@ def download_solution_mp():
 			
 			
 
-'''
-download_input_serial()
-#sorting.sort_files('5652388522229760',0)
-download_solution_serial()
-download_input_serial()
 
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
-	sorting.sort_files(problem_id)
-'''
-
-download_solution_mp()
-	
+	dict = read_csv_file(problem_id+'.csv')
+	dict = sorting.sort_files(problem_id,dict)
+	write_to_csv_file(problem_id+'.csv',dict)

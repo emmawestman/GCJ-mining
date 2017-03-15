@@ -27,7 +27,7 @@ def select_folder(filename, path):
 		print "This is not one of the examined languages, this is: " + filename
 		# TODO remove this zip-file?
 		return -1
-	return os.path.join(path, language)
+	return os.path.join(path, language),language
 
 def get_file_ending(filename):
 	index = filename.find(".")
@@ -49,8 +49,8 @@ def comparingFunction(f):
 	return not os.path.isdir(os.path.join(PATH,f));
 
 
-def sort_files(p_id):
-	PATH = os.path.join(get_HOME_PATH(),'solutions_' + p_id)
+def sort_files(p_id,dict):
+	PATH = os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id)
 	# make a list of all files in the directory
 	all_zip_names = os.listdir(PATH)
 
@@ -85,13 +85,17 @@ def sort_files(p_id):
 			dest = select_folder(file_ending, PATH)
 			''' check that the language is valid'''
 			if dest != -1:
-				# username folder
-				dest = os.path.join(dest, username)
+				# username folder 
+				dest,language = os.path.join(dest, username)
+				user_dict = dict[username]
+				user_dict['languge'] = language
 				downloadgcj.create_folder(dest)
 				#print dest
 				zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
-
+			else:
+				del dict [username]
 		#clean up, remove zip-file
 
 		os.remove(os.path.join(PATH, username))
 	print "Done sorting all zip files!"
+	return dict
