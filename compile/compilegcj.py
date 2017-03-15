@@ -42,10 +42,6 @@ from write_to_csv import *
 					
 
 def compile_language(language, p_id, dict):
-	a = -1
-	b = -1
-	c = -1
-	d = -1
 	if language == 'java':
 		cwd = os.getcwd()
 		dict = compile_java(p_id, dict)
