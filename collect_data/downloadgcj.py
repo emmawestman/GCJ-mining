@@ -49,3 +49,4 @@ def download_one_page(problem_id,contest_id,page_number):
         for user in all_users_id:
             print "downloading solution " + contest_id + ' ' + problem_id + ' ' + user +' page nbr '+ str(page_number)
             retrieve_sol(contest_id,problem_id,item,user)
+

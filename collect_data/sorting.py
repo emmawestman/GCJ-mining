@@ -89,7 +89,8 @@ def sort_files(p_id):
 				# username folder 
 				dest = os.path.join(dest, username)
 				dict[username]={}
-				dict[username['languge']] = language
+				user_dict =dict[username] 				
+				user_dict['language']= language
 				downloadgcj.create_folder(dest)
 				#print dest
 				zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
