@@ -96,20 +96,31 @@ def download_solution_serial():
 
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
+	pool = mp.Pool(processes = 6)
 	for contest_id in list_of_contest_ids:
+		base_url = build_base_url(contest_id)
 		problem_ids = retrive_problem_ids(base_url)
+		with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
+			for problem_id in problem_ids:
+				f.write(problem_id+'\n')
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
-			partial_download_func = partial(download_one_page(problem_id,contest_id)
-			download_one_page(problem_id,contest_id,page_number)
+			partial_download_func = partial(download_one_page,problem_id,contest_id)
+			pool.map(partial_download_func,list_of_pages)
+			
+			
 
-
+'''
 download_input_serial()
 #sorting.sort_files('5652388522229760',0)
 download_solution_serial()
+download_input_serial()
 
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
 	sorting.sort_files(problem_id)
+'''
+
+download_solution_mp()
 	
