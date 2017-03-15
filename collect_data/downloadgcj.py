@@ -47,6 +47,6 @@ def download_one_page(problem_id,contest_id,page_number):
     list_of_items = ['0','1']
     for item in list_of_items :
         for user in all_users_id:
-            print "downloading solution " + contest_id + ' ' + problem_id + ' ' + user +' page nbr '+ page_number
+            print "downloading solution " + contest_id + ' ' + problem_id + ' ' + user +' page nbr '+ str(page_number)
             retrieve_sol(contest_id,problem_id,item,user)		
 
