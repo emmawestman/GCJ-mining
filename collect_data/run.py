@@ -105,7 +105,8 @@ def download_solution_mp():
 				f.write(problem_id+'\n')
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
-			partial_download_func = partial(download_one_page,problem_id,contest_id)
+			first_func = partial(download_one_page,problem_id)
+			partial_download_func = partial(first_func,contest_id)
 			pool.map(partial_download_func,list_of_pages)
 			
 			
