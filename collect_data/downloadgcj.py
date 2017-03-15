@@ -17,11 +17,11 @@ io_set_id_1 = "1"
 
 dict = {}
 
-def build_user_id_url(base_url,contest_id,pos):
-   return base_url+'/do/?cmd=GetScoreboard&contest_id='+contest_id+'&show_type=all&start_pos='+pos
+def build_user_id_url(contest_id,pos):
+   return get_BASE()+contest_id+'/scoreboard'+'/do/?cmd=GetScoreboard&contest_id='+contest_id+'&show_type=all&start_pos='+pos
 
-def build_downloadproblem_url(base_url,problem,io_set_id,username) :
-   return base_url+'/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
+def build_downloadproblem_url(contest_id,problem,io_set_id,username) :
+   return get_BASE()+contest_id+'/scoreboard'+'/do/?cmd=GetSourceCode&problem='+problem+'&io_set_id='+ io_set_id+'&username='+username
 
 
 def retrive_users(url):
@@ -29,34 +29,25 @@ def retrive_users(url):
     page = answer.read()
     return filter_information('\"n\"\:\s*\"\w+\"',':',page)
 
-def retrieve_sol(base_url,problem,io_set_id,username, c_id):
-    requesturl = build_downloadproblem_url(base_url,problem,io_set_id,username)
+def retrieve_sol(contest_id,problem,io_set_id,username):
+    requesturl = build_downloadproblem_url(contest_id,problem,io_set_id,username)
     answer = urllib2.urlopen(requesturl).read()
     if answer.startswith('Server Error'):
         return
     else :
-        path = os.path.join(get_HOME_PATH(),'solutions_'+ problem+'_'+io_set_id)
+        path = os.path.join(get_HOME_PATH(),'datacollection','solutions_'+ problem+'_'+io_set_id)
         create_folder(path)
         with open(os.path.join(path,username),'w') as f:
             f.write(answer)
 
-def download_one_page_solutions(base_url,list_of_problems,user_id_url, c_id,i):
+
+def download_one_page(problem_id,contest_id,page_number):
+	print 'dowloading solutions from ' + str(i)
+	user_id_url = build_user_id_url(base_url,contest_id,str(page_number))
 	all_users_id = retrive_users(user_id_url)
 	list_of_items = ['0','1']
-	for problem in list_of_problems :
-		for user in all_users_id :
-			dict[user] = i
-			i=i+1
-			for item in list_of_items :
-				retrieve_sol(base_url,problem,item,user, c_id)
-				print 'problem ' + problem + ' item ' + item + ' user ' + user
+	for item in list_of_problems :
+		retrieve_sol(contest_id,problem_id,item,user)
+		print 'problem ' + problem + ' item ' + item + ' user ' + user
+		
 
-
-def download_all_pages(base_url,list_of_problem_ids,contest_id):
-	i = 1
-	while (i<10): #TODO: FIX THIS LIMIT AND CHANGE TO FOR-LOOP
-		print 'dowloading solutions from ' + str(i)
-		user_id_url = build_user_id_url(base_url,contest_id,str(i))
-		print user_id_url
-		download_one_page_solutions(base_url,list_of_problem_ids,user_id_url, contest_id,i)
-		i = i+30

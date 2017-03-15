@@ -7,6 +7,7 @@ import time
 import urllib2
 from datetime import datetime
 import sys
+from functools import partial
 
 # import own modules from diffrent directory
 
@@ -17,6 +18,8 @@ from finding_regexes import *
 from stuff_module import *
 
 problem_ids = []
+
+NUMBER_OF_PAGES = 3030
 
 # not needed at the moment since competisions ids are selected
 def get_all_contests_id():
@@ -93,8 +96,12 @@ def download_solution_serial():
 
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool2 = mp.Pool(processes = 6)
-	results = pool2.map(download_solution,list_of_contest_ids)
+	for contest_id in list_of_contest_ids:
+		problem_ids = retrive_problem_ids(base_url)
+		for problem_id in problem_ids:
+			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
+			partial_download_func = partial(download_one_page(problem_id,contest_id)
+			download_one_page(problem_id,contest_id,page_number)
 
 
 download_input_serial()
