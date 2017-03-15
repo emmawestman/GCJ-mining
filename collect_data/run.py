@@ -21,6 +21,7 @@ problem_ids = []
 
 NUMBER_OF_PAGES = 3030
 
+
 # not needed at the moment since competisions ids are selected
 def get_all_contests_id():
 	answer = urllib2.urlopen(get_BASE()).read()
@@ -74,7 +75,7 @@ def download_input_serial():
 
 def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool = mp.Pool(processes = 6)
+	pool = mp.Pool(processes = NBR_OF_PROCESSES)
 	results = pool.map(download_input,list_of_contest_ids)
 
 
@@ -94,22 +95,29 @@ def download_solution_serial():
 	for x in list_of_contest_ids:
 		download_solution(x)
 
+
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	pool = mp.Pool(processes = 6)
 	for contest_id in list_of_contest_ids:
 		base_url = build_base_url(contest_id)
 		problem_ids = retrive_problem_ids(base_url)
-		with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
-			for problem_id in problem_ids:
-				f.write(problem_id+'\n')
 		for problem_id in problem_ids:
 			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
 			first_func = partial(download_one_page,problem_id)
 			partial_download_func = partial(first_func,contest_id)
 			pool.map(partial_download_func,list_of_pages)
-			
-			
+
+def download_table_data_mp():
+	list_of_contest_ids = get_CONTEST_IDS()
+	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
+	pool2 = mp.Pool(processes = NBR_OF_PROCESSES)
+	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
+
+
+
+
+
 
 '''
 download_input_serial()
@@ -124,4 +132,3 @@ for problem_id in get_PROBLEM_IDS(gcj_path):
 '''
 
 download_solution_mp()
-	
