@@ -122,8 +122,7 @@ def download_table_data_mp():
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
-	dict = read_csv_file(problem_id+'.csv')
-	dict = sorting.sort_files(problem_id,dict)
+	dict = sorting.sort_files(problem_id)
 	write_to_csv_file(problem_id+'.csv',dict)
 
 

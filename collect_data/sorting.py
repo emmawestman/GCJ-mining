@@ -49,8 +49,9 @@ def comparingFunction(f):
 	return not os.path.isdir(os.path.join(PATH,f));
 
 
-def sort_files(p_id,dict):
+def sort_files(p_id):
 	PATH = os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id)
+	dict = {}
 	# make a list of all files in the directory
 	all_zip_names = os.listdir(PATH)
 
@@ -87,13 +88,11 @@ def sort_files(p_id,dict):
 			if dest != -1:
 				# username folder 
 				dest = os.path.join(dest, username)
-				user_dict = dict[username]
-				user_dict['languge'] = language
+				dict[username]={}
+				dict[username['languge']] = language
 				downloadgcj.create_folder(dest)
 				#print dest
 				zipfile.ZipFile(os.path.join(PATH, username)).extract(filename,dest)
-			else:
-				del dict [username]
 		#clean up, remove zip-file
 
 		os.remove(os.path.join(PATH, username))
