@@ -27,7 +27,7 @@ def compile_cpp(c_id, dict):
 	file1 = open('cpp_errors.txt', "a")
 	file1.write(path + '\n')
 	for root, dirs, files in os.walk(path):
-		for f in files:
+		for f in files if has_valid_file_ending('C', f):
 			nbr_of_files += 1
 			print 'compiling c++ file nbr: ' + str(nbr_of_files)
 			

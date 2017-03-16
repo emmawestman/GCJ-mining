@@ -21,7 +21,7 @@ def compile_c(c_id, dict):
 	succes_nbr = 0
 	nbr_of_files = 0
 	for root, dirs, files in os.walk(path):
-		for f in files:
+		for f in files if has_valid_file_ending('C', f):
 			nbr_of_files += 1
 			print 'compiling c file nbr: ' + str(nbr_of_files)
 			

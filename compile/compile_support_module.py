@@ -98,6 +98,21 @@ def get_run_info(regexp, root):
 	return user, input_file
 
 
+def has_valid_file_ending(language, f):
+    if f.endswith(".java") and language == 'java':
+        return True 
+    elif f.endswith(".c") and language == 'C':
+        return True
+    elif (f.endswith(".cpp") or f.endswith(".C") or f.endswith(".cc") or f.endswith(".CPP") or f.endswith(".c++") or f.endswith(".cp") or f.endswith(".cxx")) and language == 'C++':
+        return True
+    elif f.endswith(".cs") and language == 'C#':
+        return True
+    elif f.endswith(".py") and language == 'Python':
+        return True
+    else:
+        print 'found file without maching ending: ' + f 
+        return False
+
 
 
 
