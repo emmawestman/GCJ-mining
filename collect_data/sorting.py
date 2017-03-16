@@ -26,7 +26,7 @@ def select_folder(filename, path):
 	else:
 		print "This is not one of the examined languages, this is: " + filename
 		# TODO remove this zip-file?
-		return -1
+		return -1,-1
 	return os.path.join(path, language),language
 
 def get_file_ending(filename):
