@@ -18,8 +18,7 @@ def write_statistics_to_csv(statistics_dict,user_dict,contest_id):
 		write_to_csv_file(problem_id+'.csv', user_dict)
 	write_to_csv_file(contest_id+'.csv', statistics_dict) 
 
-def download_table_data(contest_id_and_limit):
-	contest_id,limit= contest_id_and_limit
+def download_table_data(limit,contest_id):
 	statistics_dict = {}
 	user_dict = {}
 	for pos in range(1,limit+1,30):

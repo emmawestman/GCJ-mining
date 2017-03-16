@@ -45,8 +45,7 @@ def compile_language(language, p_id, dict):
 	if language == 'java':
 		cwd = os.getcwd()
 		dict = compile_java(p_id, dict)
-		dict = run_java_files(p_id)
-		os.chdir(cwd)
+		dict = run_java_files(p_id,dict)
 	elif language == 'C':
 		dict = compile_c(p_id, dict)
 		dict = run_c(p_id, dict)
@@ -61,8 +60,6 @@ def compile_language(language, p_id, dict):
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 	return dict
 
-# compile all languages
-print 'Sarting to compile and run all files...'
 
 def compile_all():
 	list_of_problem_ids = get_PROBLEM_IDS(gcj_path)
@@ -77,7 +74,7 @@ def compile_all():
 			dict = compile_language(l, PROBLEM_ID, dict)
 		write_to_csv_file(filename, dict)
 
-	
+compile_all()
 
 
 

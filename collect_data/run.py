@@ -8,6 +8,7 @@ import time
 import urllib2
 from datetime import datetime
 import sys
+from functools import partial
 
 # import own modules from diffrent directory
 
@@ -17,8 +18,15 @@ from constants import *
 from finding_regexes import *
 from stuff_module import *
 from write_to_csv import *
-NUMBER_OF_PAGES = 3030
 
+NUMBER_OF_PAGES = 3030
+NBR_OF_PROCESSES = 6
+
+# not needed at the moment since competisions ids are selected
+def get_all_contests_id():
+	answer = urllib2.urlopen(get_BASE()).read()
+	list_of_duplicates = filter_information('contest/[\d]+/dashboard','/',answer)
+	return list(set(list_of_duplicates))
 
 def retrive_problem_ids(url):
 	page = urllib2.urlopen(url).read()
@@ -39,20 +47,6 @@ def retrive_token(contest_id):
 # removes outputfiles and similar files created by solutions
 clean_home_dir()
 
-
-#Pre processing stuff...
-#list_of_contest_ids = get_all_contests_id()
-
-list_of_contest_ids = get_CONTEST_IDS()
-
-#Ask user how many contests to download
-#number_of_contests = int(raw_input('Number of contests?'))
-number_of_contests = len(list_of_contest_ids)
-
-
-
-# Run the downloading function for downloding input
-
 def download_input(contest_id):
 	base_url = build_base_url(contest_id)
 	PROBLEM_IDS =retrive_problem_ids(base_url)
@@ -60,43 +54,26 @@ def download_input(contest_id):
 	download_all_input(contest_id, get_PROBLEM(), get_SIZE(), PROBLEM_IDS,TOKEN)
 
 
-def download_input_serial():
-	list_of_contest_ids = get_CONTEST_IDS()
-	for x in list_of_contest_ids:
-		download_input(x)
-
 def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	pool = mp.Pool(processes = 6)
+	pool = mp.Pool(processes = NBR_OF_PROCESSES)
 	results = pool.map(download_input,list_of_contest_ids)
-
-
-# Run the downloading fucntion
-#READ FROM INPUT FILE
-def download_solution(contest_id):
-	base_url = build_base_url(contest_id)
-	problem_ids = retrive_problem_ids(base_url)
-	with open (os.path.join(gcj_path,'p_ids.in'),'a') as f :
-		for problem_id in problem_ids:
-			f.write(problem_id+'\n')
-	download_all_pages(base_url,problem_ids,contest_id,NUMBER_OF_PAGES)
-
-
-def download_solution_serial():
+			
+def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	for x in list_of_contest_ids:
-		download_solution(x)
-
-def download_solutions_mp():
-	list_of_contest_ids = get_CONTEST_IDS() 
-	pool2 = mp.Pool(processes = 6)
-	results = pool2.map(download_solution,list_of_contest_ids)
+	pool = mp.Pool(processes = NBR_OF_PROCESSES)
+	for contest_id in list_of_contest_ids:
+		problem_ids = retrive_problem_ids(build_base_url(contest_id))
+		for problem_id in problem_ids:
+			list_of_pages = range(1,NUMBER_OF_PAGES+1,30)
+			partial_download_func = partial(download_one_page,problem_id,contest_id)
+			pool.map(partial_download_func,list_of_pages)
 
 def download_table_data_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
-	list_of_page_numbers_limit = [NUMBER_OF_PAGES] * len(list_of_contest_ids)
-	pool2 = mp.Pool(processes = 6)
-	results = pool2.map(download_solution,zip(list_of_contest_ids,list_of_page_numbers_limit))
+	pool2 = mp.Pool(processes = NBR_OF_PROCESSES)
+	partial_download_func = partial(download_table_data,NUMBER_OF_PAGES)
+	pool2.map(partial_download_func,list_of_contest_ids)
 
 def map_problem_id_to_contest_id():
 	problem_id_contest_id_dict = {}
@@ -108,12 +85,11 @@ def map_problem_id_to_contest_id():
 			problem_id_contest_id_dict[problem_id] = contest_id
 	write_dict_to_file('cid_pid_map.csv', problem_id_contest_id_dict)
 
-def master_do_all_stuff():
-	download_input_mp()
-	download_solutions_mp()
-	download_table_data_mp()
-	for problem_id in get_PROBLEM_IDS(gcj_path):
-		print 'Sorting contest ' + problem_id
-		sorting.sort_files(problem_id)
 
-map_problem_id_to_contest_id()
+print 'Starting to sort all zip files...'
+for problem_id in get_PROBLEM_IDS(gcj_path):
+	print 'Sorting contest ' + problem_id
+	dict = sorting.sort_files(problem_id)
+	write_to_csv_file(problem_id+'.csv',dict)
+
+
