@@ -7,6 +7,7 @@ import sys
 compile_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, compile_path)
 from compile_support_module import *
+from update_dict import *
 
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
@@ -14,66 +15,45 @@ from constants import *
 
 
 
-	
-def compile_c(c_id, dict):
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
-	#number of files that successfylly compiles
-	succes_nbr = 0
-	nbr_of_files = 0
-	for root, dirs, files in os.walk(path):
-		for f in files:
-			nbr_of_files += 1
-			print 'compiling c file nbr: ' + str(nbr_of_files)
-			
-			user, filename = get_compile_info('C', root, f)
+def compile_c(p_id, dict):
+    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'C' ))
+    for root, dirs, files in os.walk(path):
+        for f in files if has_valid_file_ending('C', f):
+            user, filename = get_compile_info('C', root, f)
+            print 'compiling c file for: ' + user + ' in problem ' + p_id
+            
+            # do compilation
+            cmd = 'timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
+            exit_code, errors = run_process(cmd)
 
-			cmd = ['timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)]
-			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-			output, errors = p.communicate()
-			exit_code = p.returncode
-			# update user dict
-			user_id = get_user_id(os.path.join(root,f))
-			user_dict = dict[user_id]
-			user_dict['compiler_version'] = '-'
-			if int(exit_code) == 0:
-				if len(errors) > 0 and 'warning' not in errors:
-					print 'failed to run problem: ' + root
-					print errors
-					user_dict['compiled'] = 'NO'
-				else:
-					succes_nbr += 1
-					user_dict['compiled'] = 'YES'
-	return succes_nbr, nbr_of_files, dict
+            # update dictonary
+            dict = set_compile_exitcode(dict,full_path,exit_code)
+            dict = set_compiler_version(dict,full_path,'-')
+    
+            if not int(exit_code) == 0:
+				print 'failed to run problem: ' + root
+				print errors
+
+	return dict
 
 
-def run_c(c_id):
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C' ))
-	PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
-	succes_nbr = 0
-	nbr_of_files = 0
-	for root, dirs, files in os.walk(path):	
-		# only try to run the executable 
-		filelist = [f for f in files if '.' not in f]
-		for f in filelist:
-			nbr_of_files += 1
-			print 'running c file nbr: ' + str(nbr_of_files)
-			
-			user, input_file = get_run_info('C', root)
-		
-			cmd = ['timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)]
-			p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-			output, errors = p.communicate()
-			exit_code = p.returncode
-			if int(exit_code) == 0:
-				if len(errors) > 0:
-					print 'Error Running problem: ' + root
-					file1 = open('c_run_errors.txt', "a")
-					file1.write(path + '\n')
-					file1.write(errors + '\n')
-					file1.close()
-					#print errors
-				else:
-					succes_nbr += 1
-	return succes_nbr, nbr_of_files
+def run_c(p_id, dict):
+    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'C' ))
+    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + p_id))
+    for root, dirs, files in os.walk(path):	
+        # only try to run the executable 
+        filelist = [f for f in files if '.' not in f]
+        for f in filelist:
+            user, input_file = get_run_info('C', root)
+            print 'running c file for: ' + user + ' in problem ' + p_id
+
+			# do run command
+            cmd = 'timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT, input_file)
+            exit_code, errors = full_exe_cmd(cmd)
+
+            # update dictonary with run mesurments
+            dict = do_run_mesurments(exit_code, errors, dict, root)
+	return dict
+
 
 
