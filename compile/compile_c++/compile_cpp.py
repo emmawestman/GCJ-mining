@@ -13,46 +13,49 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 def compile_cpp(p_id, dict):
-
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
-    for root, dirs, files in os.walk(path):
-        for f in files :
+    
+    user_ids = os.listdir(path)
+    for user in user_ids :
+        user_dict = dict[user]
+        user_path = os.path.join(path, user)
+        for f in os.listdir(user_path) :
             if has_valid_file_ending('C++', f) :
-                user, filename = get_compile_info('C++', root, f)
                 print 'compiling c++ file for: ' + user + ' in problem ' + p_id
                 
                 # do compilation
-                cmd = 'timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
-                exit_code, errors = run_process(cmd)
-                
-                # update dictonary
-                dict = set_compile_exitcode(dict,root,exit_code)
-                dict = set_compiler_version(dict,root,'-')
-                
-                if not int(exit_code) == 0:
-    				print 'failed to run problem: ' + root
-    				print errors     
-    return dict
+                cmd = 'timeout 30s g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' os.path.join(user_path,f.split('.')[0])
+                exit_code, errors = run_process(cmd)    
 
+                # update dictonary
+                set_compile_exitcode(user_dict,root,exit_code)
+                set_compiler_version(user_dict,root,'-')
+        
+                if not int(exit_code) == 0:
+                    print 'failed to run problem: ' + root
+                    print errors
+
+    return dict
 
 def run_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
-    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input_' + p_id))
+    input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
+    user_ids = os.listdir(path)
+    for user in user_ids :
+        user_dict = dict[user]
+        user_path = os.path.join(path, user)
+        filelist = [f for f in os.listdir(user_path) if '.' not in f]
+        for f in filelist :
+            print 'running c++ file for: ' + user + ' in problem ' + p_id
 
-    for root, dirs, files in os.walk(path):    
-        # only try to run the executable 
-        filelist = [f for f in files if '.' not in f]
-        for f in filelist:
-            user, input_file = get_run_info('C++', root)
-            print 'running c++ file for: ' + user + ' in problem ' + p_i
-            
-            # do run commando
-            cmd = 'timeout 30s ' + os.path.join(root,f) + ' < ' + os.path.join(PATH_INPUT,input_file)
+            # do run command
+            cmd = 'timeout 30s ' + os.path.join(user_path,f) + ' < ' + input_path
             exit_code, errors = full_exe_cmd(cmd)
-            
-            # update dictonary with run mesurments
-            dict = do_run_mesurments(exit_code, errors, dict, root)
 
+            # update dictonary with run mesurments
+            do_run_mesurments(exit_code, errors, user_dict)
     return dict
+
+
 
 

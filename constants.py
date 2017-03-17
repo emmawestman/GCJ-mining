@@ -12,10 +12,15 @@ PROBLEM =['A', 'B', 'C', 'D', 'E']
 # get the folder above the git repo from collect_data folder
 HOME_PATH = os.path.join('../../')
 
+PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input'))
+
 
 SIZE = ["-small.practice.in", "-large.practice.in"]
 BASE = "https://code.google.com/codejam/contest/"
 
+
+def get_INPUT_PATH() :
+	return PATH_INPUT
 
 def get_CONTEST_IDS() :
 	return CONTEST_IDS
