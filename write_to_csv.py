@@ -8,23 +8,23 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 def read_csv_file(filename) :
-	path = os.path.join('../..', 'GCJ-backup', filename)
-	with open(path, 'rb') as csvfile:
-	    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-	    content = []
-	    for row in reader:
-	        content.append(row)
+    path = os.path.join('../..', 'GCJ-backup', filename)
+    with open(path, 'rb') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        content = []
+        for row in reader:
+            content.append(row)
         attr_names = content[0][1:]
         print attr_names
 
         dict = {}
-        print content
+        #print content
         for row in content[1:] :
             user_id = row[0]
-            print user_id
+            #print user_id
             user_dict = {}
             for idx, a in enumerate(attr_names) :
-                print user_dict
+                #print user_dict
                 user_dict[a] = row[idx +1]
             dict[user_id] = user_dict
         return dict
