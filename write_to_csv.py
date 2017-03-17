@@ -15,16 +15,12 @@ def read_csv_file(filename) :
         for row in reader:
             content.append(row)
         attr_names = content[0][1:]
-        print attr_names
 
         dict = {}
-        #print content
         for row in content[1:] :
             user_id = row[0]
-            #print user_id
             user_dict = {}
             for idx, a in enumerate(attr_names) :
-                #print user_dict
                 user_dict[a] = row[idx +1]
             dict[user_id] = user_dict
         return dict

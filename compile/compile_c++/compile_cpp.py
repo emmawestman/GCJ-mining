@@ -12,31 +12,32 @@ gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from constants import *
 
-def compile_cpp(c_id, dict):
+def compile_cpp(p_id, dict):
 
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C++' ))
+    path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     for root, dirs, files in os.walk(path):
-        for f in files if has_valid_file_ending('C++', f):
-            user, filename = get_compile_info('C++', root, f)
-            print 'compiling c++ file for: ' + user + ' in problem ' + p_id
-            
-            # do compilation
-            cmd = 'timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
-            exit_code, errors = run_process(cmd)
-            
-            # update dictonary
-            dict = set_compile_exitcode(dict,full_path,exit_code)
-            dict = set_compiler_version(dict,full_path,'-')
-            
-            if not int(exit_code) == 0:
-				print 'failed to run problem: ' + root
-				print errors     
+        for f in files :
+            if has_valid_file_ending('C++', f) :
+                user, filename = get_compile_info('C++', root, f)
+                print 'compiling c++ file for: ' + user + ' in problem ' + p_id
+                
+                # do compilation
+                cmd = 'timeout 30s g++ -std=c++0x ' + os.path.join(root,f) + ' -o ' + os.path.join(root,filename)
+                exit_code, errors = run_process(cmd)
+                
+                # update dictonary
+                dict = set_compile_exitcode(dict,root,exit_code)
+                dict = set_compiler_version(dict,root,'-')
+                
+                if not int(exit_code) == 0:
+    				print 'failed to run problem: ' + root
+    				print errors     
     return dict
 
 
-def run_cpp(c_id, dict):
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C++' ))
-    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
+def run_cpp(p_id, dict):
+    path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
+    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input_' + p_id))
 
     for root, dirs, files in os.walk(path):    
         # only try to run the executable 

@@ -21,8 +21,8 @@ from finding_regexes import *
 
 
 def compile_run_csharp(c_id, dict):
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + c_id, 'C#' ))
-    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_' + c_id))
+    path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + c_id, 'C#' ))
+    PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input_' + c_id))
 
     for root, dirs, files in os.walk(path):
         for f in files:

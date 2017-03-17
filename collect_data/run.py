@@ -85,11 +85,12 @@ def map_problem_id_to_contest_id():
 			problem_id_contest_id_dict[problem_id] = contest_id
 	write_dict_to_file('cid_pid_map.csv', problem_id_contest_id_dict)
 
-
+'''
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
 	dict = sorting.sort_files(problem_id)
 	write_to_csv_file(problem_id+'.csv',dict)
+'''	
 
 

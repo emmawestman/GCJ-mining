@@ -8,89 +8,96 @@ gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from constants import *
 
-PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(),'input_'))
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
+from update_dict import *
+
+PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input'))
 
 
 def compile_python(p_id, dict):
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'Python' ))
+    path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'Python' ))
     print path
-    input_path = PATH_INPUT + p_id
-
-    for root, dirs, files in os.walk(path):
-        for f in files:
-            if f.endswith('.py'):
-                print 'Runing python file: ' + root
-                filename = get_input_file(root)+'.in'
-                path_file = os.path.join(root,f)
-                path_input = os.path.join(input_path,filename)
-                exit_code, errors, dict = run_python_2x(path_file,path_input,p_id,root, dict)
-                # update dict compiled 
-                dict = set_compile_exitcode(dict,full_path,exit_code)
-                dict = do_run_mesurments(exit_code, errors, dict, root)
+    input_path = os.path.join(PATH_INPUT, p_id + '.in')
+    user_ids = os.listdir(path)
+    for user in user_ids :
+        user_dict = dict[user]
+        user_path = os.path.join(path, user)
+        #files = os.listdir(user_path)
+        files = [f for f in os.listdir(user_path) if f.endswith('.py')]
+        for f in files :
+            print 'Runing python file: ' + f + ' for user: ' + user + ' in p_id: ' + p_id
+            if ' ' in f :
+                f = f.replace(' ', '\ ')
+            path_file = os.path.join(user_path, f)
+            print 'FILE PATH: ' + path_file
+            exit_code, errors = run_python_2x(path_file,input_path,p_id, user_path, user_dict)
+            # update dict compiled 
+            set_compile_exitcode(user_dict,exit_code)
+            set_run_mesurments(exit_code, errors, user_dict)
                 
     return dict
 
-
-def run_python(file_path,path_input,pythonversion,dict):
-    print "Running file python3 " + file_path
+def run_python(file_path,path_input,pythonversion,user_dict):
+    print "Running file python " + file_path
     args = ' < ' + path_input
-    return run_python_command(pythonversion,file_path, args, dict)
+    return run_python_command(pythonversion,file_path, args, user_dict)
 
 
-def run_python_2x(file_path,path_input,p_id,root, dict):
-    exit_code, errors, dict = run_python(file_path,path_input,'python')
+def run_python_2x(file_path,path_input,p_id,root, user_dict):
+    exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
     if not int(exit_code) == 0 or not int(exit_code) == 124:
-        return handle_python_2x_errors(file_path,path_input,p_id,root,errors,dict)             
-    return exit_code, errors, dict
+        return handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict)             
+    return exit_code, errors
 
 
-def run_python_3x(file_path,path_input,p_id,root,dict):
-    exit_code, errors, dict = run_python(file_path,path_input,'python3')
-    if len(errors) > 0:
-        return handle_python_3x_errors(errors,file_path,path_input,p_id,root,dict)
-    return exit_code, errors, dict
+def run_python_3x(file_path,path_input,p_id,root,user_dict):
+    exit_code, errors = run_python(file_path,path_input,'python3 ')
+    if not int(exit_code) == 0 or not int(exit_code) == 124:
+        return handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict)
+    return exit_code, errors
 
-def run_python_command(pythonversion,path_file,args,dict):    
+def run_python_command(pythonversion,path_file,args,user_dict): 
     if pythonversion == 'python3 ' :
         version = "3.5"
     else:
         version = "2.7"
     # update dictonry so verison is stored in csv
-    dict = set_compiler_version(dict,full_path,version)
-
+    set_compiler_version(user_dict, version)
     cmd = pythonversion + path_file + args
-    exit_code, errors = full_exe_cmd(cmd)
-    return exit_code, errors, dict
+    #exit_code, errors = full_exe_cmd(cmd)
+    exit_code, errors = run_process(cmd)
+    return exit_code, errors
 
-def handle_python_2x_errors(file_path,path_input,p_id,root,errors,dict):
+def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
         if flag == 0:
-            return run_python_3x(file_path,path_input,p_id,root,dict)
+            return run_python_3x(file_path,path_input,p_id,root,user_dict)
         return run_python_2x(file_path,path_input,p_id,root)    
     elif error_name == 'SyntaxError':
-        return run_python_3x(file_path,path_input,p_id,root,error, dict)
+        return run_python_3x(file_path,path_input,p_id,root,error, user_dict)
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
-        return run_python_2x(file_path,path_input,p_id,root,dict)
+        return run_python_2x(file_path,path_input,p_id,root,user_dict)
     elif error_name == 'IndexError':
         args = ' ' + path_input +' '+os.path.join(root,'output.txt')
-        exit_code, errors, dict = run_python_command('python ',file_path,args,dict)
-        if len(errors) == 0:
-            return exit_code, errors, dict
+        exit_code, errors = run_python_command('python ',file_path,args,user_dict)
+        #if not int(exit_code) == 0 or not int(exit_code) == 124:
+        return exit_code, errors
     print errors
 
-def handle_python_3x_errors(errors,file_path,path_input,p_id,root,dict):
+def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
         print 'handle python 3: ' + missing_module_name
         if flag == 1:
-            return run_python_3x(file_path,path_input,p_id,root,dict)
+            return run_python_3x(file_path,path_input,p_id,root,user_dict)
     elif error_name =='FileNotFoundError' or error_name =='IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
-        run_python_3x(file_path,path_input,p_id,root,dict)
+        run_python_3x(file_path,path_input,p_id,root,user_dict)
     print errors
 
 
