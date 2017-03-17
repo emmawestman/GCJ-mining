@@ -26,12 +26,13 @@ def compile_c(p_id, dict):
                 print 'compiling c file for: ' + user + ' in problem ' + p_id
                 
                 # do compilation
-                cmd = 'timeout 30s g++ ' + os.path.join(root,f) + ' -o ' + os.path.join(user_path,f.split('.')[0]))
+                exe_file = f.split('.')[0]
+                cmd = 'timeout 30s g++ ' + os.path.join(user_path,f) + ' -o ' + os.path.join(user_path,exe_file)
                 exit_code, errors = run_process(cmd)    
 
                 # update dictonary
-                set_compile_exitcode(user_dict,root,exit_code)
-                set_compiler_version(user_dict,root,'-')
+                set_compile_exitcode(user_dict,exit_code)
+                set_compiler_version(user_dict,'-')
         
                 if not int(exit_code) == 0:
     				print 'failed to run problem: ' + root
