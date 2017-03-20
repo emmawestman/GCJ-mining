@@ -5,7 +5,7 @@ def get_user_id(path) :
 
 def set_column_in_user_dict(user_dict,column,value):
     user_dict[column] = str(value)
-    return dict
+
 
 def set_compile_exitcode(user_dict,exit_code) :
     return set_column_in_user_dict(user_dict,'compiled',exit_code)
@@ -15,7 +15,7 @@ def set_compiler_version(user_dict,version) :
 
 def get_mesurments(errors) :
     regex = "\,\d?\.?\d*"
-    res = [] 
+    res = []
     output = re.findall(regex, errors)
     #remove first comma
     for s in output :
@@ -49,8 +49,5 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     return dict
 
 def set_run_mesurments(exit_code, errors, user_dict) :
-    mesurments = get_mesurments(errors)    
+    mesurments = get_mesurments(errors)
     return write_to_user_dict(user_dict, exit_code, mesurments)
-
-
-

@@ -58,7 +58,7 @@ def download_input_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	pool = mp.Pool(processes = NBR_OF_PROCESSES)
 	results = pool.map(download_input,list_of_contest_ids)
-			
+
 def download_solution_mp():
 	list_of_contest_ids = get_CONTEST_IDS()
 	pool = mp.Pool(processes = NBR_OF_PROCESSES)
@@ -91,6 +91,7 @@ for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
 	dict = sorting.sort_files(problem_id)
 	write_to_csv_file(problem_id+'.csv',dict)
+<<<<<<< Updated upstream
 '''	
 
 

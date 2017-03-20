@@ -76,8 +76,8 @@ def get_run_info(regexp, root):
     filename = root[index+len(regexp)+1:]
     index = filename.find('/')
     user = filename[index+1:]
-    filename = filename[:index]    
-    input_file = filename + '.in'     
+    filename = filename[:index]
+    input_file = filename + '.in'
     return user, input_file
 
 # to run with flags
@@ -87,22 +87,16 @@ def full_exe_cmd(cmd) :
 
 # to compile
 def run_process(cmd):
-    full_cmd = ['timeout 30s ' + cmd]
+    full_cmd = [cmd]
     p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
     exit_code = p.returncode
     return exit_code, errors
 
 
-
-
-
-
-
-
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
-        return True 
+        return True
     elif f.endswith(".c") and language == 'C':
         return True
     elif (f.endswith(".cpp") or f.endswith(".C") or f.endswith(".cc") or f.endswith(".CPP") or f.endswith(".c++") or f.endswith(".cp") or f.endswith(".cxx")) and language == 'C++':
@@ -112,11 +106,5 @@ def has_valid_file_ending(language, f):
     elif f.endswith(".py") and language == 'Python':
         return True
     else:
-        print 'found file without maching ending: ' + f 
+        print 'found file without maching ending: ' + f
         return False
-
-
-
-
-
-

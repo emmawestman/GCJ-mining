@@ -1,60 +1,88 @@
 import os
 import subprocess
 import sys
+from handle_java_run_errors import *
 
 # import own modules from diffrent directory
 compile_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, compile_path)
 from compile_support_module import *
+from update_dict import *
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
-from finding_regexes import *
 from constants import *
 
-def run_java_file(root,class_name,dict,p_id):
-	print 'running java file ' + root
-	error_code, errors = run_java_command(build_run_args(root,class_name,p_id))
-	#write statistics to cvs
-	dict = set_run_mesurments(exit_code, errors, dict, root)
-	if int error_code != 0:
-		print errors
-	return dict
-		
-def build_run_args(root,class_name,p_id):
-	path_to_input = os.path.join(get_HOME_PATH(), '/datacollection/input', p_id)
-	args = '< '+ path_to_input
-	return root +' '+class_name + ' ' + args 
 
-def run_java_command(args):	
-	cmd = 'timeout 30s java -classpath ' + args
-	return full_exe_cmd(cmd)	
+def run_java_file(root,class_name,p_id):
+	path_to_input = os.path.abspath(os.path.join(get_HOME_PATH(), 'datacollection', 'input', p_id + '.in'))
+	error_code, errors = run_java_command(build_run_args(root,class_name,path_to_input,' < '))
+	#write statistics to cvs
+	#dict = set_run_mesurments(error_code, errors, dict, root)
+	if (int (error_code) == 0) or (int (error_code) == 124):
+		return error_code,errors
+	return handle_java_run_errors(errors,error_code,root,class_name,path_to_input)
+
+
+
+def build_run_args(root,class_name,path_to_input,pipe):
+	args = pipe + path_to_input
+	return root + ' ' +class_name + ' ' + args
+
+
+def run_java_command(args):
+	cmd = 'java -classpath ' + args
+	print cmd
+	return run_process(cmd)
 
 def compile_java_command(full_path):
-	cmd = 'timeout 30s javac ' + full_path
-	return run_process(cmd) 
+	cmd = 'javac ' + full_path
+	return run_process(cmd)
 
 def compile_java(p_id, dict):
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'java' ))
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java' ))
+	print path
 	for root, dirs, files in os.walk(path):
 		for f in files:
 			if (f.endswith(".java")):
+				print "compiling java " + f
 				full_path = os.path.join(root,f)
-				exit_code, errors = run_process_compile(full_path)
+				exit_code, errors = compile_java_command(full_path)
 				# write compile statistics
-				dict = set_compiler_version(dict,full_path,'-')
-				dict = set_compile_exitcode(dict,full_path,exit_code)  				
-	return dict
+				user_dict = dict[get_user_id(root)]
+				set_compiler_version(user_dict,'-')
+				set_compile_exitcode(user_dict,exit_code)
+
+def handle_java_run_errors(errors,exit_code,root,class_name,input_path):
+	print errors
+	file_path = os.path.join(root,class_name+'.java')
+	if 'Main method not found' in errors :
+		return 0
+	elif 'Could not find or load main class' in errors :
+		remove_missing_package(file_path)
+		compile_java_command(os.path.join(root,class_name+'.java'))
+		return run_java_command(build_run_args(root,class_name,input_path,' < '))
+	elif 'FileNotFoundException' in errors :
+		rename_fileread_filewrite(file_path,input_path,root)
+		compile_java_command(file_path)
+		return run_java_command(build_run_args(root,class_name,input_path,' < '))
+	elif 'ExceptionInInitializerError' in errors :
+		return run_java_command(build_run_args(root,class_name,input_path,''))
+	return exit_code,errors
+
+
 
 
 def run_java_files(p_id,dict) :
-	path = os.path.realpath(os.path.join(get_HOME_PATH(),'solutions_' + p_id, 'java'))
-	for root, dirs, files in os.walk(path):
-		for f in files :
-			if f.endswith(".class"):
-				class_name = class_file[0].split('.')[0]
-				dict = run_java_file(root,class_name,dict,p_id)
-	return dict
-
-
-def get_exception_name(errors):
-	return  re.search('java.\w*.\w*', errors).group().split('.')[2]
+	path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java'))
+	userfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+	for user_folder in userfolders:
+		userPATH = os.path.join(path,user_folder)
+		user_dict = dict[user_folder]
+		#Filter class name
+		java_file = [f for f in os.listdir(userPATH) if f.endswith('.java')][0] #TODO: ASSUMES THAT ONLY EXIST ONE JAVA FILE
+		class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
+		if len(class_file)>0:
+			class_name = class_file[0].split('.')[0]
+			print "running " + userPATH + " " + class_name
+			error_code,errors = run_java_file(userPATH,class_name,p_id)
+			set_run_mesurments(error_code,errors,user_dict)
