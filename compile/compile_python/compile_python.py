@@ -12,13 +12,12 @@ compile_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, compile_path)
 from update_dict import *
 
-PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input'))
 
 
 def compile_python(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'Python' ))
     print path
-    input_path = os.path.join(PATH_INPUT, p_id + '.in')
+    input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
     for user in user_ids :
         user_dict = dict[user]
