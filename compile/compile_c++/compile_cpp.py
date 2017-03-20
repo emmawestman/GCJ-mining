@@ -32,11 +32,10 @@ def compile_cpp(p_id, dict):
                 set_compile_exitcode(user_dict,exit_code)
                 set_compiler_version(user_dict,'-')
         
-                if not int(exit_code) == 0:
+                if not int(exit_code) == 0 or not int(exit_code) == 124:
                     print 'failed to run problem: ' + p_id + ' for: ' + user 
                     print errors
 
-    return dict
 
 def run_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
@@ -55,7 +54,7 @@ def run_cpp(p_id, dict):
 
             # update dictonary with run mesurments
             set_run_mesurments(exit_code, errors, user_dict)
-    return dict
+
 
 
 

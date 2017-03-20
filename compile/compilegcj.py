@@ -49,18 +49,17 @@ def compile_language(language, p_id, dict):
 		#dict = run_java_files(p_id,dict)
 		print 'not doing java'
 	elif language == 'C':
-		dict = compile_c(p_id, dict)
-		dict = run_c(p_id, dict)
+		compile_c(p_id, dict)
+		run_c(p_id, dict)
 	elif language == "C++":
-		dict = compile_cpp(p_id, dict)
-		dict = run_cpp(p_id, dict)
+		compile_cpp(p_id, dict)
+		run_cpp(p_id, dict)
 	elif language == 'C#':
-		dict = compile_run_csharp(p_id, dict)
+		compile_run_csharp(p_id, dict)
 	elif language == "Python":
-		dict = compile_python(p_id, dict)
+		compile_python(p_id, dict)
 	else: 	
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
-	return dict
 
 
 def compile_all():
@@ -68,10 +67,10 @@ def compile_all():
 	for PROBLEM_ID in list_of_problem_ids:
 		filename = PROBLEM_ID + '.csv'
 		dict = read_csv_file(filename)
-		for l in ['C', 'C++', 'Python'] :
+		for l in ['C#'] :
 			print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
 			remove_old_files(l, PROBLEM_ID)
-			dict = compile_language(l, PROBLEM_ID, dict)
+			compile_language(l, PROBLEM_ID, dict)
 		write_to_csv_file(filename, dict)
 
 compile_all()

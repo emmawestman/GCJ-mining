@@ -32,7 +32,6 @@ def compile_python(p_id, dict):
             print 'FILE PATH: ' + path_file
             exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
             # update dict compiled 
-            set_compile_exitcode(user_dict,exit_code)
             set_run_mesurments(exit_code, errors, user_dict)
     return dict
 
@@ -44,7 +43,7 @@ def run_python(file_path,path_input,pythonversion,user_dict):
 
 def run_python_2x(file_path,path_input,p_id,root, user_dict):
     exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
-    if not int(exit_code) == 0 or not int(exit_code) == 124 or not int(exit_code) == -1:
+    if not int(exit_code) == 0 or not int(exit_code) == 124 :
         return handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict)             
     return exit_code, errors
 
@@ -64,8 +63,7 @@ def run_python_command(pythonversion,path_file,args,user_dict):
     # update dictonry so verison is stored in csv
     set_compiler_version(user_dict, version)
     cmd = pythonversion + path_file + args
-    #exit_code, errors = full_exe_cmd(cmd)
-    exit_code, errors = run_process(cmd)
+    exit_code, errors = full_exe_cmd(cmd)
     return exit_code, errors
 
 def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
@@ -88,11 +86,11 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
         #if not int(exit_code) == 0 or not int(exit_code) == 124:
         return exit_code, errors
     elif error_name == 'OSError' :
-        return str(-1), errors
+        return exit_code, errors
     else :
         # we can don't  fix problem and do not try agian
         print errors
-        return str(-1), errors 
+        return exit_code, errors 
         
 
 def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
@@ -106,7 +104,7 @@ def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
         else :
             print 'give up'
             print errors
-            return str(-1), errors
+            return exit_code, errors
     elif error_name =='FileNotFoundError' or error_name =='IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         run_python_3x(file_path,path_input,p_id,root,user_dict)
@@ -114,7 +112,7 @@ def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
         # we can don't  fix problem and do not try agian
         print 'CAN NOT HANDLE ERROR'
         print errors
-        return str(-1), errors 
+        return exit_code, errors 
         
 
 
