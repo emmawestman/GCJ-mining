@@ -28,7 +28,7 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 		if len(pip_errors)>0:
 			print pip_errors
 			return 0,missing_module_name
-	return 1,None
+	return str(1), errors
 
 
 def handle_python_file_not_found(input_file,root,c_id,file_path):

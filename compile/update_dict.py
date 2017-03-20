@@ -17,6 +17,7 @@ def get_mesurments(errors) :
     regex = "\,\d?\.?\d*"
     res = []
     output = re.findall(regex, errors)
+    print errors
     #remove first comma
     for s in output :
         res.append(s[1:])
@@ -24,7 +25,7 @@ def get_mesurments(errors) :
 
 def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['exit_code'] = exit_code
-    if len(mesurments) == 0 :
+    if not len(mesurments) == 10 :
         user_dict['wall_clock'] = '-'
         user_dict['user_time'] = '-'
         user_dict['syatem_time'] = '-'
@@ -49,5 +50,6 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     return dict
 
 def set_run_mesurments(exit_code, errors, user_dict) :
-    mesurments = get_mesurments(errors)
+    set_compile_exitcode(user_dict,exit_code)
+    mesurments = get_mesurments(errors)    
     return write_to_user_dict(user_dict, exit_code, mesurments)

@@ -34,11 +34,10 @@ def compile_c(p_id, dict):
                 set_compile_exitcode(user_dict,exit_code)
                 set_compiler_version(user_dict,'-')
         
-                if not int(exit_code) == 0:
+                if not int(exit_code) == 0 or not int(exit_code) == 124 :
     				print 'failed to run problem: ' + p_id + ' for: ' + user 
     				print errors
 
-	return dict
 
 
 def run_c(p_id, dict):
@@ -57,8 +56,7 @@ def run_c(p_id, dict):
             exit_code, errors = full_exe_cmd(cmd)
 
             # update dictonary with run mesurments
-            do_run_mesurments(exit_code, errors, user_dict)
-	return dict
+            set_run_mesurments(exit_code, errors, user_dict)
 
 
 
