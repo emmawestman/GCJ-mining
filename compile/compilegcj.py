@@ -49,21 +49,19 @@ def compile_language(language, p_id, dict):
 		compile_cpp(p_id, dict)
 		run_cpp(p_id, dict)
 	elif language == 'C#':
-		compile_run_csharp(p_id, dict)
+		compile_csharp(p_id, dict)
+		run_csharp(p_id,dict)
 	elif language == "Python":
 		compile_python(p_id, dict)
 	else:
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 def compile_all():
-	list_of_problem_ids = get_PROBLEM_IDS(gcj_path)
-	for PROBLEM_ID in list_of_problem_ids:
-		filename = PROBLEM_ID + '.csv'
+	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
+	for p_id in list_of_problem_ids:
+		filename = p_id + '.csv'
 		dict = read_csv_file(filename)
-		for l in get_LANGUAGE() :
-			print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
-			remove_old_files(l, PROBLEM_ID)
-			compile_language(l, PROBLEM_ID, dict)
+		run_csharp(p_id,dict)
 		write_to_csv_file(filename, dict)
 
 compile_all()
