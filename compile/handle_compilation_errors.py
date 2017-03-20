@@ -5,6 +5,7 @@ import sys
 def find_old_regex(regex_list,file_contents):
 	for regex in regex_list:
 		print "WHAT REGEX " + regex
+
 		old_regex = find_out_what_regex(regex,file_contents)
 		if len(old_regex)>0:
 			return old_regex
@@ -34,8 +35,8 @@ def rename_file_not_found_java(regex_list,new_input,file_contents):
 
 def handle_file_not_found_java(regex_list_input,new_input,regex_list_output,new_output,file_path):
 	file_contents = get_contents_of_file(file_path)
-	file_contents=rename_file_not_found_java(regex_list_input,new_input,file_contents)
-	file_contents = rename_file_not_found_java(regex_list_output,new_output,file_contents)
+	file_contents = rename_file_not_found_java(regex_list_input,new_input,file_contents)
+	#file_contents = rename_file_not_found_java(regex_list_output,new_output,file_contents)
 	write_new_contents_to_the_file(file_path,file_contents)
 
 def rename_stuff_in_file (old_string,new_string,file_path,counter):
