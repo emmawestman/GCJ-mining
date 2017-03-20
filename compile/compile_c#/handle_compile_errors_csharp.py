@@ -7,16 +7,15 @@ def create_main_file(root,csharp_file_p,input_file):
 	# create main file and call some function...
 	filter_candidates = filter_candidate_functions(full_path)
 	csharp_main(filter_candidates[0], csharp_file_p, namespace, root,input_file)
-
+	
 
 def change_input_streams(input_file,csharp_file,root):
 	file_path = os.path.join(root, csharp_file)
-	file_contents = get_contents_of_file(file_path)
 	list_of_inregexes = ['new StreamReader\((.*)\)']
 	new_file_input = '\"'+input_file+'\"'
 	list_of_outregexes = ['new StreamWriter\((.*)\)']
 	new_file_output = '\"' + os.path.join(root,'output.txt') + '\"'
-	handle_file_not_found(file_path,list_of_inregexes, list_of_outregexes, new_file_input,new_file_output)
+	handle_file_not_found_java(list_of_inregexes,new_file_input,list_of_outregexes,new_file_output,file_path)
 
 def rename_input_file(input_file,csharp_file,errors):
 	old_regex = filter_information('\".*?\"',None,errors)[0]
