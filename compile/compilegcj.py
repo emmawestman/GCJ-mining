@@ -60,7 +60,7 @@ def compile_all():
 	for PROBLEM_ID in list_of_problem_ids:
 		filename = PROBLEM_ID + '.csv'
 		dict = read_csv_file(filename)
-		for l in get_LANGUAGE() :
+		for l in ['java'] :
 			print 'Compiles and Runs: ' + l + ' in contest: ' + PROBLEM_ID
 			remove_old_files(l, PROBLEM_ID)
 			compile_language(l, PROBLEM_ID, dict)

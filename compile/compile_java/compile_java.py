@@ -14,12 +14,11 @@ from constants import *
 
 
 def run_java_file(root,class_name,p_id):
-	path_to_input = os.path.abspath(os.path.join(get_HOME_PATH(), 'datacollection', 'input', p_id + '.in'))
+	path_to_input = os.path.abspath(os.path.join(get_INPUT_PATH(), p_id + '.in'))
 	error_code, errors = run_java_command(build_run_args(root,class_name,path_to_input,' < '))
-	#write statistics to cvs
-	#dict = set_run_mesurments(error_code, errors, dict, root)
+
 	if (int (error_code) == 0) or (int (error_code) == 124):
-		return error_code,errors
+		return error_code, errors
 	return handle_java_run_errors(errors,error_code,root,class_name,path_to_input)
 
 
@@ -50,13 +49,16 @@ def compile_java(p_id, dict):
 				# write compile statistics
 				user_dict = dict[get_user_id(root)]
 				set_compiler_version(user_dict,'-')
+				print 'COPILE EXIT CODE ' + str(exit_code)
+				print errors
 				set_compile_exitcode(user_dict,exit_code)
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path):
-	print errors
+	#print errors
 	file_path = os.path.join(root,class_name+'.java')
 	if 'Main method not found' in errors :
-		return 0
+		#call fix main to file
+		return exit_code, errors
 	elif 'Could not find or load main class' in errors :
 		remove_missing_package(file_path)
 		compile_java_command(os.path.join(root,class_name+'.java'))
@@ -67,7 +69,7 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path):
 		return run_java_command(build_run_args(root,class_name,input_path,' < '))
 	elif 'ExceptionInInitializerError' in errors :
 		return run_java_command(build_run_args(root,class_name,input_path,''))
-	return exit_code,errors
+	return exit_code, errors
 
 
 
@@ -85,4 +87,6 @@ def run_java_files(p_id,dict) :
 			class_name = class_file[0].split('.')[0]
 			print "running " + userPATH + " " + class_name
 			error_code,errors = run_java_file(userPATH,class_name,p_id)
+			print 'FINAL ERROR CODE: ' + str(error_code)
+			print errors
 			set_run_mesurments(error_code,errors,user_dict)
