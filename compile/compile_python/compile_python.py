@@ -30,7 +30,7 @@ def compile_python(p_id, dict):
                 f = f.replace(' ', '\ ')
             path_file = os.path.join(user_path, f)
             print 'FILE PATH: ' + path_file
-            exit_code, errors = run_python_2x(path_file,input_path,p_id, user_path, user_dict)
+            exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
             # update dict compiled 
             set_compile_exitcode(user_dict,exit_code)
             set_run_mesurments(exit_code, errors, user_dict)
@@ -44,18 +44,19 @@ def run_python(file_path,path_input,pythonversion,user_dict):
 
 def run_python_2x(file_path,path_input,p_id,root, user_dict):
     exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
-    if not int(exit_code) == 0 or not int(exit_code) == 124:
+    if not int(exit_code) == 0 or not int(exit_code) == 124 or not int(exit_code) == -1:
         return handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict)             
     return exit_code, errors
 
 
 def run_python_3x(file_path,path_input,p_id,root,user_dict):
-    exit_code, errors = run_python(file_path,path_input,'python3 ')
+    exit_code, errors = run_python(file_path,path_input,'python3 ', user_dict)
+    print 'EXIT CODE ' + str(exit_code)
     if not int(exit_code) == 0 or not int(exit_code) == 124:
         return handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict)
     return exit_code, errors
 
-def run_python_command(pythonversion,path_file,args,user_dict): 
+def run_python_command(pythonversion,path_file,args,user_dict):
     if pythonversion == 'python3 ' :
         version = "3.5"
     else:
@@ -71,11 +72,13 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
+        print flag
+        print missing_module_name
         if flag == 0:
             return run_python_3x(file_path,path_input,p_id,root,user_dict)
-        return run_python_2x(file_path,path_input,p_id,root)    
+        return run_python_2x(file_path,path_input,p_id,root, user_dict)    
     elif error_name == 'SyntaxError':
-        return run_python_3x(file_path,path_input,p_id,root,error, user_dict)
+        return run_python_3x(file_path,path_input,p_id,root, user_dict)
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         return run_python_2x(file_path,path_input,p_id,root,user_dict)
@@ -84,18 +87,34 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
         exit_code, errors = run_python_command('python ',file_path,args,user_dict)
         #if not int(exit_code) == 0 or not int(exit_code) == 124:
         return exit_code, errors
-    print errors
+    elif error_name == 'OSError' :
+        return str(-1), errors
+    else :
+        # we can don't  fix problem and do not try agian
+        print errors
+        return str(-1), errors 
+        
 
 def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
         print 'handle python 3: ' + missing_module_name
-        if flag == 1:
+        print flag
+        if flag == str(1):
             return run_python_3x(file_path,path_input,p_id,root,user_dict)
+        else :
+            print 'give up'
+            print errors
+            return str(-1), errors
     elif error_name =='FileNotFoundError' or error_name =='IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         run_python_3x(file_path,path_input,p_id,root,user_dict)
-    print errors
+    else :
+        # we can don't  fix problem and do not try agian
+        print 'CAN NOT HANDLE ERROR'
+        print errors
+        return str(-1), errors 
+        
 
 

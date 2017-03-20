@@ -57,7 +57,7 @@ def run_c(p_id, dict):
             exit_code, errors = full_exe_cmd(cmd)
 
             # update dictonary with run mesurments
-            do_run_mesurments(exit_code, errors, user_dict)
+            set_run_mesurments(exit_code, errors, user_dict)
 	return dict
 
 
