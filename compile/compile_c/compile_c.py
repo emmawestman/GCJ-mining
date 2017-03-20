@@ -35,7 +35,7 @@ def compile_c(p_id, dict):
                 set_compiler_version(user_dict,'-')
         
                 if not int(exit_code) == 0:
-    				print 'failed to run problem: ' + root
+    				print 'failed to run problem: ' + p_id ' for: ' + user 
     				print errors
 
 	return dict
