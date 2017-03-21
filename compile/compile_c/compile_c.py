@@ -33,6 +33,7 @@ def compile_c(p_id, dict):
                 # update dictonary
                 set_compile_exitcode(user_dict,exit_code)
                 set_compiler_version(user_dict,'-')
+                set_run_mesurments('-1', '', user_dict)
         
                 if not int(exit_code) == 0 or not int(exit_code) == 124 :
     				print 'failed to run problem: ' + p_id + ' for: ' + user 

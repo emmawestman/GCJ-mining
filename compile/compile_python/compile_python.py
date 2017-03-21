@@ -44,7 +44,7 @@ def run_python(file_path,path_input,pythonversion,user_dict):
 def run_python_2x(file_path,path_input,p_id,root, user_dict):
     exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
     if not int(exit_code) == 0 or not int(exit_code) == 124 :
-        return handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict)             
+        return handle_python_2x_errors(file_path,path_input,p_id,root,errors, exit_code, user_dict)             
     return exit_code, errors
 
 
@@ -52,7 +52,7 @@ def run_python_3x(file_path,path_input,p_id,root,user_dict):
     exit_code, errors = run_python(file_path,path_input,'python3 ', user_dict)
     print 'EXIT CODE ' + str(exit_code)
     if not int(exit_code) == 0 or not int(exit_code) == 124:
-        return handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict)
+        return handle_python_3x_errors(errors, exit_code, file_path,path_input,p_id,root,user_dict)
     return exit_code, errors
 
 def run_python_command(pythonversion,path_file,args,user_dict):
@@ -66,20 +66,20 @@ def run_python_command(pythonversion,path_file,args,user_dict):
     exit_code, errors = full_exe_cmd(cmd)
     return exit_code, errors
 
-def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
+def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
         print flag
         print missing_module_name
         if flag == 0:
-            return run_python_3x(file_path,path_input,p_id,root,user_dict)
-        return run_python_2x(file_path,path_input,p_id,root, user_dict)    
+            return run_python_command('python3 ', file_path,path_input,user_dict)
+        return run_python_command('python ', file_path,path_input, user_dict)    
     elif error_name == 'SyntaxError':
         return run_python_3x(file_path,path_input,p_id,root, user_dict)
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
-        return run_python_2x(file_path,path_input,p_id,root,user_dict)
+        return run_python_command('python ', file_path,path_input,user_dict)
     elif error_name == 'IndexError':
         args = ' ' + path_input +' '+os.path.join(root,'output.txt')
         exit_code, errors = run_python_command('python ',file_path,args,user_dict)
@@ -93,21 +93,21 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
         return exit_code, errors 
         
 
-def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
+def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
         print 'handle python 3: ' + missing_module_name
         print flag
         if flag == str(1):
-            return run_python_3x(file_path,path_input,p_id,root,user_dict)
+            return run_python_command('python3 ', file_path,path_input,user_dict)
         else :
             print 'give up'
             print errors
             return exit_code, errors
     elif error_name =='FileNotFoundError' or error_name =='IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
-        run_python_3x(file_path,path_input,p_id,root,user_dict)
+        run_python_command('python3 ', file_path,path_input,user_dict)
     else :
         # we can don't  fix problem and do not try agian
         print 'CAN NOT HANDLE ERROR'

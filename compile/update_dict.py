@@ -25,7 +25,6 @@ def get_mesurments(errors) :
 
 def write_to_user_dict(user_dict, exit_code, mesurments):
     user_dict['exit_code'] = exit_code
-    print user_dict
     if not len(mesurments) == 10 :
         user_dict['wall_clock'] = '-'
         user_dict['user_time'] = '-'

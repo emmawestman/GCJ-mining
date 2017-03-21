@@ -82,15 +82,15 @@ def get_run_info(regexp, root):
 
 # to run with flags
 def full_exe_cmd(cmd) :
-    #full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-    full_cmd = cmd
+    full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
+    #full_cmd = cmd
     return run_process(full_cmd)
 
 # to compile
 def run_process(cmd):
-    #cmd_timeout = 'timeout 30s ' + cmd
-    #full_cmd = [cmd_timeout]
-    full_cmd = [cmd]
+    cmd_timeout = 'timeout 30s ' + cmd
+    full_cmd = [cmd_timeout]
+    #full_cmd = [cmd]
     p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
     exit_code = p.returncode

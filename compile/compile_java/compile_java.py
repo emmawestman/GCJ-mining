@@ -30,8 +30,7 @@ def build_run_args(root,class_name,path_to_input,pipe):
 
 def run_java_command(args):
 	cmd = 'java -classpath ' + args
-	print cmd
-	return run_process(cmd)
+	return full_exe_cmd(cmd)
 
 def compile_java_command(full_path):
 	cmd = 'javac ' + full_path
@@ -52,6 +51,7 @@ def compile_java(p_id, dict):
 				print 'COPILE EXIT CODE ' + str(exit_code)
 				print errors
 				set_compile_exitcode(user_dict,exit_code)
+                set_run_mesurments('-1', '', user_dict)
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path):
 	#print errors
