@@ -30,8 +30,7 @@ def build_run_args(root,class_name,path_to_input,pipe):
 
 def run_java_command(args):
 	cmd = 'java -classpath ' + args
-	print cmd
-	return run_process(cmd)
+	return full_exe_cmd(cmd))
 
 def compile_java_command(full_path):
 	cmd = 'javac ' + full_path
