@@ -51,6 +51,7 @@ def compile_java(p_id, dict):
 				print 'COPILE EXIT CODE ' + str(exit_code)
 				print errors
 				set_compile_exitcode(user_dict,exit_code)
+                set_run_mesurments('-1', '', user_dict)
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path):
 	#print errors
