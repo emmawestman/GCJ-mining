@@ -53,9 +53,13 @@ def run_c(p_id, dict):
 
 			# do run command
             cmd = os.path.join(user_path,f) + ' < ' + input_path
+            print cmd
             exit_code, errors = full_exe_cmd(cmd)
 
             # update dictonary with run mesurments
+            print errors
+            print exit_code
+            print user_dict
             set_run_mesurments(exit_code, errors, user_dict)
 
 
