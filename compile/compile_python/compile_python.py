@@ -44,7 +44,7 @@ def run_python(file_path,path_input,pythonversion,user_dict):
 def run_python_2x(file_path,path_input,p_id,root, user_dict):
     exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
     if not int(exit_code) == 0 or not int(exit_code) == 124 :
-        return handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict)             
+        return handle_python_2x_errors(file_path,path_input,p_id,root,errors, exit_code, user_dict)             
     return exit_code, errors
 
 
@@ -52,7 +52,7 @@ def run_python_3x(file_path,path_input,p_id,root,user_dict):
     exit_code, errors = run_python(file_path,path_input,'python3 ', user_dict)
     print 'EXIT CODE ' + str(exit_code)
     if not int(exit_code) == 0 or not int(exit_code) == 124:
-        return handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict)
+        return handle_python_3x_errors(errors, exit_code, file_path,path_input,p_id,root,user_dict)
     return exit_code, errors
 
 def run_python_command(pythonversion,path_file,args,user_dict):
@@ -66,7 +66,7 @@ def run_python_command(pythonversion,path_file,args,user_dict):
     exit_code, errors = full_exe_cmd(cmd)
     return exit_code, errors
 
-def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
+def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
@@ -93,7 +93,7 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,user_dict):
         return exit_code, errors 
         
 
-def handle_python_3x_errors(errors,file_path,path_input,p_id,root,user_dict):
+def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
