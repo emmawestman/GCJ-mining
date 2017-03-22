@@ -1,5 +1,7 @@
 # Error handling for c++
 import os
+import sys
+
 # import own modules from diffretn directory
 compile_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, compile_path)
