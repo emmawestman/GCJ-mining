@@ -119,4 +119,4 @@ def clean_user_dir(user_path, lang):
         if not has_valid_file_ending(lang, f) :
             if not ((lang == 'C++' or lang == 'C') and f.endswith('.h')):
                 print 'removed file: ' + f
-                os.remove(os.path.join(user_path, f)
+                os.remove(os.path.join(user_path, f))
