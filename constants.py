@@ -31,6 +31,10 @@ def get_PROBLEM() :
 def get_HOME_PATH() :
 	return HOME_PATH
 
+def get_GCJ_BACKUP_PATH():
+	return os.path.join(get_HOME_PATH(), 'GCJ-backup')
+
+
 def get_SIZE() :
 	return SIZE
 

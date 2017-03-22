@@ -76,15 +76,15 @@ def download_table_data_mp():
 	pool2.map(partial_download_func,list_of_contest_ids)
 
 def map_problem_id_to_contest_id():
-	problem_id_contest_id_dict = {}
-	list_of_contest_ids = get_CONTEST_IDS()
-	for contest_id in list_of_contest_ids :
+	contest_id_problem_id_dict = {}
+	for contest_id in get_CONTEST_IDS():
 		base_url = build_base_url(contest_id)
-		problem_ids = retrive_problem_ids(base_url)
-		for problem_id in problem_ids:
-			problem_id_contest_id_dict[problem_id] = contest_id
-	write_dict_to_file('cid_pid_map.csv', problem_id_contest_id_dict)
+		contest_id_problem_id_dict[contest_id] = retrive_problem_ids(base_url)
 
+	write_dict_to_file('cid_pid_map_new.csv', contest_id_problem_id_dict)
+
+
+download_table_data_mp()
 '''
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
@@ -92,6 +92,4 @@ for problem_id in get_PROBLEM_IDS(gcj_path):
 	dict = sorting.sort_files(problem_id)
 	write_to_csv_file(problem_id+'.csv',dict)
 <<<<<<< Updated upstream
-'''	
-
-
+'''

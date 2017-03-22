@@ -43,14 +43,24 @@ def write_to_csv_file(filename, dict) :
 
 def write_dict_to_file(filename, problem_id_contest_id_dict):
     path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
-    problem_ids = problem_id_contest_id_dict.keys()
+    contest_ids = problem_id_contest_id_dict.keys()
     with open(path, 'w') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='|')
-        for problem in problem_ids:
+        for contest_id in contest_ids:
             row =[]
-            row.append(problem)
-            row.append(problem_id_contest_id_dict[problem])
+            row.append(contest_id)
+            for problem_id in problem_id_contest_id_dict[contest_id]:
+                row.append(problem_id)
             writer.writerow(row)
+
+def read_csv_file_to_dict(filename):
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
+    with open(path, 'r') as csvfile:
+        writer = csv.reader(csvfile, delimiter=',', quotechar='|')
+        dict = {}
+        for row in writer :
+            dict[row[0]] = row[1:]
+    return dict
 
 def get_user_ids(c_id) :
     dict = init_csv(c_id)

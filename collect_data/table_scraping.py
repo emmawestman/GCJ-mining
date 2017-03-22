@@ -26,9 +26,11 @@ def download_table_data(page_nbr, contest_id):
 		raw_data = urllib2.urlopen(url).read()
 		json_data = json.loads(raw_data)
 		for row in json_data['rows']:
+			print row
 			row_data_dict = {}
 			row_data_dict['penalty'] = row['pen']
 			row_data_dict['points'] = row['pts']
+			row_data_dict['rank'] = row['r']
 			user_dict[row['n']]= {}
 			statistics_dict[row['n']] = row_data_dict
 	write_statistics_to_csv (statistics_dict,user_dict,contest_id)
