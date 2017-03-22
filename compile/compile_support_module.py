@@ -111,3 +111,12 @@ def has_valid_file_ending(language, f):
     else:
         print 'found file without maching ending: ' + f
         return False
+
+
+def clean_user_dir(user_path, lang):
+    files = os.listdir(user_path)
+    for f in files :
+        if not has_valid_file_ending(lang, f) :
+            if not ((lang == 'C++' or lang == 'C') and f.endswith('.h')):
+                print 'removed file: ' + f
+                os.remove(f)

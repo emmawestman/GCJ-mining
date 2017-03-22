@@ -12,6 +12,7 @@ from update_dict import *
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from constants import *
+from stuff_module import *
 
 def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
@@ -57,6 +58,9 @@ def run_cpp(p_id, dict):
             exit_code, errors = run_cpp_command(f, user_path, input_path)
             # update dictonary with run mesurments
             set_run_mesurments(exit_code, errors, user_dict)
+            # clean dir
+            clean_home_dir()
+            clean_user_dir(user_path)
             
 
 def run_cpp_command(f, user_path, input_path) :
@@ -88,6 +92,9 @@ def handle_compile_errors(errors, exit_code, f, user_path) :
         return exit_code, errors
 
 def handle_run_errors(errors, exit_code, f, user_path, input_path) :
+    if int(exit_code) == 139 :
+        print 'REPLACING INPUT PATH'
+        replace_input_path(user_path, f, input_path)
     return exit_code, errors
 
   
