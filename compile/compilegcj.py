@@ -57,6 +57,8 @@ def compile_language(language, p_id, dict):
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 def compile_all():
+	clean_home_dir(os.getcwd())
+	clear_home_dir(gcj_path)
 	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
 	for p_id in list_of_problem_ids:
 		filename = p_id + '.csv'
@@ -65,6 +67,8 @@ def compile_all():
 			print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
 			remove_old_files(l, p_id)
 			compile_language(l, p_id, dict)
+			clean_home_dir(os.getcwd())
+			clear_home_dir(gcj_path)
 		write_to_csv_file(filename, dict)
 
 compile_all()
