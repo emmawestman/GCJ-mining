@@ -60,7 +60,7 @@ def run_cpp(p_id, dict):
             set_run_mesurments(exit_code, errors, user_dict)
             # clean dir
             clean_home_dir()
-            clean_user_dir(user_path)
+            clean_user_dir(user_path, 'C++')
             
 
 def run_cpp_command(f, user_path, input_path) :
