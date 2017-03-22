@@ -74,7 +74,7 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user
             return run_python_command('python3 ', file_path,path_input,user_dict)
         return run_python_command('python ', file_path,path_input, user_dict)    
     elif error_name == 'SyntaxError':
-        return run_python_3x(file_path,path_input,p_id,root, user_dict)
+        return run_python_command('python3 ', file_path,path_input, user_dict)
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         return run_python_command('python ', file_path,path_input,user_dict)
