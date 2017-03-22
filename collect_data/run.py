@@ -45,7 +45,7 @@ def retrive_token(contest_id):
 
 
 # removes outputfiles and similar files created by solutions
-clean_home_dir()
+clean_home_dir(os.getcwd())
 
 def download_input(contest_id):
 	base_url = build_base_url(contest_id)
@@ -94,4 +94,4 @@ for problem_id in get_PROBLEM_IDS(gcj_path):
 <<<<<<< Updated upstream
 '''	
 
-
+download_table_data_mp()
