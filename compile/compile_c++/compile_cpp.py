@@ -32,6 +32,7 @@ def compile_cpp(p_id, dict):
                 set_run_mesurments('-1', '', user_dict)
 
 def compile_cpp_command(f, user_path) :
+    clean_home_dir()
     # do compilation
     exe_file = f.split('.')[0]
     cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + os.path.join(user_path,exe_file)

@@ -10,6 +10,7 @@ def create_folder (folder):
              raise
 
 def clean_home_dir():
+    print 'Dir to remove files from: ' + os.getcwd()
 	files = os.listdir(os.getcwd())
 	all_files = [ f for f in files if os.path.isfile(f) ]
 	to_remove = [ f for f in all_files if not(f.endswith('.py')) ]
