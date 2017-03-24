@@ -88,7 +88,7 @@ def full_exe_cmd(cmd) :
 
 # to compile
 def run_process(cmd):
-    cmd_timeout = 'timeout 30s ' + cmd
+    cmd_timeout = 'timeout 10s ' + cmd
     full_cmd = [cmd_timeout]
     #full_cmd = [cmd]
     p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
