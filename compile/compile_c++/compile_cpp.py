@@ -34,7 +34,7 @@ def compile_cpp(p_id, dict):
 def compile_cpp_command(f, user_path) :
     # do compilation
     exe_file = f.split('.')[0]
-    cmd = 'g++ -std=c++0x ' + os.path.joFin(user_path,f) + ' -o ' + os.path.join(user_path,exe_file)
+    cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + os.path.join(user_path,exe_file)
     exit_code, errors = run_process(cmd)     
 
     if not (int(exit_code) == 0 or int(exit_code) == 124):
