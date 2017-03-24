@@ -6,6 +6,7 @@ import sys
 compile_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, compile_path)
 from compile_support_module import *
+from handle_compilation_errors import *
 
 regexes_cpp = ['freopen ?\((\"?[\w+-]*\.?\w+\"?),[ ]*?\"r\",[ ]*?stdin\)', 'fopen ?\((\"?[\w+-]*\.?\w+\"),[ ]*?\"r\"\)']
 
