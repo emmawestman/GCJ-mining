@@ -32,6 +32,7 @@ def compile_cpp(p_id, dict):
                 set_run_mesurments('-1', '', user_dict)
 
 def compile_cpp_command(f, user_path) :
+    print 'in compile'
     clean_home_dir()
     # do compilation
     exe_file = f.split('.')[0]
