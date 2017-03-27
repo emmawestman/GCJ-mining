@@ -105,10 +105,10 @@ def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
    
-    t = Timer(10, timeout, [p])
+    #t = Timer(10, timeout, [p])
     #try:
         #timer.start() 
-    t = threading.Timer( 10.0, timeout, [proc] )
+    t = Timer( 10.0, timeout, [proc] )
     t.start()
     t.join()    
     output, errors = p.communicate()
