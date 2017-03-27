@@ -45,7 +45,7 @@ def retrive_token(contest_id):
 
 
 # removes outputfiles and similar files created by solutions
-clean_home_dir()
+clean_home_dir(os.getcwd())
 
 def download_input(contest_id):
 	base_url = build_base_url(contest_id)
@@ -84,12 +84,9 @@ def map_problem_id_to_contest_id():
 	write_dict_to_file('cid_pid_map_new.csv', contest_id_problem_id_dict)
 
 
-download_table_data_mp()
-'''
 print 'Starting to sort all zip files...'
 for problem_id in get_PROBLEM_IDS(gcj_path):
 	print 'Sorting contest ' + problem_id
 	dict = sorting.sort_files(problem_id)
 	write_to_csv_file(problem_id+'.csv',dict)
-<<<<<<< Updated upstream
-'''
+
