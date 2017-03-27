@@ -93,6 +93,7 @@ def done(p):
 
 # to compile
 def run_process(cmd):
+    cmd = ["exec " + cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     kill_proc = lambda p : p.kill()
     timer = Timer(10, done, [p])
