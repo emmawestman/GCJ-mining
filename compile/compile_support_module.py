@@ -92,15 +92,16 @@ def done():
 # to compile
 def run_process(cmd):
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
- 
-    timer = Timer(10, done)
+    kill_proc = lambda p : p.kill()
+    timer = Timer(10, kill_proc, [p])
     try:
         timer.start()     
         output, errors = p.communicate()
+        print errors
         exit_code = p.returncode
+        print exit_code
         return exit_code, errors
     finally:
-        p.kill()
         timer.cancel()
         print 'program took to long time to finish'
         return str(124), ''
