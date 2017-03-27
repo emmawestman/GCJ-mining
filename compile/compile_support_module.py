@@ -102,9 +102,9 @@ def timeout( p ):
 # to compile
 def run_process(cmd):
     cmd = [cmd]
-    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setid)
+    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
    
-    timer = Timer(10, timeout, [p])
+    t = Timer(10, timeout, [p])
     try:
         #timer.start() 
         t = threading.Timer( 10.0, timeout, [proc] )
@@ -112,9 +112,10 @@ def run_process(cmd):
         t.join()    
         output, errors = p.communicate()
         exit_code = p.returncode
+        return exit_code, errors
     finally:
         t.cancel()
-        return exit_code, errors
+        return '124', ''
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
