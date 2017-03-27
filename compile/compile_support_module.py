@@ -99,7 +99,8 @@ def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
     time.sleep(10)
-    output, exit_code = p.communicate()
+    output, errors = p.communicate()
+    exit_code = p.returncode
     if exit_code == None :
         os.killpg(os.getpgid(p.pid), signal.SIGTERM)
         return '-1', ''
