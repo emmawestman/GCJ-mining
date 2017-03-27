@@ -86,17 +86,21 @@ def full_exe_cmd(cmd) :
     #full_cmd = cmd
     return run_process(full_cmd)
 
+def done():
+    print 'Done waiting 10s!'
+
 # to compile
 def run_process(cmd):
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    kill_proc = lambda p : p.kill()
-    timer = Timer(10, kill_proc, [p])
+ 
+    timer = Timer(10, done)
     try:
         timer.start()     
         output, errors = p.communicate()
         exit_code = p.returncode
         return exit_code, errors
     finally:
+        p.kill()
         timer.cancel()
         print 'program took to long time to finish'
         return str(124), ''
