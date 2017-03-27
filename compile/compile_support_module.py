@@ -114,6 +114,7 @@ def run_process(cmd):
         if not p.poll() is None :
             print 'Done!'
             t.cancel()
+            break
                 
     t.join()    
     output, errors = p.communicate()
