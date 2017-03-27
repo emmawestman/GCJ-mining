@@ -94,27 +94,27 @@ def done(p):
     os.killpg(os.getpgid(p.pid), signal.SIGTERM)
     print 'process killed!'
 
+def timeout( p ):
+    if p.poll() is None:
+        print 'Error: process taking too long to complete--terminating'
+        p.kill()
+
 # to compile
 def run_process(cmd):
     cmd = [cmd]
-    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
-    time.sleep(10)
-    output, errors = p.communicate()
-    exit_code = p.returncode
-    if exit_code == None :
-        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
-        return '-1', ''
-    else:
-        return exit_code, errors
-    '''timer = Timer(10, done, [p])
+    p = subprocess.Popen(cmd,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
+   
+    timer = Timer(10, timeout, [p])
     try:
-        #timer.start()     
+        #timer.start() 
+        t = threading.Timer( 10.0, timeout, [proc] )
+        t.start()
+        t.join()    
         output, errors = p.communicate()
         exit_code = p.returncode
     finally:
-        timer.cancel()
-        return exit_code, errors'''
-
+        t.cancel()
+        return exit_code, errors
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
