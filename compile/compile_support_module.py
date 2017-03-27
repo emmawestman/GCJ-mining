@@ -113,9 +113,8 @@ def run_process(cmd):
     while(t.is_alive()):
         if not p.poll() is None :
             print 'Done!'
-            t.join()
-            os.killpg(os.getpgid(p.pid), signal.SIGTERM)
-            
+            t.cancel()
+                
     t.join()    
     output, errors = p.communicate()
     exit_code = p.returncode
