@@ -102,7 +102,7 @@ def timeout( p ):
 # to compile
 def run_process(cmd):
     cmd = [cmd]
-    p = subprocess.Popen(cmd,schell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
+    p = subprocess.Popen(cmd,shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
    
     timer = Timer(10, timeout, [p])
     try:
