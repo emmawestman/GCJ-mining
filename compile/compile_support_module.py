@@ -105,21 +105,22 @@ def run_process(cmd):
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
    
     t = Timer(10, timeout, [p])
-    try:
+    #try:
         #timer.start() 
-        t = threading.Timer( 10.0, timeout, [proc] )
-        t.start()
-        t.join()    
-        output, errors = p.communicate()
-        exit_code = p.returncode
-        return exit_code, errors
-    except BaseException as instance :
+    t = threading.Timer( 10.0, timeout, [proc] )
+    t.start()
+    t.join()    
+    output, errors = p.communicate()
+    exit_code = p.returncode
+    t.cancel()
+    return exit_code, errors
+    '''except BaseException as instance :
         print type(instance)
         exit_code = '124'
         errors = ''
     finally:
         t.cancel()
-        return exit_code, errors
+        return exit_code, errors'''
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
