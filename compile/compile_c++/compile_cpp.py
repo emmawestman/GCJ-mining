@@ -17,7 +17,7 @@ def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     
     user_ids = os.listdir(path)
-    for user in ['sergiunasca']: #user_ids :
+    for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         for f in os.listdir(user_path) :
@@ -48,7 +48,7 @@ def run_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
-    for user in ['sergiunasca']: #user_ids :
+    for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         filelist = [f for f in os.listdir(user_path) if '.' not in f]
@@ -74,6 +74,7 @@ def run_cpp_command(f, user_path, input_path) :
         return handle_run_errors(errors, exit_code, f, user_path, input_path)
     
     else :
+        print 'FINAL EXIT CODE: ' + str(exit_code)
         return exit_code, errors
 
 def handle_compile_errors(errors, exit_code, f, user_path) :

@@ -97,7 +97,6 @@ def done(p):
 def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
-    kill_proc = lambda p : p.kill()
     timer = Timer(10, done, [p])
     try:
         timer.start()     
@@ -105,12 +104,7 @@ def run_process(cmd):
         exit_code = p.returncode
     finally:
         timer.cancel()
-        print exit_code
-        if exit_code == '-15' :
-            'program took to long time to finish'
-            return str(124), ''
-        else :
-            return exit_code, errors
+        return exit_code, errors
 
 
 def has_valid_file_ending(language, f):
