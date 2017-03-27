@@ -75,7 +75,6 @@ def run_cpp_command(f, user_path, input_path) :
         return handle_run_errors(errors, exit_code, f, user_path, input_path)
     
     else :
-        print 'FINAL EXIT CODE: ' + str(exit_code)
         return exit_code, errors
 
 def handle_compile_errors(errors, exit_code, f, user_path) :
