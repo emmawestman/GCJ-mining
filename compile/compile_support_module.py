@@ -1,9 +1,9 @@
 import os
 import shutil
-
 import subprocess
 import re
 import sys
+from therading import Timer
 
 # import own modules from iffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -88,13 +88,18 @@ def full_exe_cmd(cmd) :
 
 # to compile
 def run_process(cmd):
-    cmd_timeout = 'timeout 10s ' + cmd
-    full_cmd = [cmd_timeout]
-    #full_cmd = [cmd]
-    p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output, errors = p.communicate()
-    exit_code = p.returncode
-    return exit_code, errors
+    kill_proc = lambda p : p.kill()
+    timer = Timer(10, kill_proc, [p])
+    try:
+        timer.start()
+        p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, errors = p.communicate()
+        exit_code = p.returncode
+        return exit_code, errors
+    finally:
+        timer.cancel()
+        print 'program took to long time to finish'
+        return str(124), ''
 
 
 def has_valid_file_ending(language, f):
@@ -113,6 +118,7 @@ def has_valid_file_ending(language, f):
         return False
 
 def clean_home_dir():
+    print 'Dir to clean: ' + os.getcwd()
 	files = os.listdir(os.getcwd())
 	all_files = [ f for f in files if os.path.isfile(f) ]
 	to_remove = [ f for f in all_files if not(f.endswith('.py')) ]
