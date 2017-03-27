@@ -12,7 +12,6 @@ from update_dict import *
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from constants import *
-from stuff_module import *
 
 def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
@@ -32,8 +31,6 @@ def compile_cpp(p_id, dict):
                 set_run_mesurments('-1', '', user_dict)
 
 def compile_cpp_command(f, user_path) :
-    print 'in compile'
-    clean_home_dir()
     # do compilation
     exe_file = f.split('.')[0]
     cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + os.path.join(user_path,exe_file)
