@@ -110,6 +110,11 @@ def run_process(cmd):
         #timer.start() 
     t = Timer( 10.0, timeout, [p] )
     t.start()
+    while(t.is_alive()):
+        if not p.poll() is None :
+            print 'Done!'
+            t.join()
+            
     t.join()    
     output, errors = p.communicate()
     exit_code = p.returncode
