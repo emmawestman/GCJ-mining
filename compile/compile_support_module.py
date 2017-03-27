@@ -88,11 +88,11 @@ def full_exe_cmd(cmd) :
 
 # to compile
 def run_process(cmd):
+    p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     kill_proc = lambda p : p.kill()
     timer = Timer(10, kill_proc, [p])
     try:
-        timer.start()
-        p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        timer.start()     
         output, errors = p.communicate()
         exit_code = p.returncode
         return exit_code, errors
