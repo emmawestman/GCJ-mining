@@ -48,7 +48,7 @@ def run_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
-    for user in user_ids :
+    for user in ['sergiunasca']: #user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         filelist = [f for f in os.listdir(user_path) if '.' not in f]
