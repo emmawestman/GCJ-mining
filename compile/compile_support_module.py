@@ -97,7 +97,7 @@ def done(p):
 def timeout( p ):
     if p.poll() is None:
         print 'Error: process taking too long to complete--terminating'
-        p.kill()
+        #p.kill()
         os.killpg(os.getpgid(p.pid), signal.SIGTERM)
 
 # to compile
@@ -108,7 +108,7 @@ def run_process(cmd):
     #t = Timer(10, timeout, [p])
     #try:
         #timer.start() 
-    t = Timer( 10.0, timeout, [proc] )
+    t = Timer( 10.0, timeout, [p] )
     t.start()
     t.join()    
     output, errors = p.communicate()
