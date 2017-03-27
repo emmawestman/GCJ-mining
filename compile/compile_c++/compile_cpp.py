@@ -17,7 +17,7 @@ def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     
     user_ids = os.listdir(path)
-    for user in ['lostinlogfile', user_ids[0]]: #user_ids :
+    for user in  user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         for f in os.listdir(user_path) :
@@ -48,13 +48,14 @@ def run_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
-    for user in ['lostinlogfile', user_ids[0]]: #user_ids :
+    for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         filelist = [f for f in os.listdir(user_path) if '.' not in f]
         for f in filelist :
             print 'running c++ file for: ' + user + ' in problem ' + p_id
             exit_code, errors = run_cpp_command(f, user_path, input_path)
+            print 'FINAL EXIT CODE: ' + str(exit_code)
             # update dictonary with run mesurments
             set_run_mesurments(exit_code, errors, user_dict)
             # clean dir

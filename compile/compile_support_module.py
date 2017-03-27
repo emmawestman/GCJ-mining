@@ -89,12 +89,8 @@ def full_exe_cmd(cmd) :
     #full_cmd = cmd
     return run_process(full_cmd)
 
-def done(p):
-    print 'Done waiting 10s!'
-    os.killpg(os.getpgid(p.pid), signal.SIGTERM)
-    print 'process killed!'
 
-def timeout( p ):
+def timeout(p):
     if p.poll() is None:
         print 'Error: process taking too long to complete--terminating'
         #p.kill()
@@ -104,30 +100,21 @@ def timeout( p ):
 def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
-   
-    #t = Timer(10, timeout, [p])
-    #try:
-        #timer.start() 
-    t = Timer( 10.0, timeout, [p] )
+
+    t = Timer(10.0, timeout, [p])
     t.start()
     while(t.is_alive()):
         if not p.poll() is None :
             print 'Done!'
             t.cancel()
             break
-                
+
     t.join()    
     output, errors = p.communicate()
     exit_code = p.returncode
     t.cancel()
     return exit_code, errors
-    '''except BaseException as instance :
-        print type(instance)
-        exit_code = '124'
-        errors = ''
-    finally:
-        t.cancel()
-        return exit_code, errors'''
+
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
