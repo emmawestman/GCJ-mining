@@ -113,7 +113,8 @@ def run_process(cmd):
         output, errors = p.communicate()
         exit_code = p.returncode
         return exit_code, errors
-    except :
+    except BaseException as instance :
+        print type(instance)
         exit_code = '124'
         errors = ''
     finally:
