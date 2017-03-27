@@ -4,6 +4,8 @@ import subprocess
 import re
 import sys
 from threading import Timer
+import signal
+
 
 # import own modules from iffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -88,13 +90,13 @@ def full_exe_cmd(cmd) :
 
 def done(p):
     print 'Done waiting 10s!'
-    p.kill()
+    os.killpg(os.getpgid(p.pid), signal.SIGTERM)
     print 'process killed!'
 
 # to compile
 def run_process(cmd):
     cmd = ["exec " + cmd]
-    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
     kill_proc = lambda p : p.kill()
     timer = Timer(10, done, [p])
     try:
