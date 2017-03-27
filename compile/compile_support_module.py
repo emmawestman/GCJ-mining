@@ -100,6 +100,7 @@ def run_process(cmd):
         exit_code = p.returncode
     finally:
         timer.cancel()
+        print exit_code
         if exit_code == None :
             'program took to long time to finish'
             return str(124), ''
