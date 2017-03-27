@@ -5,6 +5,7 @@ import re
 import sys
 from threading import Timer
 import signal
+import time
 
 
 # import own modules from iffrent directory
@@ -97,14 +98,21 @@ def done(p):
 def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
-    timer = Timer(10, done, [p])
+    time.sleep(10)
+    output, exit_code = p.communicate()
+    if exit_code == None :
+        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+        return '-1', ''
+    else:
+        return exit_code, errors
+    '''timer = Timer(10, done, [p])
     try:
-        timer.start()     
+        #timer.start()     
         output, errors = p.communicate()
         exit_code = p.returncode
     finally:
         timer.cancel()
-        return exit_code, errors
+        return exit_code, errors'''
 
 
 def has_valid_file_ending(language, f):
