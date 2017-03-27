@@ -97,14 +97,14 @@ def run_process(cmd):
     try:
         timer.start()     
         output, errors = p.communicate()
-        print errors
         exit_code = p.returncode
-        print exit_code
-        return exit_code, errors
     finally:
         timer.cancel()
-        print 'program took to long time to finish'
-        return str(124), ''
+        if exit_code == None :
+            'program took to long time to finish'
+            return str(124), ''
+        else :
+            return exit_code, errors
 
 
 def has_valid_file_ending(language, f):
