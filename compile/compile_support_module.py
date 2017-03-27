@@ -114,6 +114,7 @@ def run_process(cmd):
         if not p.poll() is None :
             print 'Done!'
             t.join()
+            os.killpg(os.getpgid(p.pid), signal.SIGTERM)
             
     t.join()    
     output, errors = p.communicate()
