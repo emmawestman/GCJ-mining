@@ -12,89 +12,47 @@ from constants import *
 from write_to_csv import *
 
 
-def plot_feature(x,y,p_id,feature):
-    languages = get_LANGUAGE()
-    plt.yticks(range(len(languages)),languages)
-    plt.scatter(x,y, label= feature + ' ' + p_id)
-    plt.xlabel(feature)
-    plt.ylabel('Language')
-    plt.title('Interesting Graph\nCheck it out!')
-    plt.legend()
-    plt.show()
-
-
-def plot_cloc():
-    for p_id in get_PROBLEM_IDS(gcj_path):
-        for x in range(0,1):
-            path_to_cloc = os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',p_id+'.csv'))
-            x = []
-            y = []
-            languages = get_LANGUAGE()
-            with open(path_to_cloc,'r') as csvfile:
-                plots = csv.reader(csvfile, delimiter=',')
-                first_row = next(plots, None)  # skip the headers
-                cloc_index = first_row.index('cloc')
-                languages_index = first_row.index('language')
-                for row in plots:
-                    if len(row)>0 :
-                        x.append(int(row[cloc_index]))
-                        y.append(languages.index(row[languages_index]))
-                plot_feature(x,y,p_id,'cloc')
-
-def plot_max_ram():
-    for p_id in get_PROBLEM_IDS(gcj_path):
-        for x in range(0,1):
-            path_to_cloc = os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',p_id+'.csv'))
-            x = []
-            y = []
-            languages = get_LANGUAGE()
-            with open(path_to_cloc,'r') as csvfile:
-                plots = csv.reader(csvfile, delimiter=',')
-                first_row = next(plots, None)  # skip the headers
-                max_RAM_index = first_row.index('max_RAM')
-                languages_index = first_row.index('language')
-                for row in plots:
-                    if len(row)>0 :
-                        if row[max_RAM_index] != '-':
-                            x.append(int(row[max_RAM_index]))
-                            y.append(languages.index(row[languages_index]))
-                plot_feature(x,y,p_id,'max_ram')
-
-
-
 def plot_rank_language():
     dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
-
+    #create frame for contest csv
     for contest_id in get_CONTEST_IDS():
-        d1 = pandas.read_csv(os.path.join(get_GCJ_BACKUP_PATH(),contest_id+'.csv'),sep=',')
-        temp_list = []
+        contest_dict = pandas.read_csv(os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',contest_id+'.csv')))
+
+        #this is needed in order to merge all problem_ids
+        list_of_frames=[]
 
         #create frames for every problem and select columns 'user_id ,language,penalty'
-        for problem_id in dict_cid_to_pid[contest_id]:
-            for x in ['0','1']:
-                path_to_csv = os.path.join(get_GCJ_BACKUP_PATH(),problem_id + '_' + x +'.csv')
-                if os.path.isfile(path_to_csv):
-                    d2 = pandas.read_csv(path_to_csv)
-                    df = pandas.merge(d1, d2, on = 'user_id')
-                    temp=df[['user_id','language','penalty']]
-                    temp_list.append(temp)
+
+        problem_id = dict_cid_to_pid[contest_id][0]
+        path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(),problem_id + '_0' +'.csv'))
+        if os.path.isfile(path_to_csv):
+            problem_df = pandas.read_csv(path_to_csv)
+            df = pandas.merge(contest_dict, problem_df, on = 'user_id')
+            df = df[['user_id','rank','language']]
+            list_of_frames.append(df)
 
         # merge tables for all problemes into one
-        test = temp_list[0]
-        for intem in range(1,len(temp_list)):
-            test = pandas.merge(test,temp_list[intem])
+        dframe = list_of_frames[0]
+        groups = dframe.groupby('language')
 
-        plt.figure()
-        test.boxplot(column=['user_id','penalty'], by=['language'])
-        plt.show();
-        #group by language and plot
-        #for key, grp in test.groupby(['language']):
+        colors = ['b', 'c', 'y', 'm', 'r']
+        var_index = 0
+        color_pointer = 0
+        f, ax = plt.subplots()
+        for language,group in groups:
+            list_of_users = group.user_id.tolist()
+            l_of_users = range(var_index,var_index + len(list_of_users))
+            l_of_rank = group['rank'].tolist()
+            ax.scatter(l_of_users,l_of_rank,color= colors[color_pointer],label = language)
+            color_pointer = color_pointer + 1
+            var_index = var_index + len(l_of_users)
 
-            #grp.plot(x=users,y='penalty',kind='scatter',label = key)
-
-        #plt.show()
-
-
-
+        plt.title("Contest " + contest_id)
+        plt.ylabel("rank")
+        plt.xlabel("user")
+        plt.legend()
+        plt.show()
+        df = dframe[['rank','language']]
+        df.boxplot(by='language')
 
 plot_rank_language()

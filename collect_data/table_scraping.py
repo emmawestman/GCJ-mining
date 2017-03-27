@@ -20,7 +20,6 @@ def write_statistics_to_csv(statistics_dict,user_dict,contest_id):
 
 def download_table_data(page_nbr, contest_id):
 	statistics_dict = {}
-	user_dict = {}
 	for pos in range(1,page_nbr+1,30):
 		url = build_table_url(contest_id,pos)
 		raw_data = urllib2.urlopen(url).read()
@@ -31,6 +30,5 @@ def download_table_data(page_nbr, contest_id):
 			row_data_dict['penalty'] = row['pen']
 			row_data_dict['points'] = row['pts']
 			row_data_dict['rank'] = row['r']
-			user_dict[row['n']]= {}
 			statistics_dict[row['n']] = row_data_dict
-	write_statistics_to_csv (statistics_dict,user_dict,contest_id)
+	write_to_csv_file(contest_id+'.csv', statistics_dict)
