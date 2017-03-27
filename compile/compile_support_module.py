@@ -113,9 +113,12 @@ def run_process(cmd):
         output, errors = p.communicate()
         exit_code = p.returncode
         return exit_code, errors
+    except :
+        exit_code = '124'
+        errors = ''
     finally:
         t.cancel()
-        return '124', ''
+        return exit_code, errors
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':
