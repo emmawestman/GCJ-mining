@@ -140,9 +140,6 @@ def clean_home_dir():
     to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
     to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]
     to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
-    to_remove = [ f for f in to_remove if not(f.endswith('README.txt')) ]
-    to_remove = [ f for f in to_remove if not(f.endswith('errors.txt')) ]
-    to_remove = [ f for f in to_remove if not(f.endswith('emma_vm.out')) ]
     for f in to_remove:
         print 'removed file: ' + f
         os.remove(f)

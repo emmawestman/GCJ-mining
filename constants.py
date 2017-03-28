@@ -20,53 +20,55 @@ BASE = "https://code.google.com/codejam/contest/"
 
 
 def get_CONTEST_IDS() :
-	return CONTEST_IDS
+    return CONTEST_IDS
 
 def get_LANGUAGE() :
-	return LANGUAGE
+    return LANGUAGE
 
 def get_PROBLEM() :
-	return PROBLEM
+    return PROBLEM
 
 def get_HOME_PATH() :
-	return HOME_PATH
+    return HOME_PATH
 
 def get_SIZE() :
-	return SIZE
+    return SIZE
 
 def get_BASE() :
-	return BASE
+    return BASE
 
 PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'input'))
 
 def get_INPUT_PATH() :
-	return PATH_INPUT
+    return PATH_INPUT
 
 def get_PROBLEM_IDS(gcj_path):
-	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
-		p_ids = content.read().split('\n')
-		p_ids = p_ids [:len(p_ids)-1]
-		ret_list = []
-		for p_id in p_ids :
-			if p_id == '5756407898963968' or p_id == '5752104073297920' or p_id == '1483485' :
-				range = [0]
-			else:
-				range = [0,1]
-			for i in range :
-				ret_list.append(p_id+'_'+str(i))
-	return ret_list
+    with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
+        p_ids = content.read().split('\n')
+        p_ids = p_ids [:len(p_ids)-1]
+        ret_list = []
+        for p_id in p_ids :
+            if p_id == '5756407898963968' or p_id == '5752104073297920' or p_id == '1483485' :
+                range = [0]
+            elif p_id == '5753053697277952' :
+                range = [1]
+            else:
+                range = [0,1]
+            for i in range :
+                ret_list.append(p_id+'_'+str(i))
+    return ret_list
 
 
 def get_FILE_ENDING(lang):
-	if lang == 'java':
-		return ['.java']
-	elif lang == 'Python':
-		return ['.py']
-	elif lang == 'C' :
-		return ['.c']
-	elif lang == 'C#' :
-		return ['.cs']
-	elif lang == 'C++' :
-		return ['.cpp', '.C', '.cc', '.CPP', '.c++', '.cp', '.cxx']
-	else :
-		print 'Not a valid language'
+    if lang == 'java':
+        return ['.java']
+    elif lang == 'Python':
+        return ['.py']
+    elif lang == 'C' :
+        return ['.c']
+    elif lang == 'C#' :
+        return ['.cs']
+    elif lang == 'C++' :
+        return ['.cpp', '.C', '.cc', '.CPP', '.c++', '.cp', '.cxx']
+    else :
+        print 'Not a valid language'
