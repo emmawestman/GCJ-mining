@@ -33,6 +33,7 @@ def compile_csharp(p_id, dict):
             f_dep = None
             exit_code, errors = compile_one_file_csharp(user_path,f,f_dep,input_path,None,user_dict) # REALLY COMPILE AND RUN CSHARP
         else:
+            set_compiler_version(user_dict, '-')
             exit_code = -1
             errors = ''
 

@@ -50,7 +50,9 @@ def get_PROBLEM_IDS(gcj_path):
 		for p_id in p_ids :
 			if p_id == '5756407898963968' or p_id == '5752104073297920' or p_id == '1483485' :
 				range = [0]
-			else:
+			elif p_id == '5753053697277952' :
+                range = [1]
+            else:
 				range = [0,1]
 			for i in range :
 				ret_list.append(p_id+'_'+str(i))

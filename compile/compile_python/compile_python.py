@@ -26,8 +26,6 @@ def compile_python(p_id, dict):
         files = [f for f in os.listdir(user_path) if f.endswith('.py')]
         for f in files :
             print 'Runing python file: ' + f + ' for user: ' + user + ' in p_id: ' + p_id
-            if ' ' in f :
-                f = f.replace(' ', '\ ')
             path_file = os.path.join(user_path, f)
             print 'FILE PATH: ' + path_file
             exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
