@@ -2,7 +2,6 @@ import os
 import shutil
 import sys
 import time
-import multiprocessing as mp
 from compile_support_module import *
 from handle_compilation_errors import *
 
@@ -60,18 +59,19 @@ def compile_language(language, p_id, dict):
 		print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 
 
-def compile_one(p_id):
-	filename = p_id + '.csv'
-	dict = read_csv_file(filename)
-	for l in get_LANGUAGE() :
-		print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
-		remove_old_files(l, p_id)
-		compile_language(l, p_id, dict)
-	write_to_csv_file(filename, dict)
-
 def compile_all():
+	clean_home_dir(os.getcwd())
+	clear_home_dir(gcj_path)
 	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
-	pool2 = mp.Pool(processes = NBR_OF_PROCESSES)
-	pool2.map(compile_one,list_of_problem_ids)
+	for p_id in list_of_problem_ids:
+		filename = p_id + '.csv'
+		dict = read_csv_file(filename)
+		for l in get_LANGUAGE() :
+			print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
+			remove_old_files(l, p_id)
+			compile_language(l, p_id, dict)
+			clean_home_dir(os.getcwd())
+			clear_home_dir(gcj_path)
+		write_to_csv_file(filename, dict)
 
 compile_all()
