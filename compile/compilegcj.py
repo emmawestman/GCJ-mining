@@ -72,6 +72,6 @@ def compile_one(p_id):
 def compile_all():
 	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
 	pool2 = mp.Pool(processes = NBR_OF_PROCESSES)
-	pool2.map(compile_one,list_of_contest_ids)
+	pool2.map(compile_one,list_of_problem_ids)
 
 compile_all()
