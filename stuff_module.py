@@ -1,4 +1,6 @@
 import os
+import pandas
+from constants import *
 
 
 
@@ -24,3 +26,15 @@ def clean_home_dir(path):
 	for f in to_remove:
 		print 'removed file: ' + f
 		os.remove(f)
+
+
+
+def renamejavaToJava():
+    list_of_problem_ids = get_PROBLEM_IDS(os.getcwd())
+    for p_id in list_of_problem_ids:
+        path_to_csv = os.path.realpath(os.path.join(os.getcwd(),'../','GCJ-backup',p_id+'.csv'))
+        problem_df = pandas.read_csv(path_to_csv)
+        problem_df['language'].replace('java','Java',inplace = True)
+        problem_df.to_csv(path_to_csv,index=False)
+
+renamejavaToJava()
