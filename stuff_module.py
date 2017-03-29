@@ -8,7 +8,7 @@ def create_folder (folder):
     except OSError:
          if os.path.exists(folder):
              pass
-         else: 
+         else:
              raise
 
 def clean_home_dir(path):
@@ -24,4 +24,3 @@ def clean_home_dir(path):
 	for f in to_remove:
 		print 'removed file: ' + f
 		os.remove(f)
-
