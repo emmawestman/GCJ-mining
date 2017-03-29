@@ -16,6 +16,7 @@ def plot_rank_language():
     dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
     #create frame for contest csv
     for contest_id in get_CONTEST_IDS():
+        print "CONTEST ID " + contest_id
         contest_dict = pandas.read_csv(os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',contest_id+'.csv')))
 
         #this is needed in order to merge all problem_ids
@@ -26,6 +27,7 @@ def plot_rank_language():
         problem_id = dict_cid_to_pid[contest_id][0]
         path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(),problem_id + '_0' +'.csv'))
         if os.path.isfile(path_to_csv):
+            print "PROBLEM ID " + problem_id
             problem_df = pandas.read_csv(path_to_csv)
             df = pandas.merge(contest_dict, problem_df, on = 'user_id')
             df = df[['user_id','rank','language']]
@@ -53,6 +55,10 @@ def plot_rank_language():
         plt.legend()
         plt.show()
         df = dframe[['rank','language']]
+        print df
         df.boxplot(by='language')
+        plt.title("Contest boxplot " + contest_id )
+        plt.suptitle("")
+        plt.show()
 
 plot_rank_language()
