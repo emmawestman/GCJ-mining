@@ -13,8 +13,6 @@ from finding_regexes import *
 from stuff_module import *
 from write_to_csv import *
 
-NBR_OF_PROCESSES = 6
-
 
 c_path = os.path.join(os.getcwd(), 'compile_c')
 sys.path.insert(0, c_path)
@@ -60,8 +58,6 @@ def compile_language(language, p_id, dict):
 
 
 def compile_all():
-	clean_home_dir(os.getcwd())
-	clear_home_dir(gcj_path)
 	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
 	for p_id in list_of_problem_ids:
 		filename = p_id + '.csv'
@@ -70,8 +66,6 @@ def compile_all():
 			print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
 			remove_old_files(l, p_id)
 			compile_language(l, p_id, dict)
-			clean_home_dir(os.getcwd())
-			clear_home_dir(gcj_path)
 		write_to_csv_file(filename, dict)
 
 compile_all()
