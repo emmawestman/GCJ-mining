@@ -61,6 +61,18 @@ def get_PROBLEM_IDS(gcj_path):
 					ret_list.append(p_id+'_'+str(i))
 	return ret_list
 
+def get_PROBLEM_IDS_CONTEST(p_ids):
+	ret_list = []
+	for p_id in p_ids :
+		if len (p_id) > 0 :
+			if p_id == '5756407898963968' or p_id == '5752104073297920' or p_id == '1483485' :
+				range = [0]
+			else:	
+				range = [0,1]
+			for i in range :
+				ret_list.append(p_id+'_'+str(i))
+	return ret_list
+
 
 def get_FILE_ENDING(lang):
 	if lang == 'java':
