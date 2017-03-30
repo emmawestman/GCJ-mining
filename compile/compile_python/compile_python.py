@@ -31,6 +31,17 @@ def compile_python(p_id, dict):
             exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
             # update dict compiled 
             set_run_mesurments(exit_code, errors, user_dict)
+
+            #try to measure size of exe file
+            try:
+                exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
+                b = str(get_size_of_exe(exe_path))
+            except Exception, e:
+                b = '-'
+            else:
+                pass
+            finally:  
+                set_exe_size(user_dict, b)
     return dict
 
 def run_python(file_path,path_input,pythonversion,user_dict):

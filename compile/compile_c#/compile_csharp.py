@@ -38,6 +38,7 @@ def compile_csharp(p_id, dict):
             errors = ''
 
         # update dictonary, copiler version is set in build argumets to set correct flag
+        set_exe_size(user_dict, '-')
         set_compile_exitcode(user_dict,exit_code)
         set_run_mesurments('-1', '', user_dict)
 

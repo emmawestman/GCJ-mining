@@ -6,12 +6,14 @@ def get_user_id(path) :
 def set_column_in_user_dict(user_dict,column,value):
     user_dict[column] = str(value)
 
+def set_exe_size(user_dict, size):
+    set_column_in_user_dict(user_dict,'exe_size', size)
 
 def set_compile_exitcode(user_dict,exit_code) :
-    return set_column_in_user_dict(user_dict,'compiled',exit_code)
+    set_column_in_user_dict(user_dict,'compiled',exit_code)
 
 def set_compiler_version(user_dict,version) :
-    return set_column_in_user_dict(user_dict,'compiler_version',version)
+    set_column_in_user_dict(user_dict,'compiler_version',version)
 
 def get_mesurments(errors) :
     regex = "\,\d?\.?\d*"
