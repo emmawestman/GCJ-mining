@@ -33,6 +33,7 @@ def compile_csharp(p_id, dict):
             f_dep = None
             exit_code, errors = compile_one_file_csharp(user_path,f,f_dep,input_path,None,user_dict) # REALLY COMPILE AND RUN CSHARP
         else:
+            set_compiler_version(user_dict, '-')
             exit_code = -1
             errors = ''
 
@@ -44,20 +45,30 @@ def compile_csharp(p_id, dict):
 
 def compile_csharp_command(csharp_full_cmd):
     cmd = 'mcs ' + csharp_full_cmd
+    print "CMD " + cmd
     return run_process(cmd)
+
+def get_user_compilation_flag(user_dict):
+    flag = user_dict['compiler_version']
+    if flag == '-':
+        return None
+    return flag
 
 def build_arguments (flag,csharp_file_p,csharp_file_p_dependecy,root,user_dict):
     csharp_args = ''
-    set_compiler_version(user_dict, '-')
-    if flag is not None:
-        csharp_args = '-r:'+flag+'.dll '
+    if flag is None :
+        #set flag to '-'
+        set_compiler_version(user_dict, '-')
+    else:
         # update the dict with the used flag
         set_compiler_version(user_dict,flag)
-    return csharp_args + build_path_args (root,csharp_file_p,csharp_file_p_dependecy)
+    return build_path_args (flag,root,csharp_file_p,csharp_file_p_dependecy)
 
 
-def build_path_args (root,csharp_file_p,csharp_file_p_dependecy):
+def build_path_args (flag,root,csharp_file_p,csharp_file_p_dependecy):
     csharp_args = ''
+    if flag is not None:
+        csharp_args = '-r:'+flag+'.dll '
     csharp_args+= os.path.join(root,csharp_file_p)
     if csharp_file_p_dependecy is not None :
         csharp_args = csharp_args + ' ' + os.path.join(root,csharp_file_p_dependecy)
@@ -91,10 +102,12 @@ def run_csharp(p_id, dict):
         csharp_exe = [f for f in os.listdir(user_path) if f.endswith('.exe')] #ONLY ONE C# executable
         if len (csharp_exe)>0:
             csharp_exe = csharp_exe[0]
-            csharp_org =[ f for f in os.listdir(user_path) if (f.endswith(".cs") and f.split('.')[0])==csharp_exe.split('.')[0]][0] 
-            dependency_files =[ f for f in os.listdir(user_path) if (f.endswith(".cs") and f.split('.')[0]) != csharp_exe.split('.')[0]]
-            exit_code,errors=run_csharp_solution(input_file,user_path,csharp_exe,dependency_files[0],csharp_org)
-        
+            csharp_org =[ f for f in os.listdir(user_path) if f.endswith(".cs") and f.split('.')[0] ==csharp_exe.split('.')[0]][0]
+            dependency_files =[ f for f in os.listdir(user_path) if f.endswith(".cs") and (f.split('.')[0] != csharp_exe.split('.')[0])]
+            dependency_file = dependency_files[0] if len (dependency_files) >0 else None
+            exit_code,errors=run_csharp_solution(input_file,user_path,csharp_exe,dependency_file,csharp_org,get_user_compilation_flag(user_dict))
+            print exit_code
+            print errors
         # update dictonary, copiler version is set in build argumets to set correct flag
         else :
             exit_code = '-1'
@@ -102,24 +115,34 @@ def run_csharp(p_id, dict):
         set_run_mesurments(exit_code, errors, user_dict)
 
 
+
 def run_csharp_command(csharp_exe,input_file):
     cmd = 'mono ' + csharp_exe + ' < ' + input_file
     print cmd
-    return full_exe_cmd(cmd)
+    error_code,errors =  full_exe_cmd(cmd)
+    print errors
+    return error_code,errors
 
 
-def run_csharp_solution(input_file,root,csharp_exe,dependency_file,csharp_org):
+def run_csharp_solution(input_file,root,csharp_exe,dependency_file,csharp_org,flag):
     exit_code, errors = run_csharp_command(os.path.join(root,csharp_exe),input_file)
     if not exit_code == 0 or not exit_code == 124 or not exit_code == -1 :
-        return handle_run_errors(exit_code,errors, root, dependency_file, input_file,csharp_org,csharp_exe)
+        return handle_run_errors(exit_code,errors, root, dependency_file, input_file,csharp_org,csharp_exe,flag)
     return exit_code, errors
 
 
 
-def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_file,original_class_file,csharp_exe):
+def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_file,original_class_file,csharp_exe,flag):
     if 'System.IO.DirectoryNotFoundException' in errors or 'System.IO.FileNotFoundException' in errors:
         remove_files_in_a_user_solution(root)
         change_input_streams(input_file,os.path.join(root,original_class_file),root)
-        compile_csharp_command(build_path_args(root,original_class_file,csharp_file_p_dependecy))
-        return run_csharp_command(csharp_exe,input_file)
+        if csharp_file_p_dependecy is not None :
+            change_input_streams(input_file,os.path.join(root,csharp_file_p_dependecy),root)
+        compile_csharp_command(build_path_args(flag,root,original_class_file,csharp_file_p_dependecy))
+        return run_csharp_command(os.path.join(root,csharp_exe),input_file)
+    if 'not contain a static \'Main\' method suitable for an entry point' in errors :
+        create_main_file(root,original_class_file,input_file)
+        #Create main creates TestMain, hence original class file becomes dependency_files#
+        compile_csharp_command(build_path_args(flag,root,'TestMain.cs',original_class_file,))
+        return run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
     return error_code,errors

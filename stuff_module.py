@@ -1,7 +1,5 @@
 import os
 
-
-
 def create_folder (folder):
     try:
         os.makedirs(folder)
@@ -11,6 +9,7 @@ def create_folder (folder):
          else: 
              raise
 
+<<<<<<< HEAD
 def clean_home_dir(path):
 	files = os.listdir(path)
 	all_files = [ f for f in files if os.path.isfile(f) ]
@@ -24,4 +23,7 @@ def clean_home_dir(path):
 	for f in to_remove:
 		print 'removed file: ' + f
 		os.remove(f)
+=======
+
+>>>>>>> missingMainC++
 
