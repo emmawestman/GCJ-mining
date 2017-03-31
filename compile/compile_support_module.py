@@ -1,9 +1,12 @@
 import os
 import shutil
-
 import subprocess
 import re
 import sys
+from threading import Timer
+import signal
+import time
+
 
 # import own modules from iffrent directory
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -82,18 +85,34 @@ def get_run_info(regexp, root):
 
 # to run with flags
 def full_exe_cmd(cmd) :
-    full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-    #full_cmd = cmd
+    #full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
+    full_cmd = cmd
     return run_process(full_cmd)
+
+
+def timeout(p):
+    if p.poll() is None:
+        print 'Error: process taking too long to complete--terminating'
+        #p.kill()
+        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
 
 # to compile
 def run_process(cmd):
-    cmd_timeout = 'timeout 30s ' + cmd
-    full_cmd = [cmd_timeout]
-    #full_cmd = [cmd]
-    p = subprocess.Popen(full_cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd = [cmd]
+    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
+
+    t = Timer(10.0, timeout, [p])
+    t.start()
+    while(t.is_alive()):
+        if not p.poll() is None :
+            print 'Done!'
+            t.cancel()
+            break
+
+    t.join()
     output, errors = p.communicate()
     exit_code = p.returncode
+    t.cancel()
     return exit_code, errors
 
 
@@ -111,3 +130,24 @@ def has_valid_file_ending(language, f):
     else:
         print 'found file without maching ending: ' + f
         return False
+
+def clean_home_dir():
+    print 'Dir to clean: ' + os.getcwd()
+    files = os.listdir(os.getcwd())
+    all_files = [ f for f in files if os.path.isfile(f) ]
+    to_remove = [ f for f in all_files if not(f.endswith('.py')) ]
+    to_remove = [ f for f in to_remove if not(f.endswith('.pyc')) ]
+    to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
+    to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]
+    to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
+    for f in to_remove:
+        print 'removed file: ' + f
+        os.remove(f)
+
+def clean_user_dir(user_path, lang):
+    files = os.listdir(user_path)
+    for f in files :
+        if not has_valid_file_ending(lang, f) :
+            if not ((lang == 'C++' or lang == 'C') and f.endswith('.h')):
+                print 'removed file: ' + f
+                os.remove(os.path.join(user_path, f))

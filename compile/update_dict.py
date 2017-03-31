@@ -27,7 +27,7 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     if not len(mesurments) == 10 :
         user_dict['wall_clock'] = '-'
         user_dict['user_time'] = '-'
-        user_dict['syatem_time'] = '-'
+        user_dict['system_time'] = '-'
         user_dict['avg_memory'] = '-'
         user_dict['max_RAM'] = '-'
         user_dict['avg_RAM'] = '-'
@@ -38,7 +38,7 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     else :
         user_dict['wall_clock'] = mesurments[0]
         user_dict['user_time'] = mesurments[1]
-        user_dict['syatem_time'] = mesurments[2]
+        user_dict['system_time'] = mesurments[2]
         user_dict['avg_memory'] = mesurments[3]
         user_dict['max_RAM'] = mesurments[4]
         user_dict['avg_RAM'] = mesurments[5]

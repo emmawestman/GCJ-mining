@@ -14,7 +14,7 @@ from update_dict import *
 
 
 
-def compile_python(p_id, dict):
+def run_python_files(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'Python' ))
     print path
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
@@ -29,9 +29,33 @@ def compile_python(p_id, dict):
             path_file = os.path.join(user_path, f)
             print 'FILE PATH: ' + path_file
             exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
-            # update dict compiled 
+            # update dict compiled
             set_run_mesurments(exit_code, errors, user_dict)
-    return dict
+
+
+def compile_python_files(p_id,dict):
+    path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'Python' ))
+    print path
+    input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
+    user_ids = os.listdir(path)
+    for user in user_ids :
+        user_dict = dict[user]
+        user_path = os.path.join(path, user)
+        #files = os.listdir(user_path)
+        files = [f for f in os.listdir(user_path) if f.endswith('.py')]
+        for f in files :
+            print 'Runing python file: ' + f + ' for user: ' + user + ' in p_id: ' + p_id
+            path_file = os.path.join(user_path, f)
+            print 'FILE PATH: ' + path_file
+            exit_code, errors = compile_python(path_file)
+            # update dict compiled
+            set_compile_exitcode(user_dict,exit_code)
+            set_run_mesurments('-1', '', user_dict)
+
+def compile_python(file_path):
+    print "Interpreting file python " + file_path
+    cmd = "python -m compileall " + file_path
+    return full_exe_cmd(cmd)
 
 def run_python(file_path,path_input,pythonversion,user_dict):
     print "Running file python " + file_path
@@ -42,7 +66,7 @@ def run_python(file_path,path_input,pythonversion,user_dict):
 def run_python_2x(file_path,path_input,p_id,root, user_dict):
     exit_code, errors = run_python(file_path,path_input,'python ', user_dict)
     if not int(exit_code) == 0 or not int(exit_code) == 124 :
-        return handle_python_2x_errors(file_path,path_input,p_id,root,errors, exit_code, user_dict)             
+        return handle_python_2x_errors(file_path,path_input,p_id,root,errors, exit_code, user_dict)
     return exit_code, errors
 
 
@@ -72,7 +96,7 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user
         print missing_module_name
         if flag == 0:
             return run_python_command('python3 ', file_path,path_input,user_dict)
-        return run_python_command('python ', file_path,path_input, user_dict)    
+        return run_python_command('python ', file_path,path_input, user_dict)
     elif error_name == 'SyntaxError':
         return run_python_command('python3 ', file_path,path_input, user_dict)
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
@@ -88,8 +112,8 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user
     else :
         # we can don't  fix problem and do not try agian
         print errors
-        return exit_code, errors 
-        
+        return exit_code, errors
+
 
 def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
@@ -110,7 +134,4 @@ def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user
         # we can don't  fix problem and do not try agian
         print 'CAN NOT HANDLE ERROR'
         print errors
-        return exit_code, errors 
-        
-
-
+        return exit_code, errors
