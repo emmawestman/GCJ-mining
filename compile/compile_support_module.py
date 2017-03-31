@@ -85,8 +85,8 @@ def get_run_info(regexp, root):
 
 # to run with flags
 def full_exe_cmd(cmd) :
-    full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-    #full_cmd = cmd
+    #full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
+    full_cmd = cmd
     return run_process(full_cmd)
 
 
@@ -109,7 +109,7 @@ def run_process(cmd):
             t.cancel()
             break
 
-    t.join()    
+    t.join()
     output, errors = p.communicate()
     exit_code = p.returncode
     t.cancel()
