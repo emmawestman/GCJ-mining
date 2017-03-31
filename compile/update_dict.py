@@ -6,7 +6,6 @@ def get_user_id(path) :
 def set_column_in_user_dict(user_dict,column,value):
     user_dict[column] = str(value)
 
-
 def set_compile_exitcode(user_dict,exit_code) :
     return set_column_in_user_dict(user_dict,'compiled',exit_code)
 
@@ -50,6 +49,5 @@ def write_to_user_dict(user_dict, exit_code, mesurments):
     return dict
 
 def set_run_mesurments(exit_code, errors, user_dict) :
-    set_compile_exitcode(user_dict,exit_code)
     mesurments = get_mesurments(errors)
     return write_to_user_dict(user_dict, exit_code, mesurments)
