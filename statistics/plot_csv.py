@@ -4,10 +4,6 @@ import csv
 import sys
 import os
 import pandas
-<<<<<<< HEAD
-
-=======
->>>>>>> missingMainC++
 
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
@@ -64,13 +60,6 @@ def plot_rank_language():
         plt.suptitle("")
         plt.show()
 
-<<<<<<< HEAD
-plot_rank_language()
-=======
-def test_pandas():
-    cid_frame = pandas.read_csv(os.path.join(get_HOME_PATH(),'GCJ-backup','cid_pid_map_new.csv'))
-    print cid_frame
-
 
 def plot_cloc():
     for p_id in get_PROBLEM_IDS(gcj_path):
@@ -93,6 +82,3 @@ def plot_cloc():
                     plt.title('Interesting Graph\nCheck it out!')
                     plt.legend()
                     plt.show()
-
-test_pandas()
->>>>>>> missingMainC++

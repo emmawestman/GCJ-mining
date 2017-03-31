@@ -115,6 +115,9 @@ def run_process(cmd):
     t.cancel()
     return exit_code, errors
 
+# returns the size of the given file in bytes
+def get_size_of_exe(file_path) :
+    return os.path.getsize(file_path)
 
 def has_valid_file_ending(language, f):
     if f.endswith(".java") and language == 'java':

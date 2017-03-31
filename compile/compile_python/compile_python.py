@@ -33,7 +33,7 @@ def run_python_files(p_id, dict):
             set_run_mesurments(exit_code, errors, user_dict)
 
 
-def compile_python_files(p_id,dict):
+def compile_python_files(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'Python' ))
     print path
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
@@ -41,21 +41,30 @@ def compile_python_files(p_id,dict):
     for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
-        #files = os.listdir(user_path)
         files = [f for f in os.listdir(user_path) if f.endswith('.py')]
         for f in files :
             print 'Runing python file: ' + f + ' for user: ' + user + ' in p_id: ' + p_id
             path_file = os.path.join(user_path, f)
             print 'FILE PATH: ' + path_file
-            exit_code, errors = compile_python(path_file)
+            exit_code, errors = compile_python(path_file, user_dict)
             # update dict compiled
             set_compile_exitcode(user_dict,exit_code)
             set_run_mesurments('-1', '', user_dict)
 
-def compile_python(file_path):
+def compile_python(file_path, user_dict):
     print "Interpreting file python " + file_path
     cmd = "python -m compileall " + file_path
-    return full_exe_cmd(cmd)
+    exit_code, errors = full_exe_cmd(cmd)
+    #try to measure size of exe file
+    try:
+        exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
+        b = str(get_size_of_exe(exe_path))
+    except Exception, e:
+        b = '-'
+    finally:  
+        set_exe_size(user_dict, b)
+    return exit_code, errors
+
 
 def run_python(file_path,path_input,pythonversion,user_dict):
     print "Running file python " + file_path
