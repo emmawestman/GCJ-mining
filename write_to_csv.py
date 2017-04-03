@@ -27,19 +27,9 @@ def read_csv_file(filename) :
 
 def write_to_csv_file(filename, dict) :
     path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
-    users = dict.keys()
-    attr_names = dict[users[0]].keys()
-    first_row = ['user_id'] + attr_names
-    matrix = []
-    matrix.append(first_row)
-    for u in users :
-        values = dict[u].values()
-        row = [u] + values
-        matrix.append(row)
-    with open(path, 'wb') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',', quotechar='|')
-        for row in matrix:
-           writer.writerow(row)
+    df = pd.DataFrame.from_dict(dict, orient='index')
+    df.index.name('user_id')
+    df.to_csv(path)
 
 def write_dict_to_file(filename, problem_id_contest_id_dict):
     path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
