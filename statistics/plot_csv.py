@@ -83,3 +83,4 @@ def plot_cloc():
                     plt.legend()
                     plt.show()
 
+plot_rank_language()

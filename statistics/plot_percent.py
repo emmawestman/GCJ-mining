@@ -2,7 +2,6 @@
 import pandas
 import os
 import sys
-import numpy as np
 import matplotlib.pyplot as plt
 
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -152,7 +151,7 @@ def plot_bar_diagram_run_comp(c_ids) :
     return bar.get_figure()
 
 
-CONTEST_IDS = dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
+CONTEST_IDS = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
 
