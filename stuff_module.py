@@ -8,22 +8,3 @@ def create_folder (folder):
              pass
          else: 
              raise
-
-<<<<<<< HEAD
-def clean_home_dir(path):
-	files = os.listdir(path)
-	all_files = [ f for f in files if os.path.isfile(f) ]
-	to_remove = [ f for f in all_files if not(f.endswith('.py')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.in')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.h')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.gitignore')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('.git')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('README.txt')) ]
-	to_remove = [ f for f in to_remove if not(f.endswith('errors.txt')) ]
-	for f in to_remove:
-		print 'removed file: ' + f
-		os.remove(f)
-=======
-
->>>>>>> missingMainC++
-

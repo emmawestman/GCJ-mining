@@ -4,16 +4,73 @@ import csv
 import sys
 import os
 import pandas
-<<<<<<< HEAD
 
-=======
->>>>>>> missingMainC++
 
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
 from write_to_csv import *
 
+
+
+def create_one_frame() :
+    dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
+    #create frame for contest csv
+    for contest_id in get_CONTEST_IDS():
+        print "CONTEST ID " + contest_id
+        contest_dict = pandas.read_csv(os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',contest_id+'.csv')))
+        problem_id_list = dict_cid_to_pid[contest_id]
+
+        # create first frame by merging contest_csv with problem 0 input 0
+        problem_zero = problem_id_list[0]
+        path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(),problem_zero + '_0' +'.csv'))
+        problem_df = pandas.read_csv(path_to_csv)
+        df = pandas.merge(contest_dict, problem_df, on = 'user_id')
+        df = df[['user_id','rank','language']]
+
+        #merge first frame with problem 0 with input 1
+        path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(),problem_zero + '_1' +'.csv'))
+        if os.path.isfile(path_to_csv):
+            problem_df = pandas.read_csv(path_to_csv)
+            problem_df = problem_df [['user_id','language']]
+            df = pandas.merge(df,problem_df, on = 'user_id',how='left')
+
+
+        #merge with the rest
+        for problem in problem_id_list[1:]:
+            for x in ['0','1']:
+                path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(),problem +'_'+ x +'.csv'))
+                if os.path.isfile(path_to_csv):
+                    problem_df = pandas.read_csv(path_to_csv)
+                    problem_df = problem_df [['user_id','language']]
+                    df = pandas.merge(df,problem_df, on = 'user_id',how = 'left')
+
+        mirror_df = df.copy(deep=True)
+        #filter contestats that have not used the same language:
+        list_of_same_lang = []
+        list_of_diff_lang = []
+        for ind,row in df.iterrows():
+            row = row.fillna('')
+            row_list = row.iloc[2:].tolist()
+            #if not all((x==row_list[0] or x =='')for x in row_list):
+            #    df.drop(df.index[ind])
+            if not all((x==row_list[0] or x =='') for x in row_list):
+                list_of_same_lang.append(ind)
+            else:
+                list_of_diff_lang.append(ind)
+
+        df = df.drop(df.index[list_of_same_lang])
+        df1 = df.ix[:,1:3]
+        box = df1.boxplot(by='language_x')
+        plt.ylabel("rank")
+        plt.xlabel("language")
+        plt.title("Contest boxplot " + contest_id )
+        plt.suptitle("")
+
+        fig = box.get_figure()
+        fig_path = os.path.join(get_HOME_PATH(),'GCJ-backup','Figures',contest_id + '_rank_language_plot.png')
+
+        fig.savefig(fig_path)
 
 def plot_rank_language():
     dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
@@ -64,35 +121,6 @@ def plot_rank_language():
         plt.suptitle("")
         plt.show()
 
-<<<<<<< HEAD
-plot_rank_language()
-=======
-def test_pandas():
-    cid_frame = pandas.read_csv(os.path.join(get_HOME_PATH(),'GCJ-backup','cid_pid_map_new.csv'))
-    print cid_frame
 
 
-def plot_cloc():
-    for p_id in get_PROBLEM_IDS(gcj_path):
-        for x in range(0,1):
-            path_to_cloc = os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',p_id+'.csv'))
-            x = []
-            y = []
-            languages = get_LANGUAGE()
-            with open(path_to_cloc,'r') as csvfile:
-                plots = csv.reader(csvfile, delimiter=',')
-                next(plots, None)  # skip the headers
-                for row in plots:
-                    if len(row)>0 :
-                        x.append(int(row[4]))
-                        y.append(languages.index(row[3]))
-                    plt.yticks(range(len(languages)),languages)
-                    plt.scatter(x,y, label='Cloc ' + p_id)
-                    plt.xlabel('cloc')
-                    plt.ylabel('Language')
-                    plt.title('Interesting Graph\nCheck it out!')
-                    plt.legend()
-                    plt.show()
-
-test_pandas()
->>>>>>> missingMainC++
+create_one_frame()
