@@ -29,7 +29,7 @@ def read_csv_file(filename) :
 def write_to_csv_file(filename, dict) :
     path = os.path.join(get_HOME_PATH(), 'GCJ-backup', filename)
     df = pd.DataFrame.from_dict(dict, orient='index')
-    df.index.name('user_id')
+    df.index.name = 'user_id'
     df.to_csv(path)
 
 def write_dict_to_file(filename, problem_id_contest_id_dict):
