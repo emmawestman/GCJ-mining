@@ -4,6 +4,7 @@ import os
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
+import itertools 
 
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
@@ -135,7 +136,48 @@ def all_mean() :
     # do some plot for all means / contest
     mean_plot_all(cid_dict, CONTEST_IDS)
 
+def kendall_tau(A, B):
+    # create two list with indexes of the ordering
+    indexes_A = []
+    index_lang_dict = {}
+    for idx,a in enumerate(A) :
+        index_lang_dict[a] = idx+1
+        indexes_A.append(idx+1)
+    indexes_B = []
+    for b in B:
+        indexes_B.append(index_lang_dict[b])
+    print indexes_A
+    print indexes_B
+    dis = []
+    con = []
+    for idx,a in enumerate(indexes_A):
+        b = indexes_B[idx]
+        if a == b :
+            con.append(len(indexes_A)-b)
+            dis.append(0)
+        elif a < b :
+            con.append(len(indexes_A)-b)
+            dis.append(1) 
+        else :
+            # a > b, copy previous con value
+            con.append(con[idx-1])
+            dis.append(0)
+    c = float(sum(con))
+    d = float(sum(dis))
+    print c
+    print d
+    return (c - d) / (c + d)
+
+x = [1, 2, 3, 4, 5]
+y = [1, 3, 4, 5, 2]
+
+A = ['C++', 'C', 'C#', 'Java', 'Python']
+B = ['C++', 'C#', 'Java', 'Python', 'C']
+
+A2 = 'ABCDEFGHIJKL'
+B2 = 'ABDCFEHGJILK'
+
+print kendall_tau(list(A2), list(B2))
 
 
-all_mean()
 
