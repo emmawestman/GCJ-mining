@@ -20,7 +20,7 @@ from stuff_module import *
 from write_to_csv import *
 
 NUMBER_OF_PAGES = 3030
-NBR_OF_PROCESSES = 6
+NBR_OF_PROCESSES = 1
 
 # not needed at the moment since competisions ids are selected
 def get_all_contests_id():
@@ -31,6 +31,8 @@ def get_all_contests_id():
 def retrive_problem_ids(url):
 	page = urllib2.urlopen(url).read()
 	#print "PAGE RESPONSE " + page
+	print filter_information('\"id\":\s+\"\d+\"',':',page)
+	print filter_information('\"name\":\s+\"\s+\"',':',page)
 	return filter_information('\"id\":\s+\"\d+\"',':',page)
 
 def build_base_url(contest_id):
@@ -80,6 +82,7 @@ def map_problem_id_to_contest_id():
 	for contest_id in get_CONTEST_IDS():
 		base_url = build_base_url(contest_id)
 		contest_id_problem_id_dict[contest_id] = retrive_problem_ids(base_url)
+	print contest_id_problem_id_dict 
 
 	write_dict_to_file('cid_pid_map_new.csv', contest_id_problem_id_dict)
 

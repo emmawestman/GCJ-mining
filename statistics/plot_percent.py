@@ -3,6 +3,7 @@ import pandas
 import os
 import sys
 import matplotlib.pyplot as plt
+from stats_help import *
 
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
@@ -97,12 +98,25 @@ def plot_bar_diagram_compile(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #plot bar diagram    
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
+    #  print name oc contest instead :)
+    x_label = []
+    dict = get_cid_name_dict('c_id')
+    for cid in c_ids : 
+        name_dict = dict[int(cid)]
+        x_label.append(name_dict['name'])
+
+    #plot bar diagram   
+    column_names = []
+    for k in total_dict.keys():
+        if k == 'java':
+            k = 'Java'
+        column_names.append(k) 
+    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful compilation" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
+    plt.tight_layout(w_pad=0.5, h_pad=1.8)
     plt.show()
     return bar.get_figure()
 
@@ -119,12 +133,25 @@ def plot_bar_diagram_run(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #plot bar diagram    
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
+    #  print name oc contest instead :)
+    x_label = []
+    dict = get_cid_name_dict('c_id')
+    for cid in c_ids : 
+        name_dict = dict[int(cid)]
+        x_label.append(name_dict['name'])
+
+    #plot bar diagram   
+    column_names = []
+    for k in total_dict.keys():
+        if k == 'java':
+            k = 'Java'
+        column_names.append(k) 
+    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
+    plt.tight_layout(w_pad=0.5, h_pad=1.8)
     plt.show()
     return bar.get_figure()
 
@@ -141,17 +168,30 @@ def plot_bar_diagram_run_comp(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #plot bar diagram    
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
+    #  print name oc contest instead :)
+    x_label = []
+    dict = get_cid_name_dict('c_id')
+    for cid in c_ids : 
+        name_dict = dict[int(cid)]
+        x_label.append(name_dict['name'])
+
+    #plot bar diagram   
+    column_names = []
+    for k in total_dict.keys():
+        if k == 'java':
+            k = 'Java'
+        column_names.append(k)  
+    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs/compilation" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
+    plt.tight_layout(w_pad=0.5, h_pad=1.8)
     plt.show()
     return bar.get_figure()
 
 
-CONTEST_IDS = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
+CONTEST_IDS = CIDS_timeline_order()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
 
