@@ -86,7 +86,6 @@ def CIDS_name_timeline_order() :
         names_in_time_order.append(get_name_of_cid(int(cid)))
     return names_in_time_order
 
-print CIDS_name_timeline_order() 
 
     
 

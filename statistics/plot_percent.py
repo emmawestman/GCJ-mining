@@ -97,15 +97,9 @@ def plot_bar_diagram_compile(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #  print name oc contest instead :)
-    x_label = []
-    dict = get_cid_name_dict('c_id')
-    for cid in c_ids : 
-        name_dict = dict[int(cid)]
-        x_label.append(name_dict['name'])
 
     #plot bar diagram   
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=CIDS_name_timeline_order() )
     bar = df2.plot.bar()
     plt.title("Percentage of successful compilation" )
     plt.ylabel("Percent")
@@ -127,15 +121,9 @@ def plot_bar_diagram_run(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #  print name oc contest instead :)
-    x_label = []
-    dict = get_cid_name_dict('c_id')
-    for cid in c_ids : 
-        name_dict = dict[int(cid)]
-        x_label.append(name_dict['name'])
 
     #plot bar diagram   
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=CIDS_name_timeline_order() )
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs" )
     plt.ylabel("Percent")
@@ -157,15 +145,9 @@ def plot_bar_diagram_run_comp(c_ids) :
         		percent = 0
         	percents_cid.append(percent)
         percents_total.append(percents_cid)
-    #  print name oc contest instead :)
-    x_label = []
-    dict = get_cid_name_dict('c_id')
-    for cid in c_ids : 
-        name_dict = dict[int(cid)]
-        x_label.append(name_dict['name'])
-
+    
     #plot bar diagram    
-    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=CIDS_name_timeline_order() )
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs/compilation" )
     plt.ylabel("Percent")
