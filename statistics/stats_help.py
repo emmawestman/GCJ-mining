@@ -23,7 +23,9 @@ def get_cid_name_dict(key) :
 def CIDS_timeline_order() :
     name_cid_dict = get_cid_name_dict('name')
     cids_in_time_order = []
-    for name in C_ID_TIMELINE :
+    i = len(C_ID_TIMELINE)-1
+    for idx,name in enumerate(C_ID_TIMELINE) :
+        name = C_ID_TIMELINE[i-idx]
         c_id = name_cid_dict[name]
         cids_in_time_order.append(str(c_id['c_id']))
     return cids_in_time_order
@@ -71,5 +73,7 @@ def get_name_of_pid(pid):
     dict = get_pid_name_dict()
     pid_name_dict = dict['name']
     return pid_name_dict[pid]
+
+    
 
 

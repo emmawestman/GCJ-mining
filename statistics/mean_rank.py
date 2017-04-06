@@ -243,6 +243,7 @@ B2 = 'ABDCFEHGJILK'
 
 def kendall_tau_cids() :
     cids = CIDS_timeline_order()
+    print cids
     text = ""
     path = os.path.join('../..', 'GCJ-backup', 'Tables', 'Total_lang_order_all_contests'  + '.csv')
     df = pandas.read_csv(path)
@@ -253,15 +254,15 @@ def kendall_tau_cids() :
         for i in range(1,6) :
             lang = df.iloc[idx]['Rank_'+str(i)]
             rank_lists[idx] += [lang]
-        
+    
+    print C_ID_TIMELINE[0] + ' & ' + print_list(rank_lists[0]) + ' & - \\\\' 
     for idx, row in enumerate(rank_lists) :
         if idx == len(cids)-1 :
             break
-        print row
-        print rank_lists[idx+1]
+    
         # compare list with next list
         diff_value = kendall_tau(row, rank_lists[idx+1])
-        print diff_value
+        print C_ID_TIMELINE[idx+1] + ' & ' + print_list(rank_lists[idx+1]) + ' & ' + str("{0:.2f}".format(diff_value)) + '\\\\'
 
 #create_cid_name_map()
 #create_pid_name_map()
