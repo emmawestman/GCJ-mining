@@ -10,8 +10,7 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from write_to_csv import *
 
-def init_dict() :
-    return {'java': 0, 'Python': 0, 'C': 0, 'C++': 0, 'C#': 0}
+
 
 # percent of  [exit_code==0]/[compiled==0]
 def percent_column2(c_id, column1, column2) :
@@ -106,12 +105,7 @@ def plot_bar_diagram_compile(c_ids) :
         x_label.append(name_dict['name'])
 
     #plot bar diagram   
-    column_names = []
-    for k in total_dict.keys():
-        if k == 'java':
-            k = 'Java'
-        column_names.append(k) 
-    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful compilation" )
     plt.ylabel("Percent")
@@ -141,12 +135,7 @@ def plot_bar_diagram_run(c_ids) :
         x_label.append(name_dict['name'])
 
     #plot bar diagram   
-    column_names = []
-    for k in total_dict.keys():
-        if k == 'java':
-            k = 'Java'
-        column_names.append(k) 
-    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs" )
     plt.ylabel("Percent")
@@ -175,13 +164,8 @@ def plot_bar_diagram_run_comp(c_ids) :
         name_dict = dict[int(cid)]
         x_label.append(name_dict['name'])
 
-    #plot bar diagram   
-    column_names = []
-    for k in total_dict.keys():
-        if k == 'java':
-            k = 'Java'
-        column_names.append(k)  
-    df2 = pandas.DataFrame(percents_total, columns=column_names, index=x_label)
+    #plot bar diagram    
+    df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=x_label)
     bar = df2.plot.bar()
     plt.title("Percentage of successful runs/compilation" )
     plt.ylabel("Percent")

@@ -13,9 +13,6 @@ from constants import *
 from write_to_csv import *
 
 
-def init_dict() :
-    return {'java': 0.0, 'Python': 0.0, 'C': 0.0, 'C++': 0.0, 'C#': 0.0}
-
 def print_list(list_order) :
     res = ''
     for l in list_order :
@@ -149,18 +146,12 @@ def mean_plot_all(cid_dict, cids):
 
     colors = ['b', 'c', 'y', 'm', 'r']
     fig, ax = plt.subplots()
-    print y
-    # change java to Java
-    langs = []
-    for l in languages :
-        if l == 'java' :
-            l = 'Java'
-        langs.append(x)
+    
     for idx, lang_list in enumerate(y):
         print idx
         print x
         print lang_list
-        ax.plot(x,lang_list,color= colors[idx],label = langs[idx])
+        ax.plot(x,lang_list,color= colors[idx],label = languages[idx])
     plt.title("Mean Rank" )
     plt.ylabel("Mean rank")
     plt.xlabel("Contest")

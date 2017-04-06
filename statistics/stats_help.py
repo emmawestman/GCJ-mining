@@ -12,6 +12,9 @@ from write_to_csv import *
 
 C_ID_TIMELINE = ['Qualification Round 2016', 'Round 1A 2016', 'Round 1B 2016', 'Round 1C 2016', 'Qualification Round 2015', 'Round 1A 2015', 'Round 1B 2015', 'Round 1C 2015', 'Qualification Round 2014', 'Round 1A 2014', 'Round 1B 2014', 'Round 1C 2014', 'Qualification Round 2013', 'Round 1A 2013', 'Round 1B 2013', 'Round 1C 2013', 'Qualification Round 2012', 'Round 1A 2012', 'Round 1B 2012', 'Round 1C 2012']
 
+def init_dict() :
+    return {'Java': 0.0, 'Python': 0.0, 'C': 0.0, 'C++': 0.0, 'C#': 0.0}
+
 def invert_dict(old_dict) :
     return {v: k for k, v in old_dict[c_id].iteritems()}
 

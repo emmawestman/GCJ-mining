@@ -45,6 +45,8 @@ def remove_old_files(language, c_id):
         # remove extra created main files
         elif language == 'C#':
             filelist = [ f for f in files if (f == 'TestMain.cs' or f.endswith('.exe')) ]
+        elif language == 'Java':
+            filelist = [ f for f in files if not(f.endswith('.java')) ]
         else:
             filelist = [ f for f in files if not(f.endswith(language)) ]
         # remove the files!
