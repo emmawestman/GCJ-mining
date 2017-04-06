@@ -175,7 +175,7 @@ def plot_bar_diagram_run_comp(c_ids) :
     return bar.get_figure()
 
 
-CONTEST_IDS = CIDS_timeline_order()
+CONTEST_IDS = get_CONTEST_IDS()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
 

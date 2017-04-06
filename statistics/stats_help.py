@@ -23,16 +23,6 @@ def get_cid_name_dict(key) :
     csv_df.set_index(key, drop=True, inplace=True)
     return csv_df.to_dict(orient="index")
 
-def CIDS_timeline_order() :
-    name_cid_dict = get_cid_name_dict('name')
-    cids_in_time_order = []
-    i = len(C_ID_TIMELINE)-1
-    for idx,name in enumerate(C_ID_TIMELINE) :
-        name = C_ID_TIMELINE[i-idx]
-        c_id = name_cid_dict[name]
-        cids_in_time_order.append(str(c_id['c_id']))
-    return cids_in_time_order
-
 def get_pid_name_dict():
     csv_df = pandas.read_csv(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'pid_name_map.csv'))
     csv_df.set_index('p_id', drop=True, inplace=True)
@@ -57,25 +47,46 @@ def create_cid_name_map() :
 
 def create_pid_name_map() :
     cids = CIDS_timeline_order()
-    pid_name_dict = {}
+    all_pids = []
+    all_names = []
+    all_leters = []
     for c_id in cids:
         url = get_BASE()+c_id+'/scoreboard'
         page = urllib2.urlopen(url).read()
         pids = re.findall('\"id\": \"(.+)\"',page)
         names = re.findall('\"title\": \"(.+)\"',page)
-        for idx, pid in enumerate(pids) :
-            name_dict = {'name' : names[idx]}
-            pid_name_dict[pid] = name_dict
+        for name in  names :
+            all_names.append(''.join(list(name[3:])))
+            all_leters.append(''.join(list(name[:1])))
+        all_pids += pids
     filename = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'pid_name_map.csv')
-    df = pandas.DataFrame(pid_name_dict)
-    df.index.name = 'p_id'
+    df = pandas.DataFrame( {'p_id': all_pids, 'name': all_names, 'letter': all_leters})
     print df
     df.to_csv(filename)
 
-def get_name_of_pid(pid):
+def get_column_of_pid(pid, column):
     dict = get_pid_name_dict()
-    pid_name_dict = dict['name']
-    return pid_name_dict[pid]
+    pid_name_dict = dict[pid]
+    return pid_name_dict[column]
+
+def get_name_of_pid(pid):
+    return get_column_of_pid(pid, 'name')
+
+def get_letter_of_pid(pid):
+    return get_column_of_pid(pid, 'letter')
+
+def get_name_of_cid(cid):
+    dict = get_cid_name_dict('c_id')
+    cid_dict = dict[cid]
+    return cid_dict['name']
+
+def CIDS_name_timeline_order() :
+    names_in_time_order = []
+    for cid in get_CONTEST_IDS() :
+        names_in_time_order.append(get_name_of_cid(int(cid)))
+    return names_in_time_order
+
+print CIDS_name_timeline_order() 
 
     
 

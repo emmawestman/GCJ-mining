@@ -164,7 +164,7 @@ def mean_plot_all(cid_dict, cids):
  
 # wrrites to csv the toal avg mean rank in each contest
 def all_mean() :
-    CONTEST_IDS = CIDS_timeline_order()
+    CONTEST_IDS = get_CONTEST_IDS()
     cid_dict = {}
     csv_dict = {}
     for c_id  in CONTEST_IDS :
@@ -233,7 +233,7 @@ B2 = 'ABDCFEHGJILK'
 #print kendall_tau(list(A2), list(B2))
 
 def kendall_tau_cids() :
-    cids = CIDS_timeline_order()
+    cids = get_CONTEST_IDS()
     print cids
     text = ""
     path = os.path.join('../..', 'GCJ-backup', 'Tables', 'Total_lang_order_all_contests'  + '.csv')
