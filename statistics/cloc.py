@@ -33,17 +33,24 @@ def cloc_problem(p_id) :
 	print 'CLOC for ' + str(p_id)
 	dict = read_csv_file(str(p_id) + '.csv')
 	#print dict
-	users = dict.keys()
-	for user in users :
-		user_dict = dict[user]
-		lang = user_dict['language']
-		results = (cloc_file(p_id, lang, user))
+	#users = dict.keys()
+	#for user in users :
+		#user_dict = dict[user]
+		#lang = user_dict['language']
+		#results = (cloc_file(p_id, lang, user))
 		# update user dict
-		user_dict = dict[user]
-		user_dict['cloc'] = results[2]
-		user_dict['blanks'] = results[0]
-		user_dict['comments'] = results[1]
+		#user_dict = dict[user]
+		#user_dict['cloc'] = results[2]
+		#user_dict['blanks'] = results[0]
+		#user_dict['comments'] = results[1]
 	# write to dict to file
+	user_dict = {}
+	result = (cloc_file(p_id, 'Python', 'NaN'))
+	user_dict['cloc'] = results[2]
+	user_dict['blanks'] = results[0]
+	user_dict['comments'] = results[1]
+	user_dict['language'] = 'Python'
+	dict['NaN']=user_dict
 	write_to_csv_file(str(p_id) + '.csv', dict)
 
 
@@ -57,4 +64,5 @@ def cloc_all() :
 	for problem_id in get_PROBLEM_IDS(one_up):
 		cloc_problem(problem_id)
 
-cloc_all()
+cloc_problem('5640146288377856_0')
+#cloc_all()

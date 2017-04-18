@@ -13,6 +13,8 @@ def read_csv_file(filename) :
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         content = []
         for row in reader:
+            if 'NaN' in row:
+                print row
             content.append(row)
         attr_names = content[0][1:]
 

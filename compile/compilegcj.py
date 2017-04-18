@@ -59,10 +59,10 @@ def compile_language(language, p_id, dict):
 
 
 def compile_all():
-	clean_home_dir(os.getcwd())
-	clear_home_dir(gcj_path)
+	#clean_home_dir(os.getcwd())
+	#clear_home_dir(gcj_path)
 	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
-	for p_id in list_of_problem_ids:
+	for p_id in ['5640146288377856_0']:
 		filename = p_id + '.csv'
 		dict = read_csv_file(filename)
 		for l in ['Python']:

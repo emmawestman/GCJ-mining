@@ -20,6 +20,7 @@ def run_python_files(p_id, dict):
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
     for user in user_ids :
+
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         #files = os.listdir(user_path)
