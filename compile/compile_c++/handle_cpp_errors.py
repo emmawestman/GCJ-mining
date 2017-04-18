@@ -14,17 +14,20 @@ regexes_cpp = ['freopen ?\((\"?[\w+-]*\.?\w+\"?),[ ]*?\"r\",[ ]*?stdin\)', 'fope
 def replace_void_in_main(user_path, f) :
 	file_path = os.path.join(user_path, f)
 	content = get_contents_of_file(file_path)
+	content = content.split('\n')
  	for idx, line in enumerate(content) :
 		if 'void main' in line :
-			line.replace('void', '')
+			line = line.replace('void', 'int')
 			content[idx] = line
 			break
 	content = '\n'.join(content)
+	#print content
 	write_new_contents_to_the_file(file_path, content)
 
 def add_int_to_main(user_path, f) :
 	file_path = os.path.join(user_path, f)
 	content = get_contents_of_file(file_path)
+	content = content.split('\n')
  	for idx, line in enumerate(content) :
 		if 'main' in line :
 			line = 'int ' + line
