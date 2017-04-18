@@ -28,7 +28,7 @@ def compile_c(p_id, dict):
                 # do compilation
                 exe_file = f.split('.')[0]
                 exe_path = os.path.join(user_path,exe_file)
-                cmd = 'g++ ' + os.path.join(user_path,f) + ' -o ' + exe_path
+                cmd = 'gcc -o ' + exe_path  + ' ' + os.path.join(user_path,f)
                 exit_code, errors = run_process(cmd)  
                 try:
                     b = str(get_size_of_exe(exe_path))
@@ -44,7 +44,7 @@ def compile_c(p_id, dict):
                 set_compiler_version(user_dict,'-')
                 set_run_mesurments('-1', '', user_dict)
         
-                if not int(exit_code) == 0 or not int(exit_code) == 124 :
+                if not (int(exit_code) == 0 or int(exit_code) == 124) :
                     print 'failed to run problem: ' + p_id + ' for: ' + user 
                     print errors
 
@@ -62,7 +62,7 @@ def run_c(p_id, dict):
             print 'running c file for: ' + user + ' in problem ' + p_id
 
             # do run command
-            cmd = os.path.join(user_path,f) + ' < ' + input_path
+            cmd = './' + os.path.join(user_path,f) + ' < ' + input_path
             exit_code, errors = full_exe_cmd(cmd)
 
             # update dictonary with run mesurments
