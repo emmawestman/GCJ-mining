@@ -65,9 +65,11 @@ def create_pid_name_map() :
     df.to_csv(filename)
 
 def get_column_of_pid(pid, column):
+    split = pid.split('_') #contoains pid as first elem and 0/1 as second
+    pid = int(split[0])
     dict = get_pid_name_dict()
     pid_name_dict = dict[pid]
-    return pid_name_dict[column]
+    return pid_name_dict[column] + '_' + split[1]
 
 def get_name_of_pid(pid):
     return get_column_of_pid(pid, 'name')
@@ -86,6 +88,28 @@ def CIDS_name_timeline_order() :
         names_in_time_order.append(get_name_of_cid(int(cid)))
     return names_in_time_order
 
+
+# kanske inte blir i odning... har inte testat
+def PIDS_name_timeline_order(pids) :
+    names = []
+    for pid in pids:
+        name = get_name_of_pid(pid) 
+        if str(pid).endswith('0'):
+            name +=' - Small'
+        else :
+            name += ' - Large' 
+    names.append(name)
+
+
+def PIDS_letter_timeline_order(pids) :
+    letters = []
+    for pid in pids:
+        letter = get_letter_of_pid(pid) 
+        if str(pid).endswith('0'):
+            letter += '_0'
+        else :
+            letter += '_1' 
+    letters.append(letter)
 
     
 

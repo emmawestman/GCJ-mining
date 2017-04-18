@@ -26,13 +26,47 @@ def sort_langs(avg_dict) :
         lang_order.append(avg_dict[sm])
     return lang_order, sorted_means
 
+def plot_one_contest(c_id, IDS, complete_dict):
+    # x axis is problem ids
+    x = range(0,len(IDS))
+    languages = complete_dict[IDS[0]].keys()
+    # create one list of means for each language, 
+    # list will contain mean for each pid
+    y =  [None]*5 
+    for idx, i in enumerate(y) :
+        y[idx] = []
+
+    # print names of pids
+    x_labels = []
+    for p_id in IDS :
+        name = get_name_of_pid(p_id)
+        letter = get_letter_of_pid(p_id)
+        x_labels.append(letter)
+        prob_dict = complete_dict[p_id]
+        for idx, l in enumerate(languages) :
+            y[idx].append(prob_dict[l])
+
+    
+    colors = ['b', 'c', 'y', 'm', 'r']
+    fig, ax = plt.subplots()
+    for idx, lang_list in enumerate(y):
+        ax.scatter(x,lang_list,color= colors[idx],label = languages[idx])
+    plt.title("Contest " + c_id)
+    plt.ylabel("Mean rank")
+    plt.xlabel("Problem ID")
+    plt.xticks(range(len(IDS)), x_labels, rotation='vertical')
+    plt.legend()
+    plt.tight_layout(w_pad=0.5, h_pad=1.8)
+    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'mean_rank_' + c_id + '.png'))
+    plt.close(fig)
+
+
 # gives a list of the languages
 # with language with lowest avg
 # rank first.
 def order_langs_in_cid(c_id, cid_dict) :
     print 'CONTEST: ' + c_id
     contest_dict = pandas.read_csv(os.path.realpath(os.path.join(get_HOME_PATH(),'GCJ-backup',c_id+'.csv')))
-    print contest_dict
     # get p_ids in this contest id
     dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
     problem_ids = dict_cid_to_pid[c_id]
@@ -74,15 +108,11 @@ def order_langs_in_cid(c_id, cid_dict) :
             p_id_csv_dict['Rank_'+str(idx+1)] = l
             p_id_csv_dict['Value_'+str(idx+1)] = sorted_means[idx]
         csv_dict[p_id] = p_id_csv_dict
+
+    
      
     # Do total mean 
     cid_dict[c_id] = avg_total_dict
-
-    # write table to file
-    path = os.path.join('../..', 'GCJ-backup', 'Tables', 'lang_order_' + c_id + '.txt')
-    with open(path, 'wb') as file:
-        file.write(text)
-    print 'Done! wrote avg values and lang order to file in GCJ-backup/Tables'
 
     # write to csv
     path = os.path.join('../..', 'GCJ-backup', 'Tables', 'lang_order_' + c_id + '.csv')
@@ -90,38 +120,15 @@ def order_langs_in_cid(c_id, cid_dict) :
     df.index.name = 'problem_id'
     df.to_csv(path)
 
-    # Do some plots
-    # x axis is problem ids
+    # plot one contest
+    plot_one_contest(c_id, IDS, complete_dict)
     
-    x = range(0,len(IDS))
-    y =  [None]*5 
-    for idx, i in enumerate(y) :
-        y[idx] = []
 
-    for p_id in IDS :
-        prob_dict = complete_dict[p_id]
-        for idx, l in enumerate(prob_dict.keys()) :
-            y[idx].append(prob_dict[l]/len(IDS))
-
-    language = complete_dict[IDS[0]].keys()
-    colors = ['b', 'c', 'y', 'm', 'r']
-    fig, ax = plt.subplots()
-    for idx, lang_list in enumerate(y):
-        ax.plot(x,lang_list,color= colors[idx],label = language[idx])
-    plt.title("Contest " + c_id)
-    plt.ylabel("Mean rank")
-    plt.xlabel("Problem ID")
-    plt.xticks(range(len(IDS)), IDS, rotation='vertical')
-    plt.legend()
-    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'mean_rank_' + c_id + '.png'))
-    plt.close(fig)
-    #plt.show()
 
 # plots avg mean for contests as whole (total of p_ids in contest)
 # creates graph of all contests
 def mean_plot_all(cid_dict, cids):
     languages = cid_dict[cids[0]].keys()
-    
 
     x = range(0,len(cids))
     y =  [None]*5 
@@ -221,44 +228,46 @@ def kendall_tau(A, B):
     d = float(sum(dis))
     return (c - d) / (c + d)
 
-x = [1, 2, 3, 4, 5]
-y = [1, 3, 4, 5, 2]
-
-A = ['C++', 'C', 'C#', 'Java', 'Python']
-B = ['C++', 'C#', 'Java', 'Python', 'C']
-
-A2 = 'ABCDEFGHIJKL'
-B2 = 'ABDCFEHGJILK'
-
-#print kendall_tau(list(A2), list(B2))
-
-def kendall_tau_cids() :
+# TODO change to matirx
+def kendall_tau_matrix() :
     cids = get_CONTEST_IDS()
-    print cids
     text = ""
     path = os.path.join('../..', 'GCJ-backup', 'Tables', 'Total_lang_order_all_contests'  + '.csv')
     df = pandas.read_csv(path)
     rank_lists = [None]*len(cids)
+    res = [None]*len(cids)
     for idx, c_id in enumerate(cids) :
         rank_lists[idx] = []
+        res[idx] = [None]*len(cids)
         # read ordering
         for i in range(1,6) :
             lang = df.iloc[idx]['Rank_'+str(i)]
             rank_lists[idx] += [lang]
-    
-    print C_ID_TIMELINE[0] + ' & ' + print_list(rank_lists[0]) + ' & - \\\\' 
-    for idx, row in enumerate(rank_lists) :
-        if idx == len(cids)-1 :
-            break
-    
-        # compare list with next list
-        diff_value = kendall_tau(row, rank_lists[idx+1])
-        print C_ID_TIMELINE[idx+1] + ' & ' + print_list(rank_lists[idx+1]) + ' & ' + str("{0:.2f}".format(diff_value)) + '\\\\'
 
+    for i, row1 in enumerate(rank_lists) :
+        for j, row2 in enumerate(rank_lists) :    
+            # compare list with next list
+            diff_value = kendall_tau(row1, row2)
+            res[i][j] = str("{0:.2f}".format(diff_value))
+    return res
+            
+def print_kendall_tau_matrix(res) :
+    header = 'Contest Name'
+    contest_names = CIDS_name_timeline_order()
+    for name in contest_names :
+        header += ' & ' + '{\\tiny{\\rotatebox[origin=c]{90}{' + name + '}}}'
+    header += '\\\\'
+    print header
+    # to fit on one page need to add {\small row_value}
+    for idx, row in enumerate(res) :
+        row = '{\\tiny ' + contest_names[idx] + '}' + ' & ' + ' & '.join(row) + '\\\\'
+        print row
+    #print C_ID_TIMELINE[idx+1] + ' & ' + print_list(rank_lists[idx+1]) + ' & ' + str("{0:.2f}".format(diff_value)) + '\\\\'
 #create_cid_name_map()
 #create_pid_name_map()
-#all_mean()
-kendall_tau_cids()
+all_mean()
+#res = kendall_tau_matrix()
+#print_kendall_tau_matrix(res)
 
 
 
