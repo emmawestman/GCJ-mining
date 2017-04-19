@@ -27,7 +27,8 @@ def get_contents_of_file(file_path):
 
 def write_new_contents_to_the_file(file_path,file_contents):
     #write changes
-    file_manager=open(file_path,'w')
+    print 'write changes'
+    file_manager=open(file_path,'w+')
     file_manager.write(file_contents)
     file_manager.close()
 
@@ -85,8 +86,8 @@ def get_run_info(regexp, root):
 
 # to run with flags
 def full_exe_cmd(cmd) :
-    #full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
-    full_cmd = cmd
+    full_cmd = "/usr/bin/time -f \"%x,%e,%U,%S,%K,%M,%t,%F,%O,%I,%W\" sh -c \"" + cmd + "\""
+    #full_cmd = cmd
     return run_process(full_cmd)
 
 

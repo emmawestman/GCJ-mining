@@ -85,10 +85,23 @@ def compile_one_file_csharp(root,csharp_file_p,csharp_file_p_dependecy,input_fil
 
 
 def handle_compilation_errors(error_code,errors,root,csharp_file_p,csharp_file_p_dependecy,input_file, flag, user_dict):
+    print 'IN HANDLE COMPILE ERRORS'
+    print errors
     if 'The type or namespace name' in errors and 'System.Numerics' in errors:
         return compile_csharp_command(build_arguments('System.Numerics',csharp_file_p,csharp_file_p_dependecy,root,user_dict))
     if 'The type or namespace name' in errors and 'System.Drawing' in errors:
         return compile_csharp_command(build_arguments('System.Drawing',csharp_file_p,csharp_file_p_dependecy,root,user_dict))
+    if 'does not contain a static' in errors : # absence of main fucntion
+        print "MISSING MAIN " + root + ' ' + csharp_file_p
+        all_functions = filter_candidate_functions(root,csharp_file_p)
+        if len(all_functions)>0:
+            for func in all_functions:
+                create_main_file(root,csharp_file_p,input_file, func)
+                #Create main creates TestMain, hence original class file becomes dependency_files#
+                compile_csharp_command(build_path_args(flag,root,'TestMain.cs',csharp_file_p,))
+                exit_code,errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
+                if exit_code == 0 or exit_code == 124 or exit_code == -1 :
+                    return error_code,errors #success
     return error_code,errors
 
 
@@ -135,22 +148,9 @@ def run_csharp_solution(input_file,root,csharp_exe,dependency_file,csharp_org,fl
 
 def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_file,original_class_file,csharp_exe,flag):
     if 'System.IO.DirectoryNotFoundException' in errors or 'System.IO.FileNotFoundException' in errors:
-        remove_files_in_a_user_solution(root)
         change_input_streams(input_file,os.path.join(root,original_class_file),root)
         if csharp_file_p_dependecy is not None :
             change_input_streams(input_file,os.path.join(root,csharp_file_p_dependecy),root)
         compile_csharp_command(build_path_args(flag,root,original_class_file,csharp_file_p_dependecy))
         return run_csharp_command(os.path.join(root,csharp_exe),input_file)
-    if 'not contain a static \'Main\' method suitable for an entry point' in errors :
-        print "MISSING MAIN " + root + ' ' + original_class_file
-        all_functions = filter_candidate_functions(root,original_class_file)
-        if len(all_functions)>0:
-            for func in all_functions:
-                create_main_file(root,original_class_file,input_file)
-                #Create main creates TestMain, hence original class file becomes dependency_files#
-                compile_csharp_command(build_path_args(flag,root,'TestMain.cs',original_class_file,))
-                error_code,errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
-                if exit_code == 0 or exit_code == 124 or exit_code == -1 :
-                    return error_code,errors #success
-                remove_files_in_a_user_solution(root)
     return error_code,errors

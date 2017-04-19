@@ -1,5 +1,11 @@
 import os
 import re
+import sys
+
+# import own modules from iffrent directory
+compile_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, compile_path)
+from compile_support_module import *
 
 def remove_files_in_a_user_solution(root):
 	files = os.listdir(root)
@@ -22,7 +28,8 @@ def csharp_main(full_function_decl, csharp_filename, namespace,root,input_file):
 	filename =  csharp_filename.split('.')[0]
 	function_name = re.findall(r'(\w+)',full_function_decl)[0]
 	main_file = os.path.join(root, 'TestMain.cs')
-	file_content = namespace + '\n' + '{ \n class TestMain \n { \n static void Main() \n { \n' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + ' \n } \n } \n }'
+	print main_file
+	file_content = namespace + '\n' + '{\n    class TestMain \n    {\n        static void Main() \n        {\n            ' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + '\n        }\n    }\n}'
 	write_new_contents_to_the_file(main_file,file_content)
 
 #ONLY CHOOSING STATIC FUNCTIONS
