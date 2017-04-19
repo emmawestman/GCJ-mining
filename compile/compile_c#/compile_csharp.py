@@ -142,8 +142,15 @@ def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_fil
         compile_csharp_command(build_path_args(flag,root,original_class_file,csharp_file_p_dependecy))
         return run_csharp_command(os.path.join(root,csharp_exe),input_file)
     if 'not contain a static \'Main\' method suitable for an entry point' in errors :
-        create_main_file(root,original_class_file,input_file)
-        #Create main creates TestMain, hence original class file becomes dependency_files#
-        compile_csharp_command(build_path_args(flag,root,'TestMain.cs',original_class_file,))
-        return run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
+        print "MISSING MAIN " + root + ' ' + original_class_file
+        all_functions = filter_candidate_functions(root,original_class_file)
+        if len(all_functions)>0:
+            for func in all_functions:
+                create_main_file(root,original_class_file,input_file)
+                #Create main creates TestMain, hence original class file becomes dependency_files#
+                compile_csharp_command(build_path_args(flag,root,'TestMain.cs',original_class_file,))
+                error_code,errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
+                if exit_code == 0 or exit_code == 124 or exit_code == -1 :
+                    return error_code,errors #success
+                remove_files_in_a_user_solution(root)
     return error_code,errors

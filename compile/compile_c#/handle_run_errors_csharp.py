@@ -7,12 +7,11 @@ def remove_files_in_a_user_solution(root):
 	for file in filelist:
 		os.remove(os.path.join(root,file))
 
-def create_main_file(root,csharp_file_p,input_file):
+def create_main_file(root,csharp_file_p,input_file,static_func):
 	full_path = os.path.join(root,csharp_file_p)
 	namespace = find_namespace(full_path)
 	# create main file and call some function...
-	filter_candidates = filter_candidate_functions(full_path)
-	csharp_main(filter_candidates[0], csharp_file_p, namespace, root,input_file)
+	csharp_main(static_func, csharp_file_p, namespace, root,input_file)
 
 
 def find_namespace(full_path):
@@ -27,7 +26,8 @@ def csharp_main(full_function_decl, csharp_filename, namespace,root,input_file):
 	write_new_contents_to_the_file(main_file,file_content)
 
 #ONLY CHOOSING STATIC FUNCTIONS
-def filter_candidate_functions(file_path):
+def filter_candidate_functions(root,csharp_file_p):
+	file_path = os.path.join(root,csharp_file_p)
 	file_contents = get_contents_of_file(file_path)
 	p = re.compile('static\s(?:int|void|long|string)\s(\w+\([\w+\s]*?\))')
 	return p.findall(file_contents)
