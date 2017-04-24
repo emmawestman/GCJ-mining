@@ -56,6 +56,10 @@ def compile_java(p_id, dict):
                 full_path = os.path.join(root,f)
                 b, exit_code, errors = compile_java_command(full_path)
                 # write compile statistics
+                if 'is public, should be declared in a file named' in errors :
+                    rename_class_file(full_path,errors)
+                    b,exit_code,errors = compile_java_command(full_path)
+                user_dict = dict[get_user_id(root)]
                 user_dict = dict[get_user_id(root)]
                 #default mesurments
                 set_compiler_version(user_dict,'-')
@@ -63,7 +67,7 @@ def compile_java(p_id, dict):
                 print 'COPILE EXIT CODE ' + str(exit_code)
                 print errors
                 set_compile_mesurments(user_dict, b, exit_code)
-                
+
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict):
     #print errors
