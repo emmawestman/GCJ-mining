@@ -22,14 +22,23 @@ def create_main_file(root,csharp_file_p,input_file,static_func):
 
 def find_namespace(full_path):
 	file_contentes = get_contents_of_file(full_path)
-	return re.search('(?:namespace)\s((?:\w+.)+?(?:\w+))', file_contentes).group(0)
+	namespace = re.search('(?:namespace)\s((?:\w+.)+?(?:\w+))', file_contentes)
+	if namespace is not None :
+		return namespace.group(0)
+	else:
+		return None
 
 def csharp_main(full_function_decl, csharp_filename, namespace,root,input_file):
 	filename =  csharp_filename.split('.')[0]
 	function_name = re.findall(r'(\w+)',full_function_decl)[0]
 	main_file = os.path.join(root, 'TestMain.cs')
 	print main_file
-	file_content = namespace + '\n' + '{\n    class TestMain \n    {\n        static void Main() \n        {\n            ' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + '\n        }\n    }\n}'
+	file_content = ""
+	if namespace is not None :
+		file_content = namespace + '\n' + '{\n'
+	file_content = file_content + 'class TestMain \n    {\n        static void Main() \n        {\n            ' + filename + '.' + function_name + build_main_function(full_function_decl,input_file) + '\n        }\n}'
+	if namespace is not None:
+	    file_content = file_content +  '\n}'
 	write_new_contents_to_the_file(main_file,file_content)
 
 #ONLY CHOOSING STATIC FUNCTIONS

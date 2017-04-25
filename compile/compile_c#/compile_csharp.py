@@ -91,6 +91,8 @@ def handle_compilation_errors(error_code,errors,root,csharp_file_p,csharp_file_p
         return compile_csharp_command(build_arguments('System.Numerics',csharp_file_p,csharp_file_p_dependecy,root,user_dict))
     if 'The type or namespace name' in errors and 'System.Drawing' in errors:
         return compile_csharp_command(build_arguments('System.Drawing',csharp_file_p,csharp_file_p_dependecy,root,user_dict))
+    if 'The type or namespace name' in errors and 'System.Windows' in errors :
+        return compile_csharp_command(build_arguments('System.Windows',csharp_file_p,csharp_file_p_dependecy,root,user_dict))
     if 'does not contain a static' in errors : # absence of main fucntion
         print "MISSING MAIN " + root + ' ' + csharp_file_p
         all_functions = filter_candidate_functions(root,csharp_file_p)
@@ -148,6 +150,8 @@ def run_csharp_solution(input_file,root,csharp_exe,dependency_file,csharp_org,fl
 
 def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_file,original_class_file,csharp_exe,flag):
     if 'System.IO.DirectoryNotFoundException' in errors or 'System.IO.FileNotFoundException' in errors:
+        print original_class_file
+        print csharp_file_p_dependecy
         change_input_streams(input_file,os.path.join(root,original_class_file),root)
         if csharp_file_p_dependecy is not None :
             change_input_streams(input_file,os.path.join(root,csharp_file_p_dependecy),root)
