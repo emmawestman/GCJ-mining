@@ -32,6 +32,12 @@ def compile_csharp(p_id, dict):
             f = files[0]
             f_dep = None
             exit_code, errors = compile_one_file_csharp(user_path,f,f_dep,input_path,None,user_dict) # REALLY COMPILE AND RUN CSHARP
+            try:
+                b = str(get_size_of_exe(csharp_exe))
+            except Exception, e:
+                b = '-'
+            finally:
+                set_exe_size(user_dict, b)
         else:
             set_compiler_version(user_dict, '-')
             exit_code = -1
