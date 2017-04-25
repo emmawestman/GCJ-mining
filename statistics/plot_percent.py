@@ -11,10 +11,11 @@ sys.path.insert(0, gcj_path)
 from constants import *
 from write_to_csv import *
 
-def total() :
+def total_percent_plot() :
+    languages = ['C', 'C#', 'C++', 'Java', 'Python']
     data = get_all_data(['language', 'compiled', 'exit_code'])
-    df = data.groupby('language')
     # nbr total
+    df = data.groupby('language')
     total = df.size()
     totals = []
     totals.append(total[0])
@@ -22,28 +23,53 @@ def total() :
     totals.append(total[2])
     totals.append(total[3])
     totals.append(total[4])
-
-    # nbr compiles
-    data = data.loc[data['exit_code'] == 0]
-    df = data.groupby('language')
+    
+    # nbr runs
+    df_run = data.loc[data['exit_code'] == 0]
+    df = df_run.groupby('language')
     run = df.size()
     runs = []
-    runs.append(run[0])
-    runs.append(run[1])
-    runs.append(run[2])
-    runs.append(run[3])
-    runs.append(run[4])
+    runs.append(float(run[0])/total[0])
+    runs.append(float(run[1])/total[1])
+    runs.append(float(run[2])/total[2])
+    runs.append(float(run[3])/total[3])
+    runs.append(float(run[4])/total[4])
 
     # nbr compiles
-    data = data.loc[data['compiled'] == 0]
-    df = data.groupby('language')
+    df_comp = data.loc[data['compiled'] == 0]
+    df = df_comp.groupby('language')
     comp = df.size()
     comps = []
-    comps.append(comp[0])
-    comps.append(comp[1])
-    comps.append(comp[2])
-    comps.append(comp[3])
-    comps.append(comp[4])
+    comps.append(float(comp[0]-run[0])/total[0])
+    comps.append(float(comp[1]-run[1])/total[1])
+    comps.append(float(comp[2]-run[2])/total[2])
+    comps.append(float(comp[3]-run[3])/total[3])
+    comps.append(float(comp[4]-run[4])/total[4])
+
+    # nbr rest
+    rests = []
+    rests.append(1 - runs[0] -comps[0])
+    rests.append(1 - runs[1] -comps[1])
+    rests.append(1 - runs[2] -comps[2])
+    rests.append(1 - runs[3] -comps[3])
+    rests.append(1 - runs[4] -comps[4])
+
+    print runs
+    print comps
+    print rests
+
+    df2 = pd.DataFrame()
+    df2['language'] = languages
+    df2['executed'] = runs
+    df2['comiled'] = comps
+    df2['total'] = rests
+    
+
+    df2.plot.bar(stacked=True, color=['#2255a5', '#5e8cd6', '#9dbae8'])
+    plt.ylabel("Percentage")
+    plt.xlabel("language")
+    plt.xticks(range(len(languages)), languages)
+    plt.show()
 
 
 def init_dict() :
@@ -187,15 +213,10 @@ def plot_bar_diagram_run_comp(c_ids) :
     plt.show()
     return bar.get_figure()
 
-def plot_stacked_percent() :
-    data = get_all_data(['language', 'compiled', 'exit_code'])
-    df = data.groupby('language')
-    stacked = df.plot.bar(stacked=True);
-    plt.ylabel("Percent")
-    plt.xlabel("language")
-    plt.show()
 
-plot_stacked_percent()
+total_percent_plot() 
+
+
 '''
 CONTEST_IDS = dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)

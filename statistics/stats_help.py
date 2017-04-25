@@ -114,12 +114,22 @@ def PIDS_letter_timeline_order(pids) :
 # takes  list of columns as argument
 def get_all_data(columns) :
     data = pd.DataFrame()
-
-    for p_id in get_PROBLEM_IDS(os.path.join('../')):
+    p_ids = get_PROBLEM_IDS(os.path.join('../'))
+    for p_id in p_ids:
+        print p_id
         path = os.path.join('../..', 'GCJ-backup', p_id+'.csv')
         df = pd.read_csv(path)
-        df = df[columns]
-        data = data.append(df)  
+        try:
+            df = df[columns]
+            data = data.append(df)
+        except KeyError:
+            #df = df['language']
+            #size = len(df.index)
+            #for c in columns:
+                #df[c] = ['-']*size
+            print 'skiped: ' + p_id
+        
+          
     return data
 
     
