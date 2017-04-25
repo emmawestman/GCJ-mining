@@ -111,6 +111,17 @@ def PIDS_letter_timeline_order(pids) :
             letter += '_1' 
     letters.append(letter)
 
+# takes  list of columns as argument
+def get_all_data(columns) :
+    data = pd.DataFrame()
+
+    for p_id in get_PROBLEM_IDS(os.path.join('../')):
+        path = os.path.join('../..', 'GCJ-backup', p_id+'.csv')
+        df = pd.read_csv(path)
+        df = df[columns]
+        data = data.append(df)  
+    return data
+
     
 
 

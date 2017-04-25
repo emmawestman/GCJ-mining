@@ -4,11 +4,47 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from stats_help import *
 
 gcj_path = os.path.join(os.getcwd(), '../')
 sys.path.insert(0, gcj_path)
 from constants import *
 from write_to_csv import *
+
+def total() :
+    data = get_all_data(['language', 'compiled', 'exit_code'])
+    df = data.groupby('language')
+    # nbr total
+    total = df.size()
+    totals = []
+    totals.append(total[0])
+    totals.append(total[1])
+    totals.append(total[2])
+    totals.append(total[3])
+    totals.append(total[4])
+
+    # nbr compiles
+    data = data.loc[data['exit_code'] == 0]
+    df = data.groupby('language')
+    run = df.size()
+    runs = []
+    runs.append(run[0])
+    runs.append(run[1])
+    runs.append(run[2])
+    runs.append(run[3])
+    runs.append(run[4])
+
+    # nbr compiles
+    data = data.loc[data['compiled'] == 0]
+    df = data.groupby('language')
+    comp = df.size()
+    comps = []
+    comps.append(comp[0])
+    comps.append(comp[1])
+    comps.append(comp[2])
+    comps.append(comp[3])
+    comps.append(comp[4])
+
 
 def init_dict() :
     return {'java': 0, 'Python': 0, 'C': 0, 'C++': 0, 'C#': 0}
@@ -151,7 +187,16 @@ def plot_bar_diagram_run_comp(c_ids) :
     plt.show()
     return bar.get_figure()
 
+def plot_stacked_percent() :
+    data = get_all_data(['language', 'compiled', 'exit_code'])
+    df = data.groupby('language')
+    stacked = df.plot.bar(stacked=True);
+    plt.ylabel("Percent")
+    plt.xlabel("language")
+    plt.show()
 
+plot_stacked_percent()
+'''
 CONTEST_IDS = dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
@@ -161,5 +206,6 @@ fig2.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_percent
 
 fig3  = plot_bar_diagram_run_comp(CONTEST_IDS)
 fig3.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_compiled_percent.png'))
+'''
 
 
