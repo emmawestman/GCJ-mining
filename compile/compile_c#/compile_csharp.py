@@ -101,7 +101,7 @@ def handle_compilation_errors(error_code,errors,root,csharp_file_p,csharp_file_p
                 create_main_file(root,csharp_file_p,input_file, func)
                 #Create main creates TestMain, hence original class file becomes dependency_files#
                 compile_csharp_command(build_path_args(flag,root,'TestMain.cs',csharp_file_p,))
-                exit_code,errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file)
+                exit_code,errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file, user_dict)
                 if exit_code == 0 or exit_code == 124 or exit_code == -1 :
                     return error_code,errors #success
     return error_code,errors
@@ -135,9 +135,11 @@ def run_csharp(p_id, dict):
 def run_csharp_command(csharp_exe,input_file,user_dict):
     cmd = 'mono ' + csharp_exe + ' < ' + input_file
     print cmd
-    error_code,errors =  full_exe_cmd(cmd)
+    error_code,errors = full_exe_cmd(cmd)
+    print csharp_exe
     try:
         b = str(get_size_of_exe(csharp_exe))
+        print b
     except Exception, e:
         b = '-'
     finally:

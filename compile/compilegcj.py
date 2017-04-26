@@ -68,6 +68,6 @@ def compile_all():
 			remove_old_files(l, p_id)
 			compile_language(l, p_id, dict)
 			clean_home_dir()
-		write_to_csv_file(filename, dict)
+			write_to_csv_file(filename, dict)
 
 compile_all()
