@@ -73,7 +73,7 @@ def total_percent_plot() :
 
 
 def init_dict() :
-    return {'java': 0, 'Python': 0, 'C': 0, 'C++': 0, 'C#': 0}
+    return {'Java': 0, 'Python': 0, 'C': 0, 'C++': 0, 'C#': 0}
 
 # percent of  [exit_code==0]/[compiled==0]
 def percent_column2(c_id, column1, column2) :
@@ -162,7 +162,7 @@ def plot_bar_diagram_compile(c_ids) :
         percents_total.append(percents_cid)
     #plot bar diagram    
     df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
-    bar = df2.plot.bar()
+    bar = df2.plot.bar(color=get_COLORS())
     plt.title("Percentage of successful compilation" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
@@ -184,7 +184,7 @@ def plot_bar_diagram_run(c_ids) :
         percents_total.append(percents_cid)
     #plot bar diagram    
     df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
-    bar = df2.plot.bar()
+    bar = df2.plot.bar(color=get_COLORS())
     plt.title("Percentage of successful runs" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
@@ -206,7 +206,7 @@ def plot_bar_diagram_run_comp(c_ids) :
         percents_total.append(percents_cid)
     #plot bar diagram    
     df2 = pandas.DataFrame(percents_total, columns=total_dict.keys(), index=c_ids)
-    bar = df2.plot.bar()
+    bar = df2.plot.bar(color=get_COLORS())
     plt.title("Percentage of successful runs/compilation" )
     plt.ylabel("Percent")
     plt.xlabel("Contest")
@@ -217,7 +217,7 @@ def plot_bar_diagram_run_comp(c_ids) :
 total_percent_plot() 
 
 
-'''
+
 CONTEST_IDS = dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
@@ -227,6 +227,6 @@ fig2.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_percent
 
 fig3  = plot_bar_diagram_run_comp(CONTEST_IDS)
 fig3.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_compiled_percent.png'))
-'''
+
 
 

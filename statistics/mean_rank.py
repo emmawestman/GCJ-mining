@@ -47,7 +47,7 @@ def plot_one_contest(c_id, IDS, complete_dict):
             y[idx].append(prob_dict[l])
 
     
-    colors = ['b', 'c', 'y', 'm', 'r']
+    colors = get_COLORS()
     fig, ax = plt.subplots()
     for idx, lang_list in enumerate(y):
         ax.scatter(x,lang_list,color= colors[idx],label = languages[idx])
@@ -57,7 +57,7 @@ def plot_one_contest(c_id, IDS, complete_dict):
     plt.xticks(range(len(IDS)), x_labels, rotation='vertical')
     plt.legend()
     plt.tight_layout(w_pad=0.5, h_pad=1.8)
-    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'mean_rank_' + c_id + '.png'))
+    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures','mean_rank', 'mean_rank_' + c_id + '.png'))
     plt.close(fig)
 
 
@@ -151,7 +151,7 @@ def mean_plot_all(cid_dict, cids):
         name_dict = cid_name_dict[int(cid)] 
         x_label.append(name_dict['name'])
 
-    colors = ['b', 'c', 'y', 'm', 'r']
+    colors = get_COLORS()
     fig, ax = plt.subplots()
     
     for idx, lang_list in enumerate(y):
@@ -165,7 +165,7 @@ def mean_plot_all(cid_dict, cids):
     plt.xticks(range(len(cids)), x_label, rotation='vertical')
     plt.legend()
     plt.tight_layout(w_pad=0.5, h_pad=1.8)
-    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'mean_rank_all.png'))
+    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures','mean_rank', 'mean_rank_all.png'))
     plt.close(fig)
 
  

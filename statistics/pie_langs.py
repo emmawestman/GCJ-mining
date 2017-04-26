@@ -6,6 +6,10 @@ import os
 import pandas as pd
 from stats_help import *
 
+gcj_path = os.path.join(os.getcwd(), '../')
+sys.path.insert(0, gcj_path)
+from constants import *
+
 
 def distribution_langs() :
     data = get_all_data(['language'])
@@ -26,11 +30,13 @@ def distribution_langs() :
 
     print df
    
-    colors = ['b', 'c', 'y', 'm', 'r']
-    pie = df['count'].plot.pie(colors=colors,labels=df['language'], autopct='%1.1f%%')
+    #colors = ['b', 'c', 'y', 'm', 'r']
+    pie = df['count'].plot.pie(colors=get_COLORS(),labels=df['language'], autopct='%1.1f%%', textprops=dict(fontname="Tahoma", fontsize=12, weight='bold'))
     
+    pie.set_ylabel("")
 
-    plt.title('Distribution of Languages')
+    #plt.legend()
+    plt.suptitle('')
     plt.show()
     fig = pie.get_figure()
     fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'lang_distribution.png'))

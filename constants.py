@@ -9,6 +9,9 @@ LANGUAGE = ['Java', 'C', 'C++', 'Python', 'C#']
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
 
+#turkos, pink, blue, grey, purple
+COLORS = ['#4B9E86', '#B52D8E','#6842D1', '#1A6D89', '#D88A65']
+
 # get the folder above the git repo from collect_data folder
 HOME_PATH = os.path.join('../../')
 
@@ -18,6 +21,8 @@ HOME_PATH = os.path.join('../../')
 SIZE = ["-small.practice.in", "-large.practice.in"]
 BASE = "https://code.google.com/codejam/contest/"
 
+def get_COLORS() :
+    return COLORS
 
 def get_CONTEST_IDS() :
     return CONTEST_IDS
