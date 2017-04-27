@@ -41,7 +41,7 @@ def compile_java_command(full_path):
     exit_code, errors = run_process(cmd)
     exe_path = full_path.split('.')[0]
     try:
-        b = str(get_size_of_exe(exe_path))
+        b = str(get_size_of_exe(exe_path+'.class'))
     except Exception, e:
         b = '-'
     return b, exit_code, errors
