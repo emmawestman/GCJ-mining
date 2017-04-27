@@ -15,7 +15,7 @@ from constants import *
 
 
 def compile_c_command(exe_path, file_path, user_dict):
-    cmd = 'gcc -o ' + exe_path  + ' ' + os.path.join(user_path,f)
+    cmd = 'gcc -o ' + exe_path  + ' ' + file_path
     exit_code, errors = run_process(cmd)
 
     if 'undefined reference ' in errors :
@@ -23,7 +23,7 @@ def compile_c_command(exe_path, file_path, user_dict):
         exit_code,errors = run_process (cmd + ' -lm')
 
     if 'only allowed in ' in errors :
-        cmd = 'gcc -std=c11 -o' + exe_path  + ' ' + os.path.join(user_path,f)
+        cmd = 'gcc -std=c11 -o' + exe_path  + ' ' + file_path
         set_compiler_version(user_dict, 'std=c11')
         exit_code, errors = run_process(cmd)
 
@@ -39,15 +39,15 @@ def execute_c_command(exe_path, f, user_path, input_path, user_dict):
     measure_exe(exe_path,user_dict)
     return exit_code, errors
 
- def measure_exe(exe_path,user_dict):
-     try:
-         b = str(get_size_of_exe(exe_path))
-     except Exception, e:
-         b = '-'
-     else:
-         pass
-     finally:
-         set_exe_size(user_dict, b)
+def measure_exe(exe_path,user_dict):
+    try:
+        b = str(get_size_of_exe(exe_path))
+    except Exception, e:
+        b = '-'
+    else:
+        pass
+    finally:
+        set_exe_size(user_dict, b)
 
 
 def compile_c(p_id, dict):
@@ -65,15 +65,10 @@ def compile_c(p_id, dict):
                 exe_path = os.path.join(user_path,exe_file)
                 set_compiler_version(user_dict,'-')
 
-                compile_c_command(exe_path,os.path.join(user_path,f))
+                exit_code,errors = compile_c_command(exe_path,os.path.join(user_path,f),user_dict)
 
-                set_compile_exitcode(user_dict,exit_code,user_dict)
+                set_compile_exitcode(user_dict,exit_code)
                 set_run_mesurments('-1', '', user_dict)
-
-                if not (int(exit_code) == 0 or int(exit_code) == 124) :
-                    print 'failed to run problem: ' + p_id + ' for: ' + user
-                    print errors
-
 
 
 

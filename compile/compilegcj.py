@@ -59,15 +59,17 @@ def compile_language(language, p_id, dict):
 
 
 def compile_all():
-	list_of_problem_ids = get_PROBLEM_IDS(os.path.join(os.getcwd(), '../'))
-	for p_id in list_of_problem_ids:
-		filename = p_id + '.csv'
-		dict = read_csv_file(filename)
-		for l in get_LANGUAGE():
-			print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
-			remove_old_files(l, p_id)
-			compile_language(l, p_id, dict)
-			clean_home_dir()
-		write_to_csv_file(filename, dict)
+	#python compilegcj.py problem_id size language
+	problem = sys.argv[1]
+	size = sys.argv[2]
+	l = sys.argv[3]
+	p_id = problem + '_' + size
+	filename = p_id + '.csv'
+	dict = read_csv_file(filename)
+	print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
+	remove_old_files(l, p_id)
+	compile_language(l, p_id, dict)
+	clean_home_dir()
+	write_to_csv_file(filename, dict)
 
 compile_all()
