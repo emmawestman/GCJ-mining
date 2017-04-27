@@ -9,10 +9,14 @@ java=( 5765824346324992 6377668744314880 5688567749672960 5769900270288896 56622
 # C
 for i in "${all[@]}"
 do
-    if [ $i -eq '5756407898963968'] || [ $i -eq '5752104073297920'] ; then
-          range=(0)
+    if [ $i -eq '5756407898963968'] 
+    then
+        range= ( 0 )
+    elif [$i -eq '5752104073297920']
+    then
+        range=( 0) 
       else
-          range=( 0 1 )
+        range=( 0 1 )
     fi
     for r in "${range[@]}"
     do
@@ -23,10 +27,14 @@ done
 # C#
 for i in "${all[@]}"
 do
-    if [ $i -eq '5756407898963968'] || [ $i -eq '5752104073297920'] ; then
-          range=(0)
+    if [ $i -eq '5756407898963968'] 
+    then
+        range= ( 0 )
+    elif [$i -eq '5752104073297920']
+    then
+        range=( 0) 
       else
-          range=( 0 1 )
+        range=( 0 1 )
     fi
     for r in "${range[@]}"
     do
@@ -37,10 +45,14 @@ done
 # Java
 for i in "${java[@]}"
 do
-    if [ $i -eq '5756407898963968'] || [ $i -eq '5752104073297920'] ; then
-          range=(0)
+    if [ $i -eq '5756407898963968'] 
+    then
+        range= ( 0 )
+    elif [$i -eq '5752104073297920']
+    then
+        range=( 0) 
       else
-          range=( 0 1 )
+        range=( 0 1 )
     fi
     for r in "${range[@]}"
     do
@@ -51,10 +63,14 @@ done
 # Python
 for i in "${all[@]}"
 do
-    if [ $i -eq '5756407898963968'] || [ $i -eq '5752104073297920'] ; then
-          range=(0)
+    if [ $i -eq '5756407898963968'] 
+    then
+        range= ( 0 )
+    elif [$i -eq '5752104073297920']
+    then
+        range=( 0) 
       else
-          range=( 0 1 )
+        range=( 0 1 )
     fi
     for r in "${range[@]}"
     do
