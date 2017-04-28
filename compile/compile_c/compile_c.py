@@ -30,12 +30,14 @@ def compile_c_command(exe_path, file_path, user_dict):
     return exit_code,errors
 
 def execute_c_command(exe_path, f, user_path, input_path, user_dict):
-    cmd = './' + exe_path + ' < ' + input_path
+    cmd = exe_path + ' < ' + input_path
     exit_code, errors = full_exe_cmd(cmd)
     if 'iostream fatal error' in errors :
         compile_with_gplus_cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + exe_path
-        run_process(cmd)
         exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' < ' + input_path)
+    if 'Segmentation fault' in errors :
+        exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' ' + input_path)
+
     measure_exe(exe_path,user_dict)
     return exit_code, errors
 
