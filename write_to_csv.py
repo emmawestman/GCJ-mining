@@ -4,7 +4,7 @@ import sys
 import pandas as pd
 
 # import own modules from diffrent directory
-gcj_path = os.path.join(os.getcwd(), '../')
+gcj_path = os.path.join(os.getcwd(), '../..')
 sys.path.insert(0, gcj_path)
 from constants import *
 

@@ -5,9 +5,13 @@ import os
 
 CONTEST_IDS = ['6254486','4304486' ,'11254486', '4314486', '6224486', '4224486', '8224486', '4244486', '2974486', '2984486', '2994486','3004486', '2270488', '2418487', '2434486', '2437488', '1460488', '1645485', '1836486', '1781488']
 
-LANGUAGE = ['java', 'C', 'C#', 'Python', 'C++']
+LANGUAGE = ['Java', 'C', 'C++', 'Python', 'C#']
+
 
 PROBLEM =['A', 'B', 'C', 'D', 'E']
+
+#turkos, pink, blue, grey, purple
+COLORS = ['#4B9E86', '#B52D8E','#6842D1', '#1A6D89', '#D88A65']
 
 # get the folder above the git repo from collect_data folder
 HOME_PATH = os.path.join('../../')
@@ -18,6 +22,8 @@ HOME_PATH = os.path.join('../../')
 SIZE = ["-small.practice.in", "-large.practice.in"]
 BASE = "https://code.google.com/codejam/contest/"
 
+def get_COLORS() :
+    return COLORS
 
 def get_CONTEST_IDS() :
     return CONTEST_IDS
