@@ -75,6 +75,6 @@ def do_all_total() :
 
 #general_box_plot_problem('5648941810974720_0', 'max_RAM', 'max_RAM')
 
-
+do_all_total()
 all_problem_by_problem()
 
