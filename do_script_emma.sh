@@ -24,7 +24,7 @@ cplus=( 5634947029139456 5669245564223488 5688567749672960 4690574640250880 5709
 #done
 
 # Python
-for i in "${csharp[@]}"
+for i in "${python[@]}"
 do
     if [ $i -eq 2449486 ]
     then
@@ -39,7 +39,7 @@ do
 done
 
 # C++
-for i in "${java[@]}"
+for i in "${cplus[@]}"
 do
     if [ $i -eq 5634947029139456]
     then
