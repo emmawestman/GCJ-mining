@@ -23,20 +23,11 @@ cplus=( 5634947029139456 5669245564223488 5688567749672960 4690574640250880 5709
 #    done
 #done
 
-# Python
-for i in "${python[@]}"
-do
-    if [ $i -eq 2449486 ]
-    then
-        range=( 0 )
-    else
-        range=( 0 1 )
-    fi
-    for r in "${range[@]}"
-    do
-        python compilegcj.py $i $r "Python"
-    done
-done
+python compilegcj.py 1480487 0 Python
+python compilegcj.py 1480487 1 Python
+python compilegcj.py 2449486 1 Python
+python compilegcj.py 5751500831719424 0 Python
+python compilegcj.py 5751500831719424 1 Python
 
 # C++
 for i in "${cplus[@]}"
