@@ -56,6 +56,9 @@ def compile_python(user_path, f, user_dict):
     cmd = "python -m compileall " + file_path
     exit_code, errors = run_process(cmd)
     #try to measure size of exe file
+    if exit_code !=0 :
+        cmd = "pytho3 -m compileall " + file_path
+        exit_code, errors = run_process(cmd)
     try:
         exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
         exe_path = os.path.join(user_path, exe_file)
@@ -63,7 +66,7 @@ def compile_python(user_path, f, user_dict):
         print b
     except Exception, e:
         b = '-'
-    finally:  
+    finally:
         set_exe_size(user_dict, b)
     return exit_code, errors
 
