@@ -25,6 +25,7 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 		rename_stuff_in_file('import\sdevtools','',file_path,1)
 	else :
 		pip_errors = pip_install_module(pip_version,missing_module_name)
+		"print after pip install module"
 		if len(pip_errors)>0:
 			print pip_errors
 			return 0,missing_module_name
@@ -44,7 +45,7 @@ def get_error_name (errors):
 	if len(error_list)>0:
 		error_name = error_list[0]
 		return error_name
-	return errors 
+	return errors
 
 def pip_install_module(pip_version,module_name):
 	cmd = [pip_version + ' install ' + module_name]
@@ -55,7 +56,7 @@ def pip_install_module(pip_version,module_name):
 
 def create_a_copy_of_input_file(c_id,input_file):
 	dst = input_file + '(1)'
-	number_of_files = len(os.listdir(PATH_INPUT+c_id)) 
+	number_of_files = len(os.listdir(PATH_INPUT+c_id))
 	copyfile(input_file, dst) #create a copy of input file
 	return dst,number_of_files
 
@@ -76,11 +77,8 @@ def find_missing_module_name(errors):
 	missing_module_name = find_out_what_regex('named\s(\'?\w+\'?)',errors)
 	if len(missing_module_name) > 0 :
 		missing_module_name = missing_module_name[0].replace('named ','')
-		return missing_module_name	
+		return missing_module_name
 	missing_module_name = find_out_what_regex('from\s(\w+)\simport',errors)
 	missing_module_name = missing_module_name[0].replace('from ','')
 	missing_module_name = missing_module_name.replace(' import','')
 	return missing_module_name
-
-
-

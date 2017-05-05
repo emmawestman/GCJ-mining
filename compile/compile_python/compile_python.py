@@ -56,9 +56,14 @@ def compile_python(user_path, f, user_dict):
     cmd = "python -m compileall " + file_path
     exit_code, errors = run_process(cmd)
     #try to measure size of exe file
+<<<<<<< Updated upstream
     if exit_code !=0 :
         cmd = "python3 -m compileall " + file_path
         exit_code, errors = run_process(cmd)
+=======
+    if exit_code!= 0 :
+        cmd = "python3 -m compileall " + file_path
+>>>>>>> Stashed changes
     try:
         exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
         exe_path = os.path.join(user_path, exe_file)
@@ -91,7 +96,7 @@ def run_python_3x(file_path,path_input,p_id,root,user_dict):
         return handle_python_3x_errors(errors, exit_code, file_path,path_input,p_id,root,user_dict)
     return exit_code, errors
 
-def run_python_command(pythonversion,path_file,args,user_dict, pipe = '' ):
+def run_python_command(pythonversion,path_file,args,user_dict, pipe = ' '):
     if pythonversion == 'python3 ' :
         version = "3.5"
     else:

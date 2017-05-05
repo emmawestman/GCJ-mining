@@ -24,6 +24,7 @@ def read_csv_file(filename) :
             for idx, a in enumerate(attr_names) :
                 user_dict[a] = row[idx +1]
             dict[user_id] = user_dict
+            print dict.keys()
         return dict
 
 def write_to_csv_file(filename, dict) :
