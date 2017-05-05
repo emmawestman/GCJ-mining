@@ -57,7 +57,7 @@ def compile_python(user_path, f, user_dict):
     exit_code, errors = run_process(cmd)
     #try to measure size of exe file
     if exit_code !=0 :
-        cmd = "pytho3 -m compileall " + file_path
+        cmd = "python3 -m compileall " + file_path
         exit_code, errors = run_process(cmd)
     try:
         exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
@@ -91,14 +91,14 @@ def run_python_3x(file_path,path_input,p_id,root,user_dict):
         return handle_python_3x_errors(errors, exit_code, file_path,path_input,p_id,root,user_dict)
     return exit_code, errors
 
-def run_python_command(pythonversion,path_file,args,user_dict):
+def run_python_command(pythonversion,path_file,args,user_dict, pipe = None ):
     if pythonversion == 'python3 ' :
         version = "3.5"
     else:
         version = "2.7"
     # update dictonry so verison is stored in csv
     set_compiler_version(user_dict, version)
-    cmd = pythonversion + path_file + args
+    cmd = pythonversion + path_file + pipe + args
     exit_code, errors = full_exe_cmd(cmd)
     return exit_code, errors
 
@@ -112,12 +112,12 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user
             return run_python_command('python3 ', file_path,path_input,user_dict)
         return run_python_command('python ', file_path,path_input, user_dict)
     elif error_name == 'SyntaxError':
-        return run_python_command('python3 ', file_path,path_input, user_dict)
+        return run_python_command('python3 ', file_path,path_input, user_dict,' < ')
     elif error_name =='FileNotFoundError' or error_name == 'IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         return run_python_command('python ', file_path,path_input,user_dict)
     elif error_name == 'IndexError':
-        args = ' ' + path_input +' '+os.path.join(root,'output.txt')
+        args = ' ' + path_input + '  '+os.path.join(root,'output.txt')
         exit_code, errors = run_python_command('python ',file_path,args,user_dict)
         #if not int(exit_code) == 0 or not int(exit_code) == 124:
         return exit_code, errors
