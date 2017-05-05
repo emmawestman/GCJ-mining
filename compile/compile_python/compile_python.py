@@ -56,14 +56,9 @@ def compile_python(user_path, f, user_dict):
     cmd = "python -m compileall " + file_path
     exit_code, errors = run_process(cmd)
     #try to measure size of exe file
-<<<<<<< Updated upstream
     if exit_code !=0 :
         cmd = "python3 -m compileall " + file_path
         exit_code, errors = run_process(cmd)
-=======
-    if exit_code!= 0 :
-        cmd = "python3 -m compileall " + file_path
->>>>>>> Stashed changes
     try:
         exe_file = [f for f in os.listdir(user_path) if f.endswith('.pyc')][0]
         exe_path = os.path.join(user_path, exe_file)
