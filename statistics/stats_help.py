@@ -2,7 +2,7 @@ import os
 import pandas
 import sys
 import re
-import urllib2  
+import urllib2
 
 
 gcj_path = os.path.join(os.getcwd(), '../')
@@ -93,22 +93,22 @@ def CIDS_name_timeline_order() :
 def PIDS_name_timeline_order(pids) :
     names = []
     for pid in pids:
-        name = get_name_of_pid(pid) 
+        name = get_name_of_pid(pid)
         if str(pid).endswith('0'):
             name +=' - Small'
         else :
-            name += ' - Large' 
+            name += ' - Large'
     names.append(name)
 
 
 def PIDS_letter_timeline_order(pids) :
     letters = []
     for pid in pids:
-        letter = get_letter_of_pid(pid) 
+        letter = get_letter_of_pid(pid)
         if str(pid).endswith('0'):
             letter += '_0'
         else :
-            letter += '_1' 
+            letter += '_1'
     letters.append(letter)
 
 # takes  list of columns as argument
@@ -121,17 +121,15 @@ def get_all_data(columns) :
         df = pd.read_csv(path)
         try:
             df = df[columns]
+            df['problem_id'] = p_id
             data = data.append(df)
+
         except KeyError:
             #df = df['language']
             #size = len(df.index)
             #for c in columns:
                 #df[c] = ['-']*size
             print 'skiped: ' + p_id
-        
-          
+
+
     return data
-
-    
-
-
