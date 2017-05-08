@@ -24,12 +24,12 @@ def compile_c_command(exe_path, file_path, user_dict):
 
     if 'only allowed in ' in errors :
         cmd = 'gcc -std=c11 -o' + exe_path  + ' ' + file_path
-		if len (error_code_to_csv)>0:
-		    error_code_to_csv = error_code_to_csv + "&"
-		error_code_to_csv = error_code_to_csv + " lm "
+        if len (error_code_to_csv)>0:
+            error_code_to_csv = error_code_to_csv + "&"
+        error_code_to_csv = error_code_to_csv + " lm "
         exit_code, errors = run_process(cmd)
 
-	set_compiler_version(user_dict,error_code_to_csv)
+    set_compiler_version(user_dict,error_code_to_csv)
     return exit_code,errors
 
 def execute_c_command(exe_path, f, user_path, input_path, user_dict):
