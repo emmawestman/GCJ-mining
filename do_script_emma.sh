@@ -1,5 +1,5 @@
 
-cd compile
+cd statistics
 
 #2749486
 
@@ -12,7 +12,7 @@ do
 
     for r in "${range[@]}"
     do
-        python compilegcj.py $i $r 'Python'
+        python cloc.py $i $r 
     done
 done
 
