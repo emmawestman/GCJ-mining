@@ -29,7 +29,10 @@ def cloc_file(prob_id, lang, user) :
 	return result
 
 # creates a file containing rows with the format describen in cloc_problem
-def cloc_problem(p_id) :
+def cloc_problem() :
+	problem = sys.argv[1]
+    size = sys.argv[2]
+    p_id = problem + '_' + size
 	print 'CLOC for ' + str(p_id)
 	dict = read_csv_file(str(p_id) + '.csv')
 	#print dict
@@ -48,8 +51,6 @@ def cloc_problem(p_id) :
 
 
 
-
-
 # calcualte cloc for all contests
 def cloc_all() :
 	# one dir up
@@ -57,4 +58,4 @@ def cloc_all() :
 	for problem_id in get_PROBLEM_IDS(one_up):
 		cloc_problem(problem_id)
 
-cloc_all()
+cloc_problem()

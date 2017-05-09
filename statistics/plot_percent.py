@@ -67,8 +67,9 @@ def total_percent_plot() :
 
     bar = df2.plot.bar(stacked=True, color=['#2255a5', '#5e8cd6', '#9dbae8'])
     plt.ylabel("Percentage")
-    plt.xlabel("language")
-    plt.xticks(range(len(languages)), languages)
+    plt.xlabel("Language")
+    bar.set_xticklabels(languages, rotation=0)
+    plt.tight_layout()
     plt.show()
     fig = bar.get_figure()
     fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'total_percent_run_compile.png'))
@@ -219,7 +220,7 @@ def plot_bar_diagram_run_comp(c_ids) :
 total_percent_plot() 
 
 
-
+'''
 CONTEST_IDS = dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv').keys()
 fig1 = plot_bar_diagram_compile(CONTEST_IDS)
 fig1.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'compiled_percent.png'))
@@ -229,6 +230,6 @@ fig2.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_percent
 
 fig3  = plot_bar_diagram_run_comp(CONTEST_IDS)
 fig3.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'run_compiled_percent.png'))
-
+'''
 
 

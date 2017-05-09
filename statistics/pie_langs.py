@@ -13,6 +13,8 @@ from constants import *
 
 def distribution_langs() :
     data = get_all_data(['language'])
+    total_nbr_of_files = data.count()[0] +1
+
   
     df = data.groupby('language')
     size = df.size()
@@ -28,17 +30,46 @@ def distribution_langs() :
     df['language'] = ['C', 'C#', 'C++', 'Java', 'Python']
     df['count'] = sizes
 
-    print df
-   
-    #colors = ['b', 'c', 'y', 'm', 'r']
-    pie = df['count'].plot.pie(colors=get_COLORS(),labels=df['language'], autopct='%1.1f%%', textprops=dict(fontname="Tahoma", fontsize=12, weight='bold'))
+    bar = df.plot(kind='bar', color=['#2255a5'], legend=False)
+    bar.set_xticklabels(['C', 'C#', 'C++', 'Java', 'Python'], rotation=0)
     
-    pie.set_ylabel("")
+    bar.set_xlabel("Language")
+    bar.set_ylabel("Number of files")
 
     #plt.legend()
     plt.suptitle('')
+    plt.tight_layout()
     plt.show()
-    fig = pie.get_figure()
+    fig = bar.get_figure()
     fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', 'lang_distribution.png'))
 
+    ## print table of number of solutions in each language
+    print '\\begin{table}[h!]'
+    print '\\centering'
+    print '\\caption{Number of Solutions}'
+    print '\\label{tab:nbr_of_sol}'
+    print '\\begin{tabular}{cc}'
+    print '\\toprule'
+    print '    Language & Number of solutions \\ \\\\'
+    print '    \midrule'
+    print '    C & '+  str(size[0]) +' \\\\'
+    print '    C# & ' +  str(size[1]) +'\\\\'
+    print '    C++ & ' + str(size[2]) +'\\\\'
+    print '    Java  & ' + str(size[3]) +'\\\\'
+    print '    Python & ' + str(size[4]) +'\\\\'
+    print '    \midrule'
+    print '    Total number of Solutions: & ' + str(total_nbr_of_files) +'\\\\'
+    print '\\bottomrule'
+    print '\\end{tabular}'
+    print '\\end{table}'
+
 distribution_langs() 
+
+
+
+
+
+
+
+
+
