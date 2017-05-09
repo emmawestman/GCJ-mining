@@ -21,7 +21,7 @@ def cloc_file(prob_id, lang, user) :
 	output, errors = p.communicate()
 	data = [int(s) for s in output.split() if s.isdigit()]
 	if len(data) != 3 :
-		result =  [str(data[4]), str(data[5]), str(data[6])]
+		result =  [str(data[-3]), str(data[-2]), str(data[-1])]
 		print result
 	else :
 		result = ['-', '-', '-']
