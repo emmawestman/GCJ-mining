@@ -40,12 +40,13 @@ def cloc_problem() :
 	for user in users :
 		user_dict = dict[user]
 		lang = user_dict['language']
-		results = (cloc_file(p_id, lang, user))
-		# update user dict
-		user_dict = dict[user]
-		user_dict['cloc'] = results[2]
-		user_dict['blanks'] = results[0]
-		user_dict['comments'] = results[1]
+		if lang == 'Java' :
+			results = (cloc_file(p_id, 'java', user))
+			# update user dict
+			user_dict = dict[user]
+			user_dict['cloc'] = results[2]
+			user_dict['blanks'] = results[0]
+			user_dict['comments'] = results[1]
 	# write to dict to file
 	write_to_csv_file(str(p_id) + '.csv', dict)
 
