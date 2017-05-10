@@ -118,6 +118,7 @@ def filter_dummyvalues(data,error_column):
     data = data.loc[data[error_column] != -1]
     data = data.loc[data[error_column] != '-1']
     data = data.apply(pandas.to_numeric, errors='ignore')
+    return data
 
 # takes  list of columns as argument
 def get_all_data(columns) :
