@@ -16,21 +16,22 @@ LANGUAGE = get_LANGUAGE()
 def cloc_file(prob_id, lang, user) :
     user_path  = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user))
     print path
-	all_files = os.listdir(user_path):
-	if len(all_files)>1:
-    	cmd = ['cloc ' + user_path ]
-	else:
-		file = all_files[0]
-		cmd = ["cat " + file + " | tr \"\\r\" \"\\n\" | " + "cloc --stdin-name=" file + " - " ]
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output, errors = p.communicate()
-	data = [int(s) for s in output.split() if s.isdigit()]
-	if len(data) != 3 :
-		result =  [str(data[-3]), str(data[-2]), str(data[-1])]
-		print result
-	else :
-		result = ['-', '-', '-']
-		print result
+    all_files = os.listdir(user_path):
+    if len(all_files)>1:
+        cmd = ['cloc ' + user_path ]
+    else:
+        file = all_files[0]
+        cmd = ["cat " + file + " | tr \"\\r\" \"\\n\" | " + "cloc --stdin-name=" file + " - " ]
+    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, errors = p.communicate()
+    data = [int(s) for s in output.split() if s.isdigit()]
+    
+    if len(data) != 3 :
+        result =  [str(data[-3]), str(data[-2]), str(data[-1])]
+    else :
+        result = ['-', '-', '-']
+    
+    print result
     return result
 
 # creates a file containing rows with the format describen in cloc_problem
