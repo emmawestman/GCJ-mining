@@ -21,7 +21,7 @@ def cloc_file(prob_id, lang, user) :
         cmd = ['cloc ' + user_path ]
     else:
         fil = all_files[0]
-        cmd = ["cat " + fil + " |tr \"\r\" \"\n\"|" + "cloc --stdin-name=" + fil + " - " ]
+        cmd = ["cat " + fil + " |tr \"\r\" \"\n\"|" + "cloc --stdin-name=" + fil + " -" ]
     print cmd
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
