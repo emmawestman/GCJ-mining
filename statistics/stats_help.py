@@ -111,12 +111,20 @@ def PIDS_letter_timeline_order(pids) :
             letter += '_1'
     letters.append(letter)
 
+def filter_dummyvalues(data,error_column):
+    data = data.loc[data[error_column] != '-']
+    data = data.loc[data[error_column] != 0]
+    data = data.loc[data[error_column] != '0']
+    data = data.loc[data[error_column] != -1]
+    data = data.loc[data[error_column] != '-1']
+    data = data.apply(pandas.to_numeric, errors='ignore')
+
 # takes  list of columns as argument
 def get_all_data(columns) :
     data = pd.DataFrame()
     p_ids = get_PROBLEM_IDS(os.path.join('../'))
     for p_id in p_ids:
-        print p_id
+        #print p_id
         path = os.path.join('../..', 'GCJ-backup', p_id+'.csv')
         df = pd.read_csv(path)
         try:
