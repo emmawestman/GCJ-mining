@@ -23,7 +23,7 @@ def cloc_file(prob_id, lang, user) :
         fil = all_files[0]
         cmd = ["cat " + fil + " | tr \"\\r\" \"\\n\" | " + "cloc --stdin-name=" + fil + " - " ]
     print cmd
-	p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
     print output
     data = [int(s) for s in output.split() if s.isdigit()]
