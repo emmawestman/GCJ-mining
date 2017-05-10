@@ -16,7 +16,7 @@ LANGUAGE = get_LANGUAGE()
 def cloc_file(prob_id, lang, user) :
     user_path  = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user))
     print path
-    all_files = os.listdir(user_path):
+    all_files = os.listdir(user_path)
     if len(all_files)>1:
         cmd = ['cloc ' + user_path ]
     else:
