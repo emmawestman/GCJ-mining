@@ -15,7 +15,7 @@ LANGUAGE = get_LANGUAGE()
 # creates on row with prob_id, langage, user, blank, comment, code
 def cloc_file(prob_id, lang, user) :
     user_path  = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user))
-    print path
+    print user_path
     all_files = os.listdir(user_path)
     if len(all_files)>1:
         cmd = ['cloc ' + user_path ]
