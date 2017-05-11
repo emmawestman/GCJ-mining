@@ -82,7 +82,6 @@ def order_langs_in_cid(c_id, cid_dict) :
         path_to_csv = os.path.realpath(os.path.join(get_GCJ_BACKUP_PATH(), p_id +'.csv'))
         problem_df = pandas.read_csv(path_to_csv)
         df = pandas.merge(contest_dict, problem_df, on = 'user_id')
-        print df
         df = df[['user_id', 'rank','language']]
         #df = df[np.isfinite(df['rank'])]
         avg_dict = {}
@@ -231,6 +230,7 @@ def kendall_tau(A, B):
 # TODO change to matirx
 def kendall_tau_matrix() :
     cids = get_CONTEST_IDS()
+    contest_names = CIDS_name_timeline_order()
     text = ""
     path = os.path.join('../..', 'GCJ-backup', 'Tables', 'Total_lang_order_all_contests'  + '.csv')
     df = pandas.read_csv(path)
@@ -243,13 +243,22 @@ def kendall_tau_matrix() :
         for i in range(1,6) :
             lang = df.iloc[idx]['Rank_'+str(i)]
             rank_lists[idx] += [lang]
+        print c_id + ': ' + contest_names[idx] + ': ', rank_lists[idx]
 
+    values = []
     for i, row1 in enumerate(rank_lists) :
-        for j, row2 in enumerate(rank_lists) :    
-            # compare list with next list
-            diff_value = kendall_tau(row1, row2)
-            res[i][j] = str("{0:.2f}".format(diff_value))
-    return res
+        for j, row2 in enumerate(rank_lists) : 
+            if j < i :
+                res[i][j] = ''
+            else:
+                print row1
+                print row2   
+                # compare list with next list
+                diff_value = kendall_tau(row1, row2)
+                print diff_value
+                values.append("{0:.2f}".format(diff_value))
+                res[i][j] = "\\footnotesize{" + str("{0:.2f}".format(diff_value)) + "}"
+    return res, values
             
 def print_kendall_tau_matrix(res) :
     header = 'Contest Name'
@@ -262,12 +271,30 @@ def print_kendall_tau_matrix(res) :
     for idx, row in enumerate(res) :
         row = '{\\tiny ' + contest_names[idx] + '}' + ' & ' + ' & '.join(row) + '\\\\'
         print row
+    
+def calc_calues(values) :
+    v_ints = []
+    sum = 0
+    l = len(values)
+    print l
+    for v in values :
+        vi = float(v)
+        sum += vi
+        v_ints.append(vi)
+    v_ints.sort()
+    print 'min: ' + str(v_ints[0])
+    print 'max: ' + str(v_ints[-1])
+    print 'mean: ' + str("{0:.2f}".format(sum/l))
+    median = v_ints[int(l/2)-1] + v_ints[int(l/2)]
+    print 'median: ' + str(median/2)
     #print C_ID_TIMELINE[idx+1] + ' & ' + print_list(rank_lists[idx+1]) + ' & ' + str("{0:.2f}".format(diff_value)) + '\\\\'
 #create_cid_name_map()
 #create_pid_name_map()
 all_mean()
-#res = kendall_tau_matrix()
+res, values = kendall_tau_matrix()
+calc_calues(values)
 #print_kendall_tau_matrix(res)
+
 
 
 
