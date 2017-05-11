@@ -19,25 +19,6 @@ def get_error_data(error_column,user_id=None):
     return data
 
 
-def get_rank_user(columns):
-    data = pd.DataFrame()
-    c_ids = get_CONTEST_IDS()
-    for c_id in c_ids:
-        print c_id
-        path = os.path.join('../..', 'GCJ-backup', c_id+'.csv')
-        df = pd.read_csv(path)
-        try:
-            df = df[columns]
-            df['contest_id'] = c_id
-            data = data.append(df)
-        except KeyError:
-            #df = df['language']
-            #size = len(df.index)
-            #for c in columns:
-            #df[c] = ['-']*size
-            print 'skiped: ' + p_id
-    return data
-
 def plot_error(error_column):
     data = get_error_data(error_column)
     for x,y in data.groupby(['language', error_column],as_index = False):
