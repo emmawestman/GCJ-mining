@@ -14,18 +14,32 @@ LANGUAGE = get_LANGUAGE()
 
 # creates on row with prob_id, langage, user, blank, comment, code
 def cloc_file(prob_id, lang, user) :
-    path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user))
-    print path
-    cmd = ['cloc ' + path ]
+    user_path  = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user))
+    print user_path
+    all_files = os.listdir(user_path)
+    if len(all_files)>1:
+        cmd = ['cloc ' + user_path ]
+    else:
+        file_name = all_files[0]
+        if " " in file_name :
+            without_blanks = file_name.split()
+            new_name="".join(without_blanks)
+            os.rename(os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user,file_name)),  os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user,new_name)))
+            file_name = new_name
+        fil = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + prob_id, lang, user,file_name))
+        cmd = ["cat " + fil + " |tr \"\r\" \"\n\"|" + "cloc --stdin-name=" + fil + " -" ]
+    print cmd
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, errors = p.communicate()
+    print output
+    print errors
     data = [int(s) for s in output.split() if s.isdigit()]
     if len(data) != 3 :
         result =  [str(data[-3]), str(data[-2]), str(data[-1])]
-        print result
     else :
         result = ['-', '-', '-']
-        print result
+
+    print result
     return result
 
 # creates a file containing rows with the format describen in cloc_problem
@@ -40,8 +54,8 @@ def cloc_problem() :
     for user in users :
         user_dict = dict[user]
         lang = user_dict['language']
-        if lang == 'Java' :
-            results = (cloc_file(p_id, 'java', user))
+        if lang == 'C++' :
+            results = (cloc_file(p_id, 'C++', user))
             # update user dict
             user_dict = dict[user]
             user_dict['cloc'] = results[2]
