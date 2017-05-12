@@ -1,10 +1,12 @@
 import scipy.stats
 import numpy
 from stats_help import *
+import matplotlib.pyplot as plt
+
 
 def VarghaDelaney(ax, ay):
     #ax, ay = numpy.array(x), numpy.array(y)
-    Uy, p = scipy.stats.mannwhitneyu(ax, ay, alternative = 'two_sided')
+    Uy, p = scipy.stats.mannwhitneyu(ax, ay, alternative = 'two-sided')
     nx, ny = ax.size, ay.size
     Ux = nx*ny - Uy
     # rank sum for x
@@ -35,15 +37,20 @@ def compareTraits(dataframe,column):
 def compareRanks():
     rank_user_data = get_rank_user()
     rank_user_data = rank_user_data.apply(pandas.to_numeric, errors='ignore')
-    language_two = rank_user_data.loc[rank_user_data['language'] == 'Java']
-    print "Java",language_two
-    #language_two = filter_dummyvalues(data = language_two ,error_column = column)
-    language_one = rank_user_data.loc[rank_user_data['language'] == 'C++']
-    print "C++",language_one
-    x = language_one['rank'].values
-    y = language_two['rank'].values
-    print "VD rankcomp C++,Java",VarghaDelaney(ax = x, ay = y)
-    print "VD rankcomp Java,C++",VarghaDelaney(ax = y, ay = x)
+    print compareTraits(rank_user_data,'rank')
 
+def plot_filewriting_time():
+    dataframe = get_all_data(['language','system_time','user_id','nbr_file_out'])
+    dataframe = dataframe.loc[dataframe['system_time'] != '-']
+    dataframe = dataframe.apply(pandas.to_numeric, errors='ignore')
+    dataframe = dataframe.loc[dataframe['system_time'] != 0]
+    dataframe = dataframe.loc[dataframe['system_time'] > 0.5]
+    dataframe = dataframe.loc[dataframe['language'] == 'Java']
+    dataframe = dataframe.loc[dataframe['nbr_file_out'] > 64]
+    print dataframe
+    dataframe.boxplot(by='language')
+    plt.title("File writing " )
+    plt.suptitle("")
+    plt.show()
 
-compareRanks()
+plot_filewriting_time()
