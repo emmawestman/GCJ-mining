@@ -120,6 +120,12 @@ def filter_dummyvalues(data,error_column):
     data = data.apply(pandas.to_numeric, errors='ignore')
     return data
 
+def filter_exitcode(data):
+    data = data.loc[data['exit_code'] != '-']
+    data = data.apply(pandas.to_numeric, errors='ignore')
+    return data.loc[data['exit_code'] == 0]
+
+
 def get_rank_user():
     dict_cid_to_pid = read_csv_file_to_dict('cid_pid_map_new.csv')
     data = pd.DataFrame()
@@ -161,7 +167,7 @@ def get_all_data(columns) :
         df = pd.read_csv(path)
         try:
             df = df[columns]
-            df['problem_id'] = p_id
+            #df['problem_id'] = p_id
             data = data.append(df)
 
         except KeyError:
