@@ -1,10 +1,12 @@
 import scipy.stats
 import numpy
 from stats_help import *
+import matplotlib.pyplot as plt
+
 
 def VarghaDelaney(ax, ay):
     #ax, ay = numpy.array(x), numpy.array(y)
-    Uy, p = scipy.stats.mannwhitneyu(ax, ay, alternative = 'two_sided')
+    Uy, p = scipy.stats.mannwhitneyu(ax, ay, alternative = 'two-sided')
     nx, ny = ax.size, ay.size
     Ux = nx*ny - Uy
     # rank sum for x
@@ -20,7 +22,7 @@ def compareTraits(dataframe,column):
     languages = ['Java','Python','C++','C','C#']
     dict_of_results = {}
     for i in range (0,5):
-        for j in range (0,5):
+        for j in range (i+1,5):
             if(i!= j):
                 language_two = dataframe.loc[dataframe['language'] == languages[j]]
                 #language_two = filter_dummyvalues(data = language_two ,error_column = column)
@@ -29,21 +31,25 @@ def compareTraits(dataframe,column):
                 ax = language_one[column].values
                 ay = language_two[column].values
                 A_xy = VarghaDelaney(ay, ax)
-                print "VarghaDelaney " +  "language " + languages[i] + ", language " + languages[j] + " "+ str(A_xy)
+                print "VarghaDelaney " + column +  "language " + languages[i] + ", language " + languages[j] + " "+ str(A_xy)
     return dict_of_results
 
 def compareRanks():
     rank_user_data = get_rank_user()
     rank_user_data = rank_user_data.apply(pandas.to_numeric, errors='ignore')
-    language_two = rank_user_data.loc[rank_user_data['language'] == 'Java']
-    print "Java",language_two
-    #language_two = filter_dummyvalues(data = language_two ,error_column = column)
-    language_one = rank_user_data.loc[rank_user_data['language'] == 'C++']
-    print "C++",language_one
-    x = language_one['rank'].values
-    y = language_two['rank'].values
-    print "VD rankcomp C++,Java",VarghaDelaney(ax = x, ay = y)
-    print "VD rankcomp Java,C++",VarghaDelaney(ax = y, ay = x)
+    print compareTraits(rank_user_data,'rank')
 
+def compareCloc():
+    columns = ['language','cloc']
+    df = get_all_data(columns)
+    compareTraits(dataframe=df,column = 'cloc')
 
-compareRanks()
+def compareExe():
+    columns = ['language','exit_code','exe_size']
+    df = get_all_data(columns)
+    #df = filter_exitcode(data = df)
+    del df['exit_code']
+    print df
+
+#def compareEx
+compareExe()
