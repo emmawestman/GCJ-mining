@@ -136,7 +136,7 @@ def get_rank_user():
                 for x in ['0','1']:
                     path_to_csv = os.path.join('../..', 'GCJ-backup', p_id+ '_' +x+'.csv')
                     if os.path.isfile(path_to_csv):
-                        pid_df = pd.read_csv(path_to_csv)
+                        pid_df = pd.read_csv(path_to_csv).astype(str)
                         pid_df = pid_df[['language','user_id']]
                         pid_data = pid_data.append(pid_df)
                         print "pid_data", pid_data

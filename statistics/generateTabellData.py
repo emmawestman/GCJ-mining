@@ -9,26 +9,31 @@ def generateTabellData(column):
     columns = ['language','user_id',column]
     dataframe = get_all_data(columns)
     dataframe = dataframe.loc[dataframe[column] != '-']
+    # only for cloc remove 0 lines
+    #dataframe = dataframe.loc[dataframe[column] != '0']
+    #dataframe = dataframe.loc[dataframe[column] == '1']
+    print dataframe
     dataframe = dataframe.apply(pandas.to_numeric, errors='ignore')
-    shadowMin = 0
-    shadowMed = 0
+    shadowMin = []
+    shadowMed = []
     shadowMean = 0
-    shadowMax = 0
+    shadowMax = []
     shadowSum = 0
     for language,groupedFrame in dataframe.groupby('language'):
-        print groupedFrame.loc[groupedFrame[column]<5]
-        #minVal = groupedFrame[column].min()
-        #medianVal = groupedFrame[column].median()
-        #meanVal = groupedFrame[column].mean()
-        #maxVal = groupedFrame[column].max()
-        #sumVal = groupedFrame[column].sum()
-        #shadowMin += minVal
-        #shadowMax += maxVal
-        #shadowSum += sumVal
-        #shadowMean+= meanVal
-        #shadowMed += medianVal
-        #print language + ' & '+ str(minVal) + ' & '+ str(int(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
-    #print ' & '+ str(shadowMin) + ' & '+  str(int(shadowMed)) + ' & '+ "%.2f" %  shadowMean + ' & '+str(shadowMax) + ' & '+ str(shadowSum)  +  ' \\\\'
+        #print groupedFrame.loc[groupedFrame[column]<5]
+        minVal = groupedFrame[column].min()
+        medianVal = groupedFrame[column].median()
+        meanVal = groupedFrame[column].mean()
+        maxVal = groupedFrame[column].max()
+        sumVal = groupedFrame[column].sum()
+        shadowMin.append(minVal)
+        shadowMax.append(maxVal)
+        shadowSum += sumVal
+        shadowMean += meanVal
+        shadowMed.append(medianVal)
+        print language + ' & '+ str(minVal) + ' & '+ str(int(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
+    shadowMed.sort()
+    print '\\midrule'
+    print 'Overall & '+ str(min(shadowMin)) + ' & '+  str(shadowMed[2]) + ' & '+ "%.2f" %  (shadowMean/5.0) + ' & '+str(max(shadowMax)) + ' & '+ str(shadowSum)  +  ' \\\\'
 
-
-generateTabellData('cloc')
+generateTabellData('cloc')  
