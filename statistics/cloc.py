@@ -44,23 +44,22 @@ def cloc_file(prob_id, lang, user) :
 
 # creates a file containing rows with the format describen in cloc_problem
 def cloc_problem() :
-    problem = sys.argv[1]
-    size = sys.argv[2]
+    problem = sys.argv[3]
+    size = sys.argv[4]
+    lang = sys.argv[1]
+    user = sys.argv[2]
     p_id = problem + '_' + size
     print 'CLOC for ' + str(p_id)
     dict = read_csv_file(str(p_id) + '.csv')
-    #print dict
-    users = dict.keys()
-    for user in users :
-        user_dict = dict[user]
-        lang = user_dict['language']
-        if lang == 'C++' :
-            results = (cloc_file(p_id, 'C++', user))
-            # update user dict
-            user_dict = dict[user]
-            user_dict['cloc'] = results[2]
-            user_dict['blanks'] = results[0]
-            user_dict['comments'] = results[1]
+  
+    results = (cloc_file(p_id, lang, user))
+    if results[2] == 0 :
+        results[2] = '-'
+    # update user dict
+    user_dict = dict[user]
+    user_dict['cloc'] = results[2]
+    user_dict['blanks'] = results[0]
+    user_dict['comments'] = results[1]
     # write to dict to file
     write_to_csv_file(str(p_id) + '.csv', dict)
 
