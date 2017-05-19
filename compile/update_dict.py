@@ -23,6 +23,10 @@ def set_compile_error_msg(user_dict, msg):
 def set_run_error_msg(user_dict, msg):
     if len(msg) == 0 :
         msg = '-'
+    else :
+        lines = msg.split('\n')
+        for idx,l in enumerate(lines) :
+            print 'Line ' + idx, l
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :
