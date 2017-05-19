@@ -18,6 +18,8 @@ def general_box_plot_problem(p_id, y_label, column) :
     try:
         data = df[['language', column]].astype(str)
         data = data.loc[data[column] != '-']
+        # only for cloc
+        #data = data.loc[data[column] != '0']
         data = data.apply(pd.to_numeric, errors='ignore')
         try:
             box = data.boxplot(by='language', showfliers=False)
@@ -56,6 +58,32 @@ def all_problem_by_problem() :
             print 'BOX PLOT FOR: ' + c
             general_box_plot_problem(p_id, ylabels[idx], c)
 
+def sys_user_time_plot(save_to_filename, y_label, title) :
+    data = get_all_data(['user_time', 'system_time', 'language'])
+    data = data.loc[data['system_time'] != '-']
+    data = data.apply(pd.to_numeric, errors='ignore')
+    tot_time_df = pd.DataFrame()
+    tot_time_df['language'] = data['language']
+    tot_time_df['tot_time'] = data['system_time'] + data['user_time']
+    
+    box = tot_time_df.boxplot(by='language', showfliers=False)
+    counts = tot_time_df.groupby('language').count()
+    
+    nbrC = counts.iloc[0]['tot_time']
+    nbrCsharp = counts.iloc[1]['tot_time']
+    nbrCplus = counts.iloc[2]['tot_time']
+    nbrJava = counts.iloc[3]['tot_time']
+    nbrPython = counts.iloc[4]['tot_time']
+    plt.ylabel(y_label)
+    x_labels = ['C, '+str(nbrC), 'C#, '+str(nbrCsharp), 'C++, '+str(nbrCplus), 'Java, '+str(nbrJava), 'Python, '+str(nbrPython)]
+    box.set_xticklabels(x_labels, rotation=0)
+    plt.xlabel("Language, Number of Files")
+    plt.title(title)
+    plt.suptitle('')
+    #plt.show()
+    plt.tight_layout()
+    fig = box.get_figure()
+    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', save_to_filename))
 
 
 # total plot for all problems
@@ -93,9 +121,11 @@ def do_all_total() :
     general_box_plot('max_RAM', 'box_plot_memory_total.png', 'Memory footprint (Bytes)', 'Memory footprint, all competitions')
     general_box_plot('wall_clock', 'box_plot_wall_cloc_total.png', 'Wall Clock (s)', 'Wall Clock, all competitions' )
     general_box_plot('user_time', 'box_plot_user_time_total.png', 'User Time (s)', 'User Time, all competitions' )
+    sys_user_time_plot('box_plot_tot_time_total.png', 'User + System Time (s)', 'User + System Time, all competitions')
 
 #general_box_plot_problem('5648941810974720_0', 'max_RAM', 'max_RAM')
 
 do_all_total()
-all_problem_by_problem()
+#all_problem_by_problem()
+
 
