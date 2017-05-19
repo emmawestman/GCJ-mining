@@ -1,10 +1,7 @@
      
 
-python cloc.py 'betaveros' 5634697451274240 0
-python cloc.py 'betaveros' 5634697451274240 1
-python cloc.py 'neizod' 5640146288377856 0
-python cloc.py 'neizod' 5640146288377856 1
-python cloc.py 'kusano' 1483485 0
-python cloc.py 'neizod' 1483485 0
-python cloc.py 'kusano' 1483488 0
-python cloc.py 'kusano' 1483488 1
+
+python cloc.py 'iloveab' 5769900270288896 0
+python cloc.py 'iloveab' 5662291475300352 0
+python cloc.py 'Poor' 5646553574277120 1
+python cloc.py 'proneetv' 2751486 1

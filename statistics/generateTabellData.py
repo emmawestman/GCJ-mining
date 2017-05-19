@@ -9,11 +9,10 @@ def generateTabellData(column):
     columns = ['language','user_id',column]
     dataframe = get_all_data(columns)
     dataframe = dataframe.loc[dataframe[column] != '-']
-    # only for cloc remove 0 lines
-    #dataframe = dataframe.loc[dataframe[column] != '0']
-    #dataframe = dataframe.loc[dataframe[column] == '1']
-    print dataframe
     dataframe = dataframe.apply(pandas.to_numeric, errors='ignore')
+    #dataframe = dataframe.loc[dataframe[column] < 10]
+    #dataframe = dataframe.loc[dataframe['language'] != 'Python']
+    #print dataframe
     shadowMin = []
     shadowMed = []
     shadowMean = 0

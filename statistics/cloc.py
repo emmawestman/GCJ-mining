@@ -50,8 +50,10 @@ def cloc_problem() :
     p_id = problem + '_' + size
     print 'CLOC for ' + str(p_id)
     dict = read_csv_file(str(p_id) + '.csv')
-    results = (cloc_file(p_id, 'Python', user))
+    results = (cloc_file(p_id, 'C++', user))
     # update user dict
+    if results[2] == '1' :
+        results[2] = '-'
     user_dict = dict[user]
     user_dict['cloc'] = results[2]
     user_dict['blanks'] = results[0]

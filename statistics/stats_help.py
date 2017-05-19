@@ -167,7 +167,7 @@ def get_all_data(columns) :
         df = pd.read_csv(path)
         try:
             df = df[columns]
-            #df['problem_id'] = p_id
+            df['problem_id'] = p_id
             data = data.append(df)
 
         except KeyError:

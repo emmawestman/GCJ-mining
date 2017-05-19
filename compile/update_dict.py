@@ -15,6 +15,16 @@ def set_compile_exitcode(user_dict,exit_code) :
 def set_compiler_version(user_dict,version) :
     set_column_in_user_dict(user_dict,'compiler_version',version)
 
+def set_compile_error_msg(user_dict, msg):
+    if len(msg) == 0 :
+        msg = '-'
+    set_column_in_user_dict(user_dict,'compile_error_msg', msg)
+
+def set_run_error_msg(user_dict, msg):
+    if len(msg) == 0 :
+        msg = '-'
+    set_column_in_user_dict(user_dict,'run_error_msg', msg)
+
 def get_mesurments(errors) :
     regex = "\,\d?\.?\d*"
     res = []
