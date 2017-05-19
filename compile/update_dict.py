@@ -18,12 +18,16 @@ def set_compiler_version(user_dict,version) :
 def set_compile_error_msg(user_dict, msg):
     if len(msg) == 0 :
         msg = '-'
+    if '\t' in msg :
+         msg = msg.replace('\t', ' ')
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
 def set_run_error_msg(user_dict, msg, exit_code):
     if str(exit_code) == '-15' :
         msg = 'Timeout'
     else :
+        if '\t' in msg :
+            msg = msg.replace('\t', ' ')
         lines = msg.split('\n')
         if len(lines) >= 2 :
             lines = lines[1:-2]
