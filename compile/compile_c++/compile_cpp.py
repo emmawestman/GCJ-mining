@@ -25,7 +25,6 @@ def compile_cpp(p_id, dict):
                 print 'compiling c++ file for: ' + user + ' in problem ' + p_id
                 b, exit_code, errors = compile_cpp_command(f, user_path, user_dict)
                 # update dictonary
-                print 'FINAL EXIT CODE: ' + str(exit_code)
                 set_run_mesurments('-1', '', user_dict)
 
 def compile_cpp_command(f, user_path, user_dict) :
@@ -54,6 +53,7 @@ def do_cpp_command(f, user_path, user_dict) :
     finally:
            set_compile_exitcode(user_dict,exit_code)
     set_compiler_version(user_dict,'-')
+    set_compile_error_msg(user_dict, errors)
     set_exe_size(user_dict, b)
     return b, exit_code, errors
 
@@ -71,6 +71,7 @@ def run_cpp(p_id, dict):
             exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
             print 'FINAL EXIT CODE: ' + str(exit_code)
             # update dictonary with run mesurments
+            set_run_error_msg(user_dict, errors, exit_code)
             set_run_mesurments(exit_code, errors, user_dict)
             # clean dir
             clean_home_dir()

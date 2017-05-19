@@ -20,16 +20,19 @@ def set_compile_error_msg(user_dict, msg):
         msg = '-'
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
-def set_run_error_msg(user_dict, msg):
-    lines = msg.split('\n')
-    if len(lines) >= 2 :
-        lines = lines[:-2]
-        for idx,l in enumerate(lines) :
-            print 'Line ' + str(idx), l
-        msg = (' ').join(lines)
-        if len(msg) == 0 :
-            msg = '-'
-        print msg
+def set_run_error_msg(user_dict, msg, exit_code):
+    if str(exit_code) == '-15' :
+        msg = 'Timeout'
+    else :
+        lines = msg.split('\n')
+        if len(lines) >= 2 :
+            lines = lines[1:-2]
+            for idx,l in enumerate(lines) :
+                print 'Line ' + str(idx), l
+            msg = (' ').join(lines)
+            if len(msg) == 0 :
+                msg = '-'
+            print msg
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :

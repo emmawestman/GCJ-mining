@@ -37,8 +37,14 @@ def execute_c_command(exe_path, f, user_path, input_path, user_dict):
     cmd = exe_path + ' < ' + input_path
     exit_code, errors = full_exe_cmd(cmd)
     if 'iostream fatal error' in errors :
+        # re-compile
         compile_with_gplus_cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + exe_path
+        exit_code, errors = run_process(compile_with_gplus_cmd)
+        set_copile_error_msg(user_dict, errors)
+        set_compiler_version(user_dict, 'g++ -std=c++0x')
+        # re-run
         exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' < ' + input_path)
+
     if 'Segmentation fault' in errors :
         exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' ' + input_path)
 
@@ -95,5 +101,5 @@ def run_c(p_id, dict):
             exit_code,errors = execute_c_command(exe_path, f, user_path, input_path, user_dict)
 
             # update dictonary with run mesurments
-            set_run_error_msg(user_dict, errors)
+            set_run_error_msg(user_dict, errors, exit_code)
             set_run_mesurments(exit_code, errors, user_dict)
