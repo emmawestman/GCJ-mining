@@ -96,4 +96,5 @@ def run_c(p_id, dict):
 
             # update dictonary with run mesurments
             #set_run_error_msg(user_dict, errors)
+            print errors
             set_run_mesurments(exit_code, errors, user_dict)
