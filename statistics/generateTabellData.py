@@ -10,9 +10,6 @@ def generateTabellData(column):
     dataframe = get_all_data(columns)
     dataframe = dataframe.loc[dataframe[column] != '-']
     dataframe = dataframe.apply(pandas.to_numeric, errors='ignore')
-    #dataframe = dataframe.loc[dataframe[column] < 10]
-    #dataframe = dataframe.loc[dataframe['language'] != 'Python']
-    #print dataframe
     shadowMin = []
     shadowMed = []
     shadowMean = 0
@@ -36,3 +33,4 @@ def generateTabellData(column):
     print 'Overall & '+ str(min(shadowMin)) + ' & '+  str(shadowMed[2]) + ' & '+ "%.2f" %  (shadowMean/5.0) + ' & '+str(max(shadowMax)) + ' & '+ str(shadowSum)  +  ' \\\\'
 
 generateTabellData('cloc')  
+

@@ -43,7 +43,11 @@ def create_cid_name_map() :
     df = pandas.DataFrame(just_names, columns=['name'], index=cids)
     df.index.name = 'c_id'
     print df
-    df.to_csv(filename)
+    return df
+    #df.to_csv(filename)
+
+def create_pid_to_cid_map():
+    return read_csv_file_to_dict('cid_pid_map.csv')
 
 def create_pid_name_map() :
     cids = CIDS_timeline_order()
@@ -120,10 +124,6 @@ def filter_dummyvalues(data,error_column):
     data = data.apply(pandas.to_numeric, errors='ignore')
     return data
 
-def filter_exitcode(data):
-    data = data.loc[data['exit_code'] != '-']
-    data = data.apply(pandas.to_numeric, errors='ignore')
-    return data.loc[data['exit_code'] == 0]
 
 
 def get_rank_user():
@@ -131,22 +131,25 @@ def get_rank_user():
     data = pd.DataFrame()
     c_ids = get_CONTEST_IDS()
     for c_id in c_ids:
-        print c_id
         path = os.path.join('../..', 'GCJ-backup', c_id+'.csv')
         df = pd.read_csv(path)
+        df['c_id'] = c_id
+        print df.keys()
 
         try:
-            df = df[['rank','user_id']]
+            df = df[['rank','user_id','c_id']]
             pid_data = pd.DataFrame()
             for p_id in dict_cid_to_pid[c_id]:
                 for x in ['0','1']:
                     path_to_csv = os.path.join('../..', 'GCJ-backup', p_id+ '_' +x+'.csv')
                     if os.path.isfile(path_to_csv):
-                        pid_df = pd.read_csv(path_to_csv).astype(str)
+                        pid_df = pd.read_csv(path_to_csv)
                         pid_df = pid_df[['language','user_id']]
+                        pid_df['p_id'] = p_id+x
                         pid_data = pid_data.append(pid_df)
-                        print "pid_data", pid_data
+
             new_df = pandas.merge(df,pid_data, on ='user_id')
+
             data = data.append(new_df)
         except KeyError:
             #df = df['language']
