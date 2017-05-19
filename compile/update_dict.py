@@ -25,10 +25,12 @@ def set_run_error_msg(user_dict, msg):
         msg = '-'
     else :
         lines = msg.split('\n')
-        if len(lines) > 2 :
-            lines = [:-2]
-        for idx,l in enumerate(lines) :
-            print 'Line ' + str(idx), l
+        if len(lines) >= 2 :
+            lines = lines[:-2]
+            for idx,l in enumerate(lines) :
+                print 'Line ' + str(idx), l
+            msg = (' ').join(lines)
+            print msg
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :
