@@ -25,21 +25,24 @@ def add_error_msg_column_csv() :
 
 def change_file_names():
 	path = os.path.join(os.getcwd(), '../../datacollection')
-	solutions_folders = os.listdir(path)[5:]
+	solutions_folders = os.listdir(path)[4:]
 	for sf in solutions_folders :
 		lang_path = os.path.join(path, sf)
 		langs = os.listdir(lang_path)
 		for lf in langs :
 			user_path = os.path.join(lang_path, lf)
 			user_dirs = os.listdir(user_path)
-			for user in user_dict :
+			for user in user_dirs :
 				file_path = os.path.join(user_path, user)
 				files = os.listdir(file_path)
 				for f in files:
 					if ' '  in f:
+						print f
 						new_f = f.replace(' ', '_')
-						src = file_path = os.path.join(file_path, f)
-						dst = file_path = os.path.join(file_path, new_f)
+						src = os.path.join(file_path, f)
+						dst = os.path.join(file_path, new_f)
+						print src
+						print dst
 						os.rename(src, dst)
 						
 
