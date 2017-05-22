@@ -20,6 +20,8 @@ def remove_unwanted_chars(msg):
          msg = msg.replace('\t', ' ')
     if '^' in msg :
          msg = msg.replace('^', ' ')
+    if ',' in msg :
+         msg = msg.replace(';', ' ')
     return msg
 
 
