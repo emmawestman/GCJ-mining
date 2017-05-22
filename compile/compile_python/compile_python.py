@@ -31,7 +31,7 @@ def run_python_files(p_id, dict):
             exit_code, errors = run_python_2x(path_file, input_path,p_id, user_path, user_dict)
             print 'FINAL EXIT CODE: ' + str(exit_code)
             # update dict compiled
-            set_run_error_msg(user_dict, errors, exit_code)
+            set_run_error_msg(user_dict, errors, exit_code, 'Python')
             set_run_mesurments(exit_code, errors, user_dict)
 
 

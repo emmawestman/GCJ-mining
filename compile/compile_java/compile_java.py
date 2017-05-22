@@ -108,5 +108,5 @@ def run_java_files(p_id,dict) :
             error_code,errors = run_java_file(userPATH,class_name,p_id, user_dict)
             print 'FINAL ERROR CODE: ' + str(error_code)
             print errors
-            set_run_error_msg(user_dict, errors, error_code)
+            set_run_error_msg(user_dict, errors, error_code, 'Java')
             set_run_mesurments(error_code,errors,user_dict)

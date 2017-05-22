@@ -130,7 +130,7 @@ def run_csharp(p_id, dict):
         else :
             exit_code = '-1'
             errors = ''
-        set_run_error_msg(user_dict, errors, exit_code)
+        set_run_error_msg(user_dict, errors, exit_code, 'C#')
         set_run_mesurments(exit_code, errors, user_dict)
 
 

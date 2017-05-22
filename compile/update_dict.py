@@ -15,28 +15,56 @@ def set_compile_exitcode(user_dict,exit_code) :
 def set_compiler_version(user_dict,version) :
     set_column_in_user_dict(user_dict,'compiler_version',version)
 
-def set_compile_error_msg(user_dict, msg):
-    if len(msg) == 0 :
-        msg = '-'
+def remove_unwanted_chars(msg):
     if '\t' in msg :
          msg = msg.replace('\t', ' ')
+    if '^' in msg :
+         msg = msg.replace('^', ' ')
+    return msg
+
+
+def format_error_msg(msg) :
+    msg = remove_unwanted_chars(msg)
+    if  'error' in msg :
+         index = msg.find('error')
+         index = msg[index:].find(':')
+         msg = msg[index:]
+    if len(msg) > 80 :
+        msg = msg[0:80]
+    return msg
+
+
+def format_run_msg(msg, lang) :
+    if lang == 'Java':
+        index1 = msg.find('java')
+        index2 = msg[index1:].find(' ')
+        msg = msg[index1:index2]
+    elif lang == 'Python':
+        msg = format_error_msg(msg)
+    elif lang == 'C#':
+        index1 = msg.find(':')
+        index2 = msg[index1:].find(':')
+        msg = msg[index1:index2]
+    else :
+        index = msg.find('error')
+        msg = msg[index:]
+    if len(msg) > 80 :
+        msg = msg[0:80]
+    return msg
+
+
+def set_compile_error_msg(user_dict, msg, lang):
+    msg = format_error_msg(msg)
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
 def set_run_error_msg(user_dict, msg, exit_code):
     if str(exit_code) == '-15' :
         msg = 'Timeout'
     else :
-        if '\t' in msg :
-            msg = msg.replace('\t', ' ')
-        lines = msg.split('\n')
-        if len(lines) >= 2 :
-            lines = lines[1:-2]
-            for idx,l in enumerate(lines) :
-                print 'Line ' + str(idx), l
-            msg = (' ').join(lines)
-            if len(msg) == 0 :
-                msg = '-'
-            print msg
+        if len(msg) == 0 :
+             msg = '-'
+        else :
+            format_run_msg(msg, lang)
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :

@@ -71,7 +71,7 @@ def run_cpp(p_id, dict):
             exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
             print 'FINAL EXIT CODE: ' + str(exit_code)
             # update dictonary with run mesurments
-            set_run_error_msg(user_dict, errors, exit_code)
+            set_run_error_msg(user_dict, errors, exit_code, 'C++')
             set_run_mesurments(exit_code, errors, user_dict)
             # clean dir
             clean_home_dir()
