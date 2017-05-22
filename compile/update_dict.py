@@ -31,6 +31,7 @@ def format_error_msg(msg) :
          index = msg.find('error')
          index = msg[index:].find(':')
          msg = msg[index:]
+         print 'Error found: ' + msg
     if len(msg) > 80 :
         msg = msg[0:80]
     if len(msg) == 0 :
@@ -63,6 +64,7 @@ def format_run_msg(msg, lang) :
 
 def set_compile_error_msg(user_dict, msg):
     msg = format_error_msg(msg)
+    print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
 def set_run_error_msg(user_dict, msg, exit_code, lang):
@@ -73,6 +75,7 @@ def set_run_error_msg(user_dict, msg, exit_code, lang):
              msg = '-'
         else :
             msg = format_run_msg(msg, lang)
+    print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :
