@@ -53,11 +53,11 @@ def format_run_msg(msg, lang) :
     return msg
 
 
-def set_compile_error_msg(user_dict, msg, lang):
+def set_compile_error_msg(user_dict, msg):
     msg = format_error_msg(msg)
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
-def set_run_error_msg(user_dict, msg, exit_code):
+def set_run_error_msg(user_dict, msg, exit_code, lang):
     if str(exit_code) == '-15' :
         msg = 'Timeout'
     else :
