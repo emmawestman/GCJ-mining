@@ -49,13 +49,13 @@ def format_run_msg(msg, lang) :
         msg = msg[index1:index2]
     elif lang == 'Python':
         msg = format_error_msg(msg)
-    elif lang == 'C#':
+    else
         index1 = msg.find(':')
         index2 = msg[index1+1:].find(':')
         msg = msg[index1:index1+index2+1]
-    else :
-        index = msg.find('error')
-        msg = msg[index:]
+#    else :
+#        index = msg.find('error')
+#        msg = msg[index:]
     if len(msg) > 80 :
         msg = msg[0:80]
     return msg
