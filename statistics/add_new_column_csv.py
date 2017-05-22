@@ -38,9 +38,9 @@ def change_file_names():
 				for f in files:
 					if ' '  in f:
 						print f
-						new_f = f.replace(' ', '_')
+						file_ending = f.split('.')
 						src = os.path.join(file_path, f)
-						dst = os.path.join(file_path, new_f)
+						dst = os.path.join(file_path, solution+filename)
 						print src
 						print dst
 						os.rename(src, dst)
