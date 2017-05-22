@@ -40,30 +40,25 @@ def format_error_msg(msg) :
 
 def format_run_msg(msg, lang) :
     # remove last two lines, cotains mesured data
-    if len(msg) == 0 :
-        return '-'
+    lines = msg.split('\n')
+    lines = lines[:-2]
+    msg = ' '.join(lines)
+    if lang == 'Java':
+        index1 = msg.find('java')
+        index2 = msg[index1:].find(' ')
+        msg = msg[index1:index2]
+    elif lang == 'Python':
+        msg = format_error_msg(msg)
+    elif lang == 'C#':
+        index1 = msg.find(':')
+        index2 = msg[index1:].find(':')
+        msg = msg[index1:index2]
     else :
-        lines = msg.split('\n')
-        lines = lines[:-2]
-        msg = ' '.join(lines)
-        if lang == 'Java':
-            index1 = msg.find('java')
-            index2 = msg[index1:].find(' ')
-            msg = msg[index1:index2]
-        elif lang == 'Python':
-            msg = format_error_msg(msg)
-        elif lang == 'C#':
-            index1 = msg.find(':')
-            index2 = msg[index1:].find(':')
-            msg = msg[index1:index2]
-        else :
-            index = msg.find('error')
-            msg = msg[index:]
-        if len(msg) > 80 :
-            msg = msg[0:80]
-        if len(msg) == 0 :
-            msg = '-'
-        return msg
+        index = msg.find('error')
+        msg = msg[index:]
+    if len(msg) > 80 :
+        msg = msg[0:80]
+    return msg
 
 
 def set_compile_error_msg(user_dict, msg):
@@ -77,7 +72,7 @@ def set_run_error_msg(user_dict, msg, exit_code, lang):
         if len(msg) == 0 :
              msg = '-'
         else :
-            format_run_msg(msg, lang)
+            msg = format_run_msg(msg, lang)
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
 def get_mesurments(errors) :
