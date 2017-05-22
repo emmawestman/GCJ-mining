@@ -52,7 +52,7 @@ def compile_language(language, p_id, dict):
         compile_csharp(p_id, dict)
         run_csharp(p_id,dict)
     elif language == "Python":
-        compile_python_files(p_id, dict)
+        #compile_python_files(p_id, dict)
         run_python_files(p_id,dict)
     else:
         print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
@@ -71,12 +71,5 @@ def compile_all():
     compile_language(l, p_id, dict)
     clean_home_dir()
     write_to_csv_file(filename, dict)
-    
+
 compile_all()
-
-
-    
-
-
-
-
