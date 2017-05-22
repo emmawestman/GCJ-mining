@@ -70,10 +70,10 @@ def set_run_error_msg(user_dict, msg, exit_code, lang):
     if str(exit_code) == '-15' :
         msg = 'Timeout'
     else :
+        msg = format_run_msg(msg, lang)
         if len(msg) == 0 :
-             msg = '-'
-        else :
-            msg = format_run_msg(msg, lang)
+            msg = '-'
+            
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'run_error_msg', msg)
 
