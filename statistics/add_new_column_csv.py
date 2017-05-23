@@ -40,7 +40,7 @@ def change_file_names():
 						print f
 						file_ending = f.split('.')
 						src = os.path.join(file_path, f)
-						dst = os.path.join(file_path, solution+filename)
+						dst = os.path.join(file_path, solution+file_ending)
 						print src
 						print dst
 						os.rename(src, dst)
