@@ -38,7 +38,7 @@ def change_file_names():
 				for f in files:
 					if ' '  in f:
 						print 'changing name of: ' + f
-						file_ending = f.split('.')
+						file_ending = f.split('.')[1]
 						src = os.path.join(file_path, f)
 						dst = os.path.join(file_path, 'solution.'+file_ending)
 						print src
