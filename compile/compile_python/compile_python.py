@@ -49,7 +49,7 @@ def compile_python_files(p_id, dict):
             exit_code, errors = compile_python(user_path, f, user_dict)
             # update dict compiled
             set_compile_exitcode(user_dict,exit_code)
-            set_compile_error_msg(user_dict, errors)
+            set_compile_error_msg(user_dict, errors, 'Python')
             set_run_mesurments('-1', '', user_dict)
 
 def compile_python(user_path, f, user_dict):

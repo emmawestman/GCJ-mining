@@ -25,9 +25,28 @@ def remove_unwanted_chars(msg):
         msg = msg.replace(';', ' ')
     return msg
 
+def cpp_formating_compile(msg) :
+    if 'expected primary-expression' in msg :
+        return 'expected primary-expression'
+    elif 'redeclaration' in msg :
+        return'redeclaration'
+    elif 'redeclared' in msg :
+        return 'redeclared'
+    elif 'No such file' in msg :
+        return 'No such file or directory'
+    elif 'not declared' in msg :
+        return 'not declared'
+    elif 'reference' in msg and 'ambiguous' in msg :
+        return 'reference is ambiguous'
+    else :
+        return 'Unknown error'
 
-def format_error_msg(msg) :
+def format_error_msg(msg, lang) :
+    if lang == 'C++' :
+        return cpp_formating_compile(msg)
     msg = remove_unwanted_chars(msg)
+    if '\n' in msg :
+        msg = msg.replace('\n', ' ')
     if  'error' in msg :
          index1 = msg.find('error')
          index2 = msg[index1:].find(':')
@@ -38,6 +57,17 @@ def format_error_msg(msg) :
         msg = '-'
     return msg
 
+def cpp_formating_run(msg) :
+    if 'Segmentation fault' in msg :
+        return 'Segmentation fault'
+    elif 'Assertion' in msg:
+        return 'Assertion failed'
+    elif 'underflow error reading the file' in msg :
+        return 'underflow error reading the file'
+    elif 'invalid pointer' in msg :
+        return 'invalid pointer'
+    else :
+        return 'Unknown error'
 
 def format_run_msg(msg, lang) :
     # remove last two lines, cotains mesured data
@@ -50,6 +80,8 @@ def format_run_msg(msg, lang) :
         msg = msg[index1:index2]
     elif lang == 'Python':
         msg = format_error_msg(msg)
+    elif lang == 'C++':
+        msg = cpp_formating_run(msg)
     else :
         index1 = msg.find(':')
         index2 = msg[index1+1:].find(':')
@@ -62,14 +94,16 @@ def format_run_msg(msg, lang) :
     return msg
 
 
-def set_compile_error_msg(user_dict, msg):
-    msg = format_error_msg(msg)
+def set_compile_error_msg(user_dict, msg, lang):
+    msg = format_error_msg(msg, lang)
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
 def set_run_error_msg(user_dict, msg, exit_code, lang):
     if str(exit_code) == '-15' :
         msg = 'Timeout'
+    elif str(exit_code) == '127':
+        msg = 'Command not found'
     else :
         msg = format_run_msg(msg, lang)
         if len(msg) == 0 :

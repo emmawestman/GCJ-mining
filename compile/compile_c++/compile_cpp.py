@@ -53,7 +53,7 @@ def do_cpp_command(f, user_path, user_dict) :
     finally:
            set_compile_exitcode(user_dict,exit_code)
     set_compiler_version(user_dict,'-')
-    set_compile_error_msg(user_dict, errors)
+    set_compile_error_msg(user_dict, errors, 'C++')
     set_exe_size(user_dict, b)
     return b, exit_code, errors
 
