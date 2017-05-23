@@ -84,10 +84,12 @@ def java_format_compile(msg) :
         return 'Unknown error'
 
 def format_error_msg(msg, lang) :
-    if lang == 'C++' :
+    if lang == 'C++' or lang == 'C' :
         return cpp_formating_compile(msg)
     elif lang == 'Java' :
         return java_format_compile(msg)
+    elif lang == 'Python' :
+        return 'Pre compile error'
     else :
         msg = remove_unwanted_chars(msg)
         if '\n' in msg :
@@ -111,8 +113,16 @@ def cpp_formating_run(msg) :
         return 'underflow error reading the file'
     elif 'invalid pointer' in msg :
         return 'invalid pointer'
+    elif 'Usage' in msg :
+        return 'Usage'
+    elif 'Bad address' in msg :
+        return 'Bad address'
+    elif 'Assertion failed' in msg :
+        return 'Assertion failed'
+    elif 'Abort trap' in msg :
+        return 'Abort trap'
     else :
-        return 'Unknown error'
+        return 'Unknown'
 
 def format_run_msg(msg, lang) :
     # remove last two lines, cotains mesured data
