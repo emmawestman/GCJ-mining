@@ -28,7 +28,9 @@ def change_file_names():
 	sfs = os.listdir(path)
 	solutions_folders = []
 	for sf in sfs :
-		if not '.' in sf or (not sf == 'input'):
+		if not '.' in sf :
+			solutions_folders.append(sf)
+		if not sf == 'input':
 			solutions_folders.append(sf)
 	for sf in solutions_folders :
 		lang_path = os.path.join(path, sf)
