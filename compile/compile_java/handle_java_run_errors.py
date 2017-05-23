@@ -20,3 +20,7 @@ def rename_fileread_filewrite (file_path,input_path,root) :
     inregex = [ '(new Scanner\(new File\()\"?[\w+-]*\.?\w+\"?(\))','(new Scanner\(new File\()\"?[\w+\s]+\"?.?[\w]*\"?(\)\s?\))', '(new FileInputStream\(new File\()\"?[\w+-]*\.?\w+\"?(\)\))', '(FileInputStream\()\"?[\w:\\\\]*\w+\.?\w+\"?(\))', '(new FileReader\(new File\()\"?[\w+-]*\.?\w+\"?(\)\))','(new FileReader\(new File\()[\n\s]*\"?[/\w+]+.?\w+\"?(\)\))', '(new FileReader\s?\()\"?[\w+-]*\.?\w+\"?(\))','(new FileReader\(new File\()[\w+.\(\)\s]+\"?.?\w*?\"(\)\))','(new FileReader\(new File\().*(\)\))','(new FileReader\()[\"]?(?:[\w]\:)?(?:[\w+-]+)[\"]*\n?(?:.*)(?:[\"])(\))']
     new_input = '\"' +  input_path + '\"'
     handle_file_not_found(file_path,inregex,new_input)
+    out_regex = ['(new BufferedReader\()\"?[\w+]\"?[\w]*.?[\w]*\"?(\))']
+    open('output.txt', 'w').close()
+    new_out_put = '\"' + 'output.txt' + '\"'
+    handle_file_not_found(file_path,out_regex,new_input)
