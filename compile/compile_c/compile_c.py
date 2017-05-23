@@ -79,7 +79,7 @@ def compile_c(p_id, dict):
                 set_compiler_version(user_dict,'-')
 
                 exit_code,errors = compile_c_command(exe_path,os.path.join(user_path,f),user_dict)
-                set_compile_error_msg(user_dict, errors, 'C')
+                set_compile_error_msg(user_dict, errors, exit_code, 'C')
                 set_compile_exitcode(user_dict,exit_code)
                 set_run_mesurments('-1', '', user_dict)
 

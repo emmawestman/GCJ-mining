@@ -16,7 +16,7 @@ from constants import *
 def set_compile_mesurments(user_dict, b, exit_code, errors):
     set_exe_size(user_dict, b)
     set_compile_exitcode(user_dict,exit_code)
-    set_compile_error_msg(user_dict, errors, 'Java')
+    set_compile_error_msg(user_dict, errors, exit_code, 'Java')
 
 def run_java_file(root,class_name,p_id, user_dict):
     path_to_input = os.path.abspath(os.path.join(get_INPUT_PATH(), p_id + '.in'))

@@ -41,21 +41,40 @@ def cpp_formating_compile(msg) :
     else :
         return 'Unknown error'
 
+def java_format_compile(msg) :
+    if 'unmappable character for encoding UTF8' in msg :
+        return 'unmappable character for encoding UTF8'
+    elif 'not a statement' in msg :
+        return 'not a statement'
+    elif 'Syntax error' in msg :
+        return 'Syntax error'
+    elif 'package' in msg :
+        return 'package does not exist'
+    elif 'cannot find symbol' in msg :
+        return 'cannot find symbol'
+    elif '<identifier> expected' in msg :
+        msg = 'expected ;'
+    else :
+        return 'Unknown error'
+
 def format_error_msg(msg, lang) :
     if lang == 'C++' :
         return cpp_formating_compile(msg)
-    msg = remove_unwanted_chars(msg)
-    if '\n' in msg :
-        msg = msg.replace('\n', ' ')
-    if  'error' in msg :
-         index1 = msg.find('error')
-         index2 = msg[index1:].find(':')
-         msg = msg[index1+index2:]
-    if len(msg) > 80 :
-        msg = msg[0:80]
-    if len(msg) == 0 :
-        msg = '-'
-    return msg
+    elif lang == 'Java' :
+        return java_format_compile(msg)
+    else :
+        msg = remove_unwanted_chars(msg)
+        if '\n' in msg :
+            msg = msg.replace('\n', ' ')
+        if  'error' in msg :
+             index1 = msg.find('error')
+             index2 = msg[index1:].find(':')
+             msg = msg[index1+index2:]
+        if len(msg) > 80 :
+            msg = msg[0:80]
+        if len(msg) == 0 :
+            msg = '-'
+        return msg
 
 def cpp_formating_run(msg) :
     if 'Segmentation fault' in msg :
@@ -94,8 +113,11 @@ def format_run_msg(msg, lang) :
     return msg
 
 
-def set_compile_error_msg(user_dict, msg, lang):
-    msg = format_error_msg(msg, lang)
+def set_compile_error_msg(user_dict, msg, exit_code, lang):
+    if str(exit_code) == '0' :
+        msg = '-'
+    else:
+        msg = format_error_msg(msg, lang)
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
@@ -152,8 +174,6 @@ def set_run_mesurments(exit_code, errors, user_dict) :
     mesurments = get_mesurments(errors)
     return write_to_user_dict(user_dict, exit_code, mesurments)
 
-print '\": stdafx.h: No such file or directory \t\t\t\t \#include \"\"stdafx.h\"\" \n \"'
-print remove_unwanted_chars('\": stdafx.h: No such file or directory \t\t\t\t \#include \"\"stdafx.h\"\" \n \"')
 '''
 c_sharp_compile = '/home/useruser/datacollection/solutions_2453486_1/C#/Akira/Program.cs(4,22): error CS0234: The type or namespace name `Forms does not exist in the namespace `System.Windows. Are you missing `System.Windows.Forms assembly reference? /home/useruser/datacollection/solutions_2453486_1/C#/Akira/Form1.cs(4,14): error CS0234: The type or namespace name `Data does not exist in the namespace `System. Are you missing `System.Data assembly reference? /home/useruser/datacollection/solutions_2453486_1/C#/Akira/Form1.cs(8,22): error CS0234: The type or namespace name `Forms does not exist in the namespace `System.Windows. Are you missing `System.Windows.Forms assembly reference? /home/useruser/datacollection/solutions_2453486_1/C#/Akira/Form1.cs(12,34): error CS0246: The type or namespace name `Form could not be found. Are you missing an assembly reference?'
 c_sharp_run = 'Unhandled Exception: System.TypeInitializationException: An exception was thrown by the type initializer for codeJam2013QRnd.FileOPS ---> System.IO.FileNotFoundException: Could not find file /home/useruser/GCJ-mining/compile/C:\Users\dkulkarni1\Downloads\A-large.in. File name: /home/useruser/GCJ-mining/compile/C:\Users\dkulkarni1\Downloads\A-large.in at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare) at System.IO.File.OpenRead (System.String path) [0x00000] in <filename unknown>:0 at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) [0x00000] in <filename unknown>:0 at System.IO.StreamReader..ctor (System.String path) [0x00000] in <filename unknown>:0 at (wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string) at System.IO.File.OpenText (System.String path) [0x00000] in <filename unknown>:0 at System.IO.File.ReadAllLines (System.String path) [0x00000] in <filename unknown>:0 at codeJam2013QRnd.FileOPS..cctor () [0x00000] in <filename unknown>:0 --- End of inner exception stack trace --- at codeJam2013QRnd.Program.Main (System.String[] args) [0x00000] in <filename unknown>:0 [ERROR] FATAL UNHANDLED EXCEPTION: System.TypeInitializationException: An exception was thrown by the type initializer for codeJam2013QRnd.FileOPS ---> System.IO.FileNotFoundException: Could not find file /home/useruser/GCJ-mining/compile/C:\Users\dkulkarni1\Downloads\A-large.in. File name: /home/useruser/GCJ-mining/compile/C:\Users\dkulkarni1\Downloads\A-large.in at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare) at System.IO.File.OpenRead (System.String path) [0x00000] in <filename unknown>:0 at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) [0x00000] in <filename unknown>:0 at System.IO.StreamReader..ctor (System.String path) [0x00000] in <filename unknown>:0 at (wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string) at System.IO.File.OpenText (System.String path) [0x00000] in <filename unknown>:0 at System.IO.File.ReadAllLines (System.String path) [0x00000] in <filename unknown>:0 at codeJam2013QRnd.FileOPS..cctor () [0x00000] in <filename unknown>:0 --- End of inner exception stack trace --- at codeJam2013QRnd.Program.Main (System.String[] args) [0x00000] in <filename unknown>:0 Command exited with non-zero status 1'

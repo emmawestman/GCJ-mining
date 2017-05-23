@@ -40,7 +40,7 @@ def compile_csharp(p_id, dict):
         # update dictonary, copiler version is set in build argumets to set correct flag
         set_exe_size(user_dict, '-')
         set_compile_exitcode(user_dict,exit_code)
-        set_compile_error_msg(user_dict, errors, 'C#')
+        set_compile_error_msg(user_dict, errors, exit_code, 'C#')
         set_run_mesurments('-1', '', user_dict)
 
     return dict
@@ -102,7 +102,7 @@ def handle_compilation_errors(error_code,errors,root,csharp_file_p,csharp_file_p
                 create_main_file(root,csharp_file_p,input_file, func)
                 #Create main creates TestMain, hence original class file becomes dependency_files#
                 exit_code, errors = compile_csharp_command(build_path_args(flag,root,'TestMain.cs',csharp_file_p,))
-                set_compile_error_msg(user_dict, 'Added main ' + errors, 'C#')
+                set_compile_error_msg(user_dict, 'Added main ' + errors, exit_code, 'C#')
                 exit_code, errors = run_csharp_command(os.path.join(root,'TestMain.exe'),input_file, user_dict)
                 if exit_code == 0 or exit_code == 124 or exit_code == -1 :
                     return error_code,errors #success
@@ -167,6 +167,6 @@ def handle_run_errors(error_code, errors, root,csharp_file_p_dependecy,input_fil
         if csharp_file_p_dependecy is not None :
             change_input_streams(input_file,os.path.join(root,csharp_file_p_dependecy),root)
         exit_code, errors = compile_csharp_command(build_path_args(flag,root,original_class_file,csharp_file_p_dependecy))
-        set_compile_error_msg(user_dict, errors, 'C#')
+        set_compile_error_msg(user_dict, errors, exit_code,'C#')
         return run_csharp_command(os.path.join(root,csharp_exe),input_file,user_dict)
     return error_code,errors
