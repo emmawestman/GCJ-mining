@@ -25,7 +25,11 @@ def add_error_msg_column_csv() :
 
 def change_file_names():
 	path = os.path.join(os.getcwd(), '../../datacollection')
-	solutions_folders = os.listdir(path)[4:]
+	sfs = os.listdir(path)
+	solutions_folders = []
+	for sf in sfs :
+		if not '.' in sf :
+			solutions_folders.append(sf)
 	for sf in solutions_folders :
 		lang_path = os.path.join(path, sf)
 		langs = os.listdir(lang_path)
