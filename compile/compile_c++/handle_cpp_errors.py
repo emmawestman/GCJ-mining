@@ -8,7 +8,7 @@ sys.path.insert(0, compile_path)
 from compile_support_module import *
 from handle_compilation_errors import *
 
-regexes_cpp = ['freopen ?\((\"?[\w+-]*\.?\w+\"?),[ ]*?\"r\",[ ]*?stdin\)', 'fopen ?\((\"?[\w+-]*\.?\w+\"),[ ]*?\"r\"\)']
+regexes_cpp = ['(freopen ?\()\"?[\w+-]*\.?\w+\"?(,[ ]*?\"r\",[ ]*?stdin\))', '(fopen ?\()\"?[\w+-]*\.?\w+\"(,[ ]*?\"r\"\))']
 
 
 def replace_void_in_main(user_path, f) :
@@ -38,10 +38,5 @@ def add_int_to_main(user_path, f) :
 
 def replace_input_path(user_path, f, input_path) :
 	file_path = os.path.join(user_path, f)
-	content = get_contents_of_file(file_path)
-	content = rename_file_not_found_java(regexes_cpp, input_path, content)
-	write_new_contents_to_the_file(file_path, content)
-
-
-
-	
+	new_input = "\"" + input_path + "\""
+	handle_file_not_found(file_path,regexes_cpp,new_input)

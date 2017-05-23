@@ -44,8 +44,13 @@ def rename_stuff_in_file (old_string,new_string,file_path,counter):
 	changed_contents = re.sub(old_string,new_string,file_contents,counter)
 	write_new_contents_to_the_file(file_path,changed_contents)
 
-def handle_file_not_found(file_path,list_of_possible_inregexes,list_of_outregexes,new_input,new_output):
+def handle_file_not_found(file_path,list_of_possible_inregexes,new_input):
 	file_contents = get_contents_of_file(file_path)
-	changed_contents = rename_inputoutput_file(list_of_possible_inregexes,new_input,file_contents)
-	changed_contents = rename_inputoutput_file(list_of_outregexes,new_output,changed_contents)
-	write_new_contents_to_the_file(file_path,changed_contents)
+	for regex in list_of_possible_inregexes :
+		print "regex",regex
+
+		changed_contents,nbr_of_times = re.subn(regex,'\\1' + new_input + '\\2',file_contents)
+		print "changed",nbr_of_times
+		if nbr_of_times > 0:
+			write_new_contents_to_the_file(file_path,changed_contents)
+			break

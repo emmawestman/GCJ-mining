@@ -13,6 +13,9 @@ sys.path.insert(0, gcj_path)
 from finding_regexes import *
 
 
+def get_possible_input_regex():
+	return ['((?:with\s)?open\s?\()[ur]?[\"\']?[\w\\:]?[\w+/]?[\w+-]+.\w+[\"\'](,\s?[\'\"]r[\'\"]\))','(file\s?\()[ur]?[\"\']?[\w\\:]?[\w+/]?[\w+-]+.\w+[\"\'](,\s?[\'\"]r[\'\"]\))','(file\s?\()[ur]?[\"\']?[\w\\:]?[\w+/]?[\w+-]+.\w+[\"\'](\))','(open\s?\().*(,[\'\"]r[\'\"]\))','(with open\().*(,\s[\'\"]r[\'\"]?\))','(open\()[\w]+\s?(,\s?[\"\']r[\"\']\))','(open\()[\'\"]?\w+[/\w+-.]*[\'\"]?(\))','(open\s?\()\w+(\))','(open\()[/\w+-]+[\'\"]?.?[\w-]+[\'\"](,\s[\'\"]r[\'\"]\))']
+
 
 def handle_import_error(file_path,path_input,errors,pip_version):
 	missing_module_name = find_missing_module_name(errors)
@@ -33,11 +36,7 @@ def handle_import_error(file_path,path_input,errors,pip_version):
 
 
 def handle_python_file_not_found(input_file,root,c_id,file_path):
-	new_input = '\''+input_file+'\'' + ' ,\'r\''
-	new_output = '\''+os.path.join(root,'output.txt') + '\' ,\'w\''
-	list_of_inregexes = get_possible_input_regex()
-	list_of_outregexes = get_possible_output_regex()
-	handle_file_not_found(file_path,list_of_inregexes,list_of_outregexes,new_input,new_output)
+	handle_file_not_found(file_path,get_possible_input_regex(),"\""+input_file+"\"")
 
 
 def get_error_name (errors):
@@ -60,12 +59,6 @@ def create_a_copy_of_input_file(c_id,input_file):
 	copyfile(input_file, dst) #create a copy of input file
 	return dst,number_of_files
 
-#dictionary for old- new regex pairs
-def get_possible_input_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+?(?:\w+).\w+(?:[\'\"]),[\'\"]r[\'\"]\)','open\s?\(.*[\'\"]r[\'\"]\)','with open\(.*?[\'\"]?r?[\'\"]?\) as \w+\s?[,:]','file\(.*?\)','open\(.*[\'\"]?r?[\'\"]?\)']
-
-def get_possible_output_regex():
-	return ['open\([\"\'](?:[\w]\:)?(?:/\w+)+.\w+(?:[\'\"]),[\'\"][aw][\'\"]\)','open\s?\(.*?[\'\"]w[\'\"]\)','with open\(.*?[\'\"][wa][\'\"]\)']
 
 
 #TODO FIXA
