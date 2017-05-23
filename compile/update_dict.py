@@ -98,7 +98,7 @@ def format_run_msg(msg, lang) :
         index2 = msg[index1:].find(' ')
         msg = msg[index1:index2]
     elif lang == 'Python':
-        msg = format_error_msg(msg)
+        msg = format_error_msg(msg, lang)
     elif lang == 'C++':
         msg = cpp_formating_run(msg)
     else :
