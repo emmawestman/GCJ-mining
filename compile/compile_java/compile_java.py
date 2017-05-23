@@ -20,7 +20,9 @@ def set_compile_mesurments(user_dict, b, exit_code):
 def run_java_file(root,class_name,p_id, user_dict):
     path_to_input = os.path.abspath(os.path.join(get_INPUT_PATH(), p_id + '.in'))
     error_code, errors = run_java_command(build_run_args(root,class_name,path_to_input,' < '))
-
+    print "error_code",error_code
+    if 'FileNotFoundException' in errors :
+        return handle_java_run_errors(errors,error_code,root,class_name,path_to_input, user_dict)
     if (int (error_code) == 0) or (int (error_code) == 124):
         return error_code, errors
     return handle_java_run_errors(errors,error_code,root,class_name,path_to_input, user_dict)
@@ -68,9 +70,8 @@ def compile_java(p_id, dict):
                 print errors
                 set_compile_mesurments(user_dict, b, exit_code)
 
-
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict):
-    #print errors
+    print errors
     file_path = os.path.join(root,class_name+'.java')
     if 'Main method not found' in errors :
         #call fix main to file
@@ -79,8 +80,11 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
         remove_missing_package(file_path)
         b, exit_code, errors = compile_java_command(os.path.join(root,class_name+'.java'))
         set_compile_mesurments(user_dict, b, exit_code)
-        return run_java_command(build_run_args(root,class_name,input_path,' < '))
+        exit_code, errors = run_java_command(build_run_args(root,class_name,input_path,' < '))
+        if (int (exit_code) != 0) or (int (exit_code) != 124):
+            return handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict)
     elif 'FileNotFoundException' in errors :
+        print "FileNotFoundException"
         rename_fileread_filewrite(file_path,input_path,root)
         b, exit_code, errors = compile_java_command(file_path)
         set_compile_mesurments(user_dict, b, exit_code)
@@ -88,9 +92,6 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
     elif 'ExceptionInInitializerError' in errors :
         return run_java_command(build_run_args(root,class_name,input_path,''))
     return exit_code, errors
-
-
-
 
 def run_java_files(p_id,dict) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java'))
