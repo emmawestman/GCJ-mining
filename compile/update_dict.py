@@ -25,6 +25,24 @@ def remove_unwanted_chars(msg):
         msg = msg.replace(';', ' ')
     return msg
 
+def python_format(msg) :
+    if 'Errno 2' in msg :
+        return 'File or Dir not found'
+    elif 'SyntaxError' in msg :
+        return 'SyntaxError'
+    elif 'TypeError' in msg :
+        return 'TypeError'
+    elif 'ValueError' in msg :
+        return 'ValueError'
+    elif 'ImportError' in msg :
+        return 'ImportError'
+    elif 'IndexError' in msg :
+        return 'IndexError'
+    elif 'AssertionError' in msg :
+        return 'AssertionError'
+    else :
+        return 'Unknown'
+
 def cpp_formating_compile(msg) :
     if 'expected primary-expression' in msg :
         return 'expected primary-expression'
@@ -38,6 +56,14 @@ def cpp_formating_compile(msg) :
         return 'not declared'
     elif 'reference' in msg and 'ambiguous' in msg :
         return 'reference is ambiguous'
+    elif 'Usage' in msg :
+        return 'Usage'
+    elif 'Bad address' in msg :
+        return 'Bad address'
+    elif 'Assertion failed' in msg :
+        return 'Assertion failed'
+    elif 'Abort trap' in msg :
+        return 'Abort trap'
     else :
         return 'Unknown error'
 
@@ -98,7 +124,7 @@ def format_run_msg(msg, lang) :
         index2 = msg[index1:].find(' ')
         msg = msg[index1:index2]
     elif lang == 'Python':
-        msg = format_error_msg(msg, lang)
+        msg = python_format(msg)
     elif lang == 'C++' or lang == 'C':
         msg = cpp_formating_run(msg)
     else :
