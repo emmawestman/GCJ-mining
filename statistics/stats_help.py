@@ -124,12 +124,6 @@ def filter_dummyvalues(data,error_column):
     data = data.apply(pandas.to_numeric, errors='ignore')
     return data
 
-def filter_exitcode(data):
-    data = data['exit_code'].astype(str)
-    data = data.loc[data['exit_code'] != '-']
-    data = data.loc[data['exit_code'] == '0']
-    return data
-
 
 
 def get_rank_user():
@@ -138,7 +132,6 @@ def get_rank_user():
     c_ids = get_CONTEST_IDS()
     for c_id in c_ids:
         path = os.path.join('../..', 'GCJ-backup', c_id+'.csv')
-        print path
         df = pd.read_csv(path)
         df['c_id'] = c_id
         print df.keys()
@@ -146,7 +139,6 @@ def get_rank_user():
         try:
             df = df[['rank','user_id','c_id']]
             pid_data = pd.DataFrame()
-
             for p_id in dict_cid_to_pid[c_id]:
                 for x in ['0','1']:
                     path_to_csv = os.path.join('../..', 'GCJ-backup', p_id+ '_' +x+'.csv')

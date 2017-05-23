@@ -28,16 +28,24 @@ def compile_c_command(exe_path, file_path, user_dict):
             error_code_to_csv = error_code_to_csv + "&"
         error_code_to_csv = error_code_to_csv + " lm "
         exit_code, errors = run_process(cmd)
-
-    set_compiler_version(user_dict,error_code_to_csv)
+    if len(error_code_to_csv) == 0 :
+        error_code_to_csv = '-'
+    set_compiler_version(user_dict, error_code_to_csv)
     return exit_code,errors
 
+# running the c file
 def execute_c_command(exe_path, f, user_path, input_path, user_dict):
     cmd = exe_path + ' < ' + input_path
     exit_code, errors = full_exe_cmd(cmd)
     if 'iostream fatal error' in errors :
+        # re-compile
         compile_with_gplus_cmd = 'g++ -std=c++0x ' + os.path.join(user_path,f) + ' -o ' + exe_path
+        exit_code, errors = run_process(compile_with_gplus_cmd)
+        set_copile_error_msg(user_dict, errors)
+        set_compiler_version(user_dict, 'g++ -std=c++0x')
+        # re-run
         exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' < ' + input_path)
+
     if 'Segmentation fault' in errors :
         exit_code,errors = full_exe_cmd (os.path.join(user_path,f) + ' ' + input_path)
 
@@ -71,7 +79,7 @@ def compile_c(p_id, dict):
                 set_compiler_version(user_dict,'-')
 
                 exit_code,errors = compile_c_command(exe_path,os.path.join(user_path,f),user_dict)
-
+                set_compile_error_msg(user_dict, errors, exit_code, 'C')
                 set_compile_exitcode(user_dict,exit_code)
                 set_run_mesurments('-1', '', user_dict)
 
@@ -94,4 +102,5 @@ def run_c(p_id, dict):
             exit_code,errors = execute_c_command(exe_path, f, user_path, input_path, user_dict)
 
             # update dictonary with run mesurments
+            set_run_error_msg(user_dict, errors, exit_code, 'C')
             set_run_mesurments(exit_code, errors, user_dict)

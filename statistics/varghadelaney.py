@@ -20,6 +20,7 @@ def VarghaDelaney(ax, ay):
 
 def compareTraits(dataframe,column):
     languages = ['Python','Java','C++','C#','C']
+
     dict_of_results = {}
     for i in range (0,5):
         for j in range (i+1,5):
@@ -99,5 +100,4 @@ def checkClocExecuted():
         sumAll = sumAll +sumVal
         print language + ' & '+ str(minVal) + ' & '+ str(int(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
     print "sumall",sumAll
-
 compareExe()

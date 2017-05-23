@@ -13,9 +13,10 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 
-def set_compile_mesurments(user_dict, b, exit_code):
+def set_compile_mesurments(user_dict, b, exit_code, errors):
     set_exe_size(user_dict, b)
     set_compile_exitcode(user_dict,exit_code)
+    set_compile_error_msg(user_dict, errors, exit_code, 'Java')
 
 def run_java_file(root,class_name,p_id, user_dict):
     path_to_input = os.path.abspath(os.path.join(get_INPUT_PATH(), p_id + '.in'))
@@ -68,7 +69,7 @@ def compile_java(p_id, dict):
                 set_run_mesurments('-1', '', user_dict)
                 print 'COPILE EXIT CODE ' + str(exit_code)
                 print errors
-                set_compile_mesurments(user_dict, b, exit_code)
+                set_compile_mesurments(user_dict, b, exit_code, errors)
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict):
     print errors
@@ -87,7 +88,7 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
         print "FileNotFoundException"
         rename_fileread_filewrite(file_path,input_path,root)
         b, exit_code, errors = compile_java_command(file_path)
-        set_compile_mesurments(user_dict, b, exit_code)
+        set_compile_mesurments(user_dict, b, exit_code, errors)
         return run_java_command(build_run_args(root,class_name,input_path,' < '))
     elif 'ExceptionInInitializerError' in errors :
         return run_java_command(build_run_args(root,class_name,input_path,''))
@@ -108,4 +109,5 @@ def run_java_files(p_id,dict) :
             error_code,errors = run_java_file(userPATH,class_name,p_id, user_dict)
             print 'FINAL ERROR CODE: ' + str(error_code)
             print errors
+            set_run_error_msg(user_dict, errors, error_code, 'Java')
             set_run_mesurments(error_code,errors,user_dict)

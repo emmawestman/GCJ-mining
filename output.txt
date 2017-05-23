@@ -1,0 +1,3744 @@
+": stdafx.h: No such file or directory 				 \#include ""stdafx.h"" 
+ "
+found tab
+": stdafx.h: No such file or directory      \#include ""stdafx.h"" 
+ "
+Compiles and Runs: java in contest: 1485488_0
+/home/useruser/datacollection/solutions_1485488_0/java
+compiling java CJ2012.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java ProblemB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Cave.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	   ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	    ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	     ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	      ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	       ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	         ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	           ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	            ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	             ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	              ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	               ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	                ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:92: error: unmappable character for encoding UTF8
+	// �����C�ɂ�������
+	                 ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:101: error: unmappable character for encoding UTF8
+	// �҂K�v���邩
+	   ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:101: error: unmappable character for encoding UTF8
+	// �҂K�v���邩
+	       ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:101: error: unmappable character for encoding UTF8
+	// �҂K�v���邩
+	         ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:101: error: unmappable character for encoding UTF8
+	// �҂K�v���邩
+	          ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:101: error: unmappable character for encoding UTF8
+	// �҂K�v���邩
+	           ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	   ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	    ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	     ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	      ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	       ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	         ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	          ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	             ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	               ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	                ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	                 ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	                  ^
+/home/useruser/datacollection/solutions_1485488_0/java/todo/B.java:111: error: unmappable character for encoding UTF8
+	// �����ǂ��܂ň�΂�����
+	                   ^
+31 errors
+
+found tab
+Writing: : unmappable character for encoding UTF8
+ // �����C�ɂ�����
+compiling java TideInOut.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java QB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java prob2.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:16: error: not a statement
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+        ^
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:16: error: ';' expected
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+              ^
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:16: error: not a statement
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+                                                                             ^
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:33: error: not a statement
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+        ^
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:33: error: ';' expected
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+              ^
+/home/useruser/datacollection/solutions_1485488_0/java/Polux/prob2.java:33: error: not a statement
+        String "/home/useruser/datacollection/input/1485488_0.in" = pathFile + nFichier;
+                                                                             ^
+6 errors
+
+Writing: : not a statement
+        String "/home/useruser/datacollection/input/1485488_0.
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java cave.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B(1).java
+Done!
+
+COPILE EXIT CODE 2
+/bin/sh: 1: Syntax error: "(" unexpected
+
+Writing: : "(" unexpected
+
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/slex/B.java:125: error: not a statement
+		String "/home/useruser/datacollection/input/1485488_0.in" = cn+"-small-attempt3.in";
+		^
+/home/useruser/datacollection/solutions_1485488_0/java/slex/B.java:125: error: ';' expected
+		String "/home/useruser/datacollection/input/1485488_0.in" = cn+"-small-attempt3.in";
+		      ^
+/home/useruser/datacollection/solutions_1485488_0/java/slex/B.java:125: error: not a statement
+		String "/home/useruser/datacollection/input/1485488_0.in" = cn+"-small-attempt3.in";
+		                                                              ^
+3 errors
+
+found tab
+Writing: : not a statement
+  String "/home/useruser/datacollection/input/1485488_0.in" = 
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java taskB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Solution.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java TideGoesIn.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java ProblemB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/skol/B.java:146: error: not a statement
+		String "/home/useruser/datacollection/input/1485488_0.in";
+		^
+/home/useruser/datacollection/solutions_1485488_0/java/skol/B.java:146: error: ';' expected
+		String "/home/useruser/datacollection/input/1485488_0.in";
+		      ^
+2 errors
+
+found tab
+Writing: : not a statement
+  String "/home/useruser/datacollection/input/1485488_0.in";
+ 
+compiling java R1B_.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Solution.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/IvanRomanov/B.java:1: error: package com.sun.xml.internal.bind.v2 does not exist
+import com.sun.xml.internal.bind.v2.TODO;
+                                   ^
+1 error
+
+Writing: : package com.sun.xml.internal.bind.v2 does not exist
+import com.sun.xml.interna
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java probB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java b.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java GCJ2012Round1B_B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B_TideGoesInTideGoesOut.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/vuthi/Tide.java:11: error: cannot find symbol
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
+                                                      ^
+  symbol:   class Hashtable
+  location: package com.sun.org.apache.xalan.internal.xsltc.runtime
+1 error
+
+Writing: : cannot find symbol
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Hash
+compiling java R1B_Tide.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/Jens/R1B_Tide.java:196: error: <identifier> expected
+	static String "/home/useruser/datacollection/input/1485488_0.in" = "B-small-attempt2.in";
+	             ^
+/home/useruser/datacollection/solutions_1485488_0/java/Jens/R1B_Tide.java:196: error: illegal start of type
+	static String "/home/useruser/datacollection/input/1485488_0.in" = "B-small-attempt2.in";
+	                                                                 ^
+/home/useruser/datacollection/solutions_1485488_0/java/Jens/R1B_Tide.java:196: error: <identifier> expected
+	static String "/home/useruser/datacollection/input/1485488_0.in" = "B-small-attempt2.in";
+	                                                                  ^
+3 errors
+
+found tab
+Writing: : <identifier> expected
+ static String "/home/useruser/datacollection/input/1485
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java ProblemB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java TideGoesInTideGoesOut.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java GCJ2012R1Btide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java b.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java ProblemB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java P2.java
+Done!
+
+COPILE EXIT CODE 0
+Note: /home/useruser/datacollection/solutions_1485488_0/java/gollum/P2.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+Writing: Note: /home/useruser/datacollection/solutions_1485488_0/java/gollum/P2.java uses
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java tide.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/Lewin/tide.java:124: error: <identifier> expected
+		public Reader(String "/home/useruser/datacollection/input/1485488_0.in") throws IOException {
+		                    ^
+/home/useruser/datacollection/solutions_1485488_0/java/Lewin/tide.java:124: error: ';' expected
+		public Reader(String "/home/useruser/datacollection/input/1485488_0.in") throws IOException {
+		                                                                       ^
+/home/useruser/datacollection/solutions_1485488_0/java/Lewin/tide.java:124: error: illegal start of type
+		public Reader(String "/home/useruser/datacollection/input/1485488_0.in") throws IOException {
+		                                                                         ^
+/home/useruser/datacollection/solutions_1485488_0/java/Lewin/tide.java:124: error: ';' expected
+		public Reader(String "/home/useruser/datacollection/input/1485488_0.in") throws IOException {
+		                                                                                           ^
+4 errors
+
+found tab
+Writing: : <identifier> expected
+  public Reader(String "/home/useruser/datacollection/in
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/pashka/B.java:2: error: package sun.jvm.hotspot.debugger.amd64 does not exist
+import sun.jvm.hotspot.debugger.amd64.AMD64ThreadContext;
+                                     ^
+1 error
+
+Writing: : package sun.jvm.hotspot.debugger.amd64 does not exist
+import sun.jvm.hotspot.d
+compiling java TideGoesInTideGoesOut.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:9: error: <identifier> expected
+	private final static String "/home/useruser/datacollection/input/1485488_0.in" = TideGoesInTideGoesOut.class
+	                           ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:9: error: illegal start of type
+	private final static String "/home/useruser/datacollection/input/1485488_0.in" = TideGoesInTideGoesOut.class
+	                                                                               ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:9: error: ';' expected
+	private final static String "/home/useruser/datacollection/input/1485488_0.in" = TideGoesInTideGoesOut.class
+	                                                                                                      ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:9: error: <identifier> expected
+	private final static String "/home/useruser/datacollection/input/1485488_0.in" = TideGoesInTideGoesOut.class
+	                                                                                                            ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:10: error: invalid method declaration; return type required
+			.getSimpleName() + ".in";
+			 ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:10: error: ';' expected
+			.getSimpleName() + ".in";
+			                ^
+/home/useruser/datacollection/solutions_1485488_0/java/Smitty/TideGoesInTideGoesOut.java:185: error: reached end of file while parsing
+}
+ ^
+7 errors
+
+found tab
+Writing: : <identifier> expected
+ private final static String "/home/useruser/datacollect
+compiling java TiedGoesIn.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Round1Q3.java
+Done!
+
+COPILE EXIT CODE 0
+Note: /home/useruser/datacollection/solutions_1485488_0/java/bgamlath/Round1Q3.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+Writing: Note: /home/useruser/datacollection/solutions_1485488_0/java/bgamlath/Round1Q3.j
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Round1BB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java G_2.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Main.java
+Done!
+
+COPILE EXIT CODE 0
+Note: /home/useruser/datacollection/solutions_1485488_0/java/EgorKulikov/Main.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+Writing: Note: /home/useruser/datacollection/solutions_1485488_0/java/EgorKulikov/Main.ja
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Main.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java C.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java CodeJamB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Main.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java GCJ_B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java b.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Prob1B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B_Tide_Goes_In_Tide_Goes_Out.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Solution.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Solution.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Main.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java R1bB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Kattio.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/Yarin/B.java:58: error: cannot find symbol
+	private void solve(Kattio io) {
+	                   ^
+  symbol:   class Kattio
+  location: class B
+/home/useruser/datacollection/solutions_1485488_0/java/Yarin/B.java:12: error: cannot find symbol
+		Kattio io;
+		^
+  symbol:   class Kattio
+  location: class B
+/home/useruser/datacollection/solutions_1485488_0/java/Yarin/B.java:16: error: cannot find symbol
+		io = new Kattio(new FileInputStream("src/round1/B-small-3.in"), new FileOutputStream("src/round1/B-small-3.out"));
+		         ^
+  symbol:   class Kattio
+  location: class B
+3 errors
+
+found tab
+Writing: : cannot find symbol
+ private void solve(Kattio io) {
+                     
+  sy
+compiling java Solver.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/MathGuy/Tide.java:47: error: cannot find symbol
+			Solver solver = new Solver(C, F, H);
+			^
+  symbol:   class Solver
+  location: class Tide
+/home/useruser/datacollection/solutions_1485488_0/java/MathGuy/Tide.java:47: error: cannot find symbol
+			Solver solver = new Solver(C, F, H);
+			                    ^
+  symbol:   class Solver
+  location: class Tide
+2 errors
+
+found tab
+Writing: : cannot find symbol
+   Solver solver = new Solver(C, F, H) 
+    
+  symbol:   cl
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java TideGoesInTideGoesOut.java
+Done!
+
+COPILE EXIT CODE 1
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:93: error: <identifier> expected
+		public DataReader(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                        ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:93: error: ';' expected
+		public DataReader(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                           ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:93: error: illegal start of type
+		public DataReader(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                             ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:93: error: ';' expected
+		public DataReader(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                                             ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:143: error: <identifier> expected
+		public DataWriter(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                        ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:143: error: ';' expected
+		public DataWriter(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                           ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:143: error: illegal start of type
+		public DataWriter(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                             ^
+/home/useruser/datacollection/solutions_1485488_0/java/ThomasTT/TideGoesInTideGoesOut.java:143: error: ';' expected
+		public DataWriter(String "/home/useruser/datacollection/input/1485488_0.in") throws Exception {
+		                                                                                             ^
+8 errors
+
+found tab
+Writing: : <identifier> expected
+  public DataReader(String "/home/useruser/datacollectio
+compiling java ProblemB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java TaskB.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Tide.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java Main.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java TideGoesIn.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java C.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java B.java
+Done!
+
+COPILE EXIT CODE 0
+
+Writing: -
+compiling java tide.java
+Done!
+
+COPILE EXIT CODE 0
+Note: /home/useruser/datacollection/solutions_1485488_0/java/tolk/tide.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+Writing: Note: /home/useruser/datacollection/solutions_1485488_0/java/tolk/tide.java uses
+running /home/useruser/datacollection/solutions_1485488_0/java/Gene53 CJ2012
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: CJ2012 (wrong name: org/digiharbor/gene/CJ2012)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21436,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: CJ2012 (wrong name: org/digiharbor/gene/CJ2012)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21436,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/immoonancient ProblemB
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.17,0.01,0,35780,0,0,72,0,0
+
+Writing: -
+0,0.19,0.17,0.01,0,35780,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/dcposch Cave
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Cave (wrong name: r1b/Cave)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21432,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Cave (wrong name: r1b/Cave)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21432,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/eatmore B
+Done!
+FINAL ERROR CODE: 0
+0,0.11,0.10,0.00,0,26952,0,0,64,0,0
+
+Writing: -
+0,0.11,0.10,0.00,0,26952,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/humblefool TideInOut
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.20,0.00,0,32332,0,0,64,0,0
+
+Writing: -
+0,0.20,0.20,0.00,0,32332,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/vot B
+Done!
+FINAL ERROR CODE: 0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.11,0.11,0.01,0,28564,0,0,72,0,0
+
+Writing: -
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.11,0.11,0.01,0,28564,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/BobobUnicorn QB
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.18,0.01,0,35940,0,0,72,0,0
+
+Writing: -
+0,0.19,0.18,0.01,0,35940,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/megaterik B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 255
+java.io.FileNotFoundException: src/output.txt (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at B.run(B.java:22)
+	at java.lang.Thread.run(Thread.java:745)
+Command exited with non-zero status 255
+255,0.04,0.04,0.00,0,21724,0,0,64,0,0
+
+Writing: java.io.FileNotFoundException:
+java.io.FileNotFoundException: src/output.txt (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at B.run(B.java:22)
+	at java.lang.Thread.run(Thread.java:745)
+Command exited with non-zero status 255
+255,0.04,0.04,0.00,0,21724,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Polux prob2
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: : not a statement
+        String "/home/useruser/datacollection/input/1485488_0.
+Done!
+FINAL ERROR CODE: 1
+java.io.FileNotFoundException: /home/polux/workspaceJEE/prob2/B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at prob2.lectureFile(prob2.java:18)
+	at prob2.main(prob2.java:156)
+Exception in thread "main" java.util.NoSuchElementException
+	at java.util.ArrayList$Itr.next(ArrayList.java:834)
+	at prob2.main(prob2.java:160)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21660,0,0,64,0,0
+
+Writing: java.io.FileNotFoundException:
+java.io.FileNotFoundException: /home/polux/workspaceJEE/prob2/B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at prob2.lectureFile(prob2.java:18)
+	at prob2.main(prob2.java:156)
+Exception in thread "main" java.util.NoSuchElementException
+	at java.util.ArrayList$Itr.next(ArrayList.java:834)
+	at prob2.main(prob2.java:160)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21660,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/eomole B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21556,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21556,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/stefan B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: src/B-small.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at B.main(B.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21460,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: src/B-small.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at B.main(B.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21460,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/AlexanderS cave
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: C:\Users\Alex\workspace\chapter1\prob.in.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at cave.main(cave.java:126)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21436,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: C:\Users\Alex\workspace\chapter1\prob.in.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at cave.main(cave.java:126)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21436,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/slex B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+found tab
+Writing: : not a statement
+  String "/home/useruser/datacollection/input/1485488_0.in" = 
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt3.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at B.<init>(B.java:127)
+	at B.main(B.java:133)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21448,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt3.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at B.<init>(B.java:127)
+	at B.main(B.java:133)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21448,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Sabelan B
+Done!
+FINAL ERROR CODE: 0
+0,0.16,0.16,0.00,0,31212,0,0,72,0,0
+
+Writing: -
+0,0.16,0.16,0.00,0,31212,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/dalex B
+Done!
+FINAL ERROR CODE: 0
+Test 5 of 50 completed, time = 6
+Test 10 of 50 completed, time = 13
+Test 15 of 50 completed, time = 16
+Test 20 of 50 completed, time = 20
+Test 25 of 50 completed, time = 40
+Test 30 of 50 completed, time = 43
+Test 35 of 50 completed, time = 52
+Test 40 of 50 completed, time = 54
+Test 45 of 50 completed, time = 72
+Test 50 of 50 completed, time = 74
+0,0.13,0.11,0.00,0,28452,0,0,72,0,0
+
+Writing: -
+Test 5 of 50 completed, time = 6
+Test 10 of 50 completed, time = 13
+Test 15 of 50 completed, time = 16
+Test 20 of 50 completed, time = 20
+Test 25 of 50 completed, time = 40
+Test 30 of 50 completed, time = 43
+Test 35 of 50 completed, time = 52
+Test 40 of 50 completed, time = 54
+Test 45 of 50 completed, time = 72
+Test 50 of 50 completed, time = 74
+0,0.13,0.11,0.00,0,28452,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/pashkal taskB
+Done!
+FINAL ERROR CODE: 0
+java.io.FileNotFoundException: taskB.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at taskB.run(taskB.java:110)
+	at taskB.main(taskB.java:126)
+0,0.08,0.04,0.00,0,21752,0,0,64,0,0
+
+Writing: java.io.FileNotFoundException:
+java.io.FileNotFoundException: taskB.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at taskB.run(taskB.java:110)
+	at taskB.main(taskB.java:126)
+0,0.08,0.04,0.00,0,21752,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/winger Solution
+Done!
+FINAL ERROR CODE: 0
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+0,0.11,0.11,0.00,0,27356,0,0,72,0,0
+
+Writing: -
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+0,0.11,0.11,0.00,0,27356,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/mishastassen B
+Done!
+FINAL ERROR CODE: 0
+0,0.21,0.20,0.00,0,30948,0,0,64,0,0
+
+Writing: -
+0,0.21,0.20,0.00,0,30948,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Zimmux B
+Done!
+FINAL ERROR CODE: 0
+0,0.23,0.21,0.01,0,38640,0,0,64,0,0
+
+Writing: -
+0,0.23,0.21,0.01,0,38640,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/niyaznigmatul TideGoesIn
+Done!
+FINAL ERROR CODE: 0
+0,0.24,0.21,0.02,0,39028,0,0,72,0,0
+
+Writing: -
+0,0.24,0.21,0.02,0,39028,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/hamadu ProblemB
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: ./src/output.txt (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at ProblemB.main(ProblemB.java:168)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21576,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: ./src/output.txt (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.FileWriter.<init>(FileWriter.java:63)
+	at ProblemB.main(ProblemB.java:168)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21576,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/skol B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+found tab
+Writing: : not a statement
+  String "/home/useruser/datacollection/input/1485488_0.in";
+ 
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at B.main(B.java:152)
+Command exited with non-zero status 1
+1,0.05,0.05,0.00,0,22392,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at B.main(B.java:152)
+Command exited with non-zero status 1
+1,0.05,0.05,0.00,0,22392,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Kraken R1B_
+Done!
+FINAL ERROR CODE: 0
+java.io.FileNotFoundException: B-small.in.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at R1B_.main(R1B_.java:13)
+0,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+Writing: java.io.FileNotFoundException:
+java.io.FileNotFoundException: B-small.in.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at R1B_.main(R1B_.java:13)
+0,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/zibada Solution
+Done!
+FINAL ERROR CODE: 0
+0,0.15,0.17,0.01,0,34580,0,0,64,0,0
+
+Writing: -
+0,0.15,0.17,0.01,0,34580,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ramzy B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: src/B.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.PrintWriter.<init>(PrintWriter.java:184)
+	at B.main(B.java:22)
+Command exited with non-zero status 1
+1,0.04,0.02,0.01,0,21656,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: src/B.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at java.io.PrintWriter.<init>(PrintWriter.java:184)
+	at B.main(B.java:22)
+Command exited with non-zero status 1
+1,0.04,0.02,0.01,0,21656,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/bitlove B
+Done!
+FINAL ERROR CODE: 0
+0,0.12,0.11,0.01,0,27172,0,0,72,0,0
+
+Writing: -
+0,0.12,0.11,0.01,0,27172,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/goodsky B
+Done!
+FINAL ERROR CODE: 0
+0,0.17,0.16,0.00,0,30884,0,0,64,0,0
+
+Writing: -
+0,0.17,0.16,0.00,0,30884,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/abrackadabra B
+Done!
+FINAL ERROR CODE: 0
+0,0.13,0.11,0.00,0,27952,0,0,64,0,0
+
+Writing: -
+0,0.13,0.11,0.00,0,27952,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Tym B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: round1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21516,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: round1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21516,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/brobo probB
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: input/B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at probB.main(probB.java:6)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21660,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: input/B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at probB.main(probB.java:6)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21660,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/EricStansifer b
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.16,0.01,0,31116,0,0,64,0,0
+
+Writing: -
+0,0.20,0.16,0.01,0,31116,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/dened GCJ2012Round1B_B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at GCJ2012Round1B_B.main(GCJ2012Round1B_B.java:131)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21376,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at GCJ2012Round1B_B.main(GCJ2012Round1B_B.java:131)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21376,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/wkoder B_TideGoesInTideGoesOut
+Done!
+FINAL ERROR CODE: 0
+0,0.18,0.18,0.01,0,31312,0,0,72,0,0
+
+Writing: -
+0,0.18,0.18,0.01,0,31312,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/0x42 Tide
+Done!
+FINAL ERROR CODE: 0
+0,0.08,0.08,0.00,0,25532,0,0,72,0,0
+
+Writing: -
+0,0.08,0.08,0.00,0,25532,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ecnerwala Tide
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at Tide.main(Tide.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21696,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at Tide.main(Tide.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21696,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Zapata B
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.18,0.00,0,33004,0,0,64,0,0
+
+Writing: -
+0,0.19,0.18,0.00,0,33004,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Jens R1B_Tide
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+WHAT WAS FOUND 
+new File("/home/useruser/datacollection/input/1485488_0.in"
+WHA TO REPLACE "/home/useruser/datacollection/input/1485488_0.in"
+write changes
+Done!
+found tab
+Writing: : ';' expected
+   in = new BufferedReader(new FileReader("/home/useruser/datacol
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt2.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileReader.<init>(FileReader.java:72)
+	at R1B_Tide.<init>(R1B_Tide.java:184)
+	at R1B_Tide.main(R1B_Tide.java:178)
+Command exited with non-zero status 1
+1,0.04,0.03,0.01,0,21692,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt2.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileReader.<init>(FileReader.java:72)
+	at R1B_Tide.<init>(R1B_Tide.java:184)
+	at R1B_Tide.main(R1B_Tide.java:178)
+Command exited with non-zero status 1
+1,0.04,0.03,0.01,0,21692,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/stolis Tide
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: round1/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21428,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: round1/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21428,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/rebelation B
+Done!
+FINAL ERROR CODE: 0
+0,0.15,0.16,0.00,0,32060,0,0,64,0,0
+
+Writing: -
+0,0.15,0.16,0.00,0,32060,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Koyaah B
+Done!
+FINAL ERROR CODE: 0
+0,0.11,0.10,0.00,0,28352,0,0,72,0,0
+
+Writing: -
+0,0.11,0.10,0.00,0,28352,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Phil217 ProblemB
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: ProblemB (wrong name: problemB/ProblemB)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21532,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: ProblemB (wrong name: problemB/ProblemB)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21532,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/VITAKS TideGoesInTideGoesOut
+Done!
+FINAL ERROR CODE: 0
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+0,0.14,0.13,0.00,0,27708,0,0,72,0,0
+
+Writing: -
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+0,0.14,0.13,0.00,0,27708,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/uwi B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21364,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21364,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/rho GCJ2012R1Btide
+Done!
+FINAL ERROR CODE: 0
+0,0.17,0.17,0.00,0,31032,0,0,64,0,0
+
+Writing: -
+0,0.17,0.17,0.00,0,31032,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/SmileIJP B
+Done!
+FINAL ERROR CODE: 0
+0,0.13,0.11,0.00,0,26164,0,0,72,0,0
+
+Writing: -
+0,0.13,0.11,0.00,0,26164,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/sroyal b
+Done!
+FINAL ERROR CODE: 0
+0,0.18,0.19,0.01,0,32768,0,0,64,0,0
+
+Writing: -
+0,0.18,0.19,0.01,0,32768,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Wolfje ProblemB
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: problemB_small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at ProblemB.<init>(ProblemB.java:53)
+	at ProblemB.main(ProblemB.java:49)
+Command exited with non-zero status 1
+1,0.08,0.04,0.01,0,21516,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: problemB_small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at ProblemB.<init>(ProblemB.java:53)
+	at ProblemB.main(ProblemB.java:49)
+Command exited with non-zero status 1
+1,0.08,0.04,0.01,0,21516,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/yehara B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at B.main(B.java:14)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21748,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at B.main(B.java:14)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21748,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/JaapB B
+Done!
+FINAL ERROR CODE: 0
+0,0.21,0.19,0.00,0,34380,0,0,64,0,0
+
+Writing: -
+0,0.21,0.19,0.00,0,34380,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/gollum P2
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: P2 (wrong name: googleJamCode/P2)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21324,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: P2 (wrong name: googleJamCode/P2)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21324,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/nanikaka B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21552,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: gcj2012/r1b/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21552,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/santjuan B
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.19,0.00,0,30840,0,0,64,0,0
+
+Writing: -
+0,0.19,0.19,0.00,0,30840,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Lewin tide
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+found tab
+Writing: : <identifier> expected
+  public Reader(String "/home/useruser/datacollection/in
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at tide$Reader.<init>(tide.java:125)
+	at tide.main(tide.java:98)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21416,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at tide$Reader.<init>(tide.java:125)
+	at tide.main(tide.java:98)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21416,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Smitty TideGoesInTideGoesOut
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+found tab
+Writing: : <identifier> expected
+ private final static String "/home/useruser/datacollect
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: TideGoesInTideGoesOut.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at TideGoesInTideGoesOut.main(TideGoesInTideGoesOut.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21572,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: TideGoesInTideGoesOut.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at TideGoesInTideGoesOut.main(TideGoesInTideGoesOut.java:15)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21572,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/einstand TiedGoesIn
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: TiedGoesIn (wrong name: net/anzix/learn/codejam/r1b12/TiedGoesIn)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21604,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: TiedGoesIn (wrong name: net/anzix/learn/codejam/r1b12/TiedGoesIn)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21604,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/bgamlath Round1Q3
+Error: process taking too long to complete--terminating
+Done!
+FINAL ERROR CODE: -15
+
+Writing: Timeout
+
+running /home/useruser/datacollection/solutions_1485488_0/java/anikov B
+Done!
+FINAL ERROR CODE: 0
+0,0.10,0.09,0.00,0,26568,0,0,64,0,0
+
+Writing: -
+0,0.10,0.09,0.00,0,26568,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/andrewzta B
+Done!
+FINAL ERROR CODE: 0
+java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileReader.<init>(FileReader.java:72)
+	at B$FastScanner.<init>(B.java:138)
+	at B.run(B.java:114)
+	at B.main(B.java:130)
+0,0.05,0.04,0.00,0,21420,0,0,64,0,0
+
+Writing: java.io.FileNotFoundException:
+java.io.FileNotFoundException: B-small-attempt0.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileReader.<init>(FileReader.java:72)
+	at B$FastScanner.<init>(B.java:138)
+	at B.run(B.java:114)
+	at B.main(B.java:130)
+0,0.05,0.04,0.00,0,21420,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/nik239 B
+Done!
+FINAL ERROR CODE: 0
+0,0.18,0.17,0.00,0,36236,0,0,72,0,0
+
+Writing: -
+0,0.18,0.17,0.00,0,36236,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Gleb Tide
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: round1B/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: round1B/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/darnley B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: b.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at B.main(B.java:99)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21684,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: b.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at B.main(B.java:99)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21684,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/SergiuHlihor Round1BB
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Round1BB (wrong name: GoogleCodeJam/ed2012/Round1BB)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21476,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Round1BB (wrong name: GoogleCodeJam/ed2012/Round1BB)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21476,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/microsky G_2
+Done!
+FINAL ERROR CODE: 0
+0,0.18,0.17,0.00,0,31776,0,0,72,0,0
+
+Writing: -
+0,0.18,0.17,0.00,0,31776,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Kristofer B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.RuntimeException: java.io.FileNotFoundException: source/B-small.out (No such file or directory)
+	at B.<init>(B.java:42)
+	at B.main(B.java:25)
+Caused by: java.io.FileNotFoundException: source/B-small.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at B.<init>(B.java:38)
+	... 1 more
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21796,0,0,64,0,0
+
+Writing: -
+Exception in thread "main" java.lang.RuntimeException: java.io.FileNotFoundException: source/B-small.out (No such file or directory)
+	at B.<init>(B.java:42)
+	at B.main(B.java:25)
+Caused by: java.io.FileNotFoundException: source/B-small.out (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:110)
+	at B.<init>(B.java:38)
+	... 1 more
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21796,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/elizarov B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: round1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21556,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: round1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21556,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Grotmol B
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.18,0.00,0,32108,0,0,64,0,0
+
+Writing: -
+0,0.19,0.18,0.00,0,32108,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/EgorKulikov Main
+Done!
+FINAL ERROR CODE: 0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.08,0.06,0.00,0,26844,0,0,72,0,0
+
+Writing: -
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.08,0.06,0.00,0,26844,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/rohanp77 B
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.20,0.00,0,29456,0,0,72,0,0
+
+Writing: -
+0,0.19,0.20,0.00,0,29456,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/mikhailOK B
+Done!
+FINAL ERROR CODE: 0
+0,0.13,0.10,0.01,0,27940,0,0,72,0,0
+
+Writing: -
+0,0.13,0.10,0.01,0,27940,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ijacek B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: R1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21392,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: R1B/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21392,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Seemann Main
+Done!
+FINAL ERROR CODE: 0
+File not found
+0,0.04,0.04,0.00,0,21212,0,0,64,0,0
+
+Writing: -
+File not found
+0,0.04,0.04,0.00,0,21212,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/yunoac B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: R1B_2012/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21340,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: R1B_2012/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.05,0.04,0.00,0,21340,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Slamur C
+Done!
+FINAL ERROR CODE: 0
+Time = 63
+Memory = 646 KB
+0,0.11,0.11,0.00,0,27120,0,0,72,0,0
+
+Writing: -
+Time = 63
+Memory = 646 KB
+0,0.11,0.11,0.00,0,27120,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/pianojuggler4 CodeJamB
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.18,0.00,0,36488,0,0,72,0,0
+
+Writing: -
+0,0.20,0.18,0.00,0,36488,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/EriKKo Main
+Done!
+FINAL ERROR CODE: 0
+0,0.09,0.09,0.00,0,25504,0,0,72,0,0
+
+Writing: -
+0,0.09,0.09,0.00,0,25504,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ahmadabdolkader B
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: cj2012/OneB/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B (wrong name: cj2012/OneB/B)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21396,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/bjano GCJ_B
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+Writing: -
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at GCJ_B.main(GCJ_B.java:87)
+Command exited with non-zero status 1
+1,0.04,0.03,0.01,0,21788,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: B-small.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.util.Scanner.<init>(Scanner.java:656)
+	at GCJ_B.main(GCJ_B.java:87)
+Command exited with non-zero status 1
+1,0.04,0.03,0.01,0,21788,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Rawnblade Tide
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.18,0.00,0,36204,0,0,64,0,0
+
+Writing: -
+0,0.19,0.18,0.00,0,36204,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/kelltrick b
+Done!
+FINAL ERROR CODE: 0
+0,0.18,0.17,0.00,0,31108,0,0,64,0,0
+
+Writing: -
+0,0.18,0.17,0.00,0,31108,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/covganet Prob1B
+Done!
+FINAL ERROR CODE: 0
+0,0.09,0.09,0.00,0,25380,0,0,72,0,0
+
+Writing: -
+0,0.09,0.09,0.00,0,25380,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Nikaustr B_Tide_Goes_In_Tide_Goes_Out
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: B_Tide_Goes_In_Tide_Goes_Out (wrong name: gcj2012/r1/b/B_Tide_Goes_In_Tide_Goes_Out)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21544,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: B_Tide_Goes_In_Tide_Goes_Out (wrong name: gcj2012/r1/b/B_Tide_Goes_In_Tide_Goes_Out)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21544,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Jokser Solution
+Done!
+FINAL ERROR CODE: 0
+Exception in thread "" java.lang.NullPointerException
+	at Solution.run(Solution.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+0,0.04,0.04,0.00,0,21728,0,0,64,0,0
+
+Writing: java.la
+Exception in thread "" java.lang.NullPointerException
+	at Solution.run(Solution.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+0,0.04,0.04,0.00,0,21728,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/GarrettHall Solution
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.19,0.00,0,32708,0,0,64,0,0
+
+Writing: -
+0,0.20,0.19,0.00,0,32708,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Silence Main
+Done!
+FINAL ERROR CODE: 0
+0,0.21,0.20,0.00,0,33796,0,0,72,0,0
+
+Writing: -
+0,0.21,0.20,0.00,0,33796,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/VulpesX B
+Done!
+FINAL ERROR CODE: 0
+0,0.35,0.38,0.01,0,57992,0,0,64,0,0
+
+Writing: -
+0,0.35,0.38,0.01,0,57992,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Redbug B
+Done!
+FINAL ERROR CODE: 0
+Case #1: 3.0 (Time: 0.003)
+Case #2: 18.0 (Time: 0.004)
+Case #3: 209.6 (Time: 0.005)
+Case #4: 67.0 (Time: 0.005)
+Case #5: 8.2 (Time: 0.005)
+Case #6: 46.0 (Time: 0.005)
+Case #7: 114.0 (Time: 0.006)
+Case #8: 166.7 (Time: 0.011)
+Case #9: 40.4 (Time: 0.012)
+Case #10: 3.2 (Time: 0.012)
+Case #11: 0.0 (Time: 0.013)
+Case #12: 0.0 (Time: 0.013)
+Case #13: 0.0 (Time: 0.014)
+Case #14: 68.7 (Time: 0.015)
+Case #15: 44.6 (Time: 0.016)
+Case #16: 0.0 (Time: 0.016)
+Case #17: 18.0 (Time: 0.017)
+Case #18: 283.4 (Time: 0.017)
+Case #19: 0.0 (Time: 0.018)
+Case #20: 0.0 (Time: 0.018)
+Case #21: 0.0 (Time: 0.019)
+Case #22: 109.0 (Time: 0.027)
+Case #23: 138.2 (Time: 0.03)
+Case #24: 151.2 (Time: 0.033)
+Case #25: 0.0 (Time: 0.034)
+Case #26: 130.5 (Time: 0.035)
+Case #27: 104.0 (Time: 0.036)
+Case #28: 0.0 (Time: 0.037)
+Case #29: 2.6 (Time: 0.038)
+Case #30: 7.2 (Time: 0.059)
+Case #31: 0.0 (Time: 0.06)
+Case #32: 121.8 (Time: 0.06)
+Case #33: 0.0 (Time: 0.066)
+Case #34: 22.9 (Time: 0.066)
+Case #35: 0.0 (Time: 0.067)
+Case #36: 75.0 (Time: 0.067)
+Case #37: 188.7 (Time: 0.068)
+Case #38: 57.2 (Time: 0.069)
+Case #39: 0.0 (Time: 0.069)
+Case #40: 0.0 (Time: 0.069)
+Case #41: 24.3 (Time: 0.069)
+Case #42: 54.0 (Time: 0.07)
+Case #43: 104.0 (Time: 0.071)
+Case #44: 83.9 (Time: 0.072)
+Case #45: 65.3 (Time: 0.072)
+Case #46: 125.5 (Time: 0.073)
+Case #47: 0.0 (Time: 0.073)
+Case #48: 56.0 (Time: 0.073)
+Case #49: 0.0 (Time: 0.074)
+Case #50: 0.0 (Time: 0.074)
+------------------
+Time: 0.074
+0,0.11,0.10,0.01,0,25936,0,0,64,0,0
+
+Writing: -
+Case #1: 3.0 (Time: 0.003)
+Case #2: 18.0 (Time: 0.004)
+Case #3: 209.6 (Time: 0.005)
+Case #4: 67.0 (Time: 0.005)
+Case #5: 8.2 (Time: 0.005)
+Case #6: 46.0 (Time: 0.005)
+Case #7: 114.0 (Time: 0.006)
+Case #8: 166.7 (Time: 0.011)
+Case #9: 40.4 (Time: 0.012)
+Case #10: 3.2 (Time: 0.012)
+Case #11: 0.0 (Time: 0.013)
+Case #12: 0.0 (Time: 0.013)
+Case #13: 0.0 (Time: 0.014)
+Case #14: 68.7 (Time: 0.015)
+Case #15: 44.6 (Time: 0.016)
+Case #16: 0.0 (Time: 0.016)
+Case #17: 18.0 (Time: 0.017)
+Case #18: 283.4 (Time: 0.017)
+Case #19: 0.0 (Time: 0.018)
+Case #20: 0.0 (Time: 0.018)
+Case #21: 0.0 (Time: 0.019)
+Case #22: 109.0 (Time: 0.027)
+Case #23: 138.2 (Time: 0.03)
+Case #24: 151.2 (Time: 0.033)
+Case #25: 0.0 (Time: 0.034)
+Case #26: 130.5 (Time: 0.035)
+Case #27: 104.0 (Time: 0.036)
+Case #28: 0.0 (Time: 0.037)
+Case #29: 2.6 (Time: 0.038)
+Case #30: 7.2 (Time: 0.059)
+Case #31: 0.0 (Time: 0.06)
+Case #32: 121.8 (Time: 0.06)
+Case #33: 0.0 (Time: 0.066)
+Case #34: 22.9 (Time: 0.066)
+Case #35: 0.0 (Time: 0.067)
+Case #36: 75.0 (Time: 0.067)
+Case #37: 188.7 (Time: 0.068)
+Case #38: 57.2 (Time: 0.069)
+Case #39: 0.0 (Time: 0.069)
+Case #40: 0.0 (Time: 0.069)
+Case #41: 24.3 (Time: 0.069)
+Case #42: 54.0 (Time: 0.07)
+Case #43: 104.0 (Time: 0.071)
+Case #44: 83.9 (Time: 0.072)
+Case #45: 65.3 (Time: 0.072)
+Case #46: 125.5 (Time: 0.073)
+Case #47: 0.0 (Time: 0.073)
+Case #48: 56.0 (Time: 0.073)
+Case #49: 0.0 (Time: 0.074)
+Case #50: 0.0 (Time: 0.074)
+------------------
+Time: 0.074
+0,0.11,0.10,0.01,0,25936,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/dai1741 R1bB
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.18,0.02,0,31900,0,0,64,0,0
+
+Writing: -
+0,0.20,0.18,0.02,0,31900,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Yarin Kattio
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Kattio (wrong name: round1/Kattio)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21336,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Kattio (wrong name: round1/Kattio)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21336,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/MathGuy Solver
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Solver (wrong name: tide/Solver)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21380,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Solver (wrong name: tide/Solver)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21380,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/kivus B
+Done!
+FINAL ERROR CODE: 0
+0,0.04,0.04,0.00,0,21696,0,0,64,0,0
+
+Writing: -
+0,0.04,0.04,0.00,0,21696,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ThomasTT TideGoesInTideGoesOut
+Done!
+WHAT REGEX new Scanner\(new File\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX new FileInputStream\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX FileInputStream\(("?\w+\.?\w+"?)\)
+WHAT REGEX new FileReader\(new File\(("?[\w+-]*\.?\w+"?)\)\)
+WHAT REGEX new BufferedReader\(new FileReader\(("?[\w+-]*\.?\w+"?)\)
+WHAT REGEX (?:new FileReader\()(["]?(?:[\w]\:)?(?:[\w+-]+)["]*
+?(?:.*)(?:["]))(?:[\)])
+write changes
+Done!
+found tab
+Writing: : <identifier> expected
+  public DataReader(String "/home/useruser/datacollectio
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.io.FileNotFoundException: data.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at TideGoesInTideGoesOut$DataReader.<init>(TideGoesInTideGoesOut.java:94)
+	at TideGoesInTideGoesOut$DataReader.<init>(TideGoesInTideGoesOut.java:98)
+	at TideGoesInTideGoesOut.main(TideGoesInTideGoesOut.java:14)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21576,0,0,64,0,0
+
+Writing: jav
+Exception in thread "main" java.io.FileNotFoundException: data.in (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at TideGoesInTideGoesOut$DataReader.<init>(TideGoesInTideGoesOut.java:94)
+	at TideGoesInTideGoesOut$DataReader.<init>(TideGoesInTideGoesOut.java:98)
+	at TideGoesInTideGoesOut.main(TideGoesInTideGoesOut.java:14)
+Command exited with non-zero status 1
+1,0.04,0.04,0.00,0,21576,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Paf ProblemB
+Done!
+FINAL ERROR CODE: 0
+0,0.11,0.11,0.00,0,26060,0,0,72,0,0
+
+Writing: -
+0,0.11,0.11,0.00,0,26060,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Nikelandjelo TaskB
+Done!
+FINAL ERROR CODE: 0
+0,0.19,0.19,0.00,0,36484,0,0,72,0,0
+
+Writing: -
+0,0.19,0.19,0.00,0,36484,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/xs0 Tide
+Done!
+FINAL ERROR CODE: 1
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: codejam/round1B/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21360,0,0,64,0,0
+
+Writing: java
+Exception in thread "main" java.lang.NoClassDefFoundError: Tide (wrong name: codejam/round1B/Tide)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:803)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:442)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:64)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:348)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:347)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Command exited with non-zero status 1
+1,0.04,0.03,0.00,0,21360,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/ogiekako Main
+Done!
+FINAL ERROR CODE: 0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.21,0.19,0.01,0,42716,0,0,72,0,0
+
+Writing: -
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+0,0.21,0.19,0.01,0,42716,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Payton TideGoesIn
+Done!
+FINAL ERROR CODE: 0
+0,0.17,0.16,0.00,0,31028,0,0,64,0,0
+
+Writing: -
+0,0.17,0.16,0.00,0,31028,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/Kornacker C
+Done!
+FINAL ERROR CODE: 0
+Case #1 solved
+Case #2 solved
+Case #3 solved
+Case #4 solved
+Case #5 solved
+Case #6 solved
+Case #7 solved
+Case #8 solved
+Case #9 solved
+Case #10 solved
+Case #11 solved
+Case #12 solved
+Case #13 solved
+Case #14 solved
+Case #15 solved
+Case #16 solved
+Case #17 solved
+Case #18 solved
+Case #19 solved
+Case #20 solved
+Case #21 solved
+Case #22 solved
+Case #23 solved
+Case #24 solved
+Case #25 solved
+Case #26 solved
+Case #27 solved
+Case #28 solved
+Case #29 solved
+Case #30 solved
+Case #31 solved
+Case #32 solved
+Case #33 solved
+Case #34 solved
+Case #35 solved
+Case #36 solved
+Case #37 solved
+Case #38 solved
+Case #39 solved
+Case #40 solved
+Case #41 solved
+Case #42 solved
+Case #43 solved
+Case #44 solved
+Case #45 solved
+Case #46 solved
+Case #47 solved
+Case #48 solved
+Case #49 solved
+Case #50 solved
+0,0.29,0.29,0.00,0,47112,0,0,72,0,0
+
+Writing: -
+Case #1 solved
+Case #2 solved
+Case #3 solved
+Case #4 solved
+Case #5 solved
+Case #6 solved
+Case #7 solved
+Case #8 solved
+Case #9 solved
+Case #10 solved
+Case #11 solved
+Case #12 solved
+Case #13 solved
+Case #14 solved
+Case #15 solved
+Case #16 solved
+Case #17 solved
+Case #18 solved
+Case #19 solved
+Case #20 solved
+Case #21 solved
+Case #22 solved
+Case #23 solved
+Case #24 solved
+Case #25 solved
+Case #26 solved
+Case #27 solved
+Case #28 solved
+Case #29 solved
+Case #30 solved
+Case #31 solved
+Case #32 solved
+Case #33 solved
+Case #34 solved
+Case #35 solved
+Case #36 solved
+Case #37 solved
+Case #38 solved
+Case #39 solved
+Case #40 solved
+Case #41 solved
+Case #42 solved
+Case #43 solved
+Case #44 solved
+Case #45 solved
+Case #46 solved
+Case #47 solved
+Case #48 solved
+Case #49 solved
+Case #50 solved
+0,0.29,0.29,0.00,0,47112,0,0,72,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/jamu B
+Done!
+FINAL ERROR CODE: 0
+[[ 1 ]]
+[[ 2 ]]
+[[ 3 ]]
+[[ 4 ]]
+[[ 5 ]]
+[[ 6 ]]
+[[ 7 ]]
+[[ 8 ]]
+[[ 9 ]]
+[[ 10 ]]
+[[ 11 ]]
+[[ 12 ]]
+[[ 13 ]]
+[[ 14 ]]
+[[ 15 ]]
+[[ 16 ]]
+[[ 17 ]]
+[[ 18 ]]
+[[ 19 ]]
+[[ 20 ]]
+[[ 21 ]]
+[[ 22 ]]
+[[ 23 ]]
+[[ 24 ]]
+[[ 25 ]]
+[[ 26 ]]
+[[ 27 ]]
+[[ 28 ]]
+[[ 29 ]]
+[[ 30 ]]
+[[ 31 ]]
+[[ 32 ]]
+[[ 33 ]]
+[[ 34 ]]
+[[ 35 ]]
+[[ 36 ]]
+[[ 37 ]]
+[[ 38 ]]
+[[ 39 ]]
+[[ 40 ]]
+[[ 41 ]]
+[[ 42 ]]
+[[ 43 ]]
+[[ 44 ]]
+[[ 45 ]]
+[[ 46 ]]
+[[ 47 ]]
+[[ 48 ]]
+[[ 49 ]]
+[[ 50 ]]
+0,0.19,0.19,0.00,0,32284,0,0,64,0,0
+
+Writing: -
+[[ 1 ]]
+[[ 2 ]]
+[[ 3 ]]
+[[ 4 ]]
+[[ 5 ]]
+[[ 6 ]]
+[[ 7 ]]
+[[ 8 ]]
+[[ 9 ]]
+[[ 10 ]]
+[[ 11 ]]
+[[ 12 ]]
+[[ 13 ]]
+[[ 14 ]]
+[[ 15 ]]
+[[ 16 ]]
+[[ 17 ]]
+[[ 18 ]]
+[[ 19 ]]
+[[ 20 ]]
+[[ 21 ]]
+[[ 22 ]]
+[[ 23 ]]
+[[ 24 ]]
+[[ 25 ]]
+[[ 26 ]]
+[[ 27 ]]
+[[ 28 ]]
+[[ 29 ]]
+[[ 30 ]]
+[[ 31 ]]
+[[ 32 ]]
+[[ 33 ]]
+[[ 34 ]]
+[[ 35 ]]
+[[ 36 ]]
+[[ 37 ]]
+[[ 38 ]]
+[[ 39 ]]
+[[ 40 ]]
+[[ 41 ]]
+[[ 42 ]]
+[[ 43 ]]
+[[ 44 ]]
+[[ 45 ]]
+[[ 46 ]]
+[[ 47 ]]
+[[ 48 ]]
+[[ 49 ]]
+[[ 50 ]]
+0,0.19,0.19,0.00,0,32284,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/MaximKalinin B
+Done!
+FINAL ERROR CODE: 0
+0,0.20,0.19,0.00,0,33620,0,0,64,0,0
+
+Writing: -
+0,0.20,0.19,0.00,0,33620,0,0,64,0,0
+
+running /home/useruser/datacollection/solutions_1485488_0/java/tolk tide
+Error: process taking too long to complete--terminating
+FINAL ERROR CODE: -15
+
+Writing: Timeout
+
+Dir to clean: /home/useruser/GCJ-mining/compile
+removed file: B.txt
+removed file: c_out.txt
+removed file: tideintideout.out
+removed file: 1.txt
+removed file: b-small.out
+removed file: output.txt
+removed file: B-small-attempt1.out
+removed file: b.out
+removed file: tide.out
+removed file: B.out
+removed file: B-large_1495528932637.out
+removed file: out.txt
