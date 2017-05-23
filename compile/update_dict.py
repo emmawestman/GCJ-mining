@@ -72,8 +72,8 @@ def format_error_msg(msg, lang) :
              msg = msg[index1+index2:]
         if len(msg) > 80 :
             msg = msg[0:80]
-        if len(msg) == 0 :
-            msg = '-'
+        if len(msg) == 0 : 
+            msg = 'Unknown'
         return msg
 
 def cpp_formating_run(msg) :
@@ -99,15 +99,12 @@ def format_run_msg(msg, lang) :
         msg = msg[index1:index2]
     elif lang == 'Python':
         msg = format_error_msg(msg, lang)
-    elif lang == 'C++':
+    elif lang == 'C++' or lang == 'C':
         msg = cpp_formating_run(msg)
     else :
         index1 = msg.find(':')
         index2 = msg[index1+1:].find(':')
         msg = msg[index1:index1+index2+1]
-#    else :
-#        index = msg.find('error')
-#        msg = msg[index:]
     if len(msg) > 80 :
         msg = msg[0:80]
     return msg
