@@ -107,6 +107,7 @@ def run_python_command(pythonversion,path_file,args,user_dict, pipe = ' '):
 
 def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user_dict):
     error_name = get_error_name(errors)
+    print "errors ", errors
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip')
         print flag
@@ -134,6 +135,7 @@ def handle_python_2x_errors(file_path,path_input,p_id,root,errors,exit_code,user
 
 def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user_dict):
     error_name = get_error_name(errors)
+    print "errors", errors
     if error_name =='ImportError':
         flag,missing_module_name = handle_import_error(file_path,path_input,errors,'pip3')
         print 'handle python 3: ' + missing_module_name
@@ -147,6 +149,10 @@ def handle_python_3x_errors(errors,exit_code,file_path,path_input,p_id,root,user
     elif error_name =='FileNotFoundError' or error_name =='IOError':
         handle_python_file_not_found(path_input,root,p_id,file_path)
         run_python_command('python3 ', file_path,path_input,user_dict)
+
+    elif error_name == 'IndexError':
+        args = ' ' + path_input + '  '+os.path.join(root,'output.txt')
+        exit_code, errors = run_python_command('python3 ',file_path,args,user_dict)
     else :
         # we can don't  fix problem and do not try agian
         print 'CAN NOT HANDLE ERROR'
