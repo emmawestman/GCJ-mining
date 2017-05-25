@@ -58,11 +58,21 @@ def do_cpp_command(f, user_path, user_dict) :
     return b, exit_code, errors
 
 
-def run_cpp(p_id, dict):
+def run_cpp(p_id):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
-    for user in user_ids :
+    count = 500
+    filename = p_id + '.csv'
+    dict = read_csv_file(filename)
+    write_to_csv_file(filename, dict)
+    for idx,user in enumerate(user_ids) :
+        if idx > count :
+            write_to_csv_file(filename, dict)
+            dict = read_csv_file(filename)
+            count += 500
+            print 'Saved data, next user: ' + user
+    
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         filelist = [f for f in os.listdir(user_path) if '.' not in f]

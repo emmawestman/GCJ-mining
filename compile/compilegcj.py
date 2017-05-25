@@ -46,8 +46,10 @@ def compile_language(language, p_id, dict):
         compile_c(p_id, dict)
         run_c(p_id, dict)
     elif language == "C++":
+        dict = read_csv_file(filename)
         compile_cpp(p_id, dict)
-        run_cpp(p_id, dict)
+        write_to_csv_file(filename, dict)
+        run_cpp(p_id)
     elif language == 'C#':
         compile_csharp(p_id, dict)
         run_csharp(p_id,dict)
@@ -65,11 +67,10 @@ def compile_all():
     l = sys.argv[3]
     p_id = problem + '_' + size
     filename = p_id + '.csv'
-    dict = read_csv_file(filename)
     print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
     remove_old_files(l, p_id)
     compile_language(l, p_id, dict)
     clean_home_dir()
-    write_to_csv_file(filename, dict)
+    
 
 compile_all()

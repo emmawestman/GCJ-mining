@@ -12,7 +12,7 @@ do
 
     for r in "${range[@]}"
     do
-        python compilegcj.py $i $r 'C'
+        python compilegcj.py $i $r 'C++'
     done
 done
 
