@@ -12,6 +12,7 @@ from update_dict import *
 gcj_path = os.path.join(os.getcwd(), '../../')
 sys.path.insert(0, gcj_path)
 from constants import *
+from write_to_csv import *
 
 def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
