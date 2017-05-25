@@ -46,6 +46,7 @@ def compile_language(language, p_id, dict):
         compile_c(p_id, dict)
         run_c(p_id, dict)
     elif language == "C++":
+        filename = p_id + '.csv'
         dict = read_csv_file(filename)
         compile_cpp(p_id, dict)
         write_to_csv_file(filename, dict)
