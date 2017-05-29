@@ -71,7 +71,7 @@ def run_cpp(p_id, u_range):
     print 'user ids ' + str(len(user_ids))
     if int(u_range) < int(len(user_ids)):
         print 'u range statrts at: ' + str(u_range)
-        user_ids[int(u_range:]
+        user_ids[int(u_range):]
     else :
         return -1
 
