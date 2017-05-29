@@ -68,6 +68,7 @@ def run_cpp(p_id, u_range):
     dict = read_csv_file(filename)
     user_dict = dict[user]
     if u_range < len(user_ids):
+        print 'u range statrts at: ' + str(u_range)
         user_ids[u_range:]
     else :
         return -1
@@ -75,24 +76,22 @@ def run_cpp(p_id, u_range):
     #write_to_csv_file(filename, dict)
     for idx,user in enumerate(user_ids) :
         if idx > count :
-            
             break
-    
-        
-        user_path = os.path.join(path, user)
-        filelist = [f for f in os.listdir(user_path) if '.' not in f]
-        for f in filelist :
-            print 'running c++ file for: ' + user + ' in problem ' + p_id
-            exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
-            print 'FINAL EXIT CODE: ' + str(exit_code)
-            index = u_range + idx
-            print 'INDEX: ' + str(index)
-            # update dictonary with run mesurments
-            set_run_error_msg(user_dict, errors, exit_code, 'C++')
-            set_run_mesurments(exit_code, errors, user_dict)
-            # clean dir
-            clean_home_dir()
-            clean_user_dir(user_path, 'C++')
+        else : 
+            user_path = os.path.join(path, user)
+            filelist = [f for f in os.listdir(user_path) if '.' not in f]
+            for f in filelist :
+                print 'running c++ file for: ' + user + ' in problem ' + p_id
+                exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
+                print 'FINAL EXIT CODE: ' + str(exit_code)
+                index = u_range + idx
+                print 'INDEX: ' + str(index)
+                # update dictonary with run mesurments
+                set_run_error_msg(user_dict, errors, exit_code, 'C++')
+                set_run_mesurments(exit_code, errors, user_dict)
+                # clean dir
+                clean_home_dir()
+                clean_user_dir(user_path, 'C++')
     write_to_csv_file(filename, dict)
       
 

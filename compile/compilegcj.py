@@ -47,9 +47,9 @@ def compile_language(language, p_id, dict, u_range):
         run_c(p_id, dict)
     elif language == "C++":
         filename = p_id + '.csv'
-        dict = read_csv_file(filename)
-        compile_cpp(p_id, dict)
-        write_to_csv_file(filename, dict)
+        #dict = read_csv_file(filename)
+        #compile_cpp(p_id, dict)
+        #write_to_csv_file(filename, dict)
         run_cpp(p_id, u_range)
     elif language == 'C#':
         compile_csharp(p_id, dict)
