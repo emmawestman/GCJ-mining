@@ -71,14 +71,14 @@ def run_cpp(p_id, u_range):
     u_range_int = int(u_range)
     if u_range_int < int(len(user_ids)):
         print 'u range statrts at: ' + u_range
-        user_ids[u_range_int:]
+        selected_user_ids = user_ids[u_range_int:]
     else :
         return -1
 
     #write_to_csv_file(filename, dict)
-    for idx,user in enumerate(user_ids) :
+    for idx,user in enumerate(selected_user_ids) :
         user_dict = dict[user]
-        if idx < 500 :
+        if idx > 500 :
             break
         else : 
             user_path = os.path.join(path, user)
