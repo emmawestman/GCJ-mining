@@ -69,7 +69,8 @@ def run_cpp(p_id, u_range):
     dict = read_csv_file(filename)
     print 'range stats at: ' + u_range
     print 'user ids ' + str(len(user_ids))
-    if u_range < len(user_ids):
+    print type(int(u_range))
+    if int(u_range) < int(len(user_ids)):
         print 'u range statrts at: ' + str(u_range)
         user_ids[u_range:]
     else :
