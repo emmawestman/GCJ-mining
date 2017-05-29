@@ -67,6 +67,7 @@ def compile_all():
     size = sys.argv[2]
     l = sys.argv[4]
     u_range = sys.argv[3]
+    print type(u_range)
     p_id = problem + '_' + size
     filename = p_id + '.csv'
     print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
