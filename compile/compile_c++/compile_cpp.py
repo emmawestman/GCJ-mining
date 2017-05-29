@@ -64,7 +64,6 @@ def run_cpp(p_id, u_range):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
-    count = 500
     filename = p_id + '.csv'
     dict = read_csv_file(filename)
     print 'range stats at: ' + u_range
@@ -79,7 +78,7 @@ def run_cpp(p_id, u_range):
     #write_to_csv_file(filename, dict)
     for idx,user in enumerate(user_ids) :
         user_dict = dict[user]
-        if idx > count :
+        if idx < 500 :
             break
         else : 
             user_path = os.path.join(path, user)
