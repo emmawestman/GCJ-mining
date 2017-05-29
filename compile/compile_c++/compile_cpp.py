@@ -87,7 +87,7 @@ def run_cpp(p_id, u_range):
                 print 'running c++ file for: ' + user + ' in problem ' + p_id
                 exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
                 print 'FINAL EXIT CODE: ' + str(exit_code)
-                index = u_range + idx
+                index = u_range_int + idx
                 print 'INDEX: ' + str(index)
                 # update dictonary with run mesurments
                 set_run_error_msg(user_dict, errors, exit_code, 'C++')
