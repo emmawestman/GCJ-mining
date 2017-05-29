@@ -37,7 +37,7 @@ sys.path.insert(0, python_path)
 from compile_python import *
 
 
-def compile_language(language, p_id, dict):
+def compile_language(language, p_id, dict, u_range):
     if language == 'java':
         #cwd = os.getcwd()
         compile_java(p_id, dict)
@@ -50,7 +50,7 @@ def compile_language(language, p_id, dict):
         dict = read_csv_file(filename)
         compile_cpp(p_id, dict)
         write_to_csv_file(filename, dict)
-        run_cpp(p_id)
+        run_cpp(p_id, u_range)
     elif language == 'C#':
         compile_csharp(p_id, dict)
         run_csharp(p_id,dict)
@@ -65,12 +65,13 @@ def compile_all():
     #python compilegcj.py problem_id size language
     problem = sys.argv[1]
     size = sys.argv[2]
-    l = sys.argv[3]
+    l = sys.argv[4]
+    u_range = sys.argv[3]
     p_id = problem + '_' + size
     filename = p_id + '.csv'
     print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
     remove_old_files(l, p_id)
-    compile_language(l, p_id, dict)
+    compile_language(l, p_id, dict, u_range)
     clean_home_dir()
     
 

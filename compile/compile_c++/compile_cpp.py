@@ -59,34 +59,41 @@ def do_cpp_command(f, user_path, user_dict) :
     return b, exit_code, errors
 
 
-def run_cpp(p_id):
+def run_cpp(p_id, u_range):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
     count = 500
     filename = p_id + '.csv'
     dict = read_csv_file(filename)
-    write_to_csv_file(filename, dict)
+    user_dict = dict[user]
+    if u_range < len(user_ids):
+        user_ids[u_range:]
+    else :
+        return -1
+
+    #write_to_csv_file(filename, dict)
     for idx,user in enumerate(user_ids) :
         if idx > count :
-            write_to_csv_file(filename, dict)
-            dict = read_csv_file(filename)
-            count += 500
-            print 'Saved data, next user: ' + user
+            
+            break
     
-        user_dict = dict[user]
+        
         user_path = os.path.join(path, user)
         filelist = [f for f in os.listdir(user_path) if '.' not in f]
         for f in filelist :
             print 'running c++ file for: ' + user + ' in problem ' + p_id
             exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
             print 'FINAL EXIT CODE: ' + str(exit_code)
+            index = u_range + idx
+            print 'INDEX: ' + str(index)
             # update dictonary with run mesurments
             set_run_error_msg(user_dict, errors, exit_code, 'C++')
             set_run_mesurments(exit_code, errors, user_dict)
             # clean dir
             clean_home_dir()
             clean_user_dir(user_path, 'C++')
+    write_to_csv_file(filename, dict)
       
 
 def do_run_cpp(f, user_path, input_path) :
