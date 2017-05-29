@@ -60,12 +60,14 @@ def do_cpp_command(f, user_path, user_dict) :
 
 
 def run_cpp(p_id, u_range):
+    print 'in run cpp'
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
     user_ids = os.listdir(path)
     count = 500
     filename = p_id + '.csv'
     dict = read_csv_file(filename)
+    print 'user ids ' + str(len(user_ids))
     if u_range < len(user_ids):
         print 'u range statrts at: ' + str(u_range)
         user_ids[u_range:]
