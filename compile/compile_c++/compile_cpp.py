@@ -66,7 +66,6 @@ def run_cpp(p_id, u_range):
     count = 500
     filename = p_id + '.csv'
     dict = read_csv_file(filename)
-    user_dict = dict[user]
     if u_range < len(user_ids):
         print 'u range statrts at: ' + str(u_range)
         user_ids[u_range:]
@@ -75,6 +74,7 @@ def run_cpp(p_id, u_range):
 
     #write_to_csv_file(filename, dict)
     for idx,user in enumerate(user_ids) :
+        user_dict = dict[user]
         if idx > count :
             break
         else : 
