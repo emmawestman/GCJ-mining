@@ -50,7 +50,7 @@ def compile_language(language, p_id, dict, u_range):
         dict = read_csv_file(filename)
         compile_cpp(p_id, dict)
         write_to_csv_file(filename, dict)
-        run_cpp(p_id, u_range)
+        #run_cpp(p_id, u_range)
     elif language == 'C#':
         compile_csharp(p_id, dict)
         run_csharp(p_id,dict)
