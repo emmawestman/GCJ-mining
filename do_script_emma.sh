@@ -13,6 +13,7 @@ do
 done
 
 
+
 # C
 for i in "${all[@]}"
 do
@@ -25,7 +26,6 @@ do
         do
             python compilegcj.py $i $r $u 'C++'
         done
-        
     done
 done
 

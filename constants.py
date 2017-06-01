@@ -52,6 +52,17 @@ PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'i
 def get_INPUT_PATH() :
     return PATH_INPUT
 
+def get_PROBLEM_IDS_BOTH(gcj_path):
+	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
+		p_ids = content.read().split('\n')
+		p_ids = p_ids [:len(p_ids)-1]
+		ret_list = []
+		for p_id in p_ids :
+			if len (p_id) > 0 :
+				if not (p_id == '5756407898963968' or p_id == '5752104073297920' or p_id == '1483485') :
+					ret_list.append(p_id)
+	return ret_list
+
 def get_PROBLEM_IDS(gcj_path):
 	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
 		p_ids = content.read().split('\n')
