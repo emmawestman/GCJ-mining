@@ -86,8 +86,12 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
         b, exit_code, errors = compile_java_command(os.path.join(root,class_name+'.java'))
         set_compile_mesurments(user_dict, b, exit_code, errors)
         exit_code, errors = run_java_command(build_run_args(root,class_name,input_path,' < '))
-        if (int (exit_code) != 0) or (int (exit_code) != 124):
-            return handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict)
+        if 'FileNotFoundException' in errors :
+            print "FileNotFoundException"
+            rename_fileread_filewrite(file_path,input_path,root)
+            b, exit_code, errors = compile_java_command(file_path)
+            set_compile_mesurments(user_dict, b, exit_code, errors)
+            return run_java_command(build_run_args(root,class_name,input_path,' < '))
     elif 'FileNotFoundException' in errors :
         print "FileNotFoundException"
         rename_fileread_filewrite(file_path,input_path,root)
