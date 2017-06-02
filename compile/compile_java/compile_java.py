@@ -51,11 +51,13 @@ def compile_java_command(full_path):
 
 def compile_java(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java' ))
+    nbr_users = len(os.listfir(path))
+    count = 0
     print path
     for root, dirs, files in os.walk(path):
         for f in files:
             if (f.endswith(".java")):
-                print "compiling java " + f
+                print "compiling java " + f + 'problem ' + p_id
                 full_path = os.path.join(root,f)
                 b, exit_code, errors = compile_java_command(full_path)
                 # write compile statistics
@@ -67,6 +69,8 @@ def compile_java(p_id, dict):
                 #default mesurments
                 set_compiler_version(user_dict,'-')
                 set_run_mesurments('-1', '', user_dict)
+                print 'INDEX: ' + str(count) + '/' + str(nbr_users)
+                count += 1
                 print 'COPILE EXIT CODE ' + str(exit_code)
                 print errors
                 set_compile_mesurments(user_dict, b, exit_code, errors)
@@ -97,7 +101,7 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
 def run_java_files(p_id,dict) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java'))
     userfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
-    for user_folder in userfolders:
+    for idx,user_folder in enumerate(userfolders):
         userPATH = os.path.join(path,user_folder)
         user_dict = dict[user_folder]
         #Filter class name
@@ -105,6 +109,7 @@ def run_java_files(p_id,dict) :
         class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
         if len(class_file)>0:
             class_name = class_file[0].split('.')[0]
+            print 'INDEX: ' + str(idx) + '/' + str(len(userfolders))
             print "running " + userPATH + " " + class_name
             error_code,errors = run_java_file(userPATH,class_name,p_id, user_dict)
             print 'FINAL ERROR CODE: ' + str(error_code)
