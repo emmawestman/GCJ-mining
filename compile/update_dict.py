@@ -154,7 +154,10 @@ def set_compile_error_msg(user_dict, msg, exit_code, lang):
     elif str(exit_code) == '127':
         msg = 'Command not found'
     else:
-        msg = format_error_msg(msg, lang)
+        if msg is None :
+            msg = '-'
+        else:
+            msg = format_error_msg(msg, lang)
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
@@ -166,7 +169,10 @@ def set_run_error_msg(user_dict, msg, exit_code, lang):
     elif str(exit_code) == '0':
         msg = '-'
     else :
-        msg = format_run_msg(msg, lang)
+        if msg is None :
+            msg = '-'
+        else:
+            msg = format_run_msg(msg, lang)
         if len(msg) == 0 :
             msg = '-'
             

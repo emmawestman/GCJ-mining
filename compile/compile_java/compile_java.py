@@ -115,7 +115,7 @@ def run_java_files(p_id,dict) :
             class_name = class_file[0].split('.')[0]
             print 'INDEX: ' + str(idx) + '/' + str(len(userfolders))
             print "running " + userPATH + " " + class_name
-            error_code,errors = run_java_file(userPATH,class_name,p_id, user_dict)
+            error_code, errors = run_java_file(userPATH,class_name,p_id, user_dict)
             print 'FINAL ERROR CODE: ' + str(error_code)
             print errors
             set_run_error_msg(user_dict, errors, error_code, 'Java')
