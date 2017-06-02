@@ -132,7 +132,7 @@ def format_run_msg(msg, lang) :
     if lang == 'Java':
         index1 = msg.find('java')
         index2 = msg[index1:].find(' ')
-        msg = msg[index1:index2]
+        msg = msg[index1:(index1+index2)]
     elif lang == 'Python':
         msg = python_format(msg)
     elif lang == 'C++' or lang == 'C':
@@ -140,7 +140,7 @@ def format_run_msg(msg, lang) :
     else :
         index1 = msg.find(':')
         index2 = msg[index1+1:].find(':')
-        msg = msg[index1:index1+index2+1]
+        msg = msg[index1+1:index1+index2]
     if len(msg) > 80 :
         msg = msg[0:80]
     return msg
