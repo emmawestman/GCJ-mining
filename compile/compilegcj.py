@@ -37,23 +37,23 @@ sys.path.insert(0, python_path)
 from compile_python import *
 
 
-def compile_language(language, p_id, dict):
+def compile_language(language, p_id, dict,user_ids):
     if language == 'java':
         #cwd = os.getcwd()
-        compile_java(p_id, dict)
-        run_java_files(p_id,dict)
+        compile_java(p_id, dict,user_ids)
+        run_java_files(p_id,dict,user_ids)
     elif language == 'C':
-        compile_c(p_id, dict)
-        run_c(p_id, dict)
+        compile_c(p_id, dict,user_ids)
+        run_c(p_id, dict,user_ids)
     elif language == "C++":
-        compile_cpp(p_id, dict)
-        run_cpp(p_id, dict)
+        compile_cpp(p_id, dict,user_ids)
+        run_cpp(p_id, dict,user_ids)
     elif language == 'C#':
-        compile_csharp(p_id, dict)
-        run_csharp(p_id,dict)
+        compile_csharp(p_id, dict,user_ids)
+        run_csharp(p_id,dict,user_ids)
     elif language == "Python":
         #compile_python_files(p_id, dict)
-        run_python_files(p_id,dict)
+        run_python_files(p_id,dict,user_ids)
     else:
         print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 

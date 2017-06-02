@@ -51,25 +51,23 @@ def compile_java_command(full_path):
 
 def compile_java(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java' ))
-    print path
-    for root, dirs, files in os.walk(path):
-        for f in files:
-            if (f.endswith(".java")):
-                print "compiling java " + f
-                full_path = os.path.join(root,f)
-                b, exit_code, errors = compile_java_command(full_path)
-                # write compile statistics
-                if 'is public, should be declared in a file named' in errors :
-                    rename_class_file(full_path,errors)
-                    b,exit_code,errors = compile_java_command(full_path)
-                user_dict = dict[get_user_id(root)]
-                user_dict = dict[get_user_id(root)]
+    for f in user_folders:
+        if (f.endswith(".java")):
+            print "compiling java " + f
+            full_path = os.path.join(root,f)
+            b, exit_code, errors = compile_java_command(full_path)
+            # write compile statistics
+            if 'is public, should be declared in a file named' in errors :
+                rename_class_file(full_path,errors)
+                b,exit_code,errors = compile_java_command(full_path)
+            user_dict = dict[get_user_id(root)]
+            user_dict = dict[get_user_id(root)]
                 #default mesurments
-                set_compiler_version(user_dict,'-')
-                set_run_mesurments('-1', '', user_dict)
-                print 'COPILE EXIT CODE ' + str(exit_code)
-                print errors
-                set_compile_mesurments(user_dict, b, exit_code, errors)
+            set_compiler_version(user_dict,'-')
+            set_run_mesurments('-1', '', user_dict)
+            print 'COPILE EXIT CODE ' + str(exit_code)
+            print errors
+            set_compile_mesurments(user_dict, b, exit_code, errors)
 
 def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dict):
     print errors
@@ -94,9 +92,8 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
         return run_java_command(build_run_args(root,class_name,input_path,''))
     return exit_code, errors
 
-def run_java_files(p_id,dict) :
+def run_java_files(p_id,dict,users_folders) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java'))
-    userfolders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
     for user_folder in userfolders:
         userPATH = os.path.join(path,user_folder)
         user_dict = dict[user_folder]

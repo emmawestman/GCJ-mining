@@ -15,9 +15,8 @@ sys.path.insert(0, gcj_path)
 from constants import *
 
 
-def compile_csharp(p_id, dict):
+def compile_csharp(p_id, dict,user_ids):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + p_id, 'C#' ))
-    user_ids = os.listdir(path)
     for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
@@ -109,10 +108,9 @@ def handle_compilation_errors(error_code,errors,root,csharp_file_p,csharp_file_p
     return error_code,errors
 
 
-def run_csharp(p_id, dict):
+def run_csharp(p_id, dict,user_ids):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection', 'solutions_' + p_id, 'C#' ))
     input_file = os.path.join(get_INPUT_PATH(), p_id + '.in')
-    user_ids = os.listdir(path)
     for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)

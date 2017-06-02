@@ -63,9 +63,8 @@ def measure_exe(exe_path,user_dict):
         set_exe_size(user_dict, b)
 
 
-def compile_c(p_id, dict):
+def compile_c(p_id, dict,user_ids):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C' ))
-    user_ids = os.listdir(path)
     for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
@@ -86,10 +85,9 @@ def compile_c(p_id, dict):
 
 
 
-def run_c(p_id, dict):
+def run_c(p_id, dict,user_ids):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C' ))
     input_path = os.path.join(get_INPUT_PATH(), p_id + '.in')
-    user_ids = os.listdir(path)
     for user in user_ids :
         user_dict = dict[user]
         user_path = os.path.join(path, user)
