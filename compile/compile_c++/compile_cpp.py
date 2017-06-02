@@ -18,7 +18,8 @@ def compile_cpp(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'solutions_' + p_id, 'C++' ))
     
     user_ids = os.listdir(path)
-    for user in user_ids :
+    for idx,user in enumerate(user_ids) :
+        print 'INDEX: ' + str(idx)
         user_dict = dict[user]
         user_path = os.path.join(path, user)
         for f in os.listdir(user_path) :
