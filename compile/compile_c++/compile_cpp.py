@@ -85,6 +85,7 @@ def run_cpp(p_id, u_range):
         else : 
             user_path = os.path.join(path, user)
             filelist = [f for f in os.listdir(user_path) if '.' not in f]
+            print filelist
             for f in filelist :
                 print 'running c++ file for: ' + user + ' in problem ' + p_id
                 exit_code, errors = run_cpp_command(f, user_path, input_path, user_dict)
