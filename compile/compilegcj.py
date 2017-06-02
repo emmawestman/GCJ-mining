@@ -41,7 +41,7 @@ def compile_language(language, p_id, dict):
     if language == 'java':
         #cwd = os.getcwd()
         compile_java(p_id, dict)
-        run_java_files(p_id,dict)
+        run_java_files(p_id, dict)
     elif language == 'C':
         compile_c(p_id, dict)
         run_c(p_id, dict)
