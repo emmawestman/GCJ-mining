@@ -38,7 +38,7 @@ from compile_python import *
 
 
 def compile_language(language, p_id, dict,user_ids):
-    if language == 'java':
+    if language == 'java' or language == 'Java':
         #cwd = os.getcwd()
         compile_java(p_id, dict,user_ids)
         run_java_files(p_id,dict,user_ids)
@@ -57,8 +57,7 @@ def compile_language(language, p_id, dict,user_ids):
     else:
         print language + " is not one of the selected languages, try: java, C, C++, C# or Python"
 
-
-def compile_all():
+'''def compile_all():
     #python compilegcj.py problem_id size language
     problem = sys.argv[1]
     size = sys.argv[2]
@@ -71,5 +70,24 @@ def compile_all():
     compile_language(l, p_id, dict)
     clean_home_dir()
     write_to_csv_file(filename, dict)
+'''
+
+def compile_all():
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout')
+    time_outfiles = os.listdir(path)
+    for file_time_out in time_outfiles:
+        with open(os.path.join(path,file_time_out), 'r') as f :
+            first_line = f.readline()
+            args = first_line.split()
+            l= args[0]
+            p_id =args[1]
+            dict =read_csv_file(p_id+'.csv')
+            content = f.readlines()
+            user_ids = [x.strip() for x in content]
+            print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
+            remove_old_files(l, p_id)
+            compile_language(l, p_id, dict,user_ids)
+            clean_home_dir()
+            write_to_csv_file(filename, dict)
 
 compile_all()

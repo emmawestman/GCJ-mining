@@ -102,7 +102,7 @@ def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
 
-    t = Timer(10.0, timeout, [p])
+    t = Timer(120.0, timeout, [p])
     t.start()
     while(t.is_alive()):
         if not p.poll() is None :
