@@ -79,7 +79,7 @@ def java_format_compile(msg) :
     elif 'cannot find symbol' in msg :
         return 'cannot find symbol'
     elif '<identifier> expected' in msg :
-        msg = 'expected ;'
+        return 'expected ;'
     else :
         return 'Unknown error'
 
