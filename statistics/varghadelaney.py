@@ -69,12 +69,13 @@ def filterTimeErrors():
     columns = ['user_id','language','exit_code']
     df = get_all_data(columns)
     df['exit_code'] = df[['exit_code']].astype(str)
-    df = df.loc[df['exit_code'] != '0']
-    df = df.loc[df['exit_code'] != '-1']
-    df = df.loc[df['exit_code'] != '127']
+    df = df.loc[df['exit_code'] == '-15']
     for language,df_group in df.groupby('language'):
-        print df_group
-
+        for problem_id, df_ in df_group.groupby('problem_id'):
+            with open(os.path.join('/Users/alexandraback/Desktop/GCJ-backup/rerun_timeout',language +'_'+problem_id+'.in'), 'w') as f :
+                f.write("%s %s\n" % (language,problem_id))
+                for value in df_['user_id'].values:
+                    f.write("%s\n" % value)
 
 
 
