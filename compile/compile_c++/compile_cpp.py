@@ -72,6 +72,7 @@ def run_cpp(p_id, u_range):
     if u_range_int < int(len(user_ids)):
         print 'u range statrts at: ' + u_range
         selected_user_ids = user_ids[u_range_int:]
+        print selected_user_ids
     else :
         return -1
 
