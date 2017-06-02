@@ -72,12 +72,12 @@ def run_cpp(p_id, u_range):
     if u_range_int < int(len(user_ids)):
         print 'u range statrts at: ' + u_range
         selected_user_ids = user_ids[u_range_int:]
-        print selected_user_ids
     else :
         return -1
 
     #write_to_csv_file(filename, dict)
     for idx,user in enumerate(selected_user_ids) :
+        print 'in loop index: ' + str(idx)
         user_dict = dict[user]
         if idx > 500 :
             write_to_csv_file(filename, dict)
