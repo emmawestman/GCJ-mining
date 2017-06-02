@@ -51,5 +51,31 @@ def compareExe():
     del df['exit_code']
     print df
 
-#def compareEx
-compareExe()
+def compareSystem():
+    columns = ['language','system_time','nbr_file_out']
+    df = get_all_data(columns)
+    df['system_time'] = df[['system_time']].astype(str)
+    df = df.loc[df['system_time'] != '-']
+    df = df.apply(pandas.to_numeric, errors='ignore')
+    df = df.loc[df['system_time'] > 0]
+    df = df.loc[df['nbr_file_out'] > 0]
+    #df['nbr_file_out'] = df[['nbr_file_out']].astype(int)
+    #print "nroffiles PYTHON",df
+    del df['nbr_file_out']
+    df.boxplot(by='language', sym='')
+    plt.show()
+
+def filterTimeErrors():
+    columns = ['user_id','language','exit_code']
+    df = get_all_data(columns)
+    df['exit_code'] = df[['exit_code']].astype(str)
+    df = df.loc[df['exit_code'] != '0']
+    df = df.loc[df['exit_code'] != '-1']
+    df = df.loc[df['exit_code'] != '127']
+    for language,df_group in df.groupby('language'):
+        print df_group
+
+
+
+
+filterTimeErrors()
