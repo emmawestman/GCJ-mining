@@ -160,7 +160,8 @@ def set_compile_error_msg(user_dict, msg, exit_code, lang):
             msg = '-'
         else:
             msg = format_error_msg(msg, lang)
-    
+    print msg
+    print type(msg)
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
