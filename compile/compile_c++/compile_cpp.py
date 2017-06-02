@@ -79,6 +79,7 @@ def run_cpp(p_id, u_range):
     for idx,user in enumerate(selected_user_ids) :
         user_dict = dict[user]
         if idx > 500 :
+            write_to_csv_file(filename, dict)
             return -1
         else : 
             user_path = os.path.join(path, user)
