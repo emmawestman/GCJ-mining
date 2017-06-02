@@ -51,7 +51,7 @@ def compile_java_command(full_path):
 
 def compile_java(p_id, dict):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java' ))
-    nbr_users = len(os.listfir(path))
+    nbr_users = len(os.listdir(path))
     count = 0
     print path
     for root, dirs, files in os.walk(path):
