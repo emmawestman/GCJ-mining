@@ -107,7 +107,6 @@ def run_java_files(p_id,dict,users_folders) :
         class_file =[ f for f in os.listdir(userPATH) if (f.endswith(".class") and f.split('.')[0])==java_file.split('.')[0] ] #TODO : FULT MEN WHAT TO DO
         if len(class_file)>0:
             class_name = class_file[0].split('.')[0]
-            print 'INDEX: ' + str(idx) + '/' + str(len(userfolders))
             print "running " + userPATH + " " + class_name
             error_code, errors = run_java_file(userPATH,class_name,p_id, user_dict)
             print 'FINAL ERROR CODE: ' + str(error_code)
