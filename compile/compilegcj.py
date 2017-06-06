@@ -74,7 +74,7 @@ def compile_language(language, p_id, dict,user_ids):
 
 def compile_all():
     #path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','alex')
-    #path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','emma')
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','emma')
     time_outfolders = os.listdir(path)
     for file_time_folder in time_outfolders:
         for file_time_out in os.listdir(os.path.join(path,file_time_folder)):

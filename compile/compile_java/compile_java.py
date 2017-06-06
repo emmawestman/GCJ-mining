@@ -61,8 +61,8 @@ def compile_java(p_id, dict,user_folders):
                 if 'is public, should be declared in a file named' in errors :
                     rename_class_file(full_path,errors)
                     b,exit_code,errors = compile_java_command(full_path)
-                user_dict = dict[get_user_id(root)]
-                user_dict = dict[get_user_id(root)]
+                user_dict = dict[get_user_id(user_folder)]
+                user_dict = dict[get_user_id(user_folder)]
                     #default mesurments
                 set_compiler_version(user_dict,'-')
                 set_run_mesurments('-1', '', user_dict)
