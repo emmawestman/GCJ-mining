@@ -99,7 +99,7 @@ def handle_java_run_errors(errors,exit_code,root,class_name,input_path, user_dic
 
 def run_java_files(p_id,dict,users_folders) :
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java'))
-    for user_folder in userfolders:
+    for user_folder in user_folders:
         userPATH = os.path.join(path,user_folder)
         user_dict = dict[user_folder]
         #Filter class name
