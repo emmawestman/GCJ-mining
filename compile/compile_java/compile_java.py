@@ -52,7 +52,7 @@ def compile_java_command(full_path):
 def compile_java(p_id, dict,user_folders):
     path = os.path.realpath(os.path.join(get_HOME_PATH(),'datacollection','solutions_' + p_id, 'java' ))
     for user_folder in user_folders:
-        for f in os.listdir(os.path.join(path,user_folder))
+        for f in os.listdir(os.path.join(path,user_folder)):
         if (f.endswith(".java")):
             print "compiling java " + f
             full_path = os.path.join(path,user_folder,f)
