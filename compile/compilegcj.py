@@ -81,7 +81,8 @@ def compile_all():
             args = first_line.split()
             l= args[0]
             p_id =args[1]
-            dict =read_csv_file(p_id+'.csv')
+            filename = p_id+'.csv'
+            dict =read_csv_file(filename)
             content = f.readlines()
             user_ids = [x.strip() for x in content]
             print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
