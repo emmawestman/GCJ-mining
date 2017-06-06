@@ -79,7 +79,7 @@ def java_format_compile(msg) :
     elif 'cannot find symbol' in msg :
         return 'cannot find symbol'
     elif '<identifier> expected' in msg :
-        msg = 'expected ;'
+        return 'expected ;'
     else :
         return 'Unknown error'
 
@@ -132,7 +132,7 @@ def format_run_msg(msg, lang) :
     if lang == 'Java':
         index1 = msg.find('java')
         index2 = msg[index1:].find(' ')
-        msg = msg[index1:index2]
+        msg = msg[index1:(index1+index2)]
     elif lang == 'Python':
         msg = python_format(msg)
     elif lang == 'C++' or lang == 'C':
@@ -140,7 +140,7 @@ def format_run_msg(msg, lang) :
     else :
         index1 = msg.find(':')
         index2 = msg[index1+1:].find(':')
-        msg = msg[index1:index1+index2+1]
+        msg = msg[index1+1:index1+index2]
     if len(msg) > 80 :
         msg = msg[0:80]
     return msg
@@ -154,7 +154,12 @@ def set_compile_error_msg(user_dict, msg, exit_code, lang):
     elif str(exit_code) == '127':
         msg = 'Command not found'
     else:
-        msg = format_error_msg(msg, lang)
+        msg = str(msg)
+
+        if 'None' == msg:
+            msg = '-'
+        else:
+            msg = format_error_msg(msg, lang)
     print 'Writing: ' + msg
     set_column_in_user_dict(user_dict,'compile_error_msg', msg)
 
@@ -166,7 +171,11 @@ def set_run_error_msg(user_dict, msg, exit_code, lang):
     elif str(exit_code) == '0':
         msg = '-'
     else :
-        msg = format_run_msg(msg, lang)
+        msg = str(msg)
+        if 'None' == msg:
+            msg = '-'
+        else:
+            msg = format_run_msg(msg, lang)
         if len(msg) == 0 :
             msg = '-'
             
