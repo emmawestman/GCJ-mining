@@ -59,7 +59,7 @@ def compile_language(language, p_id, dict,user_ids):
 
 '''def compile_all():
     #python compilegcj.py problem_id size language
-    problem = sys.argv[1]
+
     size = sys.argv[2]
     l = sys.argv[3]
     p_id = problem + '_' + size
@@ -73,24 +73,22 @@ def compile_language(language, p_id, dict,user_ids):
 '''
 
 def compile_all():
-    #path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','alex')
-    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','emma')
-    time_outfolders = os.listdir(path)
-    for file_time_folder in time_outfolders: #problem_id
-        filename = file_time_folder+'.csv'
+
+    problem_id = sys.argv[1]
+    language = sys.argv[2]
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','emma',problem_id)
+    #path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','alex',problem_id)
+    time_out_language_path =  os.path.join(path,language + '_'+problem_id + '.in')
+    with open(time_out_language_path, 'r') as f :
+        first_line = f.readline()
+        filename = problem_id+'.csv'
         dict =read_csv_file(filename)
-        for file_time_out in os.listdir(os.path.join(path,file_time_folder)): #language
-            with open(os.path.join(path,file_time_folder,file_time_out), 'r') as f :
-                first_line = f.readline()
-                args = first_line.split()
-                l= args[0]
-                p_id =args[1]
-                content = f.readlines()
-                user_ids = [x.strip() for x in content]
-                print 'Compiles and Runs: ' + l + ' in contest: ' + p_id
-                remove_old_files(l, p_id)
-                compile_language(l, p_id, dict,user_ids)
-                clean_home_dir()
+        content = f.readlines()
+        user_ids = [x.strip() for x in content]
+        print 'Compiles and Runs: ' + language + ' in contest: ' + problem_id
+        remove_old_files(language, problem_id)
+        compile_language(language, problem_id, dict,user_ids)
+        clean_home_dir()
         write_to_csv_file(filename, dict)
 
 compile_all()
