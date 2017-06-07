@@ -71,13 +71,16 @@ def filterTimeErrors():
     df['exit_code'] = df[['exit_code']].astype(str)
     df = df.loc[df['exit_code'] == '-15']
     for language,df_group in df.groupby('language'):
-        for problem_id, df_ in df_group.groupby('problem_id'):
-            folder_name = os.path.join('/Users/alexandraback/Desktop/GCJ-backup/rerun_timeout',problem_id)
+        list_of_problem_ids = []
+        if language == 'C':
+            folder_name = os.path.join('/Users/alexandraback/Desktop/GCJ-backup/rerun_timeout','bash_script')
             if not os.path.exists(folder_name):
                 os.makedirs(folder_name)
-            with open(os.path.join(folder_name,language +'_'+problem_id+'.in'), 'w') as f :
-                f.write("%s %s\n" % (language,problem_id))
-                for value in df_['user_id'].values:
+            for problem_id, df_ in df_group.groupby('problem_id'):
+                list_of_problem_ids.append(problem_id)
+            csv_time_out = os.path.join(folder_name,language+'.in')
+            with open(csv_time_out, 'w') as f :
+                for value in list_of_problem_ids:
                     f.write("%s\n" % value)
 
 
