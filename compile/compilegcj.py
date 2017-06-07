@@ -76,8 +76,7 @@ def compile_all():
 
     problem_id = sys.argv[1]
     language = sys.argv[2]
-    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','emma',problem_id)
-    #path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout','alex',problem_id)
+    path = os.path.join(get_HOME_PATH(), 'GCJ-backup', 'rerun_timeout',problem_id)
     time_out_language_path =  os.path.join(path,language + '_'+problem_id + '.in')
     with open(time_out_language_path, 'r') as f :
         first_line = f.readline()
