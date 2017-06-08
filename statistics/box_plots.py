@@ -116,10 +116,10 @@ def general_box_plot(column, save_to_filename, y_label, title) :
   
 ## call to do plots for total
 def do_all_total() :
-    general_box_plot('cloc', 'box_plot_cloc_total.png', 'Lines of Code', 'Lines of Code, all competitions' )
+    #general_box_plot('cloc', 'box_plot_cloc_total.png', 'Lines of Code', 'Lines of Code, all competitions' )
     #general_box_plot('exe_size', 'box_plot_exe_size_total.png', 'Size of Executable File', 'Size of Executable, all competitions')
     #general_box_plot('max_RAM', 'box_plot_memory_total.png', 'Memory footprint (Bytes)', 'Memory footprint, all competitions')
-    #general_box_plot('wall_clock', 'box_plot_wall_cloc_total.png', 'Wall Clock (s)', 'Wall Clock, all competitions' )
+    general_box_plot('wall_clock', 'box_plot_wall_cloc_total.png', 'Wall Clock (s)', 'Wall Clock, all competitions' )
     #general_box_plot('user_time', 'box_plot_user_time_total.png', 'User Time (s)', 'User Time, all competitions' )
     #sys_user_time_plot('box_plot_tot_time_total.png', 'User + System Time (s)', 'User + System Time, all competitions')
 
