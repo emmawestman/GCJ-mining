@@ -102,18 +102,18 @@ def run_process(cmd):
     cmd = [cmd]
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, preexec_fn=os.setsid)
 
-    t = Timer(10.0, timeout, [p])
-    t.start()
-    while(t.is_alive()):
-        if not p.poll() is None :
-            print 'Done!'
-            t.cancel()
-            break
+    #t = Timer(120.0, timeout, [p])
+    #t.start()
+    #while(t.is_alive()):
+    #    if not p.poll() is None :
+    #        print 'Done!'
+    #        t.cancel()
+    #        break
 
-    t.join()
+    #t.join()
     output, errors = p.communicate()
     exit_code = p.returncode
-    t.cancel()
+    #t.cancel()
     return exit_code, errors
 
 # returns the size of the given file in bytes

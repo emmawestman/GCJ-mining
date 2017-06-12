@@ -165,17 +165,10 @@ def get_all_data(columns) :
         print p_id
         path = os.path.join('../..', 'GCJ-backup', p_id+'.csv')
         df = pd.read_csv(path)
-        try:
-            df = df[columns]
-            df['problem_id'] = p_id
-            data = data.append(df)
+        df = df[columns]
+        df['problem_id'] = p_id
+        data = data.append(df)
 
-        except KeyError:
-            #df = df['language']
-            #size = len(df.index)
-            #for c in columns:
-                #df[c] = ['-']*size
-            print 'skiped: ' + p_id
 
 
     return data

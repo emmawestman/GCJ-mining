@@ -65,23 +65,43 @@ def compareSystem():
     df.boxplot(by='language', sym='')
     plt.show()
 
-def filterTimeErrors():
+def exit_code_one():
+    columns = ['user_id','language','exit_code','run_error_msg']
+    df = get_all_data(columns)
+    df['exit_code'] = df[['exit_code']].astype(str)
+    df = df.loc[df['exit_code'] == '1']
+    df = df.loc[df['run_error_msg']== 'File or Dir not found']
+    del df['run_error_msg']
+    for problem, df_problem in df.groupby('problem_id'):
+        print df_problem
+
+def timed_out():
+    columns = ['user_id','language','exit_code']
+    df = get_all_data(columns)
+    df['exit_code'] = df[['exit_code']].astype(str)
+
+    df = df.loc[df['exit_code'] == '-15']
+    print df['exit_code'].count()
+
+def exit_code_meaning():
+    columns = ['user_id','language','exit_code','run_error_msg']
+    df = get_all_data(columns)
+    df['exit_code'] = df[['exit_code']].astype(str)
+    for language,df_group in df.groupby('language'):
+        for exit, df_exit in df_group.groupby('exit_code'):
+            print language,exit,df_exit['exit_code'].count()
+
+##THIS ONE TO USE
+def filterTimeOutErrors():
     columns = ['user_id','language','exit_code']
     df = get_all_data(columns)
     df['exit_code'] = df[['exit_code']].astype(str)
     df = df.loc[df['exit_code'] == '-15']
     for language,df_group in df.groupby('language'):
-        list_of_problem_ids = []
-        if language == 'C':
-            folder_name = os.path.join('/Users/alexandraback/Desktop/GCJ-backup/rerun_timeout','bash_script')
-            if not os.path.exists(folder_name):
-                os.makedirs(folder_name)
+        if language == 'Java':
             for problem_id, df_ in df_group.groupby('problem_id'):
-                list_of_problem_ids.append(problem_id)
-            csv_time_out = os.path.join(folder_name,language+'.in')
-            with open(csv_time_out, 'w') as f :
-                for value in list_of_problem_ids:
-                    f.write("%s\n" % value)
+                print "numberofcases",df_['exit_code'].count()
+                print df_
 
 
 
