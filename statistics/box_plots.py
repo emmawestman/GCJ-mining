@@ -94,7 +94,9 @@ def general_box_plot(column, save_to_filename, y_label, title) :
     data = data.loc[data[column] != '-']
     # conver data to int
     data = data.apply(pd.to_numeric, errors='ignore')
-    #do boxplot
+    #do 
+    counts = data.groupby('language').count()
+    print counts
     box = data.boxplot(by='language', showfliers=False)
     counts = data.groupby('language').count()
     
@@ -116,11 +118,11 @@ def general_box_plot(column, save_to_filename, y_label, title) :
   
 ## call to do plots for total
 def do_all_total() :
-    #general_box_plot('cloc', 'box_plot_cloc_total.png', 'Lines of Code', 'Lines of Code, all competitions' )
-    #general_box_plot('exe_size', 'box_plot_exe_size_total.png', 'Size of Executable File', 'Size of Executable, all competitions')
-    #general_box_plot('max_RAM', 'box_plot_memory_total.png', 'Memory footprint (Bytes)', 'Memory footprint, all competitions')
+    general_box_plot('cloc', 'box_plot_cloc_total.png', 'Lines of Code', 'Lines of Code, all competitions' )
+    general_box_plot('exe_size', 'box_plot_exe_size_total.png', 'Size of Executable File', 'Size of Executable, all competitions')
+    general_box_plot('max_RAM', 'box_plot_memory_total.png', 'Memory footprint (Bytes)', 'Memory footprint, all competitions')
     general_box_plot('wall_clock', 'box_plot_wall_cloc_total.png', 'Wall Clock (s)', 'Wall Clock, all competitions' )
-    #general_box_plot('user_time', 'box_plot_user_time_total.png', 'User Time (s)', 'User Time, all competitions' )
+    general_box_plot('user_time', 'box_plot_user_time_total.png', 'User Time (s)', 'User Time, all competitions' )
     #sys_user_time_plot('box_plot_tot_time_total.png', 'User + System Time (s)', 'User + System Time, all competitions')
 
 #general_box_plot_problem('5648941810974720_0', 'max_RAM', 'max_RAM')
@@ -128,4 +130,46 @@ def do_all_total() :
 do_all_total()
 #all_problem_by_problem()
 
+def clean_csv() :
+    pids = get_PROBLEM_IDS(gcj_path)
+    path = os.path.join(os.getcwd(), '..','..', 'GCJ-backup')
+    for pid in pids :
+        print pid
+        filename = os.path.join(path, pid+'.csv')
+        dict = read_csv_file(filename)
+        contestants = dict.keys()
+        for c in contestants :
+            c_dict = dict[c]
+            if c_dict['language'] == 'C#':
+                if '\"' in c_dict['compile_error_msg'] :
+                    print 'updating :' + pid
+                    oldstr = c_dict['compile_error_msg'] 
+                    newstr = oldstr.replace(":", "")
+                    newstr = oldstr.replace("\"", "")
+                    c_dict['compile_error_msg'] = newstr
+                    c_dict['run_error_msg'] = '-'
+                    c_dict['max_RAM'] = '-'
+                    c_dict['user_time'] = '-'
+        write_to_csv_file(filename, dict)
+
+def clean_csv2() :
+    pids = get_PROBLEM_IDS(gcj_path)
+    path = os.path.join(os.getcwd(), '..','..', 'GCJ-backup')
+    for pid in pids :
+        print pid
+        filename = os.path.join(path, pid+'.csv')
+        dict = read_csv_file(filename)
+        contestants = dict.keys()
+        for c in contestants :
+            c_dict = dict[c]
+            if c_dict['max_RAM'] != '-' and type(c_dict['max_RAM']) != int:
+                try :
+                    int(c_dict['max_RAM'])
+                except ValueError:  
+                    c_dict['max_RAM'] = '-'
+                    print c
+                    print c_dict['max_RAM']
+                    print type(c_dict['max_RAM'])
+        write_to_csv_file(filename, dict)
+#clean_csv2()
 

@@ -60,9 +60,9 @@ def total_percent_plot() :
 
     df2 = pd.DataFrame()
     df2['language'] = languages
-    df2['executed'] = runs
-    df2['compiled'] = comps
-    df2['total'] = rests
+    df2['Executed'] = runs
+    df2['Compiled'] = comps
+    df2['Total'] = rests
     
 
     bar = df2.plot.bar(stacked=True, color=['#2255a5', '#5e8cd6', '#9dbae8'])
