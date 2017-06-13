@@ -52,6 +52,7 @@ PATH_INPUT = os.path.realpath(os.path.join(get_HOME_PATH(), 'datacollection', 'i
 def get_INPUT_PATH() :
     return PATH_INPUT
 
+#get all ids wich have small and larrge input
 def get_PROBLEM_IDS_BOTH(gcj_path):
 	with open (os.path.join(gcj_path,'p_ids.in'),'rb') as content :
 		p_ids = content.read().split('\n')
