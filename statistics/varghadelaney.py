@@ -22,6 +22,7 @@ def compareTraits(dataframe,column):
     languages = ['Python','Java','C++','C#','C']
 
     dict_of_results = {}
+    res = []
     for i in range (0,5):
         for j in range (i+1,5):
             if(i!= j):
@@ -30,7 +31,12 @@ def compareTraits(dataframe,column):
                 ax = language_one[column].values
                 ay = language_two[column].values
                 A_xy = VarghaDelaney(ax, ay)
+                res.append(A_xy)
                 print "VarghaDelaney " + column +  "language " + languages[i] + ", language " + languages[j] + " "+ str(A_xy)
+    print 'C\# & ' + "%.2f" % res[9] + '\\\\'
+    print 'C++ & ' + "%.2f" % res[8] + ' & ' + "%.2f" % res[7] + '\\\\'
+    print 'Java & ' + "%.2f" % res[6] + ' & ' + "%.2f" % res[5] + ' & '  + "%.2f" % res[4] + '\\\\'
+    print 'Python & ' + "%.2f" % res[3] + ' & ' + "%.2f" % res[2] + ' & ' + "%.2f" % res[1] + ' & ' + "%.2f" % res[0] + '\\\\'
     return dict_of_results
 
 def compareRanks():
@@ -64,6 +70,22 @@ def compareMaxRam():
     df = df.loc[df['max_RAM'] != '-']
     df = df.apply(pandas.to_numeric, errors='ignore')
     compareTraits(dataframe = df, column = 'max_RAM')
+
+def compareWallClock():
+    columns = ['language','wall_clock']
+    df = get_all_data(columns)
+    df['wall_clock'] = df[['wall_clock']].astype(str)
+    df = df.loc[df['wall_clock'] != '-']
+    df = df.apply(pandas.to_numeric, errors='ignore')
+    compareTraits(dataframe = df, column = 'wall_clock')
+
+def compareUserTime():
+    columns = ['language','user_time']
+    df = get_all_data(columns)
+    df['user_time'] = df[['user_time']].astype(str)
+    df = df.loc[df['user_time'] != '-']
+    df = df.apply(pandas.to_numeric, errors='ignore')
+    compareTraits(dataframe = df, column = 'user_time')
 #def compareEx
 
 def languageRoundDist():
@@ -100,4 +122,9 @@ def checkClocExecuted():
         sumAll = sumAll +sumVal
         print language + ' & '+ str(minVal) + ' & '+ str(int(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
     print "sumall",sumAll
-compareExe()
+#compareExe()
+#compareMaxRam()
+#print ''
+compareWallClock()
+print ''
+compareUserTime()

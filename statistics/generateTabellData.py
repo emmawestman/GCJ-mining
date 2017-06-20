@@ -27,10 +27,10 @@ def generateTabellData(column):
         shadowSum += sumVal
         shadowMean += meanVal
         shadowMed.append(medianVal)
-        print language + ' & '+ str(minVal) + ' & '+ str(int(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
+        print language + ' & '+ str(minVal) + ' & '+ str(float(medianVal)) + ' & '+ "%.2f" % meanVal + ' & '+str(maxVal) + ' & '+ str(sumVal) +  ' \\\\'
     shadowMed.sort()
     print '\\midrule'
     print 'Overall & '+ str(min(shadowMin)) + ' & '+  str(shadowMed[2]) + ' & '+ "%.2f" %  (shadowMean/5.0) + ' & '+str(max(shadowMax)) + ' & '+ str(shadowSum)  +  ' \\\\'
 
-generateTabellData('cloc')  
+generateTabellData('user_time')  
 
