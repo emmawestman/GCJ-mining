@@ -65,10 +65,10 @@ def sys_user_time_plot(save_to_filename, y_label, title) :
     tot_time_df = pd.DataFrame()
     tot_time_df['language'] = data['language']
     tot_time_df['tot_time'] = data['system_time'] + data['user_time']
-    
+
     box = tot_time_df.boxplot(by='language', showfliers=False)
     counts = tot_time_df.groupby('language').count()
-    
+
     nbrC = counts.iloc[0]['tot_time']
     nbrCsharp = counts.iloc[1]['tot_time']
     nbrCplus = counts.iloc[2]['tot_time']
@@ -97,7 +97,7 @@ def general_box_plot(column, save_to_filename, y_label, title) :
     #do boxplot
     box = data.boxplot(by='language', showfliers=False)
     counts = data.groupby('language').count()
-    
+
     nbrC = counts.iloc[0][column]
     nbrCsharp = counts.iloc[1][column]
     nbrCplus = counts.iloc[2][column]
@@ -113,7 +113,75 @@ def general_box_plot(column, save_to_filename, y_label, title) :
     plt.tight_layout()
     fig = box.get_figure()
     fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', save_to_filename))
-  
+
+
+def get_data_frame(col):
+    column = 'cloc'
+    data = get_all_data(['language','exit_code','cloc',col])
+    # conver data to int
+    data = data.apply(pd.to_numeric, errors='ignore')
+    data = data.loc[data['exit_code']== 0]
+    df_java = data.loc[data['language'] == 'Java']
+
+    df_csharp = data.loc[data['language'] == 'C#']
+    df_cplus =  data.loc[data['language'] == 'C++']
+    df_python = data.loc[data['language'] == 'Python']
+    df_c = data.loc[data['language'] == 'C']
+
+    df_java = df_java.loc[df_java[column]>15]
+    df_c = df_c.loc[df_c[column]>10]
+    df_cplus = df_cplus.loc[df_cplus[column]>10]
+    df_csharp = df_csharp.loc[df_csharp[column]>15]
+    df_python = df_python.loc[df_python[column]>0]
+
+    frames = [df_java,df_python,df_c,df_csharp,df_cplus]
+    data = pd.concat(frames)
+    return pd.DataFrame(data[['language',col]].as_matrix(), columns=['language',col])
+
+def plot_box(column,data,output,y_label,title):
+    box = data.boxplot(by='language',sym='')
+
+    counts = data.groupby('language').count()
+
+    nbrC = counts.iloc[0][column]
+    nbrCsharp = counts.iloc[1][column]
+    nbrCplus = counts.iloc[2][column]
+    nbrJava = counts.iloc[3][column]
+    nbrPython = counts.iloc[4][column]
+    plt.ylabel(y_label)
+    x_labels = ['C, '+str(nbrC), 'C#, '+str(nbrCsharp), 'C++, '+str(nbrCplus), 'Java, '+str(nbrJava), 'Python, '+str(nbrPython)]
+    box.set_xticklabels(x_labels, rotation=0)
+    plt.xlabel("Language, Number of Files")
+    plt.title(title)
+    plt.suptitle('')
+    #plt.show()
+    plt.tight_layout()
+    fig = box.get_figure()
+    fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', output))
+
+
+
+
+def verified_box_plot_cloc():
+    data = get_data_frame(col='cloc')
+    plot_box('cloc',data,output='box_plot_cloc_total.png', y_label = 'Lines of Code', title = 'Lines of Code, all competitions' )
+
+def verified_box_plot_exe():
+    data = get_data_frame(col='exe_size')
+    plot_box('exe_size',data,output='box_plot_exe_size_total.png', y_label='Size of Executable File', title='Size of Executable, all competitions')
+
+def verified_box_plot_ram():
+    data = get_data_frame(col='max_RAM')
+    plot_box('max_RAM',data,output='box_plot_memory_total.png', y_label= 'Memory footprint (Bytes)', title='Memory footprint, all competitions')
+
+def verified_box_plot_wall_cloc():
+    data = get_data_frame(col='wall_clock')
+    plot_box('wall_clock',data,output='box_plot_wall_cloc_total.png', y_label='Wall Clock (s)', title='Wall Clock, all competitions')
+
+def verified_box_plot_user():
+    data=get_data_frame(col='user_time')
+    plot_box('user_time',data,output='box_plot_user_time_total.png', y_label='User Time (s)', title='User Time, all competitions')
+
 ## call to do plots for total
 def do_all_total() :
     general_box_plot('cloc', 'box_plot_cloc_total.png', 'Lines of Code', 'Lines of Code, all competitions' )
@@ -124,8 +192,6 @@ def do_all_total() :
     #sys_user_time_plot('box_plot_tot_time_total.png', 'User + System Time (s)', 'User + System Time, all competitions')
 
 #general_box_plot_problem('5648941810974720_0', 'max_RAM', 'max_RAM')
+verified_box_plot_exe()
 
-do_all_total()
 #all_problem_by_problem()
-
-
