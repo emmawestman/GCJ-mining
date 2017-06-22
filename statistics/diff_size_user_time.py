@@ -146,5 +146,6 @@ def diff_memory():
 
 
 diff_memory()
+diff_user_time()
 
 

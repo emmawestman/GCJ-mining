@@ -118,17 +118,20 @@ def general_box_plot(column, save_to_filename, y_label, title) :
 
 
 def get_data_frame(col):
-    data = get_all_data(['language',col,'exit_code','cloc'])
+    if col == 'cloc' :
+        data = get_all_data(['language','exit_code','cloc'])
+    else :
+        data = get_all_data(['language',col,'exit_code','cloc'])
     # conver data to int
     print "col",col
     data['exit_code'] = data[['exit_code']].astype(str)
-    data['new_col'] = data[['user_time']].astype(str)
+    data['new_col'] = data[[col]].astype(str)
 
     data = data.loc[data['exit_code'] != '-']
-    data = data.loc[data['user_time'] != '-']
+    data = data.loc[data[col] != '-']
     data = data.apply(pd.to_numeric, errors='ignore')
     data = data.loc[data['exit_code'] == 0]
-    data = data.loc[data['user_time'] >= 0]
+    data = data.loc[data[col] >= 0]
 
     df_java = data.loc[data['language'] == 'Java']
 
@@ -146,10 +149,15 @@ def get_data_frame(col):
     frames = [df_java,df_python,df_c,df_csharp,df_cplus]
     new_data = pd.concat(frames)
     new_data.boxplot(by='language',sym='')
+    
     data = pd.DataFrame(new_data[['language','new_col']].as_matrix(),columns=['language','new_col'])
-    box = data.boxplot(by='language',sym='')
-
+    data = data.apply(pd.to_numeric, errors='ignore')
+    return data
+    #box = data.boxplot(by='language',sym='')
+    '''
     counts = data.groupby('language').count()
+
+    print 'done crearing frame'
 
     nbrC = counts.iloc[0][column]
     nbrCsharp = counts.iloc[1][column]
@@ -167,20 +175,24 @@ def get_data_frame(col):
     fig = box.get_figure()
     fig.savefig(os.path.join(get_HOME_PATH(), 'GCJ-backup', 'Figures', output))
     print "the end"
+    '''
 
 
 def plot_box(column,data,output,y_label,title):
+    #props = dict(boxes="Blue", whiskers="DarkBlue", medians="DarkRed", caps="DarkBlue")
+    #box = data.plot.box(color=props, sym='')
     box = data.boxplot(by='language',sym='')
 
     counts = data.groupby('language').count()
 
-    nbrC = counts.iloc[0][column]
-    nbrCsharp = counts.iloc[1][column]
-    nbrCplus = counts.iloc[2][column]
-    nbrJava = counts.iloc[3][column]
-    nbrPython = counts.iloc[4][column]
+    nbrC = counts.iloc[0]['new_col']
+    nbrCsharp = counts.iloc[1]['new_col']
+    nbrCplus = counts.iloc[2]['new_col']
+    nbrJava = counts.iloc[3]['new_col']
+    nbrPython = counts.iloc[4]['new_col']
     plt.ylabel(y_label)
     x_labels = ['C, '+str(nbrC), 'C#, '+str(nbrCsharp), 'C++, '+str(nbrCplus), 'Java, '+str(nbrJava), 'Python, '+str(nbrPython)]
+    
     box.set_xticklabels(x_labels, rotation=0)
     plt.xlabel("Language, Number of Files")
     plt.title(title)
@@ -269,4 +281,8 @@ def clean_csv2() :
                     print type(c_dict['max_RAM'])
         write_to_csv_file(filename, dict)
 #clean_csv2()
+verified_box_plot_cloc()
+verified_box_plot_exe()
+verified_box_plot_ram()
+verified_box_plot_wall_cloc()
 verified_box_plot_user()
