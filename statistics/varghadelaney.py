@@ -2,6 +2,7 @@ import scipy.stats
 import numpy as np
 from stats_help import *
 import matplotlib.pyplot as plt
+from box_plots import get_data_frame
 
 
 def VarghaDelaney(ax, ay):
@@ -28,8 +29,8 @@ def compareTraits(dataframe,column):
             if(i!= j):
                 language_one = dataframe.loc[dataframe['language'] == languages[i]]
                 language_two = dataframe.loc[dataframe['language'] == languages[j]]
-                ax = language_one[column].values
-                ay = language_two[column].values
+                ax = language_one['new_col'].values
+                ay = language_two['new_col'].values
                 A_xy = VarghaDelaney(ax, ay)
                 res.append(A_xy)
                 print "VarghaDelaney " + column +  "language " + languages[i] + ", language " + languages[j] + " "+ str(A_xy)
@@ -125,6 +126,19 @@ def checkClocExecuted():
 #compareExe()
 #compareMaxRam()
 #print ''
-compareWallClock()
-print ''
-compareUserTime()
+#compareWallClock()
+#print ''
+#compareUserTime()
+
+fetures = ['cloc', 'max_RAM', 'exe_size', 'user_time', 'wall_clock']
+for f in fetures:
+    df = get_data_frame(f)
+    print df
+    compareTraits(df,f)
+    print ''
+
+
+
+
+
+

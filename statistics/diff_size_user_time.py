@@ -70,7 +70,7 @@ def diff_user_time():
         x_labels = ['C, '+str(nbrC), 'C#, '+str(nbrCsharp), 'C++, '+str(nbrCplus), 'Java, '+str(nbrJava), 'Python, '+str(nbrPython)]
         box.set_xticklabels(x_labels, rotation=0)
     plt.xlabel("Language, Number of Files")
-    plt.title('Diff in user time small and large input')
+    plt.title('Difference in user time small and large input')
     plt.ylabel('Time (s)')
     plt.suptitle('')
     plt.tight_layout()
@@ -137,7 +137,7 @@ def diff_memory():
         x_labels = ['C, '+str(nbrC), 'C#, '+str(nbrCsharp), 'C++, '+str(nbrCplus), 'Java, '+str(nbrJava), 'Python, '+str(nbrPython)]
         box.set_xticklabels(x_labels, rotation=0)
     plt.xlabel("Language, Number of Files")
-    plt.title('Diff in memory consumption small and large input')
+    plt.title('Difference in memory consumption small and large input')
     plt.ylabel('Time (s)')
     plt.suptitle('')
     plt.tight_layout()
